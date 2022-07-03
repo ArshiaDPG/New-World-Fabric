@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "axis=y":    { "model": "newworld:block/stripped_fir_log" },
+    "axis=z":     { "model": "newworld:block/stripped_fir_log", "x": 90 },
+    "axis=x":     { "model": "newworld:block/stripped_fir_log", "x": 90, "y": 90 }
+  }
+}

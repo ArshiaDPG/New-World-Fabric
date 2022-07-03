@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "id": "newworld",
+  "version": "${version}",
+
+  "name": "New World",
+  "description": "lololololo",
+  "authors": [
+    "AvocadoSpud",
+    "DigitalPear"
+  ],
+  "contact": {},
+
+  "license": "MIT",
+  "icon": "assets/newworld/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "net.digitalpear.newworld.client.NewWorldClient"
+    ],
+    "terrablender": [
+      "net.digitalpear.newworld.NewWorldTerraBlender"
+    ],
+    "main": [
+      "net.digitalpear.newworld.NewWorld"
+    ]
+  },
+
+          "mixins": [
+        "newworld.mixins.json"
+      ],
+    
+  "depends": {
+    "fabricloader": ">=0.14.8",
+              "fabric": "*",
+          "minecraft": "1.18.2"
+  }
+}
