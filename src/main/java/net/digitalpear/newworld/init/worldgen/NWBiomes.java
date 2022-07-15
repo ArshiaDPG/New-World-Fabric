@@ -45,6 +45,7 @@ public class NWBiomes {
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, NWPlacedFeatures.FIR_PLACED);
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, NWPlacedFeatures.GLOW_LICHEN_WOODED_MEADOW);
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, NWPlacedFeatures.PATCH_BERRY_WOODED_MEADOW);
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, NWPlacedFeatures.MOSS_CARPET_WOODED_MEADOW);
     }
 
     public static Biome createWoodedMeadow() {
@@ -61,7 +62,7 @@ public class NWBiomes {
         DefaultBiomeFeatures.addExtraDefaultFlowers(builder);
         builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, MiscPlacedFeatures.FOREST_ROCK);
 
-        //Default biome features
+        //Default biome features, DO NOT CHANGE THIS
         DefaultBiomeFeatures.addPlainsTallGrass(builder);
         DefaultBiomeFeatures.addDefaultOres(builder);
         DefaultBiomeFeatures.addDefaultDisks(builder);

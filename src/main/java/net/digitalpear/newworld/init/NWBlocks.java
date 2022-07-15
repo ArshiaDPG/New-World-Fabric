@@ -76,6 +76,10 @@ public class NWBlocks {
 
     public static final Block POTTED_FIR_SAPLING = createBlockWithoutItem("potted_fir_sapling", new FlowerPotBlock(NWBlocks.FIR_SAPLING, AbstractBlock.Settings.copy(Blocks.POTTED_ACACIA_SAPLING)));
 
+
+
+
+
     public static void init(){
         NewWorld.LOGGER.info("New World blocks loaded.");
     }
