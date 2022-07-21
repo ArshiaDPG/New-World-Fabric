@@ -2,6 +2,7 @@ package net.digitalpear.newworld.common.worldgen.features;
 
 import com.mojang.serialization.Codec;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.PillarBlock;
 import net.minecraft.util.math.BlockPos;
@@ -27,19 +28,21 @@ public class FallenLogFeature extends Feature<SingleStateFeatureConfig> {
         BlockPos blockPos = context.getOrigin();
         StructureWorldAccess structureWorldAccess = context.getWorld();
         SingleStateFeatureConfig singleStateFeatureConfig = context.getConfig();
-        int logLength = context.getRandom().nextInt(7);
+        int logLength = context.getRandom().nextInt(2,5);
 
-        if (!structureWorldAccess.isSkyVisible(blockPos) &&
-                structureWorldAccess.getBlockState(blockPos.down()) != Blocks.GRASS_BLOCK.getDefaultState() &&
-                structureWorldAccess.getBlockState(blockPos.down()) != Blocks.PODZOL.getDefaultState()) {
-            return false;
-        }
-        else {
-            for (int i = 0; i > 4; i++) {
-                    structureWorldAccess.setBlockState(getLogPlacement(structureWorldAccess, blockPos), singleStateFeatureConfig.state.with(PillarBlock.AXIS, direction.getAxis()), Block.NO_REDRAW);
-                    blockPos.offset(direction);
+        if ((structureWorldAccess.isSkyVisible(blockPos)) || structureWorldAccess.getBlockState(blockPos.down()).isSolidBlock(structureWorldAccess, blockPos)) {
+            if (!structureWorldAccess.getBlockState(blockPos.down()).isOf(Blocks.WATER) && !structureWorldAccess.getBlockState(blockPos.down()).isOf(Blocks.LAVA)) {
+                placeBlock(logLength, 0, structureWorldAccess, blockPos, direction, singleStateFeatureConfig.state);
             }
-            return true;
+        }
+        return true;
+    }
+
+    //Place log
+    public static void placeBlock(int maxLength, int currentLoop, StructureWorldAccess structureWorldAccess, BlockPos blockPos, Direction direction, BlockState state){
+        if (currentLoop <= maxLength){
+            structureWorldAccess.setBlockState(getLogPlacement(structureWorldAccess, blockPos), state.with(PillarBlock.AXIS, direction.getAxis()), Block.NO_REDRAW);
+            placeBlock(maxLength, currentLoop + 1, structureWorldAccess, blockPos.offset(direction), direction, state);
         }
     }
 
@@ -52,14 +55,13 @@ public class FallenLogFeature extends Feature<SingleStateFeatureConfig> {
     }
 
 
-
+    //This is supposed to stop it from having vertical direction, but it doesn't work
     public static Direction getDirection(Random random){
         Direction output = Direction.random(random);
-        if (output != Direction.DOWN && output != Direction.UP){
-            return output;
-        }
-        else{
+        if (output.getAxis().isVertical()){
             getDirection(random);
+        }else {
+            return output;
         }
         return output;
     }

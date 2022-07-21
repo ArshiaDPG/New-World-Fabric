@@ -53,7 +53,7 @@ public class NWBlocks {
     }
 
     public static final Block FIR_LOG = createBlockWithItem("fir_log", createLogBlock(TOP_COLOR, SIDE_COLOR), ItemGroup.BUILDING_BLOCKS);
-    public static final Block FIR_WOOD = createBlockWithItem("fir_wood", createLogBlock(TOP_COLOR, SIDE_COLOR), ItemGroup.BUILDING_BLOCKS);
+    public static final Block FIR_WOOD = createBlockWithItem("fir_wood", createLogBlock(SIDE_COLOR, SIDE_COLOR), ItemGroup.BUILDING_BLOCKS);
     public static final Block STRIPPED_FIR_LOG = createBlockWithItem("stripped_fir_log", createLogBlock(TOP_COLOR, TOP_COLOR), ItemGroup.BUILDING_BLOCKS);
     public static final Block STRIPPED_FIR_WOOD = createBlockWithItem("stripped_fir_wood", createLogBlock(TOP_COLOR, TOP_COLOR), ItemGroup.BUILDING_BLOCKS);
 

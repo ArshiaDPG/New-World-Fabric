@@ -61,6 +61,9 @@ public class NWBiomes {
         DefaultBiomeFeatures.addForestFlowers(builder);
         DefaultBiomeFeatures.addExtraDefaultFlowers(builder);
         builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, MiscPlacedFeatures.FOREST_ROCK);
+        builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, NWPlacedFeatures.FALLEN_FIR_LOG);
+
+
 
         //Default biome features, DO NOT CHANGE THIS
         DefaultBiomeFeatures.addPlainsTallGrass(builder);
