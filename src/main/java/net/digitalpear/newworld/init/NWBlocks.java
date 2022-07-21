@@ -20,7 +20,9 @@ import net.minecraft.world.BlockView;
 @SuppressWarnings("unused")
 public class NWBlocks {
     public static MapColor TOP_COLOR = MapColor.SPRUCE_BROWN;
-    public static MapColor SIDE_COLOR = MapColor.TERRACOTTA_WHITE;
+    public static MapColor SIDE_COLOR = MapColor.DEEPSLATE_GRAY;
+
+
 
 
     public static BlockItem createBlockItem(String blockID, Block block, ItemGroup group){
