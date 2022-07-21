@@ -33,7 +33,6 @@ public class NWItems {
 
 
     public static void init(){
-        NewWorld.LOGGER.info("New World items loaded.");
     }
 
 

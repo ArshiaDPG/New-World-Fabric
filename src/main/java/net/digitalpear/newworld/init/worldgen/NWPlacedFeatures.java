@@ -25,7 +25,7 @@ public class NWPlacedFeatures {
 
 
     public static final RegistryEntry<PlacedFeature> PATCH_BERRY_WOODED_MEADOW = PlacedFeatures.register(NewWorld.getId("patch_berry_wooded_meadow"), NWConfiguredFeatures.PATCH_BERRY_BUSH_WOODED_MEADOW, RarityFilterPlacementModifier.of(12), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, BiomePlacementModifier.of());
-    public static final RegistryEntry<PlacedFeature> MOSS_CARPET_WOODED_MEADOW = PlacedFeatures.register(NewWorld.getId("moss_carpet_wooded_meadow"), NWConfiguredFeatures.MOSS_CARPET_BUSH_WOODED_MEADOW, RarityFilterPlacementModifier.of(2), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, BiomePlacementModifier.of());
+    public static final RegistryEntry<PlacedFeature> MOSS_CARPET_WOODED_MEADOW = PlacedFeatures.register(NewWorld.getId("moss_carpet_wooded_meadow"), NWConfiguredFeatures.MOSS_CARPET_BUSH_WOODED_MEADOW, CountPlacementModifier.of(2), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, BiomePlacementModifier.of());
 
 
 

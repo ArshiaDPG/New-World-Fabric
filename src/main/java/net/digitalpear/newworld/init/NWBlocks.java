@@ -81,6 +81,6 @@ public class NWBlocks {
 
 
     public static void init(){
-        NewWorld.LOGGER.info("New World blocks loaded.");
+
     }
 }

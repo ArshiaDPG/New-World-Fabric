@@ -14,6 +14,7 @@ public class NewWorld implements ModInitializer {
         return MOD_ID + ":" + id;
     }
     public static final String MOD_ID = "newworld";
+    public static final String MOD_NAME = "New World";
     public static final Logger LOGGER = Logger.getLogger(MOD_ID);
 
     @Override
@@ -22,6 +23,8 @@ public class NewWorld implements ModInitializer {
         NWItems.init();
         NWBiomes.init();
         NWUtil.init();
+
+        LOGGER.info(MOD_NAME + " has initialized.");
     }
 
 }

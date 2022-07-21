@@ -8,7 +8,10 @@ group = project.maven_group
 
 repositories {
     maven { url = 'https://maven.minecraftforge.net/' }
-    maven { url "https://maven.terraformersmc.com/" }
+    maven {
+        name = "TerraformersMC"
+        url = "https://maven.terraformersmc.com/"
+    }
 }
 
 dependencies {
@@ -17,10 +20,13 @@ dependencies {
     mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
-    // Fabric API. This is technically optional, but you probably want it anyway.
+
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
     modImplementation "com.github.glitchfiend:TerraBlender-fabric:${project.minecraft_version}-${project.terrablender_version}"
+
+
     modRuntimeOnly "com.terraformersmc:modmenu:${rootProject.modmenu_version}"
+    //modRuntimeOnly "dev.emi:emi:${project.emi_version}"
 }
 
 processResources {

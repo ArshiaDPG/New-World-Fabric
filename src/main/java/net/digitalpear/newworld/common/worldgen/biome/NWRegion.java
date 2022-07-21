@@ -14,6 +14,7 @@ import terrablender.api.RegionType;
 import java.util.function.Consumer;
 
 public class NWRegion extends Region {
+
     public NWRegion(Identifier name, int weight) {
         super(name, RegionType.OVERWORLD, weight);
     }
