@@ -25,12 +25,12 @@ public class NWRegion extends Region {
     public void addBiomes(Registry<Biome> registry, Consumer<Pair<MultiNoiseUtil.NoiseHypercube, RegistryKey<Biome>>> mapper) {
         this.addModifiedVanillaOverworldBiomes(mapper, builder -> {
             List<MultiNoiseUtil.NoiseHypercube> meadowPoints = new ParameterPointListBuilder()
-                    .temperature(Temperature.ICY, Temperature.COOL, Temperature.NEUTRAL)
-                    .humidity(Humidity.ARID, Humidity.DRY, Humidity.NEUTRAL, Humidity.WET, Humidity.HUMID)
-                    .continentalness(Continentalness.span(Continentalness.COAST, Continentalness.FAR_INLAND), Continentalness.span(Continentalness.MID_INLAND, Continentalness.FAR_INLAND))
+                    .temperature(Temperature.COOL, Temperature.NEUTRAL)
+                    .humidity(Humidity.ARID, Humidity.NEUTRAL, Humidity.WET, Humidity.HUMID)
+                    .continentalness(Continentalness.span(Continentalness.FAR_INLAND, Continentalness.FAR_INLAND), Continentalness.span(Continentalness.MID_INLAND, Continentalness.FAR_INLAND))
                     .erosion(Erosion.EROSION_0, Erosion.EROSION_1)
                     .depth(Depth.SURFACE, Depth.FLOOR)
-                    .weirdness(Weirdness.HIGH_SLICE_VARIANT_ASCENDING, Weirdness.PEAK_VARIANT, Weirdness.HIGH_SLICE_VARIANT_DESCENDING)
+                    .weirdness(Weirdness.HIGH_SLICE_VARIANT_ASCENDING, Weirdness.HIGH_SLICE_VARIANT_DESCENDING, Weirdness.MID_SLICE_NORMAL_ASCENDING)
                     .build();
 
             meadowPoints.forEach(point -> builder.replaceBiome(point, NWBiomes.WOODED_MEADOW_KEY));
