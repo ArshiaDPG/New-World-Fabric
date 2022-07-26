@@ -1,6 +1,7 @@
 package net.digitalpear.newworld.common.worldgen.features;
 
 import com.mojang.serialization.Codec;
+import net.digitalpear.newworld.init.NWBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -41,17 +42,19 @@ public class FallenLogFeature extends Feature<SingleStateFeatureConfig> {
     //Place log
     public static void placeBlock(int maxLength, int currentLoop, StructureWorldAccess structureWorldAccess, BlockPos blockPos, Direction direction, BlockState state){
         if (currentLoop <= maxLength){
-            structureWorldAccess.setBlockState(getLogPlacement(structureWorldAccess, blockPos), state.with(PillarBlock.AXIS, direction.getAxis()), Block.NO_REDRAW);
+            generateLog(structureWorldAccess, blockPos, state, direction);
             placeBlock(maxLength, currentLoop + 1, structureWorldAccess, blockPos.offset(direction), direction, state);
         }
     }
-
-
-    public static BlockPos getLogPlacement(StructureWorldAccess world, BlockPos pos){
-        if (isAir(world, pos.down())){
-            getLogPlacement(world, pos.down());
+    public static void generateLog(StructureWorldAccess world, BlockPos pos, BlockState state, Direction direction){
+        for (int j = 10; j >= 0; --j) {
+            if (!isAir(world, pos.down()) && !world.getBlockState(pos).isOf(NWBlocks.FIR_LOG)){
+                world.setBlockState(pos, state.with(PillarBlock.AXIS, direction.getAxis()), Block.NO_REDRAW);
+            }
+            else{
+                break;
+            }
         }
-        return pos;
     }
 
 
@@ -59,10 +62,9 @@ public class FallenLogFeature extends Feature<SingleStateFeatureConfig> {
     public static Direction getDirection(Random random){
         Direction output = Direction.random(random);
         if (output.getAxis().isVertical()){
-            getDirection(random);
+            return Direction.EAST;
         }else {
             return output;
         }
-        return output;
     }
 }
