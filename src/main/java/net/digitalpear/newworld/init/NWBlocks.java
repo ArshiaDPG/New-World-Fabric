@@ -28,22 +28,28 @@ public class NWBlocks {
     public static BlockItem createBlockItem(String blockID, Block block, ItemGroup group){
         return Registry.register(Registry.ITEM, new Identifier(NewWorld.MOD_ID, blockID), new BlockItem(block, new FabricItemSettings().group(group)));
     }
+
     private static Block createBlockWithItem(String blockID, Block block, ItemGroup group){
         createBlockItem(blockID, block, group);
         return Registry.register(Registry.BLOCK, new Identifier(NewWorld.MOD_ID, blockID), block);
     }
+
     private static Block createBlockWithoutItem(String blockID, Block block){
         return Registry.register(Registry.BLOCK, new Identifier(NewWorld.MOD_ID, blockID), block);
     }
+
     private static PillarBlock createLogBlock(MapColor topMapColor, MapColor sideMapColor) {
         return new PillarBlock(AbstractBlock.Settings.of(Material.WOOD, (state) -> state.get(PillarBlock.AXIS) == Direction.Axis.Y ? topMapColor : sideMapColor).strength(2.0F).sounds(BlockSoundGroup.WOOD));
     }
+
     private static LeavesBlock createLeavesBlock(BlockSoundGroup soundGroup) {
         return new LeavesBlock(AbstractBlock.Settings.of(Material.LEAVES).strength(0.2F).ticksRandomly().sounds(soundGroup).nonOpaque().allowsSpawning(NWBlocks::canSpawnOnLeaves).suffocates(NWBlocks::never).blockVision(NWBlocks::never));
     }
+
     private static Boolean canSpawnOnLeaves(BlockState state, BlockView world, BlockPos pos, EntityType<?> type) {
         return type == EntityType.OCELOT || type == EntityType.PARROT;
     }
+
     private static boolean never(BlockState state, BlockView blockView, BlockPos pos) {
         return false;
     }

@@ -10,7 +10,11 @@ repositories {
     maven { url = 'https://maven.minecraftforge.net/' }
     maven {
         name = "TerraformersMC"
-        url = "https://maven.terraformersmc.com/"
+        url = "https://repo.moonflower.gg/releases"
+    }
+    maven {
+        name = 'Moonflower Repo'
+        url = 'https://repo.moonflower.gg/releases'
     }
 }
 
@@ -20,13 +24,10 @@ dependencies {
     mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
-
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
     modImplementation "com.github.glitchfiend:TerraBlender-fabric:${project.minecraft_version}-${project.terrablender_version}"
 
-
-    modRuntimeOnly "com.terraformersmc:modmenu:${rootProject.modmenu_version}"
-    //modRuntimeOnly "dev.emi:emi:${project.emi_version}"
+    modApi("gg.moonflower:pollen-fabric:${project.pollen_version}") {transitive = false}
 }
 
 processResources {
