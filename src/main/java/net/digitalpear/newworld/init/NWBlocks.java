@@ -1,7 +1,9 @@
 package net.digitalpear.newworld.init;
 
+import gg.moonflower.pollen.api.block.PollinatedStandingSignBlock;
+import gg.moonflower.pollen.api.block.PollinatedWallSignBlock;
 import net.digitalpear.newworld.NewWorld;
-import net.digitalpear.newworld.common.blocks.ModSignTypes;
+import net.digitalpear.newworld.common.blocks.NWSignTypes;
 import net.digitalpear.newworld.common.worldgen.tree.FirSaplingGenerator;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
@@ -79,8 +81,8 @@ public class NWBlocks {
     public static final Block FIR_LEAVES = createBlockWithItem("fir_leaves", createLeavesBlock(BlockSoundGroup.GRASS), ItemGroup.DECORATIONS);
     public static final Block FIR_SAPLING = createBlockWithItem("fir_sapling", new SaplingBlock(new FirSaplingGenerator(),FabricBlockSettings.copy(Blocks.OAK_SAPLING)), ItemGroup.DECORATIONS);
 
-    public static final Block FIR_WALL_SIGN_BLOCK = createBlockWithoutItem("fir_wall_sign", new WallSignBlock(createWoodBlock(Blocks.OAK_WALL_SIGN, TOP_COLOR), ModSignTypes.FIR));
-    public static final Block FIR_SIGN_BLOCK = createBlockWithoutItem("fir_sign", new SignBlock(createWoodBlock(Blocks.OAK_SIGN, TOP_COLOR), ModSignTypes.FIR));
+    public static final Block FIR_WALL_SIGN_BLOCK = createBlockWithoutItem("fir_wall_sign", new PollinatedWallSignBlock(createWoodBlock(Blocks.OAK_WALL_SIGN, TOP_COLOR), NWSignTypes.FIR));
+    public static final Block FIR_SIGN_BLOCK = createBlockWithoutItem("fir_sign", new PollinatedStandingSignBlock(createWoodBlock(Blocks.OAK_SIGN, TOP_COLOR), NWSignTypes.FIR));
 
     public static final Block POTTED_FIR_SAPLING = createBlockWithoutItem("potted_fir_sapling", new FlowerPotBlock(NWBlocks.FIR_SAPLING, AbstractBlock.Settings.copy(Blocks.POTTED_ACACIA_SAPLING)));
 
