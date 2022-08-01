@@ -7,6 +7,7 @@ import net.digitalpear.newworld.common.blocks.NWSignTypes;
 import net.digitalpear.newworld.common.worldgen.tree.FirSaplingGenerator;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.*;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.BlockItem;
@@ -86,11 +87,15 @@ public class NWBlocks {
 
     public static final Block POTTED_FIR_SAPLING = createBlockWithoutItem("potted_fir_sapling", new FlowerPotBlock(NWBlocks.FIR_SAPLING, AbstractBlock.Settings.copy(Blocks.POTTED_ACACIA_SAPLING)));
 
+    public static Block FIR_BOOKSHELF;
 
 
 
 
     public static void init(){
+        if (FabricLoader.getInstance().isModLoaded("charm")){
+            FIR_BOOKSHELF = createBlockWithItem("fir_bookshelf", new Block(AbstractBlock.Settings.of(Material.WOOD).strength(1.5f).sounds(BlockSoundGroup.WOOD).mapColor(TOP_COLOR)), ItemGroup.DECORATIONS);
+        }
 
     }
 }

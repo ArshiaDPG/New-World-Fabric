@@ -16,7 +16,7 @@ public class NWPlacedFeatures {
 
     public static final RegistryEntry<PlacedFeature> GLOW_LICHEN_WOODED_MEADOW = PlacedFeatures.register(NewWorld.getId("glow_lichen_wooded_meadow"),
             NWConfiguredFeatures.GLOW_LICHEN_WOODED_MEADOW, CountPlacementModifier.of(UniformIntProvider.create(104, 157)),
-            PlacedFeatures.BOTTOM_TO_TOP_RANGE, SquarePlacementModifier.of(),
+            PlacedFeatures.BOTTOM_TO_TOP_RANGE, RarityFilterPlacementModifier.of(2),
             SurfaceThresholdFilterPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR_WG, 30, 300),
             BiomePlacementModifier.of());
 

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "XXX",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "newworld:fir_planks"
+    },
+    "X": {
+      "item": "minecraft:book"
+    }
+  },
+  "result": {
+    "item": "newworld:fir_bookshelf"
+  }
+}

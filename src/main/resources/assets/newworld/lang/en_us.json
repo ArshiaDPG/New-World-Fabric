@@ -13,8 +13,14 @@
     "block.newworld.fir_sign": "Fir Sign",
     "block.newworld.fir_leaves": "Fir Leaves",
     "block.newworld.fir_sapling": "Fir Sapling",
+    "block.newworld.potted_fir_sapling": "Potted Fir Sapling",
     "block.newworld.fir_door": "Fir Door",
     "block.newworld.fir_trapdoor": "Fir Trapdoor",
+    "block.newworld.fir_bookshelf": "Fir Bookshelf",
+
+
     "item.newworld.fir_boat": "Fir Boat",
+
+
     "biome.newworld.wooded_meadow": "Wooded Meadow"
 }
