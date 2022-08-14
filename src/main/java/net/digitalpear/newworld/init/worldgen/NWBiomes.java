@@ -41,6 +41,9 @@ public class NWBiomes {
         DefaultBiomeFeatures.addSprings(generationSettings);
         DefaultBiomeFeatures.addFrozenTopLayer(generationSettings);
     }
+
+
+    //Wooded Meadow Stuff
     public static void addWoodedMeadowFeatures(GenerationSettings.Builder builder){
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, NWPlacedFeatures.FIR_PLACED);
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, NWPlacedFeatures.GLOW_LICHEN_WOODED_MEADOW);

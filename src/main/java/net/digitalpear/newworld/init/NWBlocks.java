@@ -90,8 +90,6 @@ public class NWBlocks {
     public static Block FIR_BOOKSHELF;
 
 
-
-
     public static void init(){
         if (FabricLoader.getInstance().isModLoaded("charm")){
             FIR_BOOKSHELF = createBlockWithItem("fir_bookshelf", new Block(AbstractBlock.Settings.of(Material.WOOD).strength(1.5f).sounds(BlockSoundGroup.WOOD).mapColor(TOP_COLOR)), ItemGroup.DECORATIONS);
