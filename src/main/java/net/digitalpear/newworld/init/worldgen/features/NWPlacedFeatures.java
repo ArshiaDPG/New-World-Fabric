@@ -26,7 +26,7 @@ public class NWPlacedFeatures {
 
     public static final RegistryEntry<PlacedFeature> FIR_MEADOW = PlacedFeatures.register(NewWorld.getId("fir_meadow"),
             NWConfiguredFeatures.PLANTED_FIR_BEES, VegetationPlacedFeatures.modifiers(
-                    RarityFilterPlacementModifier.of(4)));
+                    RarityFilterPlacementModifier.of(7)));
 
 
     public static final RegistryEntry<PlacedFeature> FALLEN_FIR_LOG = PlacedFeatures.register(NewWorld.getId("fallen_fir_log"), NWConfiguredFeatures.FALLEN_FIR_LOG,
