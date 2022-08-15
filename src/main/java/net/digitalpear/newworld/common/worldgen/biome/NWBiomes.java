@@ -1,6 +1,7 @@
-package net.digitalpear.newworld.init.worldgen;
+package net.digitalpear.newworld.common.worldgen.biome;
 
 import net.digitalpear.newworld.NewWorld;
+import net.digitalpear.newworld.init.worldgen.NWPlacedFeatures;
 import net.minecraft.client.sound.MusicType;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;

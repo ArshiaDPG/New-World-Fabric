@@ -2,11 +2,13 @@ package net.digitalpear.newworld;
 
 import net.digitalpear.newworld.init.NWBlocks;
 import net.digitalpear.newworld.init.NWItems;
+import net.digitalpear.newworld.init.NWStructures;
 import net.digitalpear.newworld.init.NWUtil;
-import net.digitalpear.newworld.init.worldgen.NWBiomes;
+import net.digitalpear.newworld.common.worldgen.biome.NWBiomes;
 import net.fabricmc.api.ModInitializer;
 
-import java.util.logging.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class NewWorld implements ModInitializer {
 
@@ -15,7 +17,7 @@ public class NewWorld implements ModInitializer {
     }
     public static final String MOD_ID = "newworld";
     public static final String MOD_NAME = "New World";
-    public static final Logger LOGGER = Logger.getLogger(MOD_ID);
+    public static final Logger LOGGER = LogManager.getLogger();
 
     @Override
     public void onInitialize() {
@@ -23,6 +25,7 @@ public class NewWorld implements ModInitializer {
         NWItems.init();
         NWBiomes.init();
         NWUtil.init();
+        NWStructures.init();
 
         LOGGER.info(MOD_NAME + " has initialized.");
     }

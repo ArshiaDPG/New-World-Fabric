@@ -1,6 +1,6 @@
 package net.digitalpear.newworld;
 
-import net.digitalpear.newworld.common.worldgen.biome.NWRegion;
+import net.digitalpear.newworld.init.worldgen.NWRegion;
 import net.minecraft.util.Identifier;
 import terrablender.api.Regions;
 import terrablender.api.TerraBlenderApi;

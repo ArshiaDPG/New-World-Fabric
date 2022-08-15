@@ -1,0 +1,15 @@
+{
+  "name": "newworld:buried_bunker",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "newworld:buried_bunker",
+        "processors": "newworld:buried_bunker_replacements",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}
