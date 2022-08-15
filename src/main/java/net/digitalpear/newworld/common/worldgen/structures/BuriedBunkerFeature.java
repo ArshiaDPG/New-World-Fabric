@@ -31,6 +31,16 @@ public class BuriedBunkerFeature extends StructureFeature<StructurePoolFeatureCo
         super(CODEC, BuriedBunkerFeature::createPiecesGenerator, PostPlacementProcessor.EMPTY);
     }
     private static boolean isFeatureChunk(StructureGeneratorFactory.Context<StructurePoolFeatureConfig> context) {
+//        BlockPos place = context.chunkPos().getCenterAtY(0).down(4);
+//        int width = 5;
+//        int height = 5;
+//        for (int x = place.getX() - width; x < place.getX() + width; x++){
+//            for (int z = place.getZ() - width; z < place.getZ() + width; z++){
+//                for (int y = place.getY() - height; y < place.getY() + height; y++){
+//
+//                }
+//            }
+//        }
         return true;
     }
 
@@ -41,10 +51,10 @@ public class BuriedBunkerFeature extends StructureFeature<StructurePoolFeatureCo
 
 
         BlockPos blockpos = context.chunkPos().getCenterAtY(0);
-        blockpos = blockpos.down(4);
+        blockpos = blockpos.down(6);
 
         Optional<StructurePiecesGenerator<StructurePoolFeatureConfig>> structurePiecesGenerator =
-                StructurePoolBasedGenerator.generate(context, PoolStructurePiece::new, blockpos.down(4), true, true);
+                StructurePoolBasedGenerator.generate(context, PoolStructurePiece::new, blockpos, true, true);
 
         if(structurePiecesGenerator.isPresent()) {
             NewWorld.LOGGER.log(Level.DEBUG, "Buried Bunker at {}", blockpos);

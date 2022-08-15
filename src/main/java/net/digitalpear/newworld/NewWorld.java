@@ -1,6 +1,6 @@
 package net.digitalpear.newworld;
 
-import net.digitalpear.newworld.common.worldgen.biome.NWOverworldBiomes;
+import net.digitalpear.newworld.init.worldgen.NWOverworldBiomes;
 import net.digitalpear.newworld.init.NWBlocks;
 import net.digitalpear.newworld.init.NWItems;
 import net.digitalpear.newworld.init.NWStructures;
