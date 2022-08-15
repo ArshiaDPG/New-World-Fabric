@@ -2,6 +2,7 @@ package net.digitalpear.newworld.init.worldgen;
 
 import com.google.common.collect.ImmutableList;
 import net.digitalpear.newworld.NewWorld;
+import net.digitalpear.newworld.common.worldgen.NWFeature;
 import net.digitalpear.newworld.init.NWBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;

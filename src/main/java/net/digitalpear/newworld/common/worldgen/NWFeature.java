@@ -1,4 +1,4 @@
-package net.digitalpear.newworld.init.worldgen;
+package net.digitalpear.newworld.common.worldgen;
 
 import net.digitalpear.newworld.common.worldgen.features.FallenLogFeature;
 import net.minecraft.util.registry.Registry;

@@ -10,7 +10,7 @@ import net.minecraft.world.gen.feature.VegetationPlacedFeatures;
 import net.minecraft.world.gen.placementmodifier.*;
 
 public class NWPlacedFeatures {
-    public static final RegistryEntry<PlacedFeature> FIR_PLACED = PlacedFeatures.register(NewWorld.getId("fir_placed"),
+    public static final RegistryEntry<PlacedFeature> FIR = PlacedFeatures.register(NewWorld.getId("fir"),
             NWConfiguredFeatures.FIR_SPAWN, VegetationPlacedFeatures.modifiers(
                     PlacedFeatures.createCountExtraModifier(3, 0.1f, 5)));
 
@@ -19,6 +19,10 @@ public class NWPlacedFeatures {
             PlacedFeatures.BOTTOM_TO_TOP_RANGE, RarityFilterPlacementModifier.of(2),
             SurfaceThresholdFilterPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR_WG, 30, 300),
             BiomePlacementModifier.of());
+
+    public static final RegistryEntry<PlacedFeature> FIR_SCARCE = PlacedFeatures.register(NewWorld.getId("fir_scarce"),
+            NWConfiguredFeatures.FIR_SPAWN, VegetationPlacedFeatures.modifiers(
+                    RarityFilterPlacementModifier.of(4)));
 
 
     public static final RegistryEntry<PlacedFeature> FALLEN_FIR_LOG = PlacedFeatures.register(NewWorld.getId("fallen_fir_log"), NWConfiguredFeatures.FALLEN_FIR_LOG,

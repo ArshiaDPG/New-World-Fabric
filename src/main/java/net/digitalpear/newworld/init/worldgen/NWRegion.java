@@ -1,7 +1,7 @@
 package net.digitalpear.newworld.init.worldgen;
 
 import com.mojang.datafixers.util.Pair;
-import net.digitalpear.newworld.common.worldgen.biome.NWBiomes;
+import net.digitalpear.newworld.common.worldgen.biome.NWOverworldBiomes;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
@@ -33,7 +33,7 @@ public class NWRegion extends Region {
                     .weirdness(Weirdness.HIGH_SLICE_VARIANT_ASCENDING, Weirdness.HIGH_SLICE_VARIANT_DESCENDING, Weirdness.MID_SLICE_NORMAL_ASCENDING)
                     .build();
 
-            meadowPoints.forEach(point -> builder.replaceBiome(point, NWBiomes.WOODED_MEADOW_KEY));
+            meadowPoints.forEach(point -> builder.replaceBiome(point, NWOverworldBiomes.WOODED_MEADOW_KEY));
         });
     }
 }

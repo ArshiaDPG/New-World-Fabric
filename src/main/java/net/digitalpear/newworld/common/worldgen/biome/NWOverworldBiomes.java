@@ -2,12 +2,15 @@ package net.digitalpear.newworld.common.worldgen.biome;
 
 import net.digitalpear.newworld.NewWorld;
 import net.digitalpear.newworld.init.worldgen.NWPlacedFeatures;
+import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
+import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.minecraft.client.sound.MusicType;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.sound.BiomeMoodSound;
 import net.minecraft.sound.MusicSound;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.tag.BiomeTags;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.registry.BuiltinRegistries;
@@ -21,8 +24,7 @@ import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 import net.minecraft.world.gen.feature.MiscPlacedFeatures;
 import org.jetbrains.annotations.Nullable;
 
-public class NWBiomes {
-
+public class NWOverworldBiomes {
     protected static int getSkyColor(float temperature) {
         float f = temperature / 3.0F;
         f = MathHelper.clamp(f, -1.0F, 1.0F);
@@ -46,7 +48,7 @@ public class NWBiomes {
 
     //Wooded Meadow Stuff
     public static void addWoodedMeadowFeatures(GenerationSettings.Builder builder){
-        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, NWPlacedFeatures.FIR_PLACED);
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, NWPlacedFeatures.FIR);
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, NWPlacedFeatures.GLOW_LICHEN_WOODED_MEADOW);
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, NWPlacedFeatures.PATCH_BERRY_WOODED_MEADOW);
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, NWPlacedFeatures.MOSS_CARPET_WOODED_MEADOW);
@@ -85,6 +87,7 @@ public class NWBiomes {
     public static final RegistryKey<Biome> WOODED_MEADOW_KEY = createBiomeKey("wooded_meadow");
 
     public static void init(){
+        BiomeModifications.addFeature(BiomeSelectors.tag(BiomeTags.IS_TAIGA), GenerationStep.Feature.VEGETAL_DECORATION, NWPlacedFeatures.FIR_SCARCE.getKey().get());
         register(WOODED_MEADOW_KEY, createWoodedMeadow());
     }
 
