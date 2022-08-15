@@ -1,7 +1,7 @@
-package net.digitalpear.newworld.common.worldgen.biome;
+package net.digitalpear.newworld.init.worldgen;
 
 import net.digitalpear.newworld.NewWorld;
-import net.digitalpear.newworld.init.worldgen.NWPlacedFeatures;
+import net.digitalpear.newworld.init.worldgen.features.NWPlacedFeatures;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.minecraft.client.sound.MusicType;
@@ -17,6 +17,7 @@ import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.GenerationStep;
@@ -87,6 +88,7 @@ public class NWOverworldBiomes {
     public static final RegistryKey<Biome> WOODED_MEADOW_KEY = createBiomeKey("wooded_meadow");
 
     public static void init(){
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.MEADOW), GenerationStep.Feature.VEGETAL_DECORATION, NWPlacedFeatures.FIR_MEADOW.getKey().get());
         BiomeModifications.addFeature(BiomeSelectors.tag(BiomeTags.IS_TAIGA), GenerationStep.Feature.VEGETAL_DECORATION, NWPlacedFeatures.FIR_SCARCE.getKey().get());
         register(WOODED_MEADOW_KEY, createWoodedMeadow());
     }

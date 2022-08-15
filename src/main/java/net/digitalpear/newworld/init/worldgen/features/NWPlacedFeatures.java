@@ -1,4 +1,4 @@
-package net.digitalpear.newworld.init.worldgen;
+package net.digitalpear.newworld.init.worldgen.features;
 
 import net.digitalpear.newworld.NewWorld;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
@@ -22,6 +22,10 @@ public class NWPlacedFeatures {
 
     public static final RegistryEntry<PlacedFeature> FIR_SCARCE = PlacedFeatures.register(NewWorld.getId("fir_scarce"),
             NWConfiguredFeatures.FIR_SPAWN, VegetationPlacedFeatures.modifiers(
+                    RarityFilterPlacementModifier.of(2)));
+
+    public static final RegistryEntry<PlacedFeature> FIR_MEADOW = PlacedFeatures.register(NewWorld.getId("fir_meadow"),
+            NWConfiguredFeatures.PLANTED_FIR_BEES, VegetationPlacedFeatures.modifiers(
                     RarityFilterPlacementModifier.of(4)));
 
 
@@ -32,5 +36,4 @@ public class NWPlacedFeatures {
             RarityFilterPlacementModifier.of(12), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, BiomePlacementModifier.of());
     public static final RegistryEntry<PlacedFeature> MOSS_CARPET_WOODED_MEADOW = PlacedFeatures.register(NewWorld.getId("moss_carpet_wooded_meadow"), NWConfiguredFeatures.MOSS_CARPET_BUSH_WOODED_MEADOW,
             CountPlacementModifier.of(2), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, BiomePlacementModifier.of());
-
 }
