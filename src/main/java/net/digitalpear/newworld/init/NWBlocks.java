@@ -5,12 +5,11 @@ import gg.moonflower.pollen.api.block.PollinatedWallSignBlock;
 import net.digitalpear.newworld.NewWorld;
 import net.digitalpear.newworld.common.blocks.NWSignTypes;
 import net.digitalpear.newworld.common.worldgen.tree.FirSaplingGenerator;
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.*;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.BlockItem;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
@@ -29,7 +28,7 @@ public class NWBlocks {
 
 
     public static BlockItem createBlockItem(String blockID, Block block, ItemGroup group){
-        return Registry.register(Registry.ITEM, new Identifier(NewWorld.MOD_ID, blockID), new BlockItem(block, new FabricItemSettings().group(group)));
+        return Registry.register(Registry.ITEM, new Identifier(NewWorld.MOD_ID, blockID), new BlockItem(block, new Item.Settings().group((group))));
     }
 
     private static Block createBlockWithItem(String blockID, Block block, ItemGroup group){
@@ -80,7 +79,7 @@ public class NWBlocks {
     public static final Block FIR_FENCE_GATE = createBlockWithItem("fir_fence_gate", new FenceGateBlock(createWoodBlock(Blocks.OAK_FENCE, TOP_COLOR)), ItemGroup.REDSTONE);
 
     public static final Block FIR_LEAVES = createBlockWithItem("fir_leaves", createLeavesBlock(BlockSoundGroup.GRASS), ItemGroup.DECORATIONS);
-    public static final Block FIR_SAPLING = createBlockWithItem("fir_sapling", new SaplingBlock(new FirSaplingGenerator(),FabricBlockSettings.copy(Blocks.OAK_SAPLING)), ItemGroup.DECORATIONS);
+    public static final Block FIR_SAPLING = createBlockWithItem("fir_sapling", new SaplingBlock(new FirSaplingGenerator(),AbstractBlock.Settings.copy(Blocks.OAK_SAPLING)), ItemGroup.DECORATIONS);
 
     public static final Block FIR_WALL_SIGN_BLOCK = createBlockWithoutItem("fir_wall_sign", new PollinatedWallSignBlock(createWoodBlock(Blocks.OAK_WALL_SIGN, TOP_COLOR), NWSignTypes.FIR));
     public static final Block FIR_SIGN_BLOCK = createBlockWithoutItem("fir_sign", new PollinatedStandingSignBlock(createWoodBlock(Blocks.OAK_SIGN, TOP_COLOR), NWSignTypes.FIR));

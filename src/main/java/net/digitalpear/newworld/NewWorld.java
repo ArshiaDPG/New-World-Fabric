@@ -4,7 +4,7 @@ import net.digitalpear.newworld.common.worldgen.biome.NWOverworldBiomes;
 import net.digitalpear.newworld.init.NWBlocks;
 import net.digitalpear.newworld.init.NWItems;
 import net.digitalpear.newworld.init.NWStructures;
-import net.digitalpear.newworld.init.NWUtil;
+import net.digitalpear.newworld.init.NWData;
 import net.fabricmc.api.ModInitializer;
 
 import org.apache.logging.log4j.LogManager;
@@ -24,7 +24,7 @@ public class NewWorld implements ModInitializer {
         NWBlocks.init();
         NWItems.init();
         NWOverworldBiomes.init();
-        NWUtil.init();
+        NWData.init();
         NWStructures.init();
 
         LOGGER.info(MOD_NAME + " has initialized.");

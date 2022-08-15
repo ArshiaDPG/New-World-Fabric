@@ -4,7 +4,6 @@ package net.digitalpear.newworld.init;
 import gg.moonflower.pollen.api.item.PollinatedBoatItem;
 import gg.moonflower.pollen.api.item.PollinatedSignItem;
 import net.digitalpear.newworld.NewWorld;
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.block.Block;
 import net.minecraft.entity.vehicle.BoatEntity;
 import net.minecraft.item.Item;
@@ -22,7 +21,7 @@ public class NWItems {
     }
 
     public static Item createSignItem(Block sign, Block wall_sign) {
-        return new PollinatedSignItem(new FabricItemSettings().maxCount(16).group(ItemGroup.DECORATIONS), sign, wall_sign);
+        return new PollinatedSignItem(new Item.Settings().maxCount(16).group(ItemGroup.DECORATIONS), sign, wall_sign);
     }
 
     private static Item registerItem(String name, Item item) {

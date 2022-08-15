@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "newworld:wooded_meadow"
+    "minecraft:meadow",
+    "minecraft:plains"
   ]
 }

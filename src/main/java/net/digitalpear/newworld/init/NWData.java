@@ -13,7 +13,7 @@ import net.minecraft.tag.TagKey;
 import net.minecraft.village.TradeOffer;
 import net.minecraft.village.TradeOffers;
 
-public class NWUtil {
+public class NWData {
     //Adds to wandering trader trades
     public static void registerCustomTrades(){
         TradeOfferHelper.registerWanderingTraderOffers(1, factories -> {
@@ -27,7 +27,7 @@ public class NWUtil {
 
     public static void registerCompostable(){
         CompostingChanceRegistryImpl.INSTANCE.add(NWBlocks.FIR_SAPLING, 0.3F);
-        CompostingChanceRegistryImpl.INSTANCE.add(NWBlocks.FIR_SAPLING, 0.3F);
+        CompostingChanceRegistryImpl.INSTANCE.add(NWBlocks.FIR_LEAVES, 0.3F);
     }
 
 

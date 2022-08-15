@@ -16,7 +16,7 @@ import org.apache.logging.log4j.Level;
 
 import java.util.Optional;
 
-public class BuriedBunker extends StructureFeature<StructurePoolFeatureConfig> {
+public class BuriedBunkerFeature extends StructureFeature<StructurePoolFeatureConfig> {
 
 
     public static final Codec<StructurePoolFeatureConfig> CODEC = RecordCodecBuilder.create(
@@ -27,15 +27,15 @@ public class BuriedBunker extends StructureFeature<StructurePoolFeatureConfig> {
                     .apply(instance, StructurePoolFeatureConfig::new)
     );
 
-    public BuriedBunker() {
-        super(CODEC, BuriedBunker::createPiecesGenerator, PostPlacementProcessor.EMPTY);
+    public BuriedBunkerFeature() {
+        super(CODEC, BuriedBunkerFeature::createPiecesGenerator, PostPlacementProcessor.EMPTY);
     }
     private static boolean isFeatureChunk(StructureGeneratorFactory.Context<StructurePoolFeatureConfig> context) {
         return true;
     }
 
     public static Optional<StructurePiecesGenerator<StructurePoolFeatureConfig>> createPiecesGenerator(StructureGeneratorFactory.Context<StructurePoolFeatureConfig> context) {
-        if (!BuriedBunker.isFeatureChunk(context)) {
+        if (!BuriedBunkerFeature.isFeatureChunk(context)) {
             return Optional.empty();
         }
 
@@ -47,7 +47,7 @@ public class BuriedBunker extends StructureFeature<StructurePoolFeatureConfig> {
                 StructurePoolBasedGenerator.generate(context, PoolStructurePiece::new, blockpos.down(4), true, true);
 
         if(structurePiecesGenerator.isPresent()) {
-            NewWorld.LOGGER.log(Level.DEBUG, "Rundown House at {}", blockpos);
+            NewWorld.LOGGER.log(Level.DEBUG, "Buried Bunker at {}", blockpos);
         }
 
         return structurePiecesGenerator;

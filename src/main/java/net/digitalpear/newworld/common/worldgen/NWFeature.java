@@ -1,5 +1,6 @@
 package net.digitalpear.newworld.common.worldgen;
 
+import net.digitalpear.newworld.NewWorld;
 import net.digitalpear.newworld.common.worldgen.features.FallenLogFeature;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.gen.feature.Feature;
@@ -11,6 +12,6 @@ public class NWFeature {
 
 
     private static <C extends FeatureConfig, F extends Feature<C>> F register(String name, F feature) {
-        return (F) Registry.register(Registry.FEATURE, name, feature);
+        return (F) Registry.register(Registry.FEATURE, NewWorld.getId(name), feature);
     }
 }

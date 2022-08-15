@@ -1,7 +1,7 @@
 package net.digitalpear.newworld.init;
 
 import net.digitalpear.newworld.NewWorld;
-import net.digitalpear.newworld.common.worldgen.structures.BuriedBunker;
+import net.digitalpear.newworld.common.worldgen.structures.BuriedBunkerFeature;
 import net.digitalpear.newworld.mixin.StructureFeatureAccessor;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.StructureFeature;
@@ -15,7 +15,7 @@ public class NWStructures {
      * It is always a good idea to register your Structures so that other mods and datapacks can
      * use them too directly from the registries. It great for mod/datapacks compatibility.
      */
-    public static StructureFeature<?> SKY_STRUCTURES = new BuriedBunker();
+    public static StructureFeature<?> SKY_STRUCTURES = new BuriedBunkerFeature();
 
     public static void init() {
         // The generation step for when to generate the structure. there are 10 stages you can pick from!
