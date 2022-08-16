@@ -47,7 +47,6 @@ public class NWConfiguredFeatures {
 
     public static final RegistryEntry<PlacedFeature> FIR_CHECKED = PlacedFeatures.register(NewWorld.getId("fir_checked"), NWConfiguredFeatures.FIR, PlacedFeatures.wouldSurvive(NWBlocks.FIR_SAPLING));
     public static final RegistryEntry<PlacedFeature> FIR_BEES_02_CHECKED = PlacedFeatures.register(NewWorld.getId("fir_bees_02_checked"), NWConfiguredFeatures.FIR_BEES, PlacedFeatures.wouldSurvive(NWBlocks.FIR_SAPLING));
-    public static final RegistryEntry<PlacedFeature> FIR_BEES_CHECKED = PlacedFeatures.register(NewWorld.getId("fir_bees_checked"), NWConfiguredFeatures.PLANTED_FIR_BEES, PlacedFeatures.wouldSurvive(NWBlocks.FIR_SAPLING));
 
 
     private static TreeFeatureConfig.Builder fir() {

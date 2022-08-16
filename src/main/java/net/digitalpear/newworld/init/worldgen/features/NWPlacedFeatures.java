@@ -21,12 +21,12 @@ public class NWPlacedFeatures {
             BiomePlacementModifier.of());
 
     public static final RegistryEntry<PlacedFeature> FIR_SCARCE = PlacedFeatures.register(NewWorld.getId("fir_scarce"),
-            NWConfiguredFeatures.FIR_SPAWN, VegetationPlacedFeatures.modifiers(
-                    RarityFilterPlacementModifier.of(2)));
+            NWConfiguredFeatures.PLANTED_FIR, VegetationPlacedFeatures.modifiers(
+                    RarityFilterPlacementModifier.of(3)));
 
     public static final RegistryEntry<PlacedFeature> FIR_MEADOW = PlacedFeatures.register(NewWorld.getId("fir_meadow"),
             NWConfiguredFeatures.PLANTED_FIR_BEES, VegetationPlacedFeatures.modifiers(
-                    RarityFilterPlacementModifier.of(7)));
+                    RarityFilterPlacementModifier.of(14)));
 
 
     public static final RegistryEntry<PlacedFeature> FALLEN_FIR_LOG = PlacedFeatures.register(NewWorld.getId("fallen_fir_log"), NWConfiguredFeatures.FALLEN_FIR_LOG,
