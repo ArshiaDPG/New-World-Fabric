@@ -22,7 +22,7 @@ public class NWPlacedFeatures {
 
     public static final RegistryEntry<PlacedFeature> FIR_SCARCE = PlacedFeatures.register(NewWorld.getId("fir_scarce"),
             NWConfiguredFeatures.PLANTED_FIR_TAIGA, VegetationPlacedFeatures.modifiers(
-                    RarityFilterPlacementModifier.of(24)));
+                    RarityFilterPlacementModifier.of(3)));
 
 
     public static final RegistryEntry<PlacedFeature> FIR_MEADOW = PlacedFeatures.register(NewWorld.getId("fir_meadow"),
