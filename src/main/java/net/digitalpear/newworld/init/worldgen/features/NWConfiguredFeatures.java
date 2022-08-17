@@ -47,7 +47,7 @@ public class NWConfiguredFeatures {
 
     public static final RegistryEntry<PlacedFeature> FIR_CHECKED = PlacedFeatures.register(NewWorld.getId("fir_checked"), NWConfiguredFeatures.FIR, PlacedFeatures.wouldSurvive(NWBlocks.FIR_SAPLING));
     public static final RegistryEntry<PlacedFeature> FIR_BEES_02_CHECKED = PlacedFeatures.register(NewWorld.getId("fir_bees_02_checked"), NWConfiguredFeatures.FIR_BEES, PlacedFeatures.wouldSurvive(NWBlocks.FIR_SAPLING));
-    public static final RegistryEntry<PlacedFeature> PLANTED_FIR_CHECKED = PlacedFeatures.register(NewWorld.getId("planted_fir_checked"), NWConfiguredFeatures.PLANTED_FIR_BEES, PlacedFeatures.wouldSurvive(NWBlocks.FIR_SAPLING));
+    public static final RegistryEntry<PlacedFeature> PLANTED_FIR_CHECKED = PlacedFeatures.register(NewWorld.getId("planted_fir_checked"), NWConfiguredFeatures.PLANTED_FIR, PlacedFeatures.wouldSurvive(NWBlocks.FIR_SAPLING));
     public static final RegistryEntry<PlacedFeature> PLANTED_FIR_BEES_CHECKED = PlacedFeatures.register(NewWorld.getId("planted_fir_bees_checked"), NWConfiguredFeatures.PLANTED_FIR_BEES, PlacedFeatures.wouldSurvive(NWBlocks.FIR_SAPLING));
 
 
@@ -75,6 +75,6 @@ public class NWConfiguredFeatures {
 
     public static final RegistryEntry<ConfiguredFeature<RandomFeatureConfig, ?>> PLANTED_FIR_SPAWN =
             ConfiguredFeatures.register(NewWorld.getId("planted_fir_spawn"), Feature.RANDOM_SELECTOR,
-                    new RandomFeatureConfig(List.of(new RandomFeatureEntry(PLANTED_FIR_BEES_CHECKED, 0.06f)),
+                    new RandomFeatureConfig(List.of(new RandomFeatureEntry(PLANTED_FIR_BEES_CHECKED, 1.00f)),
                             PLANTED_FIR_CHECKED));
 }
