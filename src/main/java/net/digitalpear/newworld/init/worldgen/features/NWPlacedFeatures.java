@@ -17,16 +17,17 @@ public class NWPlacedFeatures {
     public static final RegistryEntry<PlacedFeature> GLOW_LICHEN_WOODED_MEADOW = PlacedFeatures.register(NewWorld.getId("glow_lichen_wooded_meadow"),
             NWConfiguredFeatures.GLOW_LICHEN_WOODED_MEADOW, CountPlacementModifier.of(UniformIntProvider.create(104, 157)),
             PlacedFeatures.BOTTOM_TO_TOP_RANGE, RarityFilterPlacementModifier.of(2),
-            SurfaceThresholdFilterPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR_WG, 30, 300),
+            SurfaceThresholdFilterPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR_WG, 30, 320),
             BiomePlacementModifier.of());
 
     public static final RegistryEntry<PlacedFeature> FIR_SCARCE = PlacedFeatures.register(NewWorld.getId("fir_scarce"),
-            NWConfiguredFeatures.PLANTED_FIR, VegetationPlacedFeatures.modifiers(
-                    RarityFilterPlacementModifier.of(3)));
+            NWConfiguredFeatures.PLANTED_FIR_TAIGA, VegetationPlacedFeatures.modifiers(
+                    RarityFilterPlacementModifier.of(8)));
+
 
     public static final RegistryEntry<PlacedFeature> FIR_MEADOW = PlacedFeatures.register(NewWorld.getId("fir_meadow"),
-            NWConfiguredFeatures.PLANTED_FIR_BEES, VegetationPlacedFeatures.modifiers(
-                    RarityFilterPlacementModifier.of(14)));
+            NWConfiguredFeatures.PLANTED_FIR_SPAWN, VegetationPlacedFeatures.modifiers(
+                    RarityFilterPlacementModifier.of(27)));
 
 
     public static final RegistryEntry<PlacedFeature> FALLEN_FIR_LOG = PlacedFeatures.register(NewWorld.getId("fallen_fir_log"), NWConfiguredFeatures.FALLEN_FIR_LOG,
