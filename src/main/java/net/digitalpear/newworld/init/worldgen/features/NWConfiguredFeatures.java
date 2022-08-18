@@ -65,7 +65,7 @@ public class NWConfiguredFeatures {
 
     public static final RegistryEntry<ConfiguredFeature<RandomFeatureConfig, ?>> FIR_SPAWN =
             ConfiguredFeatures.register(NewWorld.getId("fir_spawn"), Feature.RANDOM_SELECTOR,
-                    new RandomFeatureConfig(List.of(new RandomFeatureEntry(FIR_BEES_02_CHECKED, 0.06f)),
+                    new RandomFeatureConfig(List.of(new RandomFeatureEntry(FIR_BEES_02_CHECKED, 0.03f)),
                             FIR_CHECKED));
 
     public static final RegistryEntry<ConfiguredFeature<RandomFeatureConfig, ?>> PLANTED_FIR_TAIGA =

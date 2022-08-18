@@ -28,7 +28,7 @@
               "count": {
                 "type": "minecraft:uniform",
                 "min": 1.0,
-                "max": 16.0
+                "max": 6.0
               },
               "add": false
             }
