@@ -15,4 +15,7 @@ public class NWFeature {
     private static <C extends FeatureConfig, F extends Feature<C>> F register(String name, F feature) {
         return Registry.register(Registries.FEATURE, Newworld.id(name), feature);
     }
+
+    public static void init() {
+    }
 }

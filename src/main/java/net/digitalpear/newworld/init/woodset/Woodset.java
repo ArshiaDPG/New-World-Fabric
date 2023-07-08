@@ -5,14 +5,12 @@ import com.terraformersmc.terraform.sign.block.TerraformSignBlock;
 import com.terraformersmc.terraform.sign.block.TerraformWallHangingSignBlock;
 import com.terraformersmc.terraform.sign.block.TerraformWallSignBlock;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeRegistry;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.minecraft.block.*;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.HangingSignItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.SignItem;
+import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKeys;
@@ -449,6 +447,34 @@ public class Woodset {
         FANCY,
         NETHER,
         BAMBOO
+    }
+
+    public static void addToBuildingTab(Item proceedingItem, Woodset woodset){
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> {
+            entries.addAfter(proceedingItem, woodset.getButton());
+            entries.addAfter(proceedingItem, woodset.getPressurePlate());
+            entries.addAfter(proceedingItem, woodset.getTrapDoor());
+            entries.addAfter(proceedingItem, woodset.getDoor());
+            entries.addAfter(proceedingItem, woodset.getFenceGate());
+            entries.addAfter(proceedingItem, woodset.getFence());
+
+            if (woodset.getWoodPreset() == WoodPreset.BAMBOO){
+                entries.addAfter(proceedingItem, woodset.getMosaicSlab());
+                entries.addAfter(proceedingItem, woodset.getMosaicStairs());
+                entries.addAfter(proceedingItem, woodset.getMosaic());
+            }
+
+            entries.addAfter(proceedingItem, woodset.getSlab());
+            entries.addAfter(proceedingItem, woodset.getStairs());
+            entries.addAfter(proceedingItem, woodset.getPlanks());
+
+            if (woodset.getWoodPreset() != WoodPreset.BAMBOO){
+                entries.addAfter(proceedingItem, woodset.getStrippedWood());
+                entries.addAfter(proceedingItem, woodset.getStrippedLog());
+            }
+            entries.addAfter(proceedingItem, woodset.getWood());
+            entries.addAfter(proceedingItem, woodset.getLog());
+        });
     }
 
 }

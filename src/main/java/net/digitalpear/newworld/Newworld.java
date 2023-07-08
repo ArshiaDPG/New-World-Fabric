@@ -1,5 +1,6 @@
 package net.digitalpear.newworld;
 
+import net.digitalpear.newworld.common.worldgen.NWFeature;
 import net.digitalpear.newworld.init.NWBlocks;
 import net.digitalpear.newworld.init.NWData;
 import net.digitalpear.newworld.init.NWItems;
@@ -28,10 +29,10 @@ public class Newworld implements ModInitializer {
         NWBiomes.init();
         NWData.init();
         NWStructures.init();
+        NWFeature.init();
         NWConfiguredFeatures.init();
         NWPlacedFeatures.init();
 
         LOGGER.info(MOD_NAME + " has initialized.");
     }
-
 }

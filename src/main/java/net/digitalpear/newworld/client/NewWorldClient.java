@@ -25,7 +25,7 @@ public class NewWorldClient implements ClientModInitializer {
     public void onInitializeClient() {
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), NWBlocks.FIR_SAPLING, NWBlocks.POTTED_FIR_SAPLING, NWBlocks.FIR_LEAVES);
 
-        TerraformBoatClientHelper.registerModelLayers(Newworld.id("fir_boat"), false);
+        TerraformBoatClientHelper.registerModelLayers(new Identifier(Newworld.MOD_ID, "fir"), false);
 
 
         SpriteIdentifierRegistry.INSTANCE.addIdentifier(new SpriteIdentifier(TexturedRenderLayers.SIGNS_ATLAS_TEXTURE, SIGN_TEXTURE_ID));

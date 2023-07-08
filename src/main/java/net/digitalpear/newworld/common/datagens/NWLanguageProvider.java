@@ -22,6 +22,7 @@ public class NWLanguageProvider extends FabricLanguageProvider {
         NWBlocks.FIR.getRegisteredItemsList().forEach(item -> {
                 translationBuilder.add(item, formatString(Registries.ITEM.getId(item).getPath()));
         });
+        translationBuilder.add(NWBlocks.FIR_SAPLING, "Fir Sapling");
         translationBuilder.add(NWItems.FIR_BOAT, "Fir Boat");
         translationBuilder.add(NWItems.FIR_CHEST_BOAT, "Fir Boat with Chest");
     }

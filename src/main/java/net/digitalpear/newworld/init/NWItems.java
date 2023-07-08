@@ -3,9 +3,13 @@ package net.digitalpear.newworld.init;
 
 import com.terraformersmc.terraform.boat.api.TerraformBoatType;
 import com.terraformersmc.terraform.boat.api.TerraformBoatTypeRegistry;
+import com.terraformersmc.terraform.boat.api.item.TerraformBoatItemHelper;
 import com.terraformersmc.terraform.boat.impl.item.TerraformBoatItem;
 import net.digitalpear.newworld.Newworld;
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroups;
+import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
@@ -33,18 +37,22 @@ public class NWItems {
 
 
 
+
     public static final Item FIR_BOAT = registerItem("fir_boat", createBoatItem(FIR_BOAT_TYPE));
-    public static final Item FIR_CHEST_BOAT = registerItem("fir_chest_boat", createChestBoatItem(FIR_BOAT_TYPE));
+    public static final Item FIR_CHEST_BOAT = registerItem("fir_chest_boat", createBoatItem(FIR_BOAT_TYPE));
     public static final Item FIR_SIGN = NWBlocks.FIR.getSignItem();
     public static final Item FIR_HANGING_SIGN = NWBlocks.FIR.getHangingSignItem();
 
 
     public static void init(){
 
-        TerraformBoatType boat = new TerraformBoatType.Builder()
-                .item(FIR_BOAT)
-                .chestItem(FIR_CHEST_BOAT)
-                .planks(NWBlocks.FIR_PLANKS.asItem())
-                .build();
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(entries -> {
+            entries.addAfter(Items.SPRUCE_CHEST_BOAT, FIR_BOAT);
+            entries.addAfter(FIR_BOAT, FIR_CHEST_BOAT);
+        });
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(entries -> {
+            entries.addAfter(Items.SPRUCE_HANGING_SIGN, FIR_SIGN);
+            entries.addAfter(FIR_SIGN, FIR_HANGING_SIGN);
+        });
     }
 }

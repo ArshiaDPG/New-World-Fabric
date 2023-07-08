@@ -54,7 +54,6 @@ public class NWConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> GROWN_FIR_BEES_002 = RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, Newworld.id("grown_fir_bees_002"));
 
 
-
     public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> featureRegisterable) {
         RegistryEntryLookup<PlacedFeature> placedFeatureRegistryEntryLookup = featureRegisterable.getRegistryLookup(RegistryKeys.PLACED_FEATURE);
 

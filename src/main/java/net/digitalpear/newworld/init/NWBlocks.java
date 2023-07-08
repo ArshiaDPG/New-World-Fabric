@@ -3,9 +3,12 @@ package net.digitalpear.newworld.init;
 import net.digitalpear.newworld.Newworld;
 import net.digitalpear.newworld.common.worldgen.tree.FirSaplingGenerator;
 import net.digitalpear.newworld.init.woodset.Woodset;
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroups;
+import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
@@ -64,6 +67,11 @@ public class NWBlocks {
     public static final Block FIR_HANGING_WALL_SIGN = FIR.getHangingWallSign();
 
     public static void init(){
+        Woodset.addToBuildingTab(Items.SPRUCE_BUTTON, FIR);
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> {
+            entries.addAfter(Items.SPRUCE_LEAVES, FIR_LEAVES);
+            entries.addAfter(Items.SPRUCE_SAPLING, FIR_SAPLING);
+        });
 
     }
 }

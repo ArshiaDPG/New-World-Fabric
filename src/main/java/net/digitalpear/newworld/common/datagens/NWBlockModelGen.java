@@ -27,6 +27,9 @@ public class NWBlockModelGen extends FabricModelProvider {
         makeParticles(blockStateModelGenerator, NWBlocks.STRIPPED_FIR_WOOD, NWBlocks.FIR_HANGING_SIGN, NWBlocks.FIR_HANGING_WALL_SIGN);
         blockStateModelGenerator.registerSimpleCubeAll(NWBlocks.FIR_LEAVES);
 
+        blockStateModelGenerator.registerLog(NWBlocks.FIR_LOG).log(NWBlocks.FIR_LOG).wood(NWBlocks.FIR_WOOD);
+        blockStateModelGenerator.registerLog(NWBlocks.STRIPPED_FIR_LOG).log(NWBlocks.STRIPPED_FIR_LOG).wood(NWBlocks.STRIPPED_FIR_WOOD);
+
         blockStateModelGenerator.registerFlowerPotPlant(NWBlocks.FIR_SAPLING, NWBlocks.POTTED_FIR_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED);
     }
 
