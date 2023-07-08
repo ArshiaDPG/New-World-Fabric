@@ -1,10 +1,7 @@
 package net.digitalpear.newworld;
 
 import net.digitalpear.newworld.common.worldgen.NWFeature;
-import net.digitalpear.newworld.init.NWBlocks;
-import net.digitalpear.newworld.init.NWData;
-import net.digitalpear.newworld.init.NWItems;
-import net.digitalpear.newworld.init.NWStructures;
+import net.digitalpear.newworld.init.*;
 import net.digitalpear.newworld.init.worldgen.NWBiomes;
 import net.digitalpear.newworld.init.worldgen.features.NWConfiguredFeatures;
 import net.digitalpear.newworld.init.worldgen.features.NWPlacedFeatures;
@@ -25,6 +22,7 @@ public class Newworld implements ModInitializer {
     @Override
     public void onInitialize() {
         NWBlocks.init();
+        NWBoatTypes.init();
         NWItems.init();
         NWBiomes.init();
         NWData.init();
