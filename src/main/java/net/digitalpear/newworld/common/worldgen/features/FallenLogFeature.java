@@ -2,10 +2,7 @@ package net.digitalpear.newworld.common.worldgen.features;
 
 import com.mojang.serialization.Codec;
 import net.digitalpear.newworld.init.NWBlocks;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.PillarBlock;
+import net.minecraft.block.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
@@ -13,6 +10,9 @@ import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.SingleStateFeatureConfig;
 import net.minecraft.world.gen.feature.util.FeatureContext;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class FallenLogFeature extends Feature<SingleStateFeatureConfig> {
 
@@ -28,7 +28,7 @@ public class FallenLogFeature extends Feature<SingleStateFeatureConfig> {
         BlockPos blockPos = context.getOrigin();
         StructureWorldAccess structureWorldAccess = context.getWorld();
         SingleStateFeatureConfig singleStateFeatureConfig = context.getConfig();
-        int logLength = context.getRandom().nextBetween(2, 5);
+        int logLength = 4 + context.getRandom().nextBetween(2, 4);
 
         if ((structureWorldAccess.isSkyVisible(blockPos)) || structureWorldAccess.getBlockState(blockPos.down()).isSolidBlock(structureWorldAccess, blockPos)) {
             if (!structureWorldAccess.getBlockState(blockPos.down()).isOf(Blocks.WATER) && !structureWorldAccess.getBlockState(blockPos.down()).isOf(Blocks.LAVA)) {
@@ -48,7 +48,7 @@ public class FallenLogFeature extends Feature<SingleStateFeatureConfig> {
     public static void generateLog(StructureWorldAccess world, BlockPos pos, BlockState state, Direction direction){
         for (int j = 10; j >= 0; --j) {
             if (!world.getBlockState(pos.down()).isAir() && !world.getBlockState(pos).isOf(NWBlocks.FIR_LOG)){
-                world.setBlockState(pos, state.with(PillarBlock.AXIS, direction.getAxis()), Block.NO_REDRAW);
+                world.setBlockState(pos, state.with(PillarBlock.AXIS, direction.getAxis()), Block.NOTIFY_ALL);
             }
             else{
                 break;
@@ -56,14 +56,13 @@ public class FallenLogFeature extends Feature<SingleStateFeatureConfig> {
         }
     }
 
-
-    //This is supposed to stop it from having vertical direction, but it doesn't work
     public static Direction getDirection(Random random){
-        Direction output = Direction.random(random);
-        if (output.getAxis().isVertical()){
-            return Direction.EAST;
-        }else {
-            return output;
+        Direction direction;
+        do {
+            direction = Direction.random(random);
         }
+        while (direction.getAxis().isVertical());
+
+        return direction;
     }
 }

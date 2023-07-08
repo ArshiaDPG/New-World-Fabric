@@ -68,6 +68,7 @@ public class NWBlocks {
 
     public static void init(){
         Woodset.addToBuildingTab(Items.SPRUCE_BUTTON, FIR);
+        
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> {
             entries.addAfter(Items.SPRUCE_LEAVES, FIR_LEAVES);
             entries.addAfter(Items.SPRUCE_SAPLING, FIR_SAPLING);
