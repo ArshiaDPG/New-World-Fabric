@@ -1,12 +1,10 @@
-package net.digitalpear.newworld.common.datagens.worldgen;
+package net.digitalpear.newworld.common.datagens;
 
 import net.digitalpear.newworld.init.NWBlocks;
 import net.digitalpear.newworld.init.NWItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.block.AbstractSignBlock;
-import net.minecraft.block.HangingSignBlock;
-import net.minecraft.block.SignBlock;
 import net.minecraft.registry.Registries;
 
 public class NWLanguageProvider extends FabricLanguageProvider {

@@ -102,4 +102,7 @@ public class NWConfiguredFeatures {
 
                 .ignoreVines();
     }
+
+    public static void init() {
+    }
 }

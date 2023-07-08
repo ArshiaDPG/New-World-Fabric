@@ -1,4 +1,4 @@
-// 1.20.1	2023-07-07T23:20:08.3523355	New World/Model Definitions
+// 1.20.1	2023-07-08T00:05:28.6671242	New World/Model Definitions
 162dcbcdab2e69d23ec592cf936fa21cfecb7be7 assets\newworld\models\item\fir_sapling.json
 38c0b55e90009c06c0752a6a293ffbbb539a962f assets\newworld\models\block\fir_door_top_right_open.json
 26c0f572c0471109899cb6b14d8f8fbd789369ad assets\newworld\models\block\fir_fence_inventory.json
@@ -50,8 +50,8 @@ a0c8d316177cab81396c885c8595f051418bc4bd assets\newworld\models\block\fir_pressu
 4f859f59902b54f0cb269802bc8527919eb4e8da assets\newworld\models\item\fir_fence.json
 0f063c9bd245ffd1e8305e087cf85971beb00141 assets\newworld\blockstates\fir_button.json
 e6aa956b972c6940a2094ab9150bfc5d0318c0dc assets\newworld\models\item\fir_pressure_plate.json
-fb081c054c26313ffa0395277af5bd2e1f3491f3 assets\newworld\models\block\fir_slab_top.json
 4bb747bafcea4ab880f0471947edef02adf1e000 assets\newworld\blockstates\fir_fence_gate.json
+fb081c054c26313ffa0395277af5bd2e1f3491f3 assets\newworld\models\block\fir_slab_top.json
 093fbca596dc73b9fc401285db0c6c0ee3680a2f assets\newworld\models\block\fir_fence_gate_open.json
 40bc36c475291f08537f83040cda6e97954b2303 assets\newworld\models\block\fir_sapling.json
 58518e444bb147549e32f41154578c6291e16e7c assets\newworld\models\block\fir_planks.json

@@ -1,4 +1,4 @@
-// 1.20.1	2023-07-07T23:20:08.3493474	New World/Tags for minecraft:block
+// 1.20.1	2023-07-08T00:05:28.6651292	New World/Tags for minecraft:block
 1de7e5b7942e0f01a420883c15bd3ea6d2200e7f data\minecraft\tags\blocks\mineable\axe.json
 54c1945e2943451b7e7ff0b1646ec4e85974df1d data\minecraft\tags\blocks\wooden_pressure_plates.json
 a61f5c6c51d50fc2492abcff429ba4e86bd6e037 data\minecraft\tags\blocks\wall_signs.json
@@ -12,8 +12,8 @@ f67c33fbac71addbc4c364cd27fabe4d8c1ef09f data\minecraft\tags\blocks\logs_that_bu
 f76bb74129dc923029e0d2b32cfb9e5a93b062f2 data\minecraft\tags\blocks\wooden_fences.json
 cdbdccca6c0de9b789f82077ca714cbd17df84a3 data\minecraft\tags\blocks\ceiling_hanging_signs.json
 f987c048609ae0b63393d4acb6a798fd494a9e4f data\minecraft\tags\blocks\wooden_stairs.json
-9bceb13bd9e77e9c5a99f2af53f951fc28b9b87f data\minecraft\tags\blocks\wooden_doors.json
 e57a275a6639993c98311bffefef48f78ad3d241 data\minecraft\tags\blocks\wooden_slabs.json
+9bceb13bd9e77e9c5a99f2af53f951fc28b9b87f data\minecraft\tags\blocks\wooden_doors.json
 052753f4e2984d1995b31e3ff2115b4eb2291dc2 data\minecraft\tags\blocks\all_hanging_signs.json
 6768e8f716ebe0e89d689ec0f15d61302cce60a3 data\minecraft\tags\blocks\saplings.json
 529fd08493531632af990502298ea5ba5754332d data\minecraft\tags\blocks\flower_pots.json

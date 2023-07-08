@@ -1,7 +1,6 @@
 package net.digitalpear.newworld.common.datagens.tags;
 
 import net.digitalpear.newworld.init.tags.NWBiomeTags;
-import net.digitalpear.newworld.common.worldgen.NWOverworldBiomes;
 import net.digitalpear.newworld.init.worldgen.NWBiomes;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;

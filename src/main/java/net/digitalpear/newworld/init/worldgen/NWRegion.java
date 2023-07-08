@@ -1,7 +1,6 @@
 package net.digitalpear.newworld.init.worldgen;
 
 import com.mojang.datafixers.util.Pair;
-import net.digitalpear.newworld.common.worldgen.NWOverworldBiomes;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.util.Identifier;

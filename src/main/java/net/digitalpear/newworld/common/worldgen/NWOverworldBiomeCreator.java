@@ -1,21 +1,15 @@
 package net.digitalpear.newworld.common.worldgen;
 
-import net.digitalpear.newworld.Newworld;
 import net.digitalpear.newworld.init.worldgen.features.NWPlacedFeatures;
-import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
-import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.minecraft.client.sound.MusicType;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
-import net.minecraft.registry.*;
-import net.minecraft.registry.tag.BiomeTags;
+import net.minecraft.registry.RegistryEntryLookup;
 import net.minecraft.sound.BiomeMoodSound;
 import net.minecraft.sound.MusicSound;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.GenerationStep;
@@ -25,7 +19,7 @@ import net.minecraft.world.gen.feature.MiscPlacedFeatures;
 import net.minecraft.world.gen.feature.PlacedFeature;
 import org.jetbrains.annotations.Nullable;
 
-public class NWOverworldBiomes {
+public class NWOverworldBiomeCreator {
     protected static int getSkyColor(float temperature) {
         float f = temperature / 3.0F;
         f = MathHelper.clamp(f, -1.0F, 1.0F);

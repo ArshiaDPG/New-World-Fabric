@@ -1,5 +1,5 @@
 {
-  "type": "newworld:fallen_log_feature",
+  "type": "newworld:fallen_log",
   "config": {
     "state": {
       "Name": "newworld:fir_log",

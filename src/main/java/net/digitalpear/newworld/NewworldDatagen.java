@@ -8,7 +8,7 @@ import net.digitalpear.newworld.common.datagens.tags.NWBlockTagGen;
 import net.digitalpear.newworld.common.datagens.tags.NWItemTagGen;
 import net.digitalpear.newworld.common.datagens.worldgen.NWBiomeProvider;
 import net.digitalpear.newworld.common.datagens.worldgen.NWConfiguredFeatureProvider;
-import net.digitalpear.newworld.common.datagens.worldgen.NWLanguageProvider;
+import net.digitalpear.newworld.common.datagens.NWLanguageProvider;
 import net.digitalpear.newworld.common.datagens.worldgen.NWPlacedFeatureProvider;
 import net.digitalpear.newworld.init.worldgen.NWBiomes;
 import net.digitalpear.newworld.init.worldgen.features.NWConfiguredFeatures;
