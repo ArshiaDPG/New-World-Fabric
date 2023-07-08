@@ -3,9 +3,11 @@ package net.digitalpear.newworld.init;
 
 import com.terraformersmc.terraform.boat.api.TerraformBoatType;
 import com.terraformersmc.terraform.boat.api.TerraformBoatTypeRegistry;
-import com.terraformersmc.terraform.boat.api.item.TerraformBoatItemHelper;
 import com.terraformersmc.terraform.boat.impl.item.TerraformBoatItem;
 import net.digitalpear.newworld.Newworld;
+import net.digitalpear.newworld.common.items.MattockItem;
+import net.digitalpear.newworld.common.items.NWToolMaterials;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
@@ -14,7 +16,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.util.Identifier;
-
+import net.minecraft.util.Rarity;
 
 
 @SuppressWarnings("unused")
@@ -43,12 +45,15 @@ public class NWItems {
     public static final Item FIR_SIGN = NWBlocks.FIR.getSignItem();
     public static final Item FIR_HANGING_SIGN = NWBlocks.FIR.getHangingSignItem();
 
+    public static final Item ANCIENT_MATTOCK = registerItem("ancient_mattock", new MattockItem(NWToolMaterials.ANCIENT,
+            0.0F, -3.0F, new Item.Settings().rarity(Rarity.RARE)));
 
     public static void init(){
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(entries -> {
             entries.addAfter(Items.SPRUCE_CHEST_BOAT, FIR_BOAT);
             entries.addAfter(FIR_BOAT, FIR_CHEST_BOAT);
+            entries.add(ANCIENT_MATTOCK);
         });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(entries -> {
             entries.addAfter(Items.SPRUCE_HANGING_SIGN, FIR_SIGN);

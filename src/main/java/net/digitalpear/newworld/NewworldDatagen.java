@@ -1,14 +1,11 @@
 package net.digitalpear.newworld;
 
-import net.digitalpear.newworld.common.datagens.NWBlockLootTableGen;
-import net.digitalpear.newworld.common.datagens.NWBlockModelGen;
-import net.digitalpear.newworld.common.datagens.NWRecipeGen;
+import net.digitalpear.newworld.common.datagens.*;
 import net.digitalpear.newworld.common.datagens.tags.NWBiomeTagGen;
 import net.digitalpear.newworld.common.datagens.tags.NWBlockTagGen;
 import net.digitalpear.newworld.common.datagens.tags.NWItemTagGen;
 import net.digitalpear.newworld.common.datagens.worldgen.NWBiomeProvider;
 import net.digitalpear.newworld.common.datagens.worldgen.NWConfiguredFeatureProvider;
-import net.digitalpear.newworld.common.datagens.NWLanguageProvider;
 import net.digitalpear.newworld.common.datagens.worldgen.NWPlacedFeatureProvider;
 import net.digitalpear.newworld.init.worldgen.NWBiomes;
 import net.digitalpear.newworld.init.worldgen.features.NWConfiguredFeatures;
@@ -29,9 +26,10 @@ public class NewworldDatagen implements DataGeneratorEntrypoint {
         pack.addProvider(NWBiomeTagGen::new);
 
         pack.addProvider(NWBlockLootTableGen::new);
-        pack.addProvider(NWBlockModelGen::new);
+        pack.addProvider(NWModelGen::new);
         pack.addProvider(NWRecipeGen::new);
         pack.addProvider(NWLanguageProvider::new);
+        pack.addProvider(NWAdvancementProvider::new);
 
         pack.addProvider(NWConfiguredFeatureProvider::new);
         pack.addProvider(NWPlacedFeatureProvider::new);

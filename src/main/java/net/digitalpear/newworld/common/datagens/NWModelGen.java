@@ -11,10 +11,10 @@ import net.minecraft.registry.Registries;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 
-public class NWBlockModelGen extends FabricModelProvider {
+public class NWModelGen extends FabricModelProvider {
 
 
-    public NWBlockModelGen(FabricDataOutput output) {
+    public NWModelGen(FabricDataOutput output) {
         super(output);
     }
 
@@ -39,6 +39,7 @@ public class NWBlockModelGen extends FabricModelProvider {
         itemModelGenerator.register(NWItems.FIR_HANGING_SIGN, Models.GENERATED);
         itemModelGenerator.register(NWItems.FIR_BOAT, Models.GENERATED);
         itemModelGenerator.register(NWItems.FIR_CHEST_BOAT, Models.GENERATED);
+        itemModelGenerator.register(NWItems.ANCIENT_MATTOCK, Models.HANDHELD);
     }
 
     public static void makeStuff(BlockStateModelGenerator blockStateModelGenerator, Block planks, Block stairs, Block slab, Block fence, Block fenceGate, Block button, Block pressurePlate){

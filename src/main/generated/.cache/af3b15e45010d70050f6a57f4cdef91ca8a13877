@@ -1,4 +1,4 @@
-// 1.20.1	2023-07-08T00:47:19.5823949	New World/Recipes
+// 1.20.1	2023-07-08T01:41:28.0637346	New World/Recipes
 1102d4a41f31a7bda6a3f743171486e28c69dc48 data\newworld\advancements\recipes\redstone\fir_fence_gate.json
 866b095496f15aee80cca8c8c3e1ba22d60d12d1 data\newworld\advancements\recipes\building_blocks\fir_slab.json
 7811d7cef671eac8647c31f5ee0417d794e4f073 data\newworld\recipes\fir_planks.json
@@ -8,8 +8,8 @@ e94ef1fcfbf9b43e68ded0a62448b2e59861a628 data\newworld\recipes\fir_chest_boat.js
 7088cd6574967e71b7a4efd1d70f7eb4679e45ea data\newworld\recipes\fir_fence_gate.json
 fad595b1aa75c942bc625914448ea3788dcb0519 data\newworld\advancements\recipes\building_blocks\fir_wood.json
 5f58553b341e5d1b300f01b30845c26f550f062c data\newworld\recipes\fir_slab.json
-2193ebc3682b1af320724925c440092419c472cc data\newworld\recipes\fir_button.json
 18e76ba1d00d49b27d9d3bb4a3c716dc716f9ddc data\newworld\advancements\recipes\decorations\fir_sign.json
+2193ebc3682b1af320724925c440092419c472cc data\newworld\recipes\fir_button.json
 378647faded5e61a13d7f2d1ef4e20741581827a data\newworld\advancements\recipes\building_blocks\stripped_fir_wood.json
 af90cb2059eee1b2a9a63ec54bd1cc37464a1686 data\newworld\advancements\recipes\transportation\fir_chest_boat.json
 74a910aff2ea615f332941dc7fca738921530704 data\newworld\advancements\recipes\redstone\fir_button.json

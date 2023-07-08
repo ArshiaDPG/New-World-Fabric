@@ -1,0 +1,37 @@
+{
+  "parent": "minecraft:story/iron_tools",
+  "display": {
+    "icon": {
+      "item": "newworld:ancient_mattock"
+    },
+    "title": {
+      "translate": "advancements.story.collect_ancient_mattock.title"
+    },
+    "description": {
+      "translate": "advancements.story.collect_ancient_mattock.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "criteria": {
+    "ancient_mattock": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "newworld:ancient_mattock"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "ancient_mattock"
+    ]
+  ]
+}
