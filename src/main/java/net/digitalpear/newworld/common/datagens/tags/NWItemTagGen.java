@@ -1,6 +1,7 @@
 package net.digitalpear.newworld.common.datagens.tags;
 
 import net.digitalpear.newworld.init.NWBlocks;
+import net.digitalpear.newworld.init.NWItems;
 import net.digitalpear.newworld.init.tags.NWItemTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
@@ -38,6 +39,9 @@ public class NWItemTagGen extends FabricTagProvider<Item> {
         getOrCreateTagBuilder(ItemTags.LEAVES).add(NWBlocks.FIR_LEAVES.asItem());
         getOrCreateTagBuilder(ItemTags.WOODEN_PRESSURE_PLATES).add(NWBlocks.FIR_PRESSURE_PLATE.asItem());
         getOrCreateTagBuilder(ItemTags.BUTTONS).add(NWBlocks.FIR_BUTTON.asItem());
+
+        getOrCreateTagBuilder(ItemTags.BOATS).add(NWItems.FIR_BOAT);
+        getOrCreateTagBuilder(ItemTags.CHEST_BOATS).add(NWItems.FIR_CHEST_BOAT);
 
         getOrCreateTagBuilder(ItemTags.SAPLINGS).add(NWBlocks.FIR_SAPLING.asItem());
 

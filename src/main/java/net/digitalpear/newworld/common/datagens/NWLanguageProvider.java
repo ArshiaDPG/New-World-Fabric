@@ -23,6 +23,7 @@ public class NWLanguageProvider extends FabricLanguageProvider {
                 translationBuilder.add(item, formatString(Registries.ITEM.getId(item).getPath()));
         });
         translationBuilder.add(NWBlocks.FIR_SAPLING, "Fir Sapling");
+        translationBuilder.add(NWItems.ANCIENT_MATTOCK, "Ancient Mattock");
         translationBuilder.add(NWItems.FIR_BOAT, "Fir Boat");
         translationBuilder.add(NWItems.FIR_CHEST_BOAT, "Fir Boat with Chest");
         translationBuilder.add("advancements.story.collect_ancient_mattock.title", "Renaissance Tool");
