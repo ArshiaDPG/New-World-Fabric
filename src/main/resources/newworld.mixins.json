@@ -4,9 +4,6 @@
   "package": "net.digitalpear.newworld.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-  "BlockEntityTypeMixin",
-  "SignTypeAccessor",
-  "StructureFeatureAccessor"
   ],
   "client": [
   ],

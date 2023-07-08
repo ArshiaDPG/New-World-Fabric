@@ -1,15 +1,19 @@
 package net.digitalpear.newworld.init.worldgen.features;
 
-import com.google.common.collect.ImmutableList;
-import net.digitalpear.newworld.NewWorld;
+import net.digitalpear.newworld.Newworld;
 import net.digitalpear.newworld.common.worldgen.NWFeature;
 import net.digitalpear.newworld.init.NWBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.MultifaceGrowthBlock;
 import net.minecraft.block.SweetBerryBushBlock;
+import net.minecraft.registry.Registerable;
+import net.minecraft.registry.RegistryEntryLookup;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.registry.entry.RegistryEntryList;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
-import net.minecraft.util.registry.RegistryEntry;
-import net.minecraft.util.registry.RegistryEntryList;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
 import net.minecraft.world.gen.foliage.SpruceFoliagePlacer;
@@ -29,52 +33,73 @@ public class NWConfiguredFeatures {
     public static List<Block> VALID_MOSS_CARPET_BLOCKS = List.of(Blocks.GRASS_BLOCK, Blocks.PODZOL, Blocks.DIRT, Blocks.COARSE_DIRT, Blocks.ROOTED_DIRT, Blocks.MOSS_BLOCK, Blocks.STONE, Blocks.COBBLESTONE, Blocks.DEEPSLATE, Blocks.COBBLED_DEEPSLATE, Blocks.MOSSY_COBBLESTONE);
 
 
-
-    public static final RegistryEntry<ConfiguredFeature<SingleStateFeatureConfig, ?>> FALLEN_FIR_LOG = ConfiguredFeatures.register(NewWorld.getId("fallen_fir_log"), NWFeature.FALLEN_LOG, new SingleStateFeatureConfig(NWBlocks.FIR_LOG.getDefaultState()));
-
-
-    public static final RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> PLANTED_FIR = ConfiguredFeatures.register(NewWorld.getId("planted_fir"), Feature.TREE, firSapling().build());
-    public static final RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> PLANTED_FIR_BEES_002 = ConfiguredFeatures.register(NewWorld.getId("planted_fir_bees_002"), Feature.TREE, firSapling().decorators(List.of(BEES_02)).build());
-    public static final RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> PLANTED_FIR_BEES = ConfiguredFeatures.register(NewWorld.getId("planted_fir_bees"), Feature.TREE, firSapling().decorators(List.of(BEES)).build());
+    public static final RegistryKey<ConfiguredFeature<?, ?>> FALLEN_FIR_LOG = RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, Newworld.id("fallen_fir_log"));
 
 
-    public static final RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> FIR = ConfiguredFeatures.register(NewWorld.getId("fir_tree"), Feature.TREE, fir().build());
-    public static final RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> FIR_BEES = ConfiguredFeatures.register(NewWorld.getId("fir_tree_bees"), Feature.TREE, fir().decorators(ImmutableList.of(new AlterGroundTreeDecorator(BlockStateProvider.of(Blocks.PODZOL)), BEES)).build());
-    public static final RegistryEntry<ConfiguredFeature<RandomPatchFeatureConfig, ?>> PATCH_BERRY_BUSH_WOODED_MEADOW = ConfiguredFeatures.register(NewWorld.getId("patch_berry_bush_wooded_meadow"), Feature.RANDOM_PATCH, createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(Blocks.SWEET_BERRY_BUSH.getDefaultState().with(SweetBerryBushBlock.AGE, 2))), VALID_BERRY_BUSH_BLOCKS, 60));
-    public static final RegistryEntry<ConfiguredFeature<RandomPatchFeatureConfig, ?>> MOSS_CARPET_BUSH_WOODED_MEADOW = ConfiguredFeatures.register(NewWorld.getId("moss_carpet_bush_wooded_meadow"), Feature.RANDOM_PATCH, createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(Blocks.MOSS_CARPET.getDefaultState())), VALID_MOSS_CARPET_BLOCKS, 60));
-    public static final RegistryEntry<ConfiguredFeature<GlowLichenFeatureConfig, ?>> GLOW_LICHEN_WOODED_MEADOW = ConfiguredFeatures.register(NewWorld.getId("glow_lichen_wooded_meadow"), Feature.GLOW_LICHEN, new GlowLichenFeatureConfig(20, true, true, true, 0.5f, RegistryEntryList.of(Block::getRegistryEntry, NWBlocks.FIR_LOG, Blocks.MOSSY_COBBLESTONE)));
+
+    public static final RegistryKey<ConfiguredFeature<?, ?>> FIR = RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, Newworld.id("fir"));
+    public static final RegistryKey<ConfiguredFeature<?, ?>> FIR_BEES = RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, Newworld.id("fir_bees"));
+    public static final RegistryKey<ConfiguredFeature<?, ?>> FIR_BEES_002 = RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, Newworld.id("fir_bees_002"));
+
+    public static final RegistryKey<ConfiguredFeature<?, ?>> FIR_MEADOW = RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, Newworld.id("fir_meadow"));
+    public static final RegistryKey<ConfiguredFeature<?, ?>> FIR_SPAWN = RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, Newworld.id("fir_spawn"));
+    public static final RegistryKey<ConfiguredFeature<?, ?>> FIR_TAIGA = RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, Newworld.id("fir_taiga"));
+
+    public static final RegistryKey<ConfiguredFeature<?, ?>> GLOW_LICHEN_WOODED_MEADOW = RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, Newworld.id("glow_lichen_wooded_meadow"));
+    public static final RegistryKey<ConfiguredFeature<?, ?>> MOSS_CARPET_WOODED_MEADOW = RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, Newworld.id("moss_carpet_wooded_meadow"));
+    public static final RegistryKey<ConfiguredFeature<?, ?>> PATCH_BERRY_WOODED_MEADOW = RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, Newworld.id("patch_berry_bush_wooded_meadow"));
+
+    public static final RegistryKey<ConfiguredFeature<?, ?>> GROWN_FIR = RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, Newworld.id("grown_fir"));
+    public static final RegistryKey<ConfiguredFeature<?, ?>> GROWN_FIR_BEES = RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, Newworld.id("grown_fir_bees"));
+    public static final RegistryKey<ConfiguredFeature<?, ?>> GROWN_FIR_BEES_002 = RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, Newworld.id("grown_fir_bees_002"));
 
 
-    public static final RegistryEntry<PlacedFeature> FIR_CHECKED = PlacedFeatures.register(NewWorld.getId("fir_checked"), NWConfiguredFeatures.FIR, PlacedFeatures.wouldSurvive(NWBlocks.FIR_SAPLING));
-    public static final RegistryEntry<PlacedFeature> FIR_BEES_02_CHECKED = PlacedFeatures.register(NewWorld.getId("fir_bees_02_checked"), NWConfiguredFeatures.FIR_BEES, PlacedFeatures.wouldSurvive(NWBlocks.FIR_SAPLING));
-    public static final RegistryEntry<PlacedFeature> PLANTED_FIR_CHECKED = PlacedFeatures.register(NewWorld.getId("planted_fir_checked"), NWConfiguredFeatures.PLANTED_FIR, PlacedFeatures.wouldSurvive(NWBlocks.FIR_SAPLING));
-    public static final RegistryEntry<PlacedFeature> PLANTED_FIR_BEES_CHECKED = PlacedFeatures.register(NewWorld.getId("planted_fir_bees_checked"), NWConfiguredFeatures.PLANTED_FIR_BEES, PlacedFeatures.wouldSurvive(NWBlocks.FIR_SAPLING));
+
+    public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> featureRegisterable) {
+        RegistryEntryLookup<PlacedFeature> placedFeatureRegistryEntryLookup = featureRegisterable.getRegistryLookup(RegistryKeys.PLACED_FEATURE);
+
+        RegistryEntry<PlacedFeature> firChecked = placedFeatureRegistryEntryLookup.getOrThrow(NWPlacedFeatures.FIR_CHECKED);
+        RegistryEntry<PlacedFeature> firBeesChecked = placedFeatureRegistryEntryLookup.getOrThrow(NWPlacedFeatures.FIR_BEES_CHECKED);
+        RegistryEntry<PlacedFeature> grownFirChecked = placedFeatureRegistryEntryLookup.getOrThrow(NWPlacedFeatures.GROWN_FIR_CHECKED);
+        RegistryEntry<PlacedFeature> grownFirBeesChecked = placedFeatureRegistryEntryLookup.getOrThrow(NWPlacedFeatures.GROWN_FIR_BEES_CHECKED);
 
 
-    private static TreeFeatureConfig.Builder fir() {
-        return (new TreeFeatureConfig.Builder(BlockStateProvider.of(NWBlocks.FIR_LOG), new StraightTrunkPlacer(6, 1, 2), BlockStateProvider.of(NWBlocks.FIR_LEAVES), new SpruceFoliagePlacer(UniformIntProvider.create(1, 3), UniformIntProvider.create(0, 1), UniformIntProvider.create(3, 4)), new TwoLayersFeatureSize(2, 0, 2))).decorators(ImmutableList.of(new AlterGroundTreeDecorator(BlockStateProvider.of(Blocks.PODZOL)))).ignoreVines();
+
+        ConfiguredFeatures.register(featureRegisterable, FALLEN_FIR_LOG, NWFeature.FALLEN_LOG, new SingleStateFeatureConfig(NWBlocks.FIR_LOG.getDefaultState()));
+        ConfiguredFeatures.register(featureRegisterable, GROWN_FIR, Feature.TREE, grownFirConfig().build());
+        ConfiguredFeatures.register(featureRegisterable, GROWN_FIR_BEES, Feature.TREE, grownFirConfig().decorators(List.of(BEES)).build());
+        ConfiguredFeatures.register(featureRegisterable, GROWN_FIR_BEES_002, Feature.TREE, grownFirConfig().decorators(List.of(BEES_02)).build());
+        ConfiguredFeatures.register(featureRegisterable, FIR, Feature.TREE, naturalFirConfig().build());
+        ConfiguredFeatures.register(featureRegisterable, FIR_BEES, Feature.TREE, naturalFirConfig().decorators(List.of(BEES)).build());
+        ConfiguredFeatures.register(featureRegisterable, FIR_BEES_002, Feature.TREE, naturalFirConfig().decorators(List.of(BEES_02)).build());
+
+
+        ConfiguredFeatures.register(featureRegisterable, PATCH_BERRY_WOODED_MEADOW, Feature.RANDOM_PATCH, ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(Blocks.SWEET_BERRY_BUSH.getDefaultState().with(SweetBerryBushBlock.AGE, 2))), VALID_BERRY_BUSH_BLOCKS, 60));
+        ConfiguredFeatures.register(featureRegisterable, MOSS_CARPET_WOODED_MEADOW, Feature.RANDOM_PATCH, ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(Blocks.MOSS_CARPET.getDefaultState())), VALID_MOSS_CARPET_BLOCKS, 60));
+        ConfiguredFeatures.register(featureRegisterable,GLOW_LICHEN_WOODED_MEADOW, Feature.MULTIFACE_GROWTH, new MultifaceGrowthFeatureConfig((MultifaceGrowthBlock) Blocks.GLOW_LICHEN,20, true, true, true, 0.5f, RegistryEntryList.of(Block::getRegistryEntry, NWBlocks.FIR_LOG, Blocks.MOSSY_COBBLESTONE)));
+        ConfiguredFeatures.register(featureRegisterable,FIR_SPAWN, Feature.RANDOM_SELECTOR, new RandomFeatureConfig(List.of(new RandomFeatureEntry(firBeesChecked, 0.06f)), firChecked));
+        ConfiguredFeatures.register(featureRegisterable,FIR_TAIGA, Feature.RANDOM_SELECTOR, new RandomFeatureConfig(List.of(new RandomFeatureEntry(grownFirBeesChecked, 0.0f)), grownFirChecked));
+        ConfiguredFeatures.register(featureRegisterable,FIR_MEADOW, Feature.RANDOM_SELECTOR, new RandomFeatureConfig(List.of(new RandomFeatureEntry(grownFirBeesChecked, 1.0f)), grownFirChecked));
+
     }
-    private static TreeFeatureConfig.Builder firSapling() {
-        return (new TreeFeatureConfig.Builder(BlockStateProvider.of(NWBlocks.FIR_LOG), new StraightTrunkPlacer(6, 1, 2), BlockStateProvider.of(NWBlocks.FIR_LEAVES), new SpruceFoliagePlacer(UniformIntProvider.create(1, 3), UniformIntProvider.create(0, 1), UniformIntProvider.create(3, 4)), new TwoLayersFeatureSize(2, 0, 2))).ignoreVines();
+
+    private static TreeFeatureConfig.Builder naturalFirConfig() {
+        return grownFirConfig().decorators(List.of(new AlterGroundTreeDecorator(BlockStateProvider.of(Blocks.PODZOL))));
     }
 
+    private static TreeFeatureConfig.Builder grownFirConfig() {
+        return new TreeFeatureConfig.Builder(
 
-    public static <FC extends FeatureConfig, F extends Feature<FC>> RandomPatchFeatureConfig createRandomPatchFeatureConfig(F feature, FC config, List<Block> predicateBlocks, int tries) {
-        return ConfiguredFeatures.createRandomPatchFeatureConfig(feature, config, predicateBlocks, tries);
+                BlockStateProvider.of(NWBlocks.FIR_LOG),
+                new StraightTrunkPlacer(6, 1, 2),
+
+                BlockStateProvider.of(NWBlocks.FIR_LEAVES),
+                new SpruceFoliagePlacer(
+                        UniformIntProvider.create(1, 3),
+                        UniformIntProvider.create(0, 1),
+                        UniformIntProvider.create(3, 4)),
+                new TwoLayersFeatureSize(2, 0, 2))
+
+                .ignoreVines();
     }
-
-    public static final RegistryEntry<ConfiguredFeature<RandomFeatureConfig, ?>> FIR_SPAWN =
-            ConfiguredFeatures.register(NewWorld.getId("fir_spawn"), Feature.RANDOM_SELECTOR,
-                    new RandomFeatureConfig(List.of(new RandomFeatureEntry(FIR_BEES_02_CHECKED, 0.03f)),
-                            FIR_CHECKED));
-
-    public static final RegistryEntry<ConfiguredFeature<RandomFeatureConfig, ?>> PLANTED_FIR_TAIGA =
-            ConfiguredFeatures.register(NewWorld.getId("planted_fir_taiga"), Feature.RANDOM_SELECTOR,
-                    new RandomFeatureConfig(List.of(new RandomFeatureEntry(PLANTED_FIR_CHECKED, 0.06f)),
-                            PLANTED_FIR_CHECKED));
-
-    public static final RegistryEntry<ConfiguredFeature<RandomFeatureConfig, ?>> PLANTED_FIR_SPAWN =
-            ConfiguredFeatures.register(NewWorld.getId("planted_fir_spawn"), Feature.RANDOM_SELECTOR,
-                    new RandomFeatureConfig(List.of(new RandomFeatureEntry(PLANTED_FIR_BEES_CHECKED, 1.00f)),
-                            PLANTED_FIR_CHECKED));
 }

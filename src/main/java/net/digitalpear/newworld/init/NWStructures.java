@@ -1,10 +1,11 @@
 package net.digitalpear.newworld.init;
 
-import net.digitalpear.newworld.NewWorld;
+import net.digitalpear.newworld.Newworld;
 import net.digitalpear.newworld.common.worldgen.structures.BuriedBunkerFeature;
-import net.digitalpear.newworld.mixin.StructureFeatureAccessor;
-import net.minecraft.world.gen.GenerationStep;
-import net.minecraft.world.gen.feature.StructureFeature;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
+import net.minecraft.util.Identifier;
+import net.minecraft.world.gen.structure.StructureType;
 
 public class NWStructures {
     /**
@@ -15,11 +16,10 @@ public class NWStructures {
      * It is always a good idea to register your Structures so that other mods and datapacks can
      * use them too directly from the registries. It great for mod/datapacks compatibility.
      */
-    public static StructureFeature<?> SKY_STRUCTURES = new BuriedBunkerFeature();
+    public static StructureType<BuriedBunkerFeature> BURIED_BUNKER = Registry.register(Registries.STRUCTURE_TYPE, new Identifier(Newworld.MOD_ID, "buried_bunker"), () -> BuriedBunkerFeature.CODEC);
 
     public static void init() {
         // The generation step for when to generate the structure. there are 10 stages you can pick from!
         // This surface structure stage places the structure before plants and ores are generated.
-        StructureFeatureAccessor.callRegister(NewWorld.MOD_ID + ":buried_bunker", SKY_STRUCTURES, GenerationStep.Feature.SURFACE_STRUCTURES);
     }
 }

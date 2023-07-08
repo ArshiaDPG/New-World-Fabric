@@ -9,7 +9,7 @@ public class NewWorldTerraBlender implements TerraBlenderApi {
     @Override
     public void onTerraBlenderInitialized()
     {
-        Regions.register(new NWRegion(new Identifier(NewWorld.MOD_ID, "overworld"), 2));
-        NewWorld.LOGGER.info("New World biomes loaded.");
+        Regions.register(new NWRegion(new Identifier(Newworld.MOD_ID, "overworld"), 2));
+        Newworld.LOGGER.info("New World biomes loaded.");
     }
 }

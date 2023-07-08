@@ -8,12 +8,11 @@ import net.minecraft.block.Blocks;
 import net.minecraft.block.PillarBlock;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.SingleStateFeatureConfig;
 import net.minecraft.world.gen.feature.util.FeatureContext;
-
-import java.util.Random;
 
 public class FallenLogFeature extends Feature<SingleStateFeatureConfig> {
 
@@ -29,7 +28,7 @@ public class FallenLogFeature extends Feature<SingleStateFeatureConfig> {
         BlockPos blockPos = context.getOrigin();
         StructureWorldAccess structureWorldAccess = context.getWorld();
         SingleStateFeatureConfig singleStateFeatureConfig = context.getConfig();
-        int logLength = context.getRandom().nextInt(2,5);
+        int logLength = context.getRandom().nextBetween(2, 5);
 
         if ((structureWorldAccess.isSkyVisible(blockPos)) || structureWorldAccess.getBlockState(blockPos.down()).isSolidBlock(structureWorldAccess, blockPos)) {
             if (!structureWorldAccess.getBlockState(blockPos.down()).isOf(Blocks.WATER) && !structureWorldAccess.getBlockState(blockPos.down()).isOf(Blocks.LAVA)) {
@@ -48,7 +47,7 @@ public class FallenLogFeature extends Feature<SingleStateFeatureConfig> {
     }
     public static void generateLog(StructureWorldAccess world, BlockPos pos, BlockState state, Direction direction){
         for (int j = 10; j >= 0; --j) {
-            if (!isAir(world, pos.down()) && !world.getBlockState(pos).isOf(NWBlocks.FIR_LOG)){
+            if (!world.getBlockState(pos.down()).isAir() && !world.getBlockState(pos).isOf(NWBlocks.FIR_LOG)){
                 world.setBlockState(pos, state.with(PillarBlock.AXIS, direction.getAxis()), Block.NO_REDRAW);
             }
             else{

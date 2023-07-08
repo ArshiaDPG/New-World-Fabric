@@ -1,0 +1,11 @@
+{
+  "type": "newworld:fallen_log_feature",
+  "config": {
+    "state": {
+      "Name": "newworld:fir_log",
+      "Properties": {
+        "axis": "y"
+      }
+    }
+  }
+}

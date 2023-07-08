@@ -9,7 +9,7 @@ import net.minecraft.block.FireBlock;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.tag.TagKey;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.village.TradeOffer;
 import net.minecraft.village.TradeOffers;
 
@@ -34,21 +34,11 @@ public class NWData {
     public static void addFlammable(Block block, int burn, int spread){
         FlammableBlockRegistry.getDefaultInstance().add(block, burn, spread);
     }
-    public static void addFlammable(TagKey block, int burn, int spread){
+    public static void addFlammable(TagKey<Block> block, int burn, int spread){
         FlammableBlockRegistry.getDefaultInstance().add(block, burn, spread);
     }
     public static void registerFlammables(){
-        addFlammable(NWBlocks.FIR_PLANKS, 5, 20);
-        addFlammable(NWBlocks.FIR_SLAB, 5, 20);
-        addFlammable(NWBlocks.FIR_FENCE_GATE, 5, 20);
-        addFlammable(NWBlocks.FIR_FENCE, 5, 20);
-        addFlammable(NWBlocks.FIR_STAIRS, 5, 20);
-        addFlammable(NWBlocks.FIR_LOG, 5, 5);
-        addFlammable(NWBlocks.STRIPPED_FIR_LOG, 5, 5);
-        addFlammable(NWBlocks.STRIPPED_FIR_WOOD, 5, 5);
-        addFlammable(NWBlocks.FIR_WOOD, 5, 5);
-        addFlammable(NWBlocks.FIR_LEAVES, 30, 60);
-        FireBlock.registerDefaultFlammables();
+
     }
 
 
