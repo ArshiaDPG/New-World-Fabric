@@ -16,11 +16,6 @@ import net.minecraft.util.Identifier;
 
 @SuppressWarnings("unused")
 public class NWBlocks {
-    public static MapColor TOP_COLOR = MapColor.SPRUCE_BROWN;
-    public static MapColor SIDE_COLOR = MapColor.DEEPSLATE_GRAY;
-
-
-
 
     public static BlockItem createBlockItem(String blockID, Block block){
         return Registry.register(Registries.ITEM, new Identifier(Newworld.MOD_ID, blockID), new BlockItem(block, new Item.Settings()));
@@ -35,7 +30,7 @@ public class NWBlocks {
         return Registry.register(Registries.BLOCK, new Identifier(Newworld.MOD_ID, blockID), block);
     }
 
-    public static final Woodset FIR = new Woodset(Newworld.id("fir"), TOP_COLOR, SIDE_COLOR, Woodset.WoodPreset.DEFAULT);
+    public static final Woodset FIR = new Woodset(Newworld.id("fir"), MapColor.DEEPSLATE_GRAY, MapColor.SPRUCE_BROWN, Woodset.WoodPreset.DEFAULT);
 
     public static final Block FIR_LOG = FIR.getLog();
     public static final Block FIR_WOOD = FIR.getWood();
@@ -65,6 +60,7 @@ public class NWBlocks {
 
     public static final Block FIR_HANGING_SIGN = FIR.getHangingSign();
     public static final Block FIR_HANGING_WALL_SIGN = FIR.getHangingWallSign();
+
 
     public static void init(){
         Woodset.addToBuildingTab(Items.SPRUCE_BUTTON, FIR);

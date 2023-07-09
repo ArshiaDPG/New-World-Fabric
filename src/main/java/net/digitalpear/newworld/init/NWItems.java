@@ -46,7 +46,9 @@ public class NWItems {
     public static final Item ANCIENT_MATTOCK = registerItem("ancient_mattock", new MattockItem(NWToolMaterials.ANCIENT, 0.0F, -3.0F, new Item.Settings().rarity(Rarity.RARE)));
 
     public static void init(){
-
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> {
+            entries.addAfter(Items.SPRUCE_LOG, NWBlocks.FIR_LOG);
+                });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(entries -> {
             entries.addAfter(Items.SPRUCE_CHEST_BOAT, FIR_BOAT);
             entries.addAfter(FIR_BOAT, FIR_CHEST_BOAT);

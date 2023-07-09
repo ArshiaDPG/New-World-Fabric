@@ -3,6 +3,7 @@ package net.digitalpear.newworld.common.datagens;
 import net.digitalpear.newworld.Newworld;
 import net.digitalpear.newworld.init.NWBlocks;
 import net.digitalpear.newworld.init.NWItems;
+import net.digitalpear.newworld.init.data.woodset.Woodset;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.block.Block;
@@ -11,24 +12,16 @@ import net.minecraft.registry.Registries;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 
-public class NWModelGen extends FabricModelProvider {
+public class NWModelProvider extends FabricModelProvider {
 
 
-    public NWModelGen(FabricDataOutput output) {
+    public NWModelProvider(FabricDataOutput output) {
         super(output);
     }
 
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-        makeStuff(blockStateModelGenerator, NWBlocks.FIR_PLANKS, NWBlocks.FIR_STAIRS, NWBlocks.FIR_SLAB, NWBlocks.FIR_FENCE, NWBlocks.FIR_FENCE_GATE, NWBlocks.FIR_BUTTON, NWBlocks.FIR_PRESSURE_PLATE);
-        blockStateModelGenerator.registerDoor(NWBlocks.FIR_DOOR);
-        blockStateModelGenerator.registerTrapdoor(NWBlocks.FIR_TRAPDOOR);
-        makeParticles(blockStateModelGenerator, NWBlocks.FIR_PLANKS, NWBlocks.FIR_SIGN, NWBlocks.FIR_WALL_SIGN);
-        makeParticles(blockStateModelGenerator, NWBlocks.STRIPPED_FIR_WOOD, NWBlocks.FIR_HANGING_SIGN, NWBlocks.FIR_HANGING_WALL_SIGN);
-        blockStateModelGenerator.registerSimpleCubeAll(NWBlocks.FIR_LEAVES);
-
-        blockStateModelGenerator.registerLog(NWBlocks.FIR_LOG).log(NWBlocks.FIR_LOG).wood(NWBlocks.FIR_WOOD);
-        blockStateModelGenerator.registerLog(NWBlocks.STRIPPED_FIR_LOG).log(NWBlocks.STRIPPED_FIR_LOG).wood(NWBlocks.STRIPPED_FIR_WOOD);
+        fullWoodset(blockStateModelGenerator, NWBlocks.FIR);
 
         blockStateModelGenerator.registerFlowerPotPlant(NWBlocks.FIR_SAPLING, NWBlocks.POTTED_FIR_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED);
     }
@@ -42,6 +35,31 @@ public class NWModelGen extends FabricModelProvider {
         itemModelGenerator.register(NWItems.ANCIENT_MATTOCK, Models.HANDHELD);
     }
 
+    public static void fullWoodset(BlockStateModelGenerator blockStateModelGenerator, Woodset woodset){
+        makeStuff(blockStateModelGenerator, woodset);
+        blockStateModelGenerator.registerDoor(woodset.getDoor());
+        blockStateModelGenerator.registerTrapdoor(woodset.getTrapDoor());
+        makeParticles(blockStateModelGenerator, woodset.getPlanks(), woodset.getSign(), woodset.getWallSign());
+        makeParticles(blockStateModelGenerator, woodset.getStrippedLog(), woodset.getHangingSign(), woodset.getHangingWallSign());
+
+        if (woodset.isNormalWood()){
+            blockStateModelGenerator.registerSimpleCubeAll(woodset.getLeaves());
+        }
+
+        if (!woodset.getWoodPreset().equals(Woodset.WoodPreset.BAMBOO)){
+            blockStateModelGenerator.registerLog(woodset.getLog()).log(woodset.getLog()).wood(woodset.getWood());
+            blockStateModelGenerator.registerLog(woodset.getStrippedLog()).log(woodset.getStrippedLog()).wood(woodset.getStrippedWood());
+        }
+        else{
+            blockStateModelGenerator.registerLog(woodset.getLog()).uvLockedLog(woodset.getLog());
+            blockStateModelGenerator.registerLog(woodset.getStrippedLog()).uvLockedLog(woodset.getStrippedLog());
+
+        }
+    }
+
+    public static void makeStuff(BlockStateModelGenerator blockStateModelGenerator, Woodset woodset){
+        makeStuff(blockStateModelGenerator, woodset.getPlanks(), woodset.getStairs(), woodset.getSlab(), woodset.getFence(), woodset.getFenceGate(), woodset.getButton(), woodset.getPressurePlate());
+    }
     public static void makeStuff(BlockStateModelGenerator blockStateModelGenerator, Block planks, Block stairs, Block slab, Block fence, Block fenceGate, Block button, Block pressurePlate){
         blockStateModelGenerator.registerSimpleCubeAll(planks);
         createStairs(blockStateModelGenerator, planks, stairs);
@@ -52,7 +70,7 @@ public class NWModelGen extends FabricModelProvider {
         fenceGate(blockStateModelGenerator, planks, fenceGate);
     }
 
-    public void makeParticles(BlockStateModelGenerator blockStateModelGenerator, Block particle, Block sign, Block wallSign){
+    public static void makeParticles(BlockStateModelGenerator blockStateModelGenerator, Block particle, Block sign, Block wallSign){
         Identifier identifier = Models.PARTICLE.upload(sign, TextureMap.particle(new Identifier(Newworld.MOD_ID, "block/" + Registries.BLOCK.getId(particle).getPath())), blockStateModelGenerator.modelCollector);
         blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createSingletonBlockState(sign, identifier));
         blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createSingletonBlockState(wallSign, identifier));

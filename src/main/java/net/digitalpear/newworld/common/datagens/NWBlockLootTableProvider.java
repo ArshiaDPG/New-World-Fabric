@@ -4,8 +4,8 @@ import net.digitalpear.newworld.init.NWBlocks;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 
-public class NWBlockLootTableGen extends FabricBlockLootTableProvider {
-    public NWBlockLootTableGen(FabricDataOutput dataOutput) {
+public class NWBlockLootTableProvider extends FabricBlockLootTableProvider {
+    public NWBlockLootTableProvider(FabricDataOutput dataOutput) {
         super(dataOutput);
     }
 

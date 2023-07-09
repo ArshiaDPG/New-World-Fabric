@@ -25,10 +25,10 @@ public class NewworldDatagen implements DataGeneratorEntrypoint {
         pack.addProvider(NWBlockTagGen::new);
         pack.addProvider(NWBiomeTagGen::new);
 
-        pack.addProvider(NWBlockLootTableGen::new);
+        pack.addProvider(NWBlockLootTableProvider::new);
         pack.addProvider(NWChestLootTableProvider::new);
-        pack.addProvider(NWModelGen::new);
-        pack.addProvider(NWRecipeGen::new);
+        pack.addProvider(NWModelProvider::new);
+        pack.addProvider(NWRecipeProvider::new);
         pack.addProvider(NWLanguageProvider::new);
         pack.addProvider(NWAdvancementProvider::new);
 

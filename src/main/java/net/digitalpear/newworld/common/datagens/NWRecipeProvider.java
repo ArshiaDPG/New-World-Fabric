@@ -12,8 +12,8 @@ import net.minecraft.recipe.book.RecipeCategory;
 
 import java.util.function.Consumer;
 
-public class NWRecipeGen extends FabricRecipeProvider {
-    public NWRecipeGen(FabricDataOutput output) {
+public class NWRecipeProvider extends FabricRecipeProvider {
+    public NWRecipeProvider(FabricDataOutput output) {
         super(output);
     }
 

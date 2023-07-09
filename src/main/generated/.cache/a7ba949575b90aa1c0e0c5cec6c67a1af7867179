@@ -1,16 +1,16 @@
-// 1.20.1	2023-07-08T18:29:39.6608633	New World/Tags for minecraft:item
-f76bb74129dc923029e0d2b32cfb9e5a93b062f2 data\minecraft\tags\items\wooden_fences.json
+// 1.20.1	2023-07-09T10:34:36.8706099	New World/Tags for minecraft:item
 f987c048609ae0b63393d4acb6a798fd494a9e4f data\minecraft\tags\items\wooden_stairs.json
-491d0895d1712703992060b2a1c1e94196aa8362 data\minecraft\tags\items\leaves.json
-1c06a760b4a6fc428ff4e9cbbb316b8178a6a784 data\minecraft\tags\items\fence_gates.json
 54c1945e2943451b7e7ff0b1646ec4e85974df1d data\minecraft\tags\items\wooden_pressure_plates.json
-cc18168805198fe2f91b8db7225f4c5a92992efa data\minecraft\tags\items\buttons.json
-28d3d44c9c5a3d8d97d9ab77a5f770febec83c74 data\minecraft\tags\items\wooden_trapdoors.json
 c411a794f22d5e64951a4c4bbbee4537cd8cd170 data\newworld\tags\items\fir_logs.json
-3a72e823c844c31d76b6083edbc8ddd7ae4bfa7c data\minecraft\tags\items\planks.json
-76a17350dfd2664118bf745fcbb6fa72a8287c14 data\minecraft\tags\items\boats.json
 6768e8f716ebe0e89d689ec0f15d61302cce60a3 data\minecraft\tags\items\saplings.json
-7f6a82571990bff6aa85f4b828f3b0fe66389a4f data\minecraft\tags\items\chest_boats.json
 e57a275a6639993c98311bffefef48f78ad3d241 data\minecraft\tags\items\wooden_slabs.json
 9bceb13bd9e77e9c5a99f2af53f951fc28b9b87f data\minecraft\tags\items\wooden_doors.json
 f67c33fbac71addbc4c364cd27fabe4d8c1ef09f data\minecraft\tags\items\logs_that_burn.json
+f76bb74129dc923029e0d2b32cfb9e5a93b062f2 data\minecraft\tags\items\wooden_fences.json
+491d0895d1712703992060b2a1c1e94196aa8362 data\minecraft\tags\items\leaves.json
+1c06a760b4a6fc428ff4e9cbbb316b8178a6a784 data\minecraft\tags\items\fence_gates.json
+cc18168805198fe2f91b8db7225f4c5a92992efa data\minecraft\tags\items\buttons.json
+28d3d44c9c5a3d8d97d9ab77a5f770febec83c74 data\minecraft\tags\items\wooden_trapdoors.json
+3a72e823c844c31d76b6083edbc8ddd7ae4bfa7c data\minecraft\tags\items\planks.json
+76a17350dfd2664118bf745fcbb6fa72a8287c14 data\minecraft\tags\items\boats.json
+7f6a82571990bff6aa85f4b828f3b0fe66389a4f data\minecraft\tags\items\chest_boats.json

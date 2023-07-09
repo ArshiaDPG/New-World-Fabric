@@ -33,9 +33,10 @@ public class FallenLogFeature extends Feature<SingleStateFeatureConfig> {
         if ((structureWorldAccess.isSkyVisible(blockPos)) || structureWorldAccess.getBlockState(blockPos.down()).isSolidBlock(structureWorldAccess, blockPos)) {
             if (!structureWorldAccess.getBlockState(blockPos.down()).isOf(Blocks.WATER) && !structureWorldAccess.getBlockState(blockPos.down()).isOf(Blocks.LAVA)) {
                 placeBlock(logLength, 0, structureWorldAccess, blockPos, direction, singleStateFeatureConfig.state);
+                return true;
             }
         }
-        return true;
+        return false;
     }
 
     //Place log

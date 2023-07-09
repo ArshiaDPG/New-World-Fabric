@@ -65,6 +65,8 @@ public class Woodset {
 
         log = createLog();
         strippedLog = createStrippedLog();
+        StrippableBlockRegistry.register(log, strippedLog);
+
         if (this.getWoodPreset() != WoodPreset.BAMBOO){
             wood = createWood();
             strippedWood = createStrippedWood();
@@ -75,7 +77,7 @@ public class Woodset {
             mosaicStairs = createMosaicStairs();
             mosaicSlab = createMosaicSlab();
         }
-        if (this.getWoodPreset() == WoodPreset.DEFAULT || this.getWoodPreset() == WoodPreset.DEFAULT){
+        if (this.getWoodPreset() == WoodPreset.DEFAULT || this.getWoodPreset() == WoodPreset.FANCY){
             leaves = createLeaves();
         }
         planks = createPlanks();
@@ -93,8 +95,6 @@ public class Woodset {
         hangingWallSign = createWallHangingSign();
         signItem = createSignItem();
         hangingSignItem = createHangingSignItem();
-
-        StrippableBlockRegistry.register(log, strippedLog);
     }
 
 
@@ -440,6 +440,9 @@ public class Woodset {
         }
     }
 
+    public boolean isNormalWood(){
+        return this.getWoodPreset() == WoodPreset.DEFAULT || this.getWoodPreset() == WoodPreset.FANCY;
+    }
     public enum WoodPreset {
         DEFAULT,
         FANCY,
