@@ -1,4 +1,4 @@
-package net.digitalpear.newworld.init.tags;
+package net.digitalpear.newworld.init.data.tags;
 
 import net.digitalpear.newworld.Newworld;
 import net.minecraft.item.Item;

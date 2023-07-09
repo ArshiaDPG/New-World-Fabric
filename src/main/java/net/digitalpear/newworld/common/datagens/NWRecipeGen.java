@@ -2,7 +2,7 @@ package net.digitalpear.newworld.common.datagens;
 
 import net.digitalpear.newworld.init.NWBlocks;
 import net.digitalpear.newworld.init.NWItems;
-import net.digitalpear.newworld.init.tags.NWItemTags;
+import net.digitalpear.newworld.init.data.tags.NWItemTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;

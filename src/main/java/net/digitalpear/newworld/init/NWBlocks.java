@@ -2,7 +2,7 @@ package net.digitalpear.newworld.init;
 
 import net.digitalpear.newworld.Newworld;
 import net.digitalpear.newworld.common.worldgen.tree.FirSaplingGenerator;
-import net.digitalpear.newworld.init.woodset.Woodset;
+import net.digitalpear.newworld.init.data.woodset.Woodset;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;

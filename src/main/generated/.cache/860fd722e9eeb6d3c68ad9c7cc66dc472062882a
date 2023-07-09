@@ -1,11 +1,11 @@
-// 1.20.1	2023-07-08T18:07:00.5065303	New World/Model Definitions
+// 1.20.1	2023-07-08T18:29:39.6568084	New World/Model Definitions
 eb334652ce87b8a4e8a6138188b11587c1db7136 assets\newworld\blockstates\stripped_fir_wood.json
 97453568a930b7e108e9f1d223ac2ed1851dfea4 assets\newworld\models\item\fir_wood.json
 162dcbcdab2e69d23ec592cf936fa21cfecb7be7 assets\newworld\models\item\fir_sapling.json
 863fbb82453ac965670fbbfd88966bd24243dadc assets\newworld\models\block\fir_log.json
 38c0b55e90009c06c0752a6a293ffbbb539a962f assets\newworld\models\block\fir_door_top_right_open.json
-26c0f572c0471109899cb6b14d8f8fbd789369ad assets\newworld\models\block\fir_fence_inventory.json
 18e1d34766255128e7003d24ace6ec7f3dc45754 assets\newworld\models\block\fir_fence_gate.json
+26c0f572c0471109899cb6b14d8f8fbd789369ad assets\newworld\models\block\fir_fence_inventory.json
 e498166eb383503f7aa9d5b036be0b59f76cdcf6 assets\newworld\models\item\fir_fence_gate.json
 da9fb02f0a03dfdb0301d76af8705dfe2cafeaa3 assets\newworld\blockstates\fir_fence.json
 9567b0d357d6be7476ca633157b207a758527f07 assets\newworld\blockstates\fir_door.json
@@ -22,8 +22,8 @@ a3e239ea78f933fc0f9ebbf211961cf0b8876213 assets\newworld\models\block\fir_slab.j
 fa6195595e9b1fcd9a5146461dad162865442f31 assets\newworld\models\item\fir_planks.json
 82273ba715784e5f503de1b8d4b3ac15129dad7b assets\newworld\models\block\stripped_fir_log.json
 e3499966fbfec86f5a79b4208bc58c66ccb0bdb9 assets\newworld\models\block\fir_door_top_right.json
-2a238dfafc04e01523ecd82f7aa1e3a41e07d373 assets\newworld\models\item\ancient_mattock.json
 30a811a07b9976da5a0d7ea07a2110eed84397ff assets\newworld\blockstates\fir_sapling.json
+2a238dfafc04e01523ecd82f7aa1e3a41e07d373 assets\newworld\models\item\ancient_mattock.json
 9c468f1f225ac6679ff563cdfa130cf885ebf7fc assets\newworld\models\block\fir_pressure_plate_down.json
 40436be2174f37c8389b335fd4b62896cb22a22c assets\newworld\models\block\fir_button_inventory.json
 e5456cf042415a051026cc9a4d6eece076e6f233 assets\newworld\blockstates\fir_wall_hanging_sign.json

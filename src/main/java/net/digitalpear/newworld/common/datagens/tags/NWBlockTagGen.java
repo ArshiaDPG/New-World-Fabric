@@ -1,7 +1,7 @@
 package net.digitalpear.newworld.common.datagens.tags;
 
 import net.digitalpear.newworld.init.NWBlocks;
-import net.digitalpear.newworld.init.tags.NWBlockTags;
+import net.digitalpear.newworld.init.data.tags.NWBlockTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.Block;

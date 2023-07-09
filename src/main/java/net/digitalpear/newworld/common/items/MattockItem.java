@@ -1,6 +1,6 @@
 package net.digitalpear.newworld.common.items;
 
-import net.digitalpear.newworld.init.tags.NWBlockTags;
+import net.digitalpear.newworld.init.data.tags.NWBlockTags;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.MiningToolItem;
 import net.minecraft.item.ToolMaterial;

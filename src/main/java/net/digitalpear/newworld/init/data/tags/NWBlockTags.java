@@ -1,8 +1,7 @@
-package net.digitalpear.newworld.init.tags;
+package net.digitalpear.newworld.init.data.tags;
 
 import net.digitalpear.newworld.Newworld;
 import net.minecraft.block.Block;
-import net.minecraft.item.Item;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
