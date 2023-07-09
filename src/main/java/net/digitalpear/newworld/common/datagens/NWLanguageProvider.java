@@ -32,6 +32,8 @@ public class NWLanguageProvider extends FabricLanguageProvider {
 
         translationBuilder.add("advancements.story.collect_ancient_mattock.title", "Renaissance Tool");
         translationBuilder.add("advancements.story.collect_ancient_mattock.description", "Discover an Ancient Mattock.");
+
+        translationBuilder.add("biome.newworld.wooded_meadow", "Wooded Meadow");
     }
 
     public static String formatString(String input) {

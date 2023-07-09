@@ -11,9 +11,6 @@ import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.SingleStateFeatureConfig;
 import net.minecraft.world.gen.feature.util.FeatureContext;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class FallenLogFeature extends Feature<SingleStateFeatureConfig> {
 
 
@@ -24,11 +21,11 @@ public class FallenLogFeature extends Feature<SingleStateFeatureConfig> {
 
     @Override
     public boolean generate(FeatureContext<SingleStateFeatureConfig> context) {
-        Direction direction = getDirection(context.getRandom());
+        Direction direction = getRandomHorizontalDirection(context.getRandom());
         BlockPos blockPos = context.getOrigin();
         StructureWorldAccess structureWorldAccess = context.getWorld();
         SingleStateFeatureConfig singleStateFeatureConfig = context.getConfig();
-        int logLength = 4 + context.getRandom().nextBetween(2, 4);
+        int logLength = 2 + context.getRandom().nextBetween(2, 4);
 
         if ((structureWorldAccess.isSkyVisible(blockPos)) || structureWorldAccess.getBlockState(blockPos.down()).isSolidBlock(structureWorldAccess, blockPos)) {
             if (!structureWorldAccess.getBlockState(blockPos.down()).isOf(Blocks.WATER) && !structureWorldAccess.getBlockState(blockPos.down()).isOf(Blocks.LAVA)) {
@@ -47,17 +44,15 @@ public class FallenLogFeature extends Feature<SingleStateFeatureConfig> {
         }
     }
     public static void generateLog(StructureWorldAccess world, BlockPos pos, BlockState state, Direction direction){
-        for (int j = 10; j >= 0; --j) {
-            if (!world.getBlockState(pos.down()).isAir() && !world.getBlockState(pos).isOf(NWBlocks.FIR_LOG)){
-                world.setBlockState(pos, state.with(PillarBlock.AXIS, direction.getAxis()), Block.NOTIFY_ALL);
-            }
-            else{
-                break;
+        for (int j = -6; j < 3; ++j) {
+            if (world.getBlockState(pos.down(j + 1)).isSolidBlock(world, pos.down(j + 1)) && !world.getBlockState(pos.down(j)).isSolidBlock(world, pos.down(j))){
+                world.setBlockState(pos.down(j), state.with(PillarBlock.AXIS, direction.getAxis()), Block.NOTIFY_ALL);
+                return;
             }
         }
     }
 
-    public static Direction getDirection(Random random){
+    public static Direction getRandomHorizontalDirection(Random random){
         Direction direction;
         do {
             direction = Direction.random(random);
