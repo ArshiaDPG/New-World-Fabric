@@ -44,16 +44,6 @@ public class NWOverworldBiomeCreator {
         DefaultBiomeFeatures.addFrozenTopLayer(generationSettings);
     }
 
-
-
-    //Wooded Meadow Stuff
-    public static void addWoodedMeadowFeatures(GenerationSettings.LookupBackedBuilder builder){
-        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, NWPlacedFeatures.TREES_FIR);
-        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, NWPlacedFeatures.GLOW_LICHEN_WOODED_MEADOW);
-        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, NWPlacedFeatures.PATCH_BERRY_WOODED_MEADOW);
-        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, NWPlacedFeatures.MOSS_CARPET_WOODED_MEADOW);
-    }
-
     public static Biome createWoodedMeadow(RegistryEntryLookup<PlacedFeature> featureLookup, RegistryEntryLookup<ConfiguredCarver<?>> carverLookup) {
         GenerationSettings.LookupBackedBuilder lookupBackedBuilder = new GenerationSettings.LookupBackedBuilder(featureLookup, carverLookup);
         SpawnSettings.Builder builder2 = new SpawnSettings.Builder();
@@ -63,11 +53,15 @@ public class NWOverworldBiomeCreator {
 
 
         addBasicFeatures(lookupBackedBuilder);
-        addWoodedMeadowFeatures(lookupBackedBuilder);
+        lookupBackedBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, NWPlacedFeatures.TREES_FIR);
+        lookupBackedBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, NWPlacedFeatures.GLOW_LICHEN_WOODED_MEADOW);
+        lookupBackedBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, NWPlacedFeatures.PATCH_BERRY_WOODED_MEADOW);
+        lookupBackedBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, NWPlacedFeatures.MOSS_CARPET_WOODED_MEADOW);
         DefaultBiomeFeatures.addForestFlowers(lookupBackedBuilder);
         DefaultBiomeFeatures.addExtraDefaultFlowers(lookupBackedBuilder);
         lookupBackedBuilder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, MiscPlacedFeatures.FOREST_ROCK);
         lookupBackedBuilder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, NWPlacedFeatures.FALLEN_FIR_LOG);
+
 
 
         //Default biome features, DO NOT CHANGE THIS
@@ -80,7 +74,7 @@ public class NWOverworldBiomeCreator {
 
 
         MusicSound musicSound = MusicType.createIngameMusic(SoundEvents.MUSIC_OVERWORLD_MEADOW);
-        return createBiome(true, 0.5F, 0.8F, 937679, 12158492, builder2, lookupBackedBuilder, musicSound);
+        return createBiome(true, 0.5F, 0.8F, 937679, builder2, lookupBackedBuilder, musicSound);
     }
 
 }

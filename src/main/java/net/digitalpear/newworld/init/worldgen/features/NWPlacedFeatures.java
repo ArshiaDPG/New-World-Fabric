@@ -14,13 +14,12 @@ import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.gen.GenerationStep;
-import net.minecraft.world.gen.feature.ConfiguredFeature;
-import net.minecraft.world.gen.feature.PlacedFeature;
-import net.minecraft.world.gen.feature.PlacedFeatures;
-import net.minecraft.world.gen.feature.VegetationPlacedFeatures;
+import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.placementmodifier.*;
 
 import java.util.List;
+
+import static net.minecraft.world.gen.feature.VegetationPlacedFeatures.treeModifiers;
 
 public class NWPlacedFeatures {
     public static final RegistryKey<PlacedFeature> FALLEN_FIR_LOG= RegistryKey.of(RegistryKeys.PLACED_FEATURE, Newworld.id("fallen_fir_log"));
@@ -38,6 +37,8 @@ public class NWPlacedFeatures {
     public static final RegistryKey<PlacedFeature> GLOW_LICHEN_WOODED_MEADOW = RegistryKey.of(RegistryKeys.PLACED_FEATURE, Newworld.id("glow_lichen_wooded_meadow"));
     public static final RegistryKey<PlacedFeature> MOSS_CARPET_WOODED_MEADOW = RegistryKey.of(RegistryKeys.PLACED_FEATURE, Newworld.id("moss_carpet_wooded_meadow"));
     public static final RegistryKey<PlacedFeature> PATCH_BERRY_WOODED_MEADOW = RegistryKey.of(RegistryKeys.PLACED_FEATURE, Newworld.id("patch_berry_bush_wooded_meadow"));
+
+    public static final RegistryKey<PlacedFeature> BIRCH_CHERRY_GROVE = RegistryKey.of(RegistryKeys.PLACED_FEATURE, Newworld.id("birch_cherry_grove"));
 
 
     public static void bootstrap(Registerable<PlacedFeature> featureRegisterable) {
@@ -59,6 +60,8 @@ public class NWPlacedFeatures {
         RegistryEntry<ConfiguredFeature<?, ?>> patchMossCarpet = holderGetter.getOrThrow(NWConfiguredFeatures.MOSS_CARPET_WOODED_MEADOW);
         RegistryEntry<ConfiguredFeature<?, ?>> patchLichen = holderGetter.getOrThrow(NWConfiguredFeatures.GLOW_LICHEN_WOODED_MEADOW);
 
+        RegistryEntry<ConfiguredFeature<?, ?>> birchTall = holderGetter.getOrThrow(VegetationConfiguredFeatures.BIRCH_TALL);
+
 
 
 
@@ -67,20 +70,24 @@ public class NWPlacedFeatures {
         PlacedFeatures.register(featureRegisterable, GROWN_FIR_CHECKED, grownFir, PlacedFeatures.wouldSurvive(NWBlocks.FIR_SAPLING));
         PlacedFeatures.register(featureRegisterable, GROWN_FIR_BEES_CHECKED, grownFirBees, PlacedFeatures.wouldSurvive(NWBlocks.FIR_SAPLING));
 
-        PlacedFeatures.register(featureRegisterable, TREES_FIR, firSpawn, VegetationPlacedFeatures.treeModifiers(PlacedFeatures.createCountExtraModifier(3, 0.1f, 5)));
-        PlacedFeatures.register(featureRegisterable, TREES_FIR_SCARCE, firTaiga, VegetationPlacedFeatures.treeModifiers(RarityFilterPlacementModifier.of(1)));
-        PlacedFeatures.register(featureRegisterable, TREES_FIR_MEADOW, firMeadow, VegetationPlacedFeatures.treeModifiers(RarityFilterPlacementModifier.of(40)));
+        PlacedFeatures.register(featureRegisterable, TREES_FIR, firSpawn, treeModifiers(PlacedFeatures.createCountExtraModifier(3, 0.1f, 5)));
+        PlacedFeatures.register(featureRegisterable, TREES_FIR_SCARCE, firTaiga, treeModifiers(RarityFilterPlacementModifier.of(1)));
+        PlacedFeatures.register(featureRegisterable, TREES_FIR_MEADOW, firMeadow, treeModifiers(RarityFilterPlacementModifier.of(40)));
 
         PlacedFeatures.register(featureRegisterable,FALLEN_FIR_LOG, fallenFirLog, List.of(RarityFilterPlacementModifier.of(7), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, BiomePlacementModifier.of()));
 
         PlacedFeatures.register(featureRegisterable,PATCH_BERRY_WOODED_MEADOW, patchBerryBush, List.of(RarityFilterPlacementModifier.of(12), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, BiomePlacementModifier.of()));
         PlacedFeatures.register(featureRegisterable,MOSS_CARPET_WOODED_MEADOW, patchMossCarpet, List.of(CountPlacementModifier.of(2), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, BiomePlacementModifier.of()));
         PlacedFeatures.register(featureRegisterable,GLOW_LICHEN_WOODED_MEADOW, patchLichen, List.of(CountPlacementModifier.of(UniformIntProvider.create(104, 157)), PlacedFeatures.BOTTOM_TO_TOP_RANGE, RarityFilterPlacementModifier.of(2), SurfaceThresholdFilterPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR_WG, 30, 300), BiomePlacementModifier.of()));
+
+
+        PlacedFeatures.register(featureRegisterable,BIRCH_CHERRY_GROVE, birchTall, treeModifiers(RarityFilterPlacementModifier.of(3)));
     }
 
 
     public static void init() {
         BiomeModifications.addFeature(BiomeSelectors.tag(BiomeTags.IS_TAIGA), GenerationStep.Feature.VEGETAL_DECORATION, TREES_FIR_SCARCE);
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.MEADOW), GenerationStep.Feature.VEGETAL_DECORATION, TREES_FIR_MEADOW);
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.CHERRY_GROVE), GenerationStep.Feature.VEGETAL_DECORATION, BIRCH_CHERRY_GROVE);
     }
 }

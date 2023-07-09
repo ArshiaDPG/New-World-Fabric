@@ -35,8 +35,6 @@ public class NWConfiguredFeatures {
 
     public static final RegistryKey<ConfiguredFeature<?, ?>> FALLEN_FIR_LOG = RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, Newworld.id("fallen_fir_log"));
 
-
-
     public static final RegistryKey<ConfiguredFeature<?, ?>> FIR = RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, Newworld.id("fir"));
     public static final RegistryKey<ConfiguredFeature<?, ?>> FIR_BEES = RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, Newworld.id("fir_bees"));
     public static final RegistryKey<ConfiguredFeature<?, ?>> FIR_BEES_002 = RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, Newworld.id("fir_bees_002"));
@@ -65,6 +63,8 @@ public class NWConfiguredFeatures {
 
 
         ConfiguredFeatures.register(featureRegisterable, FALLEN_FIR_LOG, NWFeature.FALLEN_LOG, new SingleStateFeatureConfig(NWBlocks.FIR_LOG.getDefaultState()));
+
+
         ConfiguredFeatures.register(featureRegisterable, GROWN_FIR, Feature.TREE, grownFirConfig().build());
         ConfiguredFeatures.register(featureRegisterable, GROWN_FIR_BEES, Feature.TREE, grownFirConfig().decorators(List.of(BEES)).build());
         ConfiguredFeatures.register(featureRegisterable, GROWN_FIR_BEES_002, Feature.TREE, grownFirConfig().decorators(List.of(BEES_02)).build());

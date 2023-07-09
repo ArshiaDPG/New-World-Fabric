@@ -46,5 +46,7 @@ public class NWPlacedFeatureProvider extends FabricDynamicRegistryProvider {
         add(registries, entries, NWPlacedFeatures.PATCH_BERRY_WOODED_MEADOW);
         add(registries, entries, NWPlacedFeatures.MOSS_CARPET_WOODED_MEADOW);
         add(registries, entries, NWPlacedFeatures.GLOW_LICHEN_WOODED_MEADOW);
+
+        add(registries, entries, NWPlacedFeatures.BIRCH_CHERRY_GROVE);
     }
 }
