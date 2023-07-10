@@ -22,12 +22,13 @@ public class NWChestLootTableProvider extends SimpleFabricLootTableProvider {
 
     @Override
     public void accept(BiConsumer<Identifier, LootTable.Builder> exporter) {
-        exporter.accept(NWLootTables.BUNKER_BARREL, LootTable.builder().pool(LootPool.builder().rolls(UniformLootNumberProvider.create(3, 10))
-                .with(ItemEntry.builder(Items.PAPER).weight(7).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0F, 4.0F))))
-                .with(ItemEntry.builder(Items.COBWEB).weight(3).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(2.0F, 12.0F))))
-                .with(ItemEntry.builder(Items.MELON_SEEDS).weight(3).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0F, 4.0F))))
-                .with(ItemEntry.builder(Items.STICK).weight(6).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(2.0F, 4.0F))))
-                .with(ItemEntry.builder(Items.ROTTEN_FLESH).weight(5).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(2.0F, 5.0F))))
+        exporter.accept(NWLootTables.BUNKER_BARREL, LootTable.builder()
+                .pool(LootPool.builder().rolls(UniformLootNumberProvider.create(3, 10))
+                    .with(ItemEntry.builder(Items.PAPER).weight(7).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0F, 4.0F))))
+                    .with(ItemEntry.builder(Items.COBWEB).weight(3).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(2.0F, 12.0F))))
+                    .with(ItemEntry.builder(Items.MELON_SEEDS).weight(3).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0F, 4.0F))))
+                    .with(ItemEntry.builder(Items.STICK).weight(6).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(2.0F, 4.0F))))
+                    .with(ItemEntry.builder(Items.ROTTEN_FLESH).weight(5).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(2.0F, 5.0F))))
                 .build()));
 
         exporter.accept(NWLootTables.BUNKER_CACHE, LootTable.builder()

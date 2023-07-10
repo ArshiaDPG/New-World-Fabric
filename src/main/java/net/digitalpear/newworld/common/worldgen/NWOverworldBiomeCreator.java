@@ -14,9 +14,8 @@ import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.carver.ConfiguredCarver;
-import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
-import net.minecraft.world.gen.feature.MiscPlacedFeatures;
-import net.minecraft.world.gen.feature.PlacedFeature;
+import net.minecraft.world.gen.carver.ConfiguredCarvers;
+import net.minecraft.world.gen.feature.*;
 import org.jetbrains.annotations.Nullable;
 
 public class NWOverworldBiomeCreator {
@@ -75,6 +74,29 @@ public class NWOverworldBiomeCreator {
 
         MusicSound musicSound = MusicType.createIngameMusic(SoundEvents.MUSIC_OVERWORLD_MEADOW);
         return createBiome(true, 0.5F, 0.8F, 937679, builder2, lookupBackedBuilder, musicSound);
+    }
+
+    public static Biome createScrapyardCave(RegistryEntryLookup<PlacedFeature> featureLookup, RegistryEntryLookup<ConfiguredCarver<?>> carverLookup){
+        SpawnSettings.Builder builder2 = new SpawnSettings.Builder();
+
+        DefaultBiomeFeatures.addBatsAndMonsters(builder2);
+
+
+        GenerationSettings.LookupBackedBuilder lookupBackedBuilder = new GenerationSettings.LookupBackedBuilder(featureLookup, carverLookup);
+
+        lookupBackedBuilder.carver(GenerationStep.Carver.AIR, ConfiguredCarvers.CAVE);
+        lookupBackedBuilder.carver(GenerationStep.Carver.AIR, ConfiguredCarvers.CAVE_EXTRA_UNDERGROUND);
+        lookupBackedBuilder.carver(GenerationStep.Carver.AIR, ConfiguredCarvers.CANYON);
+        addBasicFeatures(lookupBackedBuilder);
+        DefaultBiomeFeatures.addPlainsTallGrass(lookupBackedBuilder);
+        DefaultBiomeFeatures.addDefaultOres(lookupBackedBuilder, true);
+        DefaultBiomeFeatures.addDefaultDisks(lookupBackedBuilder);
+        DefaultBiomeFeatures.addPlainsFeatures(lookupBackedBuilder);
+        DefaultBiomeFeatures.addDefaultMushrooms(lookupBackedBuilder);
+        DefaultBiomeFeatures.addDefaultVegetation(lookupBackedBuilder);
+
+        MusicSound musicSound = MusicType.createIngameMusic(SoundEvents.MUSIC_OVERWORLD_DEEP_DARK);
+        return createBiome(true, 0.2F, 0.4F, builder2, lookupBackedBuilder, musicSound);
     }
 
 }

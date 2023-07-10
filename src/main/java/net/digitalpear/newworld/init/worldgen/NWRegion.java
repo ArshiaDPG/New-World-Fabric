@@ -33,6 +33,15 @@ public class NWRegion extends Region {
                     .build();
 
             meadowPoints.forEach(point -> builder.replaceBiome(point, NWBiomes.WOODED_MEADOW));
+
+            List<MultiNoiseUtil.NoiseHypercube> scrapyardPoints = new ParameterPointListBuilder()
+                    .temperature(Temperature.ICY, Temperature.UNFROZEN)
+                    .humidity(Humidity.ARID, Humidity.NEUTRAL)
+                    .continentalness(Continentalness.span(Continentalness.FAR_INLAND, Continentalness.FAR_INLAND), Continentalness.span(Continentalness.MID_INLAND, Continentalness.FAR_INLAND))
+                    .erosion(Erosion.EROSION_3, Erosion.EROSION_4, Erosion.EROSION_5)
+                    .depth(Depth.UNDERGROUND)
+                    .weirdness(Weirdness.LOW_SLICE_VARIANT_ASCENDING, Weirdness.LOW_SLICE_NORMAL_DESCENDING, Weirdness.VALLEY)
+                    .build();
         });
     }
 }

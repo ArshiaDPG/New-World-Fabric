@@ -2,6 +2,7 @@ package net.digitalpear.newworld;
 
 import net.digitalpear.newworld.common.worldgen.NWFeature;
 import net.digitalpear.newworld.init.*;
+import net.digitalpear.newworld.init.data.NWData;
 import net.digitalpear.newworld.init.worldgen.NWBiomes;
 import net.digitalpear.newworld.init.worldgen.features.NWConfiguredFeatures;
 import net.digitalpear.newworld.init.worldgen.features.NWPlacedFeatures;

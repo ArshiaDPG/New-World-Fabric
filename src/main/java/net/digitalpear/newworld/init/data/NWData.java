@@ -1,5 +1,6 @@
-package net.digitalpear.newworld.init;
+package net.digitalpear.newworld.init.data;
 
+import net.digitalpear.newworld.init.NWBlocks;
 import net.fabricmc.fabric.api.object.builder.v1.trade.TradeOfferHelper;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;

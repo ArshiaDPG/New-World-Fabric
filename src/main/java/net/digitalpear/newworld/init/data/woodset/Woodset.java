@@ -477,6 +477,5 @@ public class Woodset {
             entries.addAfter(proceedingItem, woodset.getLog());
         });
     }
-
 }
 
