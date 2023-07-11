@@ -1,4 +1,4 @@
-// 1.20.1	2023-07-09T15:32:22.0407447	New World/Model Definitions
+// 1.20.1	2023-07-10T16:19:59.168785	New World/Model Definitions
 eb334652ce87b8a4e8a6138188b11587c1db7136 assets\newworld\blockstates\stripped_fir_wood.json
 162dcbcdab2e69d23ec592cf936fa21cfecb7be7 assets\newworld\models\item\fir_sapling.json
 97453568a930b7e108e9f1d223ac2ed1851dfea4 assets\newworld\models\item\fir_wood.json
@@ -9,8 +9,8 @@ eb334652ce87b8a4e8a6138188b11587c1db7136 assets\newworld\blockstates\stripped_fi
 e498166eb383503f7aa9d5b036be0b59f76cdcf6 assets\newworld\models\item\fir_fence_gate.json
 da9fb02f0a03dfdb0301d76af8705dfe2cafeaa3 assets\newworld\blockstates\fir_fence.json
 9567b0d357d6be7476ca633157b207a758527f07 assets\newworld\blockstates\fir_door.json
-6350c4c704f0f397763ce8004971a483931f97b7 assets\newworld\models\block\fir_leaves.json
 11590b0c8179435cb018f5dcaf169ed7bbead5d9 assets\newworld\models\block\fir_stairs_inner.json
+6350c4c704f0f397763ce8004971a483931f97b7 assets\newworld\models\block\fir_leaves.json
 7ecc8b8b6f0a8c249301e6f27e4c927e0e17f82d assets\newworld\models\block\fir_trapdoor_top.json
 7dd2bb5047d4196f02fcd292a1b72cc96136f58d assets\newworld\blockstates\fir_slab.json
 bedc2f7936dcdbfc00d030ea882ff4886691463d assets\newworld\blockstates\stripped_fir_log.json
@@ -22,8 +22,8 @@ a3e239ea78f933fc0f9ebbf211961cf0b8876213 assets\newworld\models\block\fir_slab.j
 fa6195595e9b1fcd9a5146461dad162865442f31 assets\newworld\models\item\fir_planks.json
 82273ba715784e5f503de1b8d4b3ac15129dad7b assets\newworld\models\block\stripped_fir_log.json
 e3499966fbfec86f5a79b4208bc58c66ccb0bdb9 assets\newworld\models\block\fir_door_top_right.json
-2a238dfafc04e01523ecd82f7aa1e3a41e07d373 assets\newworld\models\item\ancient_mattock.json
 30a811a07b9976da5a0d7ea07a2110eed84397ff assets\newworld\blockstates\fir_sapling.json
+2a238dfafc04e01523ecd82f7aa1e3a41e07d373 assets\newworld\models\item\ancient_mattock.json
 9c468f1f225ac6679ff563cdfa130cf885ebf7fc assets\newworld\models\block\fir_pressure_plate_down.json
 40436be2174f37c8389b335fd4b62896cb22a22c assets\newworld\models\block\fir_button_inventory.json
 e5456cf042415a051026cc9a4d6eece076e6f233 assets\newworld\blockstates\fir_wall_hanging_sign.json
@@ -44,6 +44,7 @@ b525c204c38d38c89a1f76debcf9ad42bf8d6122 assets\newworld\models\item\fir_button.
 e286d8af821b44e6e7d0dd1f4c9b4279daf03822 assets\newworld\blockstates\fir_log.json
 6fd83967a96fa800a8af204036bda0c30aaae0d2 assets\newworld\blockstates\fir_stairs.json
 723d4ff614c1cee0fa92558e8732cff5b543bcd9 assets\newworld\models\block\fir_sign.json
+b6f8ab35e862070d4bae586a739d5f8e303a47ad assets\newworld\models\item\mattock_crafting_template_head.json
 e2172ebfe8cff70eeb013ed45ca6c3d1e8919c9a assets\newworld\models\item\fir_boat.json
 ee5edcab6990b2c296da216a4f94a0a74c0c3d51 assets\newworld\models\block\fir_door_bottom_right_open.json
 be2d39db5a184fc11fbf5629ad31f6a368fe56a3 assets\newworld\models\block\fir_stairs_outer.json
@@ -53,6 +54,7 @@ be2d39db5a184fc11fbf5629ad31f6a368fe56a3 assets\newworld\models\block\fir_stairs
 2d710e948222631d57cf5e3c5e6817668abf6f98 assets\newworld\blockstates\fir_wall_sign.json
 a41f0a855bc40c7e3e19a9df3466b5b34c67d58f assets\newworld\models\item\fir_stairs.json
 f85a8e0c9839049748c854f85e23d1ced28e8bcd assets\newworld\models\block\stripped_fir_wood.json
+c7908b97aa7f0b65b195621c56c678b397e992b0 assets\newworld\models\item\mattock_crafting_template_shaft.json
 3447a5acbce248a18bbf4020ae45fb34cffd6046 assets\newworld\models\block\fir_fence_post.json
 a0c8d316177cab81396c885c8595f051418bc4bd assets\newworld\models\block\fir_pressure_plate.json
 0657d0aae18936d70bf7342a8b767e99e24775f3 assets\newworld\models\block\fir_trapdoor_bottom.json
@@ -71,6 +73,7 @@ fb081c054c26313ffa0395277af5bd2e1f3491f3 assets\newworld\models\block\fir_slab_t
 696a309729659bc474ddc1dcb043fb34d804493e assets\newworld\models\item\fir_leaves.json
 0a0105b29f8dcccb3ee3faaf08d64b5eff68946c assets\newworld\models\block\fir_door_bottom_left.json
 8bcc2bc0ea2730b9aff73132b8c7d00fa888d12b assets\newworld\models\block\fir_fence_side.json
+62b26d4d7f57db7524f867df7ae3b547319f469f assets\newworld\models\item\mattock_crafting_template.json
 53daf8c3847de145872e6594b16e9c8a6615e1a6 assets\newworld\models\item\fir_trapdoor.json
 3428fdcf79c128d0fb6318887bb84aaa68eca4c9 assets\newworld\models\item\fir_log.json
 961436a3053d2a73a69f6dce1076343b6aaf96b2 assets\newworld\models\item\fir_hanging_sign.json

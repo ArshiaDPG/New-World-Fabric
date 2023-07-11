@@ -31,22 +31,7 @@ public class NWPlacedFeatureProvider extends FabricDynamicRegistryProvider {
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup registries, Entries entries) {
-        add(registries, entries, NWPlacedFeatures.FALLEN_FIR_LOG);
 
-        add(registries, entries, NWPlacedFeatures.FIR_CHECKED);
-        add(registries, entries, NWPlacedFeatures.FIR_BEES_CHECKED);
-
-        add(registries, entries, NWPlacedFeatures.GROWN_FIR_CHECKED);
-        add(registries, entries, NWPlacedFeatures.GROWN_FIR_BEES_CHECKED);
-
-        add(registries, entries, NWPlacedFeatures.TREES_FIR);
-        add(registries, entries, NWPlacedFeatures.TREES_FIR_MEADOW);
-        add(registries, entries, NWPlacedFeatures.TREES_FIR_SCARCE);
-
-        add(registries, entries, NWPlacedFeatures.PATCH_BERRY_WOODED_MEADOW);
-        add(registries, entries, NWPlacedFeatures.MOSS_CARPET_WOODED_MEADOW);
-        add(registries, entries, NWPlacedFeatures.GLOW_LICHEN_WOODED_MEADOW);
-
-        add(registries, entries, NWPlacedFeatures.BIRCH_CHERRY_GROVE);
+        NWPlacedFeatures.features.forEach(placedFeatureRegistryKey -> add(registries, entries, placedFeatureRegistryKey));
     }
 }

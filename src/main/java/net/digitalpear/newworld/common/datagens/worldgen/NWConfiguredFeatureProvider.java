@@ -18,19 +18,8 @@ public class NWConfiguredFeatureProvider extends FabricDynamicRegistryProvider {
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup registries, Entries entries) {
-        add(registries, entries, NWConfiguredFeatures.FIR);
-        add(registries, entries, NWConfiguredFeatures.FALLEN_FIR_LOG);
-        add(registries, entries, NWConfiguredFeatures.FIR_BEES);
-        add(registries, entries, NWConfiguredFeatures.FIR_BEES_002);
-        add(registries, entries, NWConfiguredFeatures.GLOW_LICHEN_WOODED_MEADOW);
-        add(registries, entries, NWConfiguredFeatures.FIR_MEADOW);
-        add(registries, entries, NWConfiguredFeatures.FIR_SPAWN);
-        add(registries, entries, NWConfiguredFeatures.FIR_TAIGA);
-        add(registries, entries, NWConfiguredFeatures.GROWN_FIR);
-        add(registries, entries, NWConfiguredFeatures.GROWN_FIR_BEES);
-        add(registries, entries, NWConfiguredFeatures.GROWN_FIR_BEES_002);
-        add(registries, entries, NWConfiguredFeatures.MOSS_CARPET_WOODED_MEADOW);
-        add(registries, entries, NWConfiguredFeatures.PATCH_BERRY_WOODED_MEADOW);
+
+        NWConfiguredFeatures.features.forEach(configuredFeatureRegistryKey -> add(registries, entries, configuredFeatureRegistryKey));
     }
     private void add(RegistryWrapper.WrapperLookup registries, Entries entries, RegistryKey<ConfiguredFeature<?, ?>> resourceKey) {
         RegistryWrapper.Impl<ConfiguredFeature<?, ?>> configuredFeatureRegistryLookup = registries.getWrapperOrThrow(RegistryKeys.CONFIGURED_FEATURE);

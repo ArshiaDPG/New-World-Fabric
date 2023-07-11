@@ -7,9 +7,17 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
 import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
+import net.minecraft.data.server.recipe.SmithingTransformRecipeJsonBuilder;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemConvertible;
+import net.minecraft.item.Items;
+import net.minecraft.predicate.item.ItemPredicate;
 import net.minecraft.recipe.Ingredient;
+import net.minecraft.recipe.SmithingRecipe;
 import net.minecraft.recipe.book.RecipeCategory;
+import net.minecraft.registry.Registries;
 
+import java.util.Arrays;
 import java.util.function.Consumer;
 
 public class NWRecipeProvider extends FabricRecipeProvider {
@@ -34,6 +42,23 @@ public class NWRecipeProvider extends FabricRecipeProvider {
         createTrapdoorRecipe(NWBlocks.FIR_TRAPDOOR, Ingredient.ofItems(NWBlocks.FIR_PLANKS)).criterion(hasItem(NWBlocks.FIR_PLANKS), conditionsFromItem(NWBlocks.FIR_PLANKS)).offerTo(exporter);
         ShapelessRecipeJsonBuilder.create(RecipeCategory.REDSTONE, NWBlocks.FIR_BUTTON).input(Ingredient.ofItems(NWBlocks.FIR_PLANKS)).criterion(hasItem(NWBlocks.FIR_PLANKS), conditionsFromItem(NWBlocks.FIR_PLANKS)).offerTo(exporter);
         offerPressurePlateRecipe(exporter, NWBlocks.FIR_PRESSURE_PLATE, NWBlocks.FIR_PLANKS);
+
+        makeTemplateRecipe(exporter, NWItems.MATTOCK_CRAFTING_TEMPLATE, NWItems.MATTOCK_CRAFTING_TEMPLATE_HEAD, NWItems.MATTOCK_CRAFTING_TEMPLATE_SHAFT);
+
+        offerUpgradeRecipe(exporter, NWItems.MATTOCK_CRAFTING_TEMPLATE, NWItems.ANCIENT_MATTOCK);
+        offerSmithingTemplateCopyingRecipe(exporter, NWItems.MATTOCK_CRAFTING_TEMPLATE, Items.STONE);
+    }
+    public void makeTemplateRecipe(Consumer<RecipeJsonProvider> exporter, Item fullTemplate, Item... pieces){
+        ShapelessRecipeJsonBuilder recipeJsonBuilder = ShapelessRecipeJsonBuilder.create(RecipeCategory.TOOLS, NWItems.MATTOCK_CRAFTING_TEMPLATE)
+                .criterion("has_" + Registries.ITEM.getId(fullTemplate).getPath() + "_piece",
+                        conditionsFromItemPredicates(ItemPredicate.Builder.create().items(pieces).build()));
+
+        Arrays.stream(pieces).toList().forEach(recipeJsonBuilder::input);
+
+        recipeJsonBuilder.offerTo(exporter, Registries.ITEM.getId(fullTemplate).withSuffixedPath("_from_piece_combination"));
     }
 
+    public static void offerUpgradeRecipe(Consumer<RecipeJsonProvider> exporter, Item template, Item result) {
+        SmithingTransformRecipeJsonBuilder.create(Ingredient.ofItems(template), Ingredient.ofItems(Items.FLINT), Ingredient.ofItems(Items.STICK), RecipeCategory.TOOLS, result).criterion("has_netherite_ingot", conditionsFromItem(template)).offerTo(exporter, getItemPath(result) + "_smithing");
+    }
 }

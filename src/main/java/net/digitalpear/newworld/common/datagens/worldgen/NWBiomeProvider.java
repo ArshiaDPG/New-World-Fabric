@@ -19,7 +19,7 @@ public class NWBiomeProvider extends FabricDynamicRegistryProvider {
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup registries, Entries entries) {
-        add(registries, entries, NWBiomes.WOODED_MEADOW);
+        NWBiomes.biomes.forEach(biomeRegistryKey -> add(registries, entries, biomeRegistryKey));
     }
 
     private void add(RegistryWrapper.WrapperLookup registries, Entries entries, RegistryKey<Biome> biome) {

@@ -5,6 +5,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.biome.source.util.MultiNoiseUtil;
 import terrablender.api.Region;
 import terrablender.api.RegionType;
@@ -31,17 +32,21 @@ public class NWRegion extends Region {
                     .depth(Depth.SURFACE, Depth.FLOOR)
                     .weirdness(Weirdness.HIGH_SLICE_VARIANT_ASCENDING, Weirdness.HIGH_SLICE_VARIANT_DESCENDING, Weirdness.MID_SLICE_NORMAL_ASCENDING)
                     .build();
-
             meadowPoints.forEach(point -> builder.replaceBiome(point, NWBiomes.WOODED_MEADOW));
 
+
+
             List<MultiNoiseUtil.NoiseHypercube> scrapyardPoints = new ParameterPointListBuilder()
-                    .temperature(Temperature.ICY, Temperature.UNFROZEN)
-                    .humidity(Humidity.ARID, Humidity.NEUTRAL)
-                    .continentalness(Continentalness.span(Continentalness.FAR_INLAND, Continentalness.FAR_INLAND), Continentalness.span(Continentalness.MID_INLAND, Continentalness.FAR_INLAND))
-                    .erosion(Erosion.EROSION_3, Erosion.EROSION_4, Erosion.EROSION_5)
-                    .depth(Depth.UNDERGROUND)
+                    .temperature(Temperature.ICY, Temperature.FROZEN, Temperature.COOL)
+                    .humidity(Humidity.WET, Humidity.HUMID)
+                    .continentalness(Continentalness.FULL_RANGE)
+                    .erosion(Erosion.FULL_RANGE)
+                    .depth(Depth.UNDERGROUND, Depth.FLOOR)
                     .weirdness(Weirdness.LOW_SLICE_VARIANT_ASCENDING, Weirdness.LOW_SLICE_NORMAL_DESCENDING, Weirdness.VALLEY)
                     .build();
+
+            scrapyardPoints.forEach(point -> builder.replaceBiome(point, NWBiomes.ENFOLDED_SCRAPYARD));
+
         });
     }
 }

@@ -6,10 +6,14 @@ import net.digitalpear.newworld.init.worldgen.NWBiomes;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.block.AbstractSignBlock;
+import net.minecraft.block.Block;
+import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.biome.Biome;
+
+import java.util.Arrays;
 
 public class NWLanguageProvider extends FabricLanguageProvider {
     public NWLanguageProvider(FabricDataOutput dataOutput) {
@@ -27,9 +31,11 @@ public class NWLanguageProvider extends FabricLanguageProvider {
                 translationBuilder.add(item, formatString(Registries.ITEM.getId(item).getPath()));
         });
 
-        translationBuilder.add(NWBlocks.FIR_SAPLING, "Fir Sapling");
+        makeTranslation(translationBuilder, NWBlocks.FIR_SAPLING);
+        makeTranslation(translationBuilder, NWItems.ANCIENT_MATTOCK);
 
-        translationBuilder.add(NWItems.ANCIENT_MATTOCK, "Ancient Mattock");
+        makeSmithingPieceTranslation(translationBuilder, NWItems.MATTOCK_CRAFTING_TEMPLATE, NWItems.MATTOCK_CRAFTING_TEMPLATE_HEAD, NWItems.MATTOCK_CRAFTING_TEMPLATE_SHAFT);
+
 
         translationBuilder.add(NWItems.FIR_BOAT, "Fir Boat");
         translationBuilder.add(NWItems.FIR_CHEST_BOAT, "Fir Boat with Chest");
@@ -37,9 +43,31 @@ public class NWLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("advancements.story.collect_ancient_mattock.title", "Renaissance Tool");
         translationBuilder.add("advancements.story.collect_ancient_mattock.description", "Discover an Ancient Mattock.");
 
-//        translationBuilder.add("biome.newworld.wooded_meadow", "Wooded Meadow");
+        makeSmithingTemplateTranslation(translationBuilder, NWItems.MATTOCK_CRAFTING_TEMPLATE, "mattock_crafting", "Flint", "Stick");
 
-        makeBiomeTranslation(translationBuilder, NWBiomes.WOODED_MEADOW);
+        NWBiomes.biomes.forEach(biomeRegistryKey -> makeBiomeTranslation(translationBuilder, biomeRegistryKey));
+    }
+
+    public static void makeSmithingTemplateTranslation(TranslationBuilder translationBuilder, Item template, String templateName, String appliesTo, String ingredient){
+        translationBuilder.add(template, "Smithing Template");
+        translationBuilder.add("item.newworld.smithing_template." + templateName + ".additions_slot_description", "Add " + ingredient);
+        translationBuilder.add("item.newworld.smithing_template." + templateName +".applies_to", appliesTo);
+        translationBuilder.add("item.newworld.smithing_template." + templateName + ".base_slot_description", "Add " + appliesTo);
+        translationBuilder.add("item.newworld.smithing_template." + templateName + ".ingredients", ingredient);
+        translationBuilder.add("upgrade.newworld." + templateName, formatString(templateName));
+    }
+
+    public static void makeSmithingPieceTranslation(TranslationBuilder translationBuilder, Item base, Item... pieces){
+        Arrays.stream(pieces).toList().forEach(piece ->{
+            translationBuilder.add(piece, "Smithing Template Piece");
+            translationBuilder.add(piece.getTranslationKey() + ".desc", formatString(Registries.ITEM.getId(base).getPath()));
+        });
+    }
+    public static void makeTranslation(TranslationBuilder translationBuilder, Item itemConvertible){
+        translationBuilder.add(itemConvertible, formatString(Registries.ITEM.getId(itemConvertible).getPath()));
+    }
+    public static void makeTranslation(TranslationBuilder translationBuilder, Block itemConvertible){
+        translationBuilder.add(itemConvertible, formatString(Registries.BLOCK.getId(itemConvertible).getPath()));
     }
 
 

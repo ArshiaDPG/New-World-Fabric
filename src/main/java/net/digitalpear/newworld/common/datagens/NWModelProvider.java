@@ -28,11 +28,17 @@ public class NWModelProvider extends FabricModelProvider {
 
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
+
         itemModelGenerator.register(NWItems.FIR_SIGN, Models.GENERATED);
         itemModelGenerator.register(NWItems.FIR_HANGING_SIGN, Models.GENERATED);
         itemModelGenerator.register(NWItems.FIR_BOAT, Models.GENERATED);
         itemModelGenerator.register(NWItems.FIR_CHEST_BOAT, Models.GENERATED);
+
         itemModelGenerator.register(NWItems.ANCIENT_MATTOCK, Models.HANDHELD);
+        itemModelGenerator.register(NWItems.MATTOCK_CRAFTING_TEMPLATE, Models.GENERATED);
+        itemModelGenerator.register(NWItems.MATTOCK_CRAFTING_TEMPLATE_HEAD, Models.GENERATED);
+        itemModelGenerator.register(NWItems.MATTOCK_CRAFTING_TEMPLATE_SHAFT, Models.GENERATED
+        );
     }
 
     public static void fullWoodset(BlockStateModelGenerator blockStateModelGenerator, Woodset woodset){

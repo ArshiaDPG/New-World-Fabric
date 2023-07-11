@@ -1,8 +1,10 @@
-// 1.20.1	2023-07-09T15:32:22.0537109	New World/worldgen/placed_feature
+// 1.20.1	2023-07-10T16:19:59.1837445	New World/worldgen/placed_feature
 09a1ee6f8602c75168cd37145de5458e492114ae data\newworld\worldgen\placed_feature\trees_fir.json
 e516f10bfc9e1f8adc39132cd825a887b1142dfc data\newworld\worldgen\placed_feature\fallen_fir_log.json
 d4d4e1cc70e731d798081623c57cca041709d617 data\newworld\worldgen\placed_feature\fir_bees_checked.json
+6e1fe8e69e633ace95ca4a2797660a4a5cb4c822 data\newworld\worldgen\placed_feature\enfolded_scrapyard_ceiling_vegetation.json
 ea4839a020635ab62c6cbc651d276a0b0ffa4b1a data\newworld\worldgen\placed_feature\glow_lichen_wooded_meadow.json
+57eda9b9ce4e8e48270f13690fa2fbc30da8f576 data\newworld\worldgen\placed_feature\lush_cave_mud_patch.json
 54ce55f7a55ab46116661f4aaca31f262ca96515 data\newworld\worldgen\placed_feature\trees_fir_scarce.json
 67882bf3b81031e89829b28374bedf297ff68ba4 data\newworld\worldgen\placed_feature\patch_berry_bush_wooded_meadow.json
 4a0c1c0386723cf87e33576935e48b6ac177fe4a data\newworld\worldgen\placed_feature\grown_fir_bees_checked.json

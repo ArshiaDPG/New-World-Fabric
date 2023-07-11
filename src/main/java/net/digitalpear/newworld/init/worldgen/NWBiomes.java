@@ -11,13 +11,20 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.carver.ConfiguredCarver;
 import net.minecraft.world.gen.feature.PlacedFeature;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class NWBiomes {
 
+    public static List<RegistryKey<Biome>> biomes = new ArrayList<>();
     public static RegistryKey<Biome> createBiomeKey(String id){
-        return RegistryKey.of(RegistryKeys.BIOME, new Identifier(Newworld.MOD_ID, id));
+        RegistryKey<Biome> registryKey = RegistryKey.of(RegistryKeys.BIOME, new Identifier(Newworld.MOD_ID, id));
+        biomes.add(registryKey);
+        return registryKey;
     }
 
     public static final RegistryKey<Biome> WOODED_MEADOW = createBiomeKey("wooded_meadow");
+    public static final RegistryKey<Biome> ENFOLDED_SCRAPYARD = createBiomeKey("enfolded_scrapyard");
 
     public static void bootstrap(Registerable<Biome> bootstapContext) {
         RegistryEntryLookup<PlacedFeature> placeddFeatureHolder = bootstapContext.getRegistryLookup(RegistryKeys.PLACED_FEATURE);
@@ -25,6 +32,7 @@ public class NWBiomes {
 
 
         bootstapContext.register(WOODED_MEADOW, NWOverworldBiomeCreator.createWoodedMeadow(placeddFeatureHolder, configuredWorldCarverHolderGetter));
+        bootstapContext.register(ENFOLDED_SCRAPYARD, NWOverworldBiomeCreator.createScrapyardCave(placeddFeatureHolder, configuredWorldCarverHolderGetter));
     }
 
     public static void init(){

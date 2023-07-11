@@ -10,35 +10,53 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.registry.tag.BiomeTags;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.gen.GenerationStep;
+import net.minecraft.world.gen.blockpredicate.BlockPredicate;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.placementmodifier.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static net.minecraft.world.gen.feature.VegetationPlacedFeatures.treeModifiers;
 
 public class NWPlacedFeatures {
-    public static final RegistryKey<PlacedFeature> FALLEN_FIR_LOG= RegistryKey.of(RegistryKeys.PLACED_FEATURE, Newworld.id("fallen_fir_log"));
 
-    public static final RegistryKey<PlacedFeature> FIR_CHECKED = RegistryKey.of(RegistryKeys.PLACED_FEATURE, Newworld.id("fir_checked"));
-    public static final RegistryKey<PlacedFeature> FIR_BEES_CHECKED = RegistryKey.of(RegistryKeys.PLACED_FEATURE, Newworld.id("fir_bees_checked"));
-    public static final RegistryKey<PlacedFeature> GROWN_FIR_CHECKED = RegistryKey.of(RegistryKeys.PLACED_FEATURE, Newworld.id("grown_fir_checked"));
-    public static final RegistryKey<PlacedFeature> GROWN_FIR_BEES_CHECKED = RegistryKey.of(RegistryKeys.PLACED_FEATURE, Newworld.id("grown_fir_bees_checked"));
+    public static List<RegistryKey<PlacedFeature>> features = new ArrayList<>();
+
+    public static RegistryKey<PlacedFeature> of(String id){
+        RegistryKey<PlacedFeature> registryKey = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(Newworld.MOD_ID, id));
+        features.add(registryKey);
+        return registryKey;
+    }
+
+    public static final RegistryKey<PlacedFeature> FALLEN_FIR_LOG= of("fallen_fir_log");
+
+    public static final RegistryKey<PlacedFeature> FIR_CHECKED = of("fir_checked");
+    public static final RegistryKey<PlacedFeature> FIR_BEES_CHECKED = of("fir_bees_checked");
+    public static final RegistryKey<PlacedFeature> GROWN_FIR_CHECKED = of("grown_fir_checked");
+    public static final RegistryKey<PlacedFeature> GROWN_FIR_BEES_CHECKED = of("grown_fir_bees_checked");
 
 
-    public static final RegistryKey<PlacedFeature> TREES_FIR = RegistryKey.of(RegistryKeys.PLACED_FEATURE, Newworld.id("trees_fir"));
-    public static final RegistryKey<PlacedFeature> TREES_FIR_SCARCE= RegistryKey.of(RegistryKeys.PLACED_FEATURE, Newworld.id("trees_fir_scarce"));
-    public static final RegistryKey<PlacedFeature> TREES_FIR_MEADOW = RegistryKey.of(RegistryKeys.PLACED_FEATURE, Newworld.id("trees_fir_meadow"));
+    public static final RegistryKey<PlacedFeature> TREES_FIR = of("trees_fir");
+    public static final RegistryKey<PlacedFeature> TREES_FIR_SCARCE= of("trees_fir_scarce");
+    public static final RegistryKey<PlacedFeature> TREES_FIR_MEADOW = of("trees_fir_meadow");
 
-    public static final RegistryKey<PlacedFeature> GLOW_LICHEN_WOODED_MEADOW = RegistryKey.of(RegistryKeys.PLACED_FEATURE, Newworld.id("glow_lichen_wooded_meadow"));
-    public static final RegistryKey<PlacedFeature> MOSS_CARPET_WOODED_MEADOW = RegistryKey.of(RegistryKeys.PLACED_FEATURE, Newworld.id("moss_carpet_wooded_meadow"));
-    public static final RegistryKey<PlacedFeature> PATCH_BERRY_WOODED_MEADOW = RegistryKey.of(RegistryKeys.PLACED_FEATURE, Newworld.id("patch_berry_bush_wooded_meadow"));
+    public static final RegistryKey<PlacedFeature> GLOW_LICHEN_WOODED_MEADOW = of("glow_lichen_wooded_meadow");
+    public static final RegistryKey<PlacedFeature> MOSS_CARPET_WOODED_MEADOW = of("moss_carpet_wooded_meadow");
+    public static final RegistryKey<PlacedFeature> PATCH_BERRY_WOODED_MEADOW = of("patch_berry_bush_wooded_meadow");
 
-    public static final RegistryKey<PlacedFeature> BIRCH_CHERRY_GROVE = RegistryKey.of(RegistryKeys.PLACED_FEATURE, Newworld.id("birch_cherry_grove"));
+    public static final RegistryKey<PlacedFeature> BIRCH_CHERRY_GROVE = of("birch_cherry_grove");
+    public static final RegistryKey<PlacedFeature> LUSH_CAVE_MUD_PATCH = of("lush_cave_mud_patch");
+
+
+    public static final RegistryKey<PlacedFeature> ENFOLDED_SCRAPYARD_CEILING_VEGETATION = of("enfolded_scrapyard_ceiling_vegetation");
 
 
     public static void bootstrap(Registerable<PlacedFeature> featureRegisterable) {
@@ -61,6 +79,9 @@ public class NWPlacedFeatures {
         RegistryEntry<ConfiguredFeature<?, ?>> patchLichen = holderGetter.getOrThrow(NWConfiguredFeatures.GLOW_LICHEN_WOODED_MEADOW);
 
         RegistryEntry<ConfiguredFeature<?, ?>> birchTall = holderGetter.getOrThrow(VegetationConfiguredFeatures.BIRCH_TALL);
+        RegistryEntry<ConfiguredFeature<?, ?>> lushCaveMud = holderGetter.getOrThrow(NWConfiguredFeatures.LUSH_CAVE_MUD_PATCH);
+
+        RegistryEntry<ConfiguredFeature<?, ?>> loamPatchCeiling = holderGetter.getOrThrow(NWConfiguredFeatures.LOAM_PATCH_CEILING);
 
 
 
@@ -81,13 +102,22 @@ public class NWPlacedFeatures {
         PlacedFeatures.register(featureRegisterable,GLOW_LICHEN_WOODED_MEADOW, patchLichen, List.of(CountPlacementModifier.of(UniformIntProvider.create(104, 157)), PlacedFeatures.BOTTOM_TO_TOP_RANGE, RarityFilterPlacementModifier.of(2), SurfaceThresholdFilterPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR_WG, 30, 300), BiomePlacementModifier.of()));
 
 
+
         PlacedFeatures.register(featureRegisterable,BIRCH_CHERRY_GROVE, birchTall, treeModifiers(RarityFilterPlacementModifier.of(3)));
+
+
+        PlacedFeatures.register(featureRegisterable, ENFOLDED_SCRAPYARD_CEILING_VEGETATION, loamPatchCeiling, CountPlacementModifier.of(125), SquarePlacementModifier.of(), PlacedFeatures.BOTTOM_TO_120_RANGE, EnvironmentScanPlacementModifier.of(Direction.UP, BlockPredicate.solid(), BlockPredicate.IS_AIR, 12), RandomOffsetPlacementModifier.vertically(ConstantIntProvider.create(-1)), BiomePlacementModifier.of());
+        PlacedFeatures.register(featureRegisterable, LUSH_CAVE_MUD_PATCH, lushCaveMud, CountPlacementModifier.of(125), SquarePlacementModifier.of(), PlacedFeatures.BOTTOM_TO_120_RANGE, BiomePlacementModifier.of());
     }
 
 
     public static void init() {
         BiomeModifications.addFeature(BiomeSelectors.tag(BiomeTags.IS_TAIGA), GenerationStep.Feature.VEGETAL_DECORATION, TREES_FIR_SCARCE);
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.MEADOW), GenerationStep.Feature.VEGETAL_DECORATION, TREES_FIR_MEADOW);
+
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.CHERRY_GROVE), GenerationStep.Feature.VEGETAL_DECORATION, BIRCH_CHERRY_GROVE);
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.LUSH_CAVES), GenerationStep.Feature.VEGETAL_DECORATION, LUSH_CAVE_MUD_PATCH);
+
+
     }
 }
