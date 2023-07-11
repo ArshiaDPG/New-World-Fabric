@@ -25,6 +25,19 @@ public class NWBlockLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(NWBlocks.FIR_TRAPDOOR);
         addDrop(NWBlocks.FIR_DOOR, doorDrops(NWBlocks.FIR_DOOR));
         addDrop(NWBlocks.FIR_LEAVES, leavesDrops(NWBlocks.FIR_LEAVES, NWBlocks.FIR_SAPLING));
+
+        addDrop(NWBlocks.LOAM);
+        addDrop(NWBlocks.LOAM_STAIRS);
+        addDrop(NWBlocks.LOAM_SLAB, slabDrops(NWBlocks.LOAM_SLAB));
+        addDrop(NWBlocks.LOAM_WALL);
+        addDrop(NWBlocks.LOAM_BRICKS);
+        addDrop(NWBlocks.LOAM_BRICK_STAIRS);
+        addDrop(NWBlocks.LOAM_BRICK_SLAB, slabDrops(NWBlocks.LOAM_BRICK_SLAB));
+        addDrop(NWBlocks.LOAM_BRICK_WALL);
+        addDrop(NWBlocks.LOAM_TILES);
+        addDrop(NWBlocks.LOAM_TILE_STAIRS);
+        addDrop(NWBlocks.LOAM_TILE_SLAB, slabDrops(NWBlocks.LOAM_TILE_SLAB));
+        addDrop(NWBlocks.LOAM_TILE_WALL);
     }
 }
 

@@ -9,7 +9,6 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.block.Block;
 import net.minecraft.data.client.*;
 import net.minecraft.registry.Registries;
-import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 
 public class NWModelProvider extends FabricModelProvider {
@@ -24,11 +23,18 @@ public class NWModelProvider extends FabricModelProvider {
         fullWoodset(blockStateModelGenerator, NWBlocks.FIR);
 
         blockStateModelGenerator.registerFlowerPotPlant(NWBlocks.FIR_SAPLING, NWBlocks.POTTED_FIR_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED);
+
+
+
+    makeStoneModels(blockStateModelGenerator, NWBlocks.LOAM, NWBlocks.LOAM_STAIRS, NWBlocks.LOAM_SLAB, NWBlocks.LOAM_WALL);
+    makeStoneModels(blockStateModelGenerator, NWBlocks.LOAM_BRICKS, NWBlocks.LOAM_BRICK_STAIRS, NWBlocks.LOAM_BRICK_SLAB, NWBlocks.LOAM_BRICK_WALL);
+    makeStoneModels(blockStateModelGenerator, NWBlocks.LOAM_TILES, NWBlocks.LOAM_TILE_STAIRS, NWBlocks.LOAM_TILE_SLAB, NWBlocks.LOAM_TILE_WALL);
     }
+
+
 
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
-
         itemModelGenerator.register(NWItems.FIR_SIGN, Models.GENERATED);
         itemModelGenerator.register(NWItems.FIR_HANGING_SIGN, Models.GENERATED);
         itemModelGenerator.register(NWItems.FIR_BOAT, Models.GENERATED);
@@ -37,8 +43,8 @@ public class NWModelProvider extends FabricModelProvider {
         itemModelGenerator.register(NWItems.ANCIENT_MATTOCK, Models.HANDHELD);
         itemModelGenerator.register(NWItems.MATTOCK_CRAFTING_TEMPLATE, Models.GENERATED);
         itemModelGenerator.register(NWItems.MATTOCK_CRAFTING_TEMPLATE_HEAD, Models.GENERATED);
-        itemModelGenerator.register(NWItems.MATTOCK_CRAFTING_TEMPLATE_SHAFT, Models.GENERATED
-        );
+        itemModelGenerator.register(NWItems.MATTOCK_CRAFTING_TEMPLATE_SHAFT, Models.GENERATED);
+
     }
 
     public static void fullWoodset(BlockStateModelGenerator blockStateModelGenerator, Woodset woodset){
@@ -61,6 +67,12 @@ public class NWModelProvider extends FabricModelProvider {
             blockStateModelGenerator.registerLog(woodset.getStrippedLog()).uvLockedLog(woodset.getStrippedLog());
 
         }
+    }
+    public void makeStoneModels(BlockStateModelGenerator blockStateModelGenerator, Block block, Block stairs, Block slab, Block wall){
+        blockStateModelGenerator.registerSimpleCubeAll(block);
+        createStairs(blockStateModelGenerator, block, stairs);
+        createSlab(blockStateModelGenerator, block, slab);
+        createWall(blockStateModelGenerator, block, wall);
     }
 
     public static void makeStuff(BlockStateModelGenerator blockStateModelGenerator, Woodset woodset){
@@ -124,11 +136,13 @@ public class NWModelProvider extends FabricModelProvider {
         Identifier identifier4 = Models.TEMPLATE_FENCE_GATE_WALL.upload(fenceGateBlock, TextureMap.all(textureBase), blockStateModelGenerator.modelCollector);
         blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createFenceGateBlockState(fenceGateBlock, identifier, identifier2, identifier3, identifier4, true));
     }
-    public final void registerPearBlock(BlockStateModelGenerator blockStateModelGenerator, Block pearBlock) {
-        Identifier outerID = Models.TEMPLATE_SINGLE_FACE.upload(pearBlock, TextureMap.texture(pearBlock), blockStateModelGenerator.modelCollector);
-        Identifier insideID = Models.TEMPLATE_SINGLE_FACE.upload(pearBlock, "_inside", TextureMap.texture(getId(pearBlock, "_inside")), blockStateModelGenerator.modelCollector);
-        blockStateModelGenerator.blockStateCollector.accept(MultipartBlockStateSupplier.create(pearBlock).with(When.create().set(Properties.NORTH, true), BlockStateVariant.create().put(VariantSettings.MODEL, outerID)).with(When.create().set(Properties.EAST, true), BlockStateVariant.create().put(VariantSettings.MODEL, outerID).put(VariantSettings.Y, VariantSettings.Rotation.R90).put(VariantSettings.UVLOCK, true)).with(When.create().set(Properties.SOUTH, true), BlockStateVariant.create().put(VariantSettings.MODEL, outerID).put(VariantSettings.Y, VariantSettings.Rotation.R180).put(VariantSettings.UVLOCK, true)).with(When.create().set(Properties.WEST, true), BlockStateVariant.create().put(VariantSettings.MODEL, outerID).put(VariantSettings.Y, VariantSettings.Rotation.R270).put(VariantSettings.UVLOCK, true)).with(When.create().set(Properties.UP, true), BlockStateVariant.create().put(VariantSettings.MODEL, outerID).put(VariantSettings.X, VariantSettings.Rotation.R270).put(VariantSettings.UVLOCK, true)).with(When.create().set(Properties.DOWN, true), BlockStateVariant.create().put(VariantSettings.MODEL, outerID).put(VariantSettings.X, VariantSettings.Rotation.R90).put(VariantSettings.UVLOCK, true)).with(When.create().set(Properties.NORTH, false), BlockStateVariant.create().put(VariantSettings.MODEL, insideID)).with(When.create().set(Properties.EAST, false), BlockStateVariant.create().put(VariantSettings.MODEL, insideID).put(VariantSettings.Y, VariantSettings.Rotation.R90).put(VariantSettings.UVLOCK, false)).with(When.create().set(Properties.SOUTH, false), BlockStateVariant.create().put(VariantSettings.MODEL, insideID).put(VariantSettings.Y, VariantSettings.Rotation.R180).put(VariantSettings.UVLOCK, false)).with(When.create().set(Properties.WEST, false), BlockStateVariant.create().put(VariantSettings.MODEL, insideID).put(VariantSettings.Y, VariantSettings.Rotation.R270).put(VariantSettings.UVLOCK, false)).with(When.create().set(Properties.UP, false), BlockStateVariant.create().put(VariantSettings.MODEL, insideID).put(VariantSettings.X, VariantSettings.Rotation.R270).put(VariantSettings.UVLOCK, false)).with(When.create().set(Properties.DOWN, false), BlockStateVariant.create().put(VariantSettings.MODEL, insideID).put(VariantSettings.X, VariantSettings.Rotation.R90).put(VariantSettings.UVLOCK, false)));
-        blockStateModelGenerator.registerParentedItemModel(pearBlock, TexturedModel.CUBE_ALL.upload(pearBlock, "_inventory", blockStateModelGenerator.modelCollector));
+    public static void createWall(BlockStateModelGenerator blockStateModelGenerator, Block textureBase, Block wallBlock) {
+        Identifier identifier = Models.TEMPLATE_WALL_POST.upload(wallBlock, TextureMap.all(textureBase), blockStateModelGenerator.modelCollector);
+        Identifier identifier2 = Models.TEMPLATE_WALL_SIDE.upload(wallBlock, TextureMap.all(textureBase), blockStateModelGenerator.modelCollector);
+        Identifier identifier3 = Models.TEMPLATE_WALL_SIDE_TALL.upload(wallBlock, TextureMap.all(textureBase), blockStateModelGenerator.modelCollector);
+        Identifier identifier4 = Models.WALL_INVENTORY.upload(wallBlock, TextureMap.all(textureBase), blockStateModelGenerator.modelCollector);
+        blockStateModelGenerator.registerParentedItemModel(wallBlock, identifier4);
+        blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createWallBlockState(wallBlock, identifier, identifier2, identifier3));
     }
 
 

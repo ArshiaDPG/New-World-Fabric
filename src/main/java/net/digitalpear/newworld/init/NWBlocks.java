@@ -11,6 +11,7 @@ import net.minecraft.item.ItemGroups;
 import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 
 
@@ -61,6 +62,20 @@ public class NWBlocks {
     public static final Block FIR_HANGING_SIGN = FIR.getHangingSign();
     public static final Block FIR_HANGING_WALL_SIGN = FIR.getHangingWallSign();
 
+    public static final Block LOAM = createBlockWithItem("loam", new Block(AbstractBlock.Settings.create().mapColor(MapColor.TERRACOTTA_BLACK).strength(1.2f, 3f).sounds(BlockSoundGroup.PACKED_MUD)));
+    public static final Block LOAM_STAIRS = createBlockWithItem("loam_stairs", new StairsBlock(LOAM.getDefaultState(), AbstractBlock.Settings.copy(LOAM)));
+    public static final Block LOAM_SLAB = createBlockWithItem("loam_slab", new SlabBlock(AbstractBlock.Settings.copy(LOAM)));
+    public static final Block LOAM_WALL = createBlockWithItem("loam_wall", new WallBlock(AbstractBlock.Settings.copy(LOAM)));
+
+    public static final Block LOAM_BRICKS = createBlockWithItem("loam_bricks", new Block(AbstractBlock.Settings.copy(LOAM).sounds(BlockSoundGroup.MUD_BRICKS)));
+    public static final Block LOAM_BRICK_STAIRS = createBlockWithItem("loam_brick_stairs", new StairsBlock(LOAM_BRICKS.getDefaultState(), AbstractBlock.Settings.copy(LOAM_BRICKS)));
+    public static final Block LOAM_BRICK_SLAB = createBlockWithItem("loam_brick_slab", new SlabBlock(AbstractBlock.Settings.copy(LOAM_BRICKS)));
+    public static final Block LOAM_BRICK_WALL = createBlockWithItem("loam_brick_wall", new WallBlock(AbstractBlock.Settings.copy(LOAM_BRICKS)));
+
+    public static final Block LOAM_TILES = createBlockWithItem("loam_tiles", new Block(AbstractBlock.Settings.copy(LOAM).sounds(BlockSoundGroup.MUD_BRICKS)));
+    public static final Block LOAM_TILE_STAIRS = createBlockWithItem("loam_tile_stairs", new StairsBlock(LOAM_BRICKS.getDefaultState(), AbstractBlock.Settings.copy(LOAM_TILES)));
+    public static final Block LOAM_TILE_SLAB = createBlockWithItem("loam_tile_slab", new SlabBlock(AbstractBlock.Settings.copy(LOAM_TILES)));
+    public static final Block LOAM_TILE_WALL = createBlockWithItem("loam_tile_wall", new WallBlock(AbstractBlock.Settings.copy(LOAM_TILES)));
 
     public static void init(){
         Woodset.addToBuildingTab(Items.SPRUCE_BUTTON, FIR);
@@ -68,6 +83,15 @@ public class NWBlocks {
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> {
             entries.addAfter(Items.SPRUCE_LEAVES, FIR_LEAVES);
             entries.addAfter(Items.SPRUCE_SAPLING, FIR_SAPLING);
+        });
+
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(Items.MUD, LOAM));
+
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> {
+            entries.addAfter(Items.MUD_BRICK_WALL, LOAM, LOAM_STAIRS, LOAM_WALL,
+                    LOAM_SLAB, LOAM_BRICKS, LOAM_BRICK_STAIRS, LOAM_BRICK_WALL,
+                    LOAM_BRICK_SLAB, LOAM_TILES, LOAM_TILE_STAIRS, LOAM_TILE_SLAB, LOAM_TILE_WALL
+            );
         });
 
     }

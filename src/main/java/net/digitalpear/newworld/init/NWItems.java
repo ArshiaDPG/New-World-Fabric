@@ -9,20 +9,14 @@ import net.digitalpear.newworld.common.items.AncientSmithingTemplateItem;
 import net.digitalpear.newworld.common.items.MattockItem;
 import net.digitalpear.newworld.common.items.NWToolMaterials;
 import net.digitalpear.newworld.common.items.SmithingTemplatePieceItem;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.item.Items;
-import net.minecraft.item.SmithingTemplateItem;
-import net.minecraft.item.trim.ArmorTrimPatterns;
-import net.minecraft.predicate.item.EnchantmentPredicate;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.Rarity;
 
 
 @SuppressWarnings("unused")
@@ -47,12 +41,12 @@ public class NWItems {
     public static final Item FIR_SIGN = NWBlocks.FIR.getSignItem();
     public static final Item FIR_HANGING_SIGN = NWBlocks.FIR.getHangingSignItem();
 
-    public static final Item ANCIENT_MATTOCK = registerItem("ancient_mattock", new MattockItem(NWToolMaterials.ANCIENT, 0.0F, -3.0F, new Item.Settings()));
-
     public static final Item MATTOCK_CRAFTING_TEMPLATE = registerItem("mattock_crafting_template", new AncientSmithingTemplateItem("mattock_crafting"));
     public static final Item MATTOCK_CRAFTING_TEMPLATE_HEAD = registerItem("mattock_crafting_template_head", new SmithingTemplatePieceItem(new Item.Settings()));
     public static final Item MATTOCK_CRAFTING_TEMPLATE_SHAFT = registerItem("mattock_crafting_template_shaft", new SmithingTemplatePieceItem(new Item.Settings()));
 
+
+    public static final Item ANCIENT_MATTOCK = registerItem("ancient_mattock", new MattockItem(NWToolMaterials.ANCIENT, 0.0F, -3.0F, new Item.Settings()));
 
     public static void init(){
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> {

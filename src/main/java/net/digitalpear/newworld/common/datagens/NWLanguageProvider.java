@@ -36,6 +36,18 @@ public class NWLanguageProvider extends FabricLanguageProvider {
 
         makeSmithingPieceTranslation(translationBuilder, NWItems.MATTOCK_CRAFTING_TEMPLATE, NWItems.MATTOCK_CRAFTING_TEMPLATE_HEAD, NWItems.MATTOCK_CRAFTING_TEMPLATE_SHAFT);
 
+        makeTranslation(translationBuilder, NWBlocks.LOAM);
+        makeTranslation(translationBuilder, NWBlocks.LOAM_STAIRS);
+        makeTranslation(translationBuilder, NWBlocks.LOAM_SLAB);
+        makeTranslation(translationBuilder, NWBlocks.LOAM_WALL);
+        makeTranslation(translationBuilder, NWBlocks.LOAM_BRICKS);
+        makeTranslation(translationBuilder, NWBlocks.LOAM_BRICK_STAIRS);
+        makeTranslation(translationBuilder, NWBlocks.LOAM_BRICK_SLAB);
+        makeTranslation(translationBuilder, NWBlocks.LOAM_BRICK_WALL);
+        makeTranslation(translationBuilder, NWBlocks.LOAM_TILES);
+        makeTranslation(translationBuilder, NWBlocks.LOAM_TILE_STAIRS);
+        makeTranslation(translationBuilder, NWBlocks.LOAM_TILE_SLAB);
+        makeTranslation(translationBuilder, NWBlocks.LOAM_TILE_WALL);
 
         translationBuilder.add(NWItems.FIR_BOAT, "Fir Boat");
         translationBuilder.add(NWItems.FIR_CHEST_BOAT, "Fir Boat with Chest");

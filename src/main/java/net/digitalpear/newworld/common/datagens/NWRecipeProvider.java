@@ -5,15 +5,12 @@ import net.digitalpear.newworld.init.NWItems;
 import net.digitalpear.newworld.init.data.tags.NWItemTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
-import net.minecraft.data.server.recipe.RecipeJsonProvider;
-import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
-import net.minecraft.data.server.recipe.SmithingTransformRecipeJsonBuilder;
+import net.minecraft.data.server.recipe.*;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
 import net.minecraft.predicate.item.ItemPredicate;
 import net.minecraft.recipe.Ingredient;
-import net.minecraft.recipe.SmithingRecipe;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.Registries;
 
@@ -47,6 +44,56 @@ public class NWRecipeProvider extends FabricRecipeProvider {
 
         offerUpgradeRecipe(exporter, NWItems.MATTOCK_CRAFTING_TEMPLATE, NWItems.ANCIENT_MATTOCK);
         offerSmithingTemplateCopyingRecipe(exporter, NWItems.MATTOCK_CRAFTING_TEMPLATE, Items.STONE);
+
+        createStoneSetRecipes(exporter, NWBlocks.LOAM, NWBlocks.LOAM_STAIRS, NWBlocks.LOAM_SLAB, NWBlocks.LOAM_WALL);
+        createStoneSetRecipes(exporter, NWBlocks.LOAM_BRICKS, NWBlocks.LOAM_BRICK_STAIRS, NWBlocks.LOAM_BRICK_SLAB, NWBlocks.LOAM_BRICK_WALL);
+        createStoneSetRecipes(exporter, NWBlocks.LOAM_TILES, NWBlocks.LOAM_TILE_STAIRS, NWBlocks.LOAM_TILE_SLAB, NWBlocks.LOAM_TILE_WALL);
+
+        RecipeProvider.offerStonecuttingRecipe(exporter,RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_STAIRS, NWBlocks.LOAM);
+        RecipeProvider.offerStonecuttingRecipe(exporter,RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_SLAB, NWBlocks.LOAM);
+        RecipeProvider.offerStonecuttingRecipe(exporter,RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_WALL, NWBlocks.LOAM);
+        RecipeProvider.offerStonecuttingRecipe(exporter,RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_BRICKS, NWBlocks.LOAM);
+        RecipeProvider.offerStonecuttingRecipe(exporter,RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_BRICK_STAIRS, NWBlocks.LOAM);
+        RecipeProvider.offerStonecuttingRecipe(exporter,RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_BRICK_SLAB, NWBlocks.LOAM);
+        RecipeProvider.offerStonecuttingRecipe(exporter,RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_BRICK_WALL, NWBlocks.LOAM);
+        RecipeProvider.offerStonecuttingRecipe(exporter,RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_TILES, NWBlocks.LOAM);
+        RecipeProvider.offerStonecuttingRecipe(exporter,RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_TILE_STAIRS, NWBlocks.LOAM);
+        RecipeProvider.offerStonecuttingRecipe(exporter,RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_TILE_SLAB, NWBlocks.LOAM);
+        RecipeProvider.offerStonecuttingRecipe(exporter,RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_TILE_WALL, NWBlocks.LOAM);
+
+        RecipeProvider.offerStonecuttingRecipe(exporter,RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_BRICK_STAIRS, NWBlocks.LOAM_BRICKS);
+        RecipeProvider.offerStonecuttingRecipe(exporter,RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_BRICK_SLAB, NWBlocks.LOAM_BRICKS);
+        RecipeProvider.offerStonecuttingRecipe(exporter,RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_BRICK_WALL, NWBlocks.LOAM_BRICKS);
+        RecipeProvider.offerStonecuttingRecipe(exporter,RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_TILES, NWBlocks.LOAM_BRICKS);
+        RecipeProvider.offerStonecuttingRecipe(exporter,RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_TILE_STAIRS, NWBlocks.LOAM_BRICKS);
+        RecipeProvider.offerStonecuttingRecipe(exporter,RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_TILE_SLAB, NWBlocks.LOAM_BRICKS);
+        RecipeProvider.offerStonecuttingRecipe(exporter,RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_TILE_WALL, NWBlocks.LOAM_BRICKS);
+
+        RecipeProvider.offerStonecuttingRecipe(exporter,RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_TILE_STAIRS, NWBlocks.LOAM_TILES);
+        RecipeProvider.offerStonecuttingRecipe(exporter,RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_TILE_SLAB, NWBlocks.LOAM_TILES);
+        RecipeProvider.offerStonecuttingRecipe(exporter,RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_TILE_WALL, NWBlocks.LOAM_TILES);
+
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_BRICKS, 4).input('#', NWBlocks.LOAM)
+                .pattern("##")
+                .pattern("##")
+                .criterion(RecipeProvider.hasItem(NWBlocks.LOAM), RecipeProvider.conditionsFromItem(NWBlocks.LOAM))
+                .offerTo(exporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_TILES, 4).input('#', NWBlocks.LOAM_BRICKS)
+                .pattern("##")
+                .pattern("##")
+                .criterion(RecipeProvider.hasItem(NWBlocks.LOAM_BRICKS), RecipeProvider.conditionsFromItem(NWBlocks.LOAM_BRICKS))
+                .offerTo(exporter);
+
+
+    }
+
+    public void createStoneSetRecipes(Consumer<RecipeJsonProvider> exporter, ItemConvertible base, ItemConvertible stairs, ItemConvertible slab, ItemConvertible wall){
+        createStairsRecipe(stairs, Ingredient.ofItems(base)).criterion(hasItem(base), conditionsFromItem(base)).offerTo(exporter);
+        offerSlabRecipe(exporter,RecipeCategory.BUILDING_BLOCKS, slab, base);
+        offerWallRecipe(exporter,RecipeCategory.BUILDING_BLOCKS, wall, base);
+
     }
     public void makeTemplateRecipe(Consumer<RecipeJsonProvider> exporter, Item fullTemplate, Item... pieces){
         ShapelessRecipeJsonBuilder recipeJsonBuilder = ShapelessRecipeJsonBuilder.create(RecipeCategory.TOOLS, NWItems.MATTOCK_CRAFTING_TEMPLATE)

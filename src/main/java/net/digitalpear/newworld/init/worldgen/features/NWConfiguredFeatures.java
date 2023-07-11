@@ -104,11 +104,11 @@ public class NWConfiguredFeatures {
 
         RegistryEntryLookup<ConfiguredFeature<?, ?>> configuredFeatureRegistryEntryLookup = featureRegisterable.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
 
-        ConfiguredFeatures.register(featureRegisterable, LOAM_PATCH_CEILING, Feature.VEGETATION_PATCH, new VegetationPatchFeatureConfig(BlockTags.MOSS_REPLACEABLE, BlockStateProvider.of(Blocks.MUD), PlacedFeatures.createEntry(configuredFeatureRegistryEntryLookup.getOrThrow(VegetationConfiguredFeatures.VINES)), VerticalSurfaceType.CEILING, UniformIntProvider.create(1, 2), 0.0F, 5, 0.08F, UniformIntProvider.create(4, 7), 0.3F));
+        ConfiguredFeatures.register(featureRegisterable, LOAM_PATCH_CEILING, Feature.VEGETATION_PATCH, new VegetationPatchFeatureConfig(BlockTags.MOSS_REPLACEABLE, BlockStateProvider.of(NWBlocks.LOAM), PlacedFeatures.createEntry(configuredFeatureRegistryEntryLookup.getOrThrow(VegetationConfiguredFeatures.VINES)), VerticalSurfaceType.CEILING, UniformIntProvider.create(1, 2), 0.0F, 5, 0.08F, UniformIntProvider.create(4, 7), 0.3F));
 
         TagMatchRuleTest ruleTest = new TagMatchRuleTest(BlockTags.BASE_STONE_OVERWORLD);
 
-        ConfiguredFeatures.register(featureRegisterable, LUSH_CAVE_MUD_PATCH, Feature.ORE, new OreFeatureConfig(ruleTest, Blocks.MUD.getDefaultState(), 32));
+        ConfiguredFeatures.register(featureRegisterable, LUSH_CAVE_MUD_PATCH, Feature.ORE, new OreFeatureConfig(ruleTest, Blocks.MUD.getDefaultState(), 64));
     }
 
     private static TreeFeatureConfig.Builder naturalFirConfig() {

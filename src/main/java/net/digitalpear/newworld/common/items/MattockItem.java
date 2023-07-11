@@ -9,7 +9,7 @@ import net.minecraft.item.ToolMaterial;
 public class MattockItem extends MiningToolItem {
 
 
-    public MattockItem(ToolMaterial tier, float attackDamage, float attackSpeed, Settings properties) {
-        super(attackDamage, attackSpeed, tier, NWBlockTags.MATTOCK_MINEABLE, properties);
+    public MattockItem(ToolMaterial toolMaterial, float attackDamage, float attackSpeed, Settings properties) {
+        super(attackDamage, attackSpeed, toolMaterial, NWBlockTags.MATTOCK_MINEABLE, properties);
     }
 }

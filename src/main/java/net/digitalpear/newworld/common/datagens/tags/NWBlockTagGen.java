@@ -43,6 +43,12 @@ public class NWBlockTagGen extends FabricTagProvider<Block> {
                 .add(NWBlocks.FIR_HANGING_SIGN)
                 .add(NWBlocks.FIR_HANGING_WALL_SIGN);
 
+        getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(
+                NWBlocks.LOAM, NWBlocks.LOAM_STAIRS, NWBlocks.LOAM_SLAB, NWBlocks.LOAM_WALL,
+                NWBlocks.LOAM_BRICKS, NWBlocks.LOAM_BRICK_STAIRS, NWBlocks.LOAM_BRICK_SLAB, NWBlocks.LOAM_BRICK_WALL,
+                NWBlocks.LOAM_TILES, NWBlocks.LOAM_TILE_STAIRS, NWBlocks.LOAM_TILE_SLAB, NWBlocks.LOAM_TILE_WALL
+        );
+
 
         getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN).addTag(NWBlockTags.FIR_LOGS);
         getOrCreateTagBuilder(BlockTags.PLANKS).add(NWBlocks.FIR_PLANKS);
@@ -62,6 +68,10 @@ public class NWBlockTagGen extends FabricTagProvider<Block> {
         getOrCreateTagBuilder(BlockTags.ALL_HANGING_SIGNS).add(NWBlocks.FIR_HANGING_SIGN).add(NWBlocks.FIR_HANGING_WALL_SIGN);
         getOrCreateTagBuilder(BlockTags.SAPLINGS).add(NWBlocks.FIR_SAPLING);
         getOrCreateTagBuilder(BlockTags.FLOWER_POTS).add(NWBlocks.POTTED_FIR_SAPLING);
+
+        getOrCreateTagBuilder(BlockTags.STAIRS).add(NWBlocks.LOAM_STAIRS, NWBlocks.LOAM_BRICK_STAIRS, NWBlocks.LOAM_TILE_STAIRS);
+        getOrCreateTagBuilder(BlockTags.SLABS).add(NWBlocks.LOAM_SLAB, NWBlocks.LOAM_BRICK_SLAB, NWBlocks.LOAM_TILE_SLAB);
+        getOrCreateTagBuilder(BlockTags.WALLS).add(NWBlocks.LOAM_WALL, NWBlocks.LOAM_BRICK_WALL, NWBlocks.LOAM_TILE_WALL);
 
         getOrCreateTagBuilder(NWBlockTags.MATTOCK_MINEABLE)
                 .forceAddTag(BlockTags.AXE_MINEABLE)
