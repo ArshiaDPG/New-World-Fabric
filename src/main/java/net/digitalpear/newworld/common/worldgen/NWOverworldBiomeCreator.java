@@ -84,7 +84,10 @@ public class NWOverworldBiomeCreator {
         GenerationSettings.LookupBackedBuilder lookupBackedBuilder = new GenerationSettings.LookupBackedBuilder(featureLookup, carverLookup);
 
         lookupBackedBuilder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, NWPlacedFeatures.LOAM_PATCH_CEILING);
+        lookupBackedBuilder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, NWPlacedFeatures.LOAM_ORE);
+        lookupBackedBuilder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, NWPlacedFeatures.LOAM_SNOW);
 
+        //Default biome features, DO NOT CHANGE THIS
         addBasicFeatures(lookupBackedBuilder);
         DefaultBiomeFeatures.addPlainsTallGrass(lookupBackedBuilder);
         DefaultBiomeFeatures.addDefaultOres(lookupBackedBuilder, true);
@@ -94,7 +97,7 @@ public class NWOverworldBiomeCreator {
         DefaultBiomeFeatures.addDefaultVegetation(lookupBackedBuilder);
 
         MusicSound musicSound = MusicType.createIngameMusic(SoundEvents.MUSIC_OVERWORLD_DEEP_DARK);
-        return createBiome(true, 0.5F, 0.4F, builder2, lookupBackedBuilder, musicSound);
+        return createBiome(true, 0.0F, 0.4F, builder2, lookupBackedBuilder, musicSound);
     }
 
 }

@@ -40,10 +40,10 @@ public class NWOverworldRegion extends Region {
 
 
             List<MultiNoiseUtil.NoiseHypercube> scrapyardPoints = new ParameterPointListBuilder()
-                    .temperature(Temperature.ICY, Temperature.FROZEN)
+                    .temperature(Temperature.ICY, Temperature.COOL, Temperature.FROZEN, Temperature.NEUTRAL)
                     .humidity(Humidity.FULL_RANGE)
                     .continentalness(Continentalness.FULL_RANGE)
-                    .erosion(MultiNoiseUtil.ParameterRange.combine(MultiNoiseUtil.ParameterRange.of(-1.0f, -0.78f), MultiNoiseUtil.ParameterRange.of(-0.78f, -0.375f)))
+                    .erosion(Erosion.EROSION_0, Erosion.EROSION_1, Erosion.EROSION_2, Erosion.EROSION_3)
                     .depth(MultiNoiseUtil.ParameterRange.of(1.1f))
                     .weirdness(Weirdness.FULL_RANGE)
                     .build();

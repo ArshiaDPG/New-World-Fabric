@@ -72,9 +72,13 @@ public class NWConfiguredFeatures {
      */
 
     public static final RegistryKey<ConfiguredFeature<?, ?>> LOAM_PATCH_CEILING = of("loam_patch_ceiling");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> LOAM_ORE = of("loam_ore");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> LOAM_SNOW = of("loam_snow");
 
 
     public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> featureRegisterable) {
+        TagMatchRuleTest ruleTest = new TagMatchRuleTest(BlockTags.BASE_STONE_OVERWORLD);
+
         RegistryEntryLookup<PlacedFeature> registryEntryLookup = featureRegisterable.getRegistryLookup(RegistryKeys.PLACED_FEATURE);
 
         RegistryEntry<PlacedFeature> firChecked = registryEntryLookup.getOrThrow(NWPlacedFeatures.FIR_CHECKED);
@@ -109,9 +113,13 @@ public class NWConfiguredFeatures {
 
         RegistryEntryLookup<ConfiguredFeature<?, ?>> configuredFeatureRegistryEntryLookup = featureRegisterable.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
 
-        ConfiguredFeatures.register(featureRegisterable, LOAM_PATCH_CEILING, Feature.VEGETATION_PATCH, new VegetationPatchFeatureConfig(BlockTags.MOSS_REPLACEABLE, BlockStateProvider.of(NWBlocks.LOAM), PlacedFeatures.createEntry(configuredFeatureRegistryEntryLookup.getOrThrow(VegetationConfiguredFeatures.VINES)), VerticalSurfaceType.CEILING, UniformIntProvider.create(1, 2), 0.0F, 5, 0.08F, UniformIntProvider.create(4, 7), 0.3F));
+        ConfiguredFeatures.register(featureRegisterable, LOAM_PATCH_CEILING, Feature.VEGETATION_PATCH, new VegetationPatchFeatureConfig(BlockTags.MOSS_REPLACEABLE, BlockStateProvider.of(NWBlocks.LOAM), PlacedFeatures.createEntry(configuredFeatureRegistryEntryLookup.getOrThrow(MiscConfiguredFeatures.ICE_SPIKE)), VerticalSurfaceType.CEILING, UniformIntProvider.create(1, 2), 0.0F, 5, 0.008F, UniformIntProvider.create(4, 7), 0.3F));
+        ConfiguredFeatures.register(featureRegisterable, LOAM_ORE, Feature.ORE, new OreFeatureConfig(ruleTest, NWBlocks.LOAM.getDefaultState(), 32));
+        ConfiguredFeatures.register(featureRegisterable, LOAM_SNOW, NWFeature.LOAM_SNOW, new DefaultFeatureConfig());
 
-        TagMatchRuleTest ruleTest = new TagMatchRuleTest(BlockTags.BASE_STONE_OVERWORLD);
+        /*
+            Vanilla Biome Features
+         */
         ConfiguredFeatures.register(featureRegisterable, LUSH_CAVE_MUD_PATCH, Feature.ORE, new OreFeatureConfig(ruleTest, Blocks.MUD.getDefaultState(), 64));
     }
 

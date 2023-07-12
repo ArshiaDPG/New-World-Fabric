@@ -9,6 +9,7 @@ import net.minecraft.structure.pool.StructurePoolBasedGenerator;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.gen.heightprovider.HeightProvider;
 import net.minecraft.world.gen.structure.Structure;
@@ -58,6 +59,7 @@ public class BuriedBunkerFeature extends Structure {
     private static boolean extraSpawningChecks(Structure.Context context) {
         // Grabs the chunk position we are at
         ChunkPos chunkpos = context.chunkPos();
+        Random random = context.random();
 
         // Checks to make sure our structure does not spawn above land that's higher than y = 150
         // to demonstrate how this method is good for checking extra conditions for spawning

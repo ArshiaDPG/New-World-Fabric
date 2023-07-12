@@ -1,4 +1,4 @@
-// 1.20.1	2023-07-12T14:36:08.7383326	New World/Tags for minecraft:block
+// 1.20.1	2023-07-12T15:56:45.7295438	New World/Tags for minecraft:block
 54c1945e2943451b7e7ff0b1646ec4e85974df1d data\minecraft\tags\blocks\wooden_pressure_plates.json
 3a72e823c844c31d76b6083edbc8ddd7ae4bfa7c data\minecraft\tags\blocks\planks.json
 11c406eba5704d9cc1c162244e9754db5d518ec2 data\newworld\tags\blocks\mattock_mineable.json
@@ -11,8 +11,8 @@ e8ec36e2757822a4fbbd3ffa57b1acc55cd8682f data\minecraft\tags\blocks\stairs.json
 052753f4e2984d1995b31e3ff2115b4eb2291dc2 data\minecraft\tags\blocks\all_hanging_signs.json
 6768e8f716ebe0e89d689ec0f15d61302cce60a3 data\minecraft\tags\blocks\saplings.json
 3e5af29028358c3b85a84024904f2e4579049b66 data\minecraft\tags\blocks\standing_signs.json
-a61f5c6c51d50fc2492abcff429ba4e86bd6e037 data\minecraft\tags\blocks\wall_signs.json
 1de7e5b7942e0f01a420883c15bd3ea6d2200e7f data\minecraft\tags\blocks\mineable\axe.json
+a61f5c6c51d50fc2492abcff429ba4e86bd6e037 data\minecraft\tags\blocks\wall_signs.json
 f90ff66a280233fe476f0b2bf9b5fe420dfa637d data\minecraft\tags\blocks\wall_hanging_signs.json
 28d3d44c9c5a3d8d97d9ab77a5f770febec83c74 data\minecraft\tags\blocks\wooden_trapdoors.json
 cc18168805198fe2f91b8db7225f4c5a92992efa data\minecraft\tags\blocks\buttons.json

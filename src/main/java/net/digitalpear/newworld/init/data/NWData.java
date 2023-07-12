@@ -51,14 +51,15 @@ public class NWData {
                 tableBuilder.modifyPools(builder -> builder.with(ItemEntry.builder(NWItems.MATTOCK_CRAFTING_TEMPLATE_SHAFT)));
             }
             else if (id.equals(LootTables.ANCIENT_CITY_CHEST)){
-                tableBuilder.pool(LootPool.builder().with(ItemEntry.builder(NWItems.MATTOCK_CRAFTING_TEMPLATE_HEAD)
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(0.0f, 2.0f))).build()).with(ItemEntry.builder(Items.SCULK)));
+                tableBuilder.pool(LootPool.builder()
+                        .with(ItemEntry.builder(NWItems.MATTOCK_CRAFTING_TEMPLATE_HEAD).build())
+                        .with(ItemEntry.builder(Items.SCULK).weight(3)).build());
             }
             else if (id.equals(LootTables.STRONGHOLD_CORRIDOR_CHEST)){
-                tableBuilder.pool(LootPool.builder().with(ItemEntry.builder(NWItems.MATTOCK_CRAFTING_TEMPLATE_HEAD)
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(0.0f, 2.0f))).build()).with(ItemEntry.builder(Items.IRON_INGOT).weight(2)));
+                tableBuilder.pool(LootPool.builder()
+                        .with(ItemEntry.builder(NWItems.MATTOCK_CRAFTING_TEMPLATE_HEAD).build())
+                        .with(ItemEntry.builder(Items.IRON_INGOT).weight(2).build()));
             }
-
         });
     }
 
