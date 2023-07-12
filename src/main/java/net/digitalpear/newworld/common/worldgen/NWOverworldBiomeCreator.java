@@ -83,7 +83,7 @@ public class NWOverworldBiomeCreator {
 
         GenerationSettings.LookupBackedBuilder lookupBackedBuilder = new GenerationSettings.LookupBackedBuilder(featureLookup, carverLookup);
 
-        lookupBackedBuilder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, NWPlacedFeatures.LUSH_CAVE_MUD_PATCH);
+        lookupBackedBuilder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, NWPlacedFeatures.LOAM_PATCH_CEILING);
 
         addBasicFeatures(lookupBackedBuilder);
         DefaultBiomeFeatures.addPlainsTallGrass(lookupBackedBuilder);

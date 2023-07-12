@@ -7,17 +7,20 @@ import net.minecraft.util.Identifier;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.biome.source.util.MultiNoiseUtil;
+import net.minecraft.world.biome.source.util.VanillaBiomeParameters;
 import terrablender.api.Region;
 import terrablender.api.RegionType;
+import terrablender.core.TerraBlender;
+import terrablender.core.TerraBlenderFabric;
 
 import java.util.List;
 import java.util.function.Consumer;
 
 import static terrablender.api.ParameterUtils.*;
 
-public class NWRegion extends Region {
+public class NWOverworldRegion extends Region {
 
-    public NWRegion(Identifier name, int weight) {
+    public NWOverworldRegion(Identifier name, int weight) {
         super(name, RegionType.OVERWORLD, weight);
     }
 
@@ -29,7 +32,7 @@ public class NWRegion extends Region {
                     .humidity(Humidity.ARID, Humidity.NEUTRAL, Humidity.WET, Humidity.HUMID)
                     .continentalness(Continentalness.span(Continentalness.FAR_INLAND, Continentalness.FAR_INLAND), Continentalness.span(Continentalness.MID_INLAND, Continentalness.FAR_INLAND))
                     .erosion(Erosion.EROSION_0, Erosion.EROSION_1, Erosion.EROSION_2)
-                    .depth(Depth.SURFACE, Depth.FLOOR)
+                    .depth(Depth.SURFACE)
                     .weirdness(Weirdness.HIGH_SLICE_VARIANT_ASCENDING, Weirdness.HIGH_SLICE_VARIANT_DESCENDING, Weirdness.MID_SLICE_NORMAL_ASCENDING)
                     .build();
             meadowPoints.forEach(point -> builder.replaceBiome(point, NWBiomes.WOODED_MEADOW));
@@ -37,16 +40,18 @@ public class NWRegion extends Region {
 
 
             List<MultiNoiseUtil.NoiseHypercube> scrapyardPoints = new ParameterPointListBuilder()
-                    .temperature(Temperature.ICY, Temperature.FROZEN, Temperature.COOL)
-                    .humidity(Humidity.WET, Humidity.HUMID)
+                    .temperature(Temperature.ICY, Temperature.FROZEN)
+                    .humidity(Humidity.FULL_RANGE)
                     .continentalness(Continentalness.FULL_RANGE)
-                    .erosion(Erosion.FULL_RANGE)
-                    .depth(Depth.UNDERGROUND, Depth.FLOOR)
-                    .weirdness(Weirdness.LOW_SLICE_VARIANT_ASCENDING, Weirdness.LOW_SLICE_NORMAL_DESCENDING, Weirdness.VALLEY)
+                    .erosion(MultiNoiseUtil.ParameterRange.combine(MultiNoiseUtil.ParameterRange.of(-1.0f, -0.78f), MultiNoiseUtil.ParameterRange.of(-0.78f, -0.375f)))
+                    .depth(MultiNoiseUtil.ParameterRange.of(1.1f))
+                    .weirdness(Weirdness.FULL_RANGE)
                     .build();
 
-            scrapyardPoints.forEach(point -> builder.replaceBiome(point, NWBiomes.ENFOLDED_SCRAPYARD));
 
+            scrapyardPoints.forEach(point -> addBiome(mapper, point, NWBiomes.ENFOLDED_SCRAPYARD));
         });
+
+
     }
 }

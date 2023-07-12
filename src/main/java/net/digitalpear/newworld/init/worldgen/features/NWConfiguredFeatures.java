@@ -2,6 +2,7 @@ package net.digitalpear.newworld.init.worldgen.features;
 
 import net.digitalpear.newworld.Newworld;
 import net.digitalpear.newworld.common.worldgen.NWFeature;
+import net.digitalpear.newworld.common.worldgen.features.SmallBushFeatureConfig;
 import net.digitalpear.newworld.init.NWBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -14,7 +15,6 @@ import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.registry.entry.RegistryEntryList;
 import net.minecraft.registry.tag.BlockTags;
-import net.minecraft.structure.rule.RuleTest;
 import net.minecraft.structure.rule.TagMatchRuleTest;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.VerticalSurfaceType;
@@ -22,7 +22,6 @@ import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
 import net.minecraft.world.gen.foliage.SpruceFoliagePlacer;
-import net.minecraft.world.gen.placementmodifier.PlacementModifier;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import net.minecraft.world.gen.treedecorator.AlterGroundTreeDecorator;
 import net.minecraft.world.gen.treedecorator.BeehiveTreeDecorator;
@@ -65,6 +64,7 @@ public class NWConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> GROWN_FIR_BEES_002 = of("grown_fir_bees_002");
 
     public static final RegistryKey<ConfiguredFeature<?, ?>> LUSH_CAVE_MUD_PATCH = of("lush_cave_mud_patch");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> AZALEA_BUSH = of("azalea_bush");
 
 
     /*
@@ -72,6 +72,7 @@ public class NWConfiguredFeatures {
      */
 
     public static final RegistryKey<ConfiguredFeature<?, ?>> LOAM_PATCH_CEILING = of("loam_patch_ceiling");
+
 
     public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> featureRegisterable) {
         RegistryEntryLookup<PlacedFeature> registryEntryLookup = featureRegisterable.getRegistryLookup(RegistryKeys.PLACED_FEATURE);
@@ -84,6 +85,10 @@ public class NWConfiguredFeatures {
 
 
         ConfiguredFeatures.register(featureRegisterable, FALLEN_FIR_LOG, NWFeature.FALLEN_LOG, new SingleStateFeatureConfig(NWBlocks.FIR_LOG.getDefaultState()));
+        ConfiguredFeatures.register(featureRegisterable, AZALEA_BUSH, NWFeature.SMALL_BUSH, new SmallBushFeatureConfig(
+                BlockStateProvider.of(Blocks.OAK_LOG), BlockStateProvider.of(Blocks.AZALEA_LEAVES),
+                BlockStateProvider.of(Blocks.FLOWERING_AZALEA_LEAVES),
+                BlockStateProvider.of(Blocks.ROOTED_DIRT)));
 
 
         ConfiguredFeatures.register(featureRegisterable, GROWN_FIR, Feature.TREE, grownFirConfig().build());
@@ -107,7 +112,6 @@ public class NWConfiguredFeatures {
         ConfiguredFeatures.register(featureRegisterable, LOAM_PATCH_CEILING, Feature.VEGETATION_PATCH, new VegetationPatchFeatureConfig(BlockTags.MOSS_REPLACEABLE, BlockStateProvider.of(NWBlocks.LOAM), PlacedFeatures.createEntry(configuredFeatureRegistryEntryLookup.getOrThrow(VegetationConfiguredFeatures.VINES)), VerticalSurfaceType.CEILING, UniformIntProvider.create(1, 2), 0.0F, 5, 0.08F, UniformIntProvider.create(4, 7), 0.3F));
 
         TagMatchRuleTest ruleTest = new TagMatchRuleTest(BlockTags.BASE_STONE_OVERWORLD);
-
         ConfiguredFeatures.register(featureRegisterable, LUSH_CAVE_MUD_PATCH, Feature.ORE, new OreFeatureConfig(ruleTest, Blocks.MUD.getDefaultState(), 64));
     }
 
