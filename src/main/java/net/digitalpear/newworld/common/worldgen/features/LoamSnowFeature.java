@@ -7,6 +7,7 @@ import net.minecraft.block.SnowBlock;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
+import net.minecraft.world.GameRules;
 import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
@@ -24,19 +25,21 @@ public class LoamSnowFeature extends Feature<DefaultFeatureConfig> {
         Random random = context.getRandom();
         int range = 4;
         int blocksPlaced = 0;
+        float f = (float)(range * 3) * 0.333f + 0.5f;
 
         for (BlockPos currentPos : BlockPos.iterate(pos.add(-range, -range, -range), pos.add(range, range, range))) {
-            if (shouldPlaceSnowBlock(random, currentPos, world)) {
+            if ((currentPos.getSquaredDistance(pos) <= (double)(f * f)) && shouldPlaceSnowBlock(random, currentPos, world)) {
                 placeSnowBlock(random, currentPos, world);
                 blocksPlaced++;
             }
         }
 
+
         return blocksPlaced > 0;
     }
 
     private boolean shouldPlaceSnowBlock(Random random, BlockPos currentPos, StructureWorldAccess world) {
-        return random.nextInt(10) < 3
+        return random.nextInt(10) < 7
                 && currentPos.getY() < world.getTopY()
                 && currentPos.getY() > world.getBottomY()
                 && world.getBlockState(currentPos).isAir()
@@ -45,8 +48,8 @@ public class LoamSnowFeature extends Feature<DefaultFeatureConfig> {
 
     private void placeSnowBlock(Random random, BlockPos currentPos, StructureWorldAccess world) {
         int layers = random.nextInt(8) + 1;
-        if (layers == 8) {
-            world.setBlockState(currentPos, Blocks.SNOW_BLOCK.getDefaultState(), Block.NOTIFY_ALL);
+        if (layers >= 8) {
+            world.setBlockState(currentPos, Blocks.POWDER_SNOW.getDefaultState(), Block.NOTIFY_ALL);
         } else {
             world.setBlockState(currentPos, Blocks.SNOW.getDefaultState().with(SnowBlock.LAYERS, layers), SnowBlock.NOTIFY_ALL);
         }

@@ -116,7 +116,7 @@ public class NWPlacedFeatures {
 
         PlacedFeatures.register(featureRegisterable, LOAM_PATCH_CEILING, loamPatchCeiling, CountPlacementModifier.of(125), SquarePlacementModifier.of(), PlacedFeatures.BOTTOM_TO_120_RANGE, EnvironmentScanPlacementModifier.of(Direction.UP, BlockPredicate.solid(), BlockPredicate.IS_AIR, 12), RandomOffsetPlacementModifier.vertically(ConstantIntProvider.create(-1)), BiomePlacementModifier.of());
         PlacedFeatures.register(featureRegisterable, LOAM_ORE, loamOre, CountPlacementModifier.of(115), SquarePlacementModifier.of(), HeightRangePlacementModifier.uniform(YOffset.getBottom(), YOffset.fixed(32)), BiomePlacementModifier.of());
-        PlacedFeatures.register(featureRegisterable, LOAM_SNOW, loamSnow, CountPlacementModifier.of(50), SquarePlacementModifier.of(), HeightRangePlacementModifier.uniform(YOffset.getBottom(), YOffset.fixed(32)), BiomePlacementModifier.of());
+        PlacedFeatures.register(featureRegisterable, LOAM_SNOW, loamSnow, CountPlacementModifier.of(8), SquarePlacementModifier.of(), HeightRangePlacementModifier.uniform(YOffset.getBottom(), YOffset.fixed(32)), BiomePlacementModifier.of());
 
 
 
@@ -126,7 +126,6 @@ public class NWPlacedFeatures {
         PlacedFeatures.register(featureRegisterable,BIRCH_CHERRY_GROVE, birchTall, treeModifiers(RarityFilterPlacementModifier.of(3)));
         PlacedFeatures.register(featureRegisterable, LUSH_CAVE_MUD_PATCH, lushCaveMud, CountPlacementModifier.of(125), SquarePlacementModifier.of(), HeightRangePlacementModifier.uniform(YOffset.getBottom(), YOffset.fixed(0)), BiomePlacementModifier.of());
         PlacedFeatures.register(featureRegisterable, AZALEA_BUSH, azaleaBush, CountPlacementModifier.of(125), SquarePlacementModifier.of(), PlacedFeatures.BOTTOM_TO_120_RANGE, EnvironmentScanPlacementModifier.of(Direction.DOWN, BlockPredicate.solid(), BlockPredicate.IS_AIR, 5), RandomOffsetPlacementModifier.vertically(ConstantIntProvider.create(1)), BiomePlacementModifier.of());
-
     }
 
 
@@ -137,7 +136,5 @@ public class NWPlacedFeatures {
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.CHERRY_GROVE), GenerationStep.Feature.VEGETAL_DECORATION, BIRCH_CHERRY_GROVE);
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.LUSH_CAVES), GenerationStep.Feature.VEGETAL_DECORATION, LUSH_CAVE_MUD_PATCH);
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.LUSH_CAVES), GenerationStep.Feature.VEGETAL_DECORATION, AZALEA_BUSH);
-
-
     }
 }

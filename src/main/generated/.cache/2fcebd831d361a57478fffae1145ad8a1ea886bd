@@ -1,5 +1,5 @@
-// 1.20.1	2023-07-12T15:56:45.7315422	New World/Tags for minecraft:worldgen/biome
+// 1.20.1	2023-07-12T16:26:20.1152279	New World/Tags for minecraft:worldgen/biome
 5afee9db923ca2def797714a8b57171e39f227b3 data\minecraft\tags\worldgen\biome\has_structure\mineshaft.json
 5afee9db923ca2def797714a8b57171e39f227b3 data\minecraft\tags\worldgen\biome\has_structure\village_taiga.json
-f7881d91e65f3324674871c1ac3cf0438fbce28a data\newworld\tags\worldgen\biome\has_structure\buried_bunker.json
 5afee9db923ca2def797714a8b57171e39f227b3 data\minecraft\tags\worldgen\biome\is_mountain.json
+f7881d91e65f3324674871c1ac3cf0438fbce28a data\newworld\tags\worldgen\biome\has_structure\buried_bunker.json
