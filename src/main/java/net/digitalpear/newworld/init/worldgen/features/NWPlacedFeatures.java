@@ -124,7 +124,7 @@ public class NWPlacedFeatures {
             Vanilla Biome Features
          */
         PlacedFeatures.register(featureRegisterable,BIRCH_CHERRY_GROVE, birchTall, treeModifiers(RarityFilterPlacementModifier.of(3)));
-        PlacedFeatures.register(featureRegisterable, LUSH_CAVE_MUD_PATCH, lushCaveMud, CountPlacementModifier.of(125), SquarePlacementModifier.of(), HeightRangePlacementModifier.uniform(YOffset.getBottom(), YOffset.fixed(0)), BiomePlacementModifier.of());
+        PlacedFeatures.register(featureRegisterable, LUSH_CAVE_MUD_PATCH, lushCaveMud, CountPlacementModifier.of(35), SquarePlacementModifier.of(), HeightRangePlacementModifier.uniform(YOffset.getBottom(), YOffset.fixed(0)), BiomePlacementModifier.of());
         PlacedFeatures.register(featureRegisterable, AZALEA_BUSH, azaleaBush, CountPlacementModifier.of(125), SquarePlacementModifier.of(), PlacedFeatures.BOTTOM_TO_120_RANGE, EnvironmentScanPlacementModifier.of(Direction.DOWN, BlockPredicate.solid(), BlockPredicate.IS_AIR, 5), RandomOffsetPlacementModifier.vertically(ConstantIntProvider.create(1)), BiomePlacementModifier.of());
     }
 

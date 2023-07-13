@@ -78,19 +78,20 @@ public class NWOverworldBiomeCreator {
     public static Biome createScrapyardCave(RegistryEntryLookup<PlacedFeature> featureLookup, RegistryEntryLookup<ConfiguredCarver<?>> carverLookup){
         SpawnSettings.Builder builder2 = new SpawnSettings.Builder();
 
-        DefaultBiomeFeatures.addBatsAndMonsters(builder2);
+        DefaultBiomeFeatures.addCaveMobs(builder2);
 
 
         GenerationSettings.LookupBackedBuilder lookupBackedBuilder = new GenerationSettings.LookupBackedBuilder(featureLookup, carverLookup);
 
         lookupBackedBuilder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, NWPlacedFeatures.LOAM_PATCH_CEILING);
         lookupBackedBuilder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, NWPlacedFeatures.LOAM_ORE);
-        lookupBackedBuilder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, NWPlacedFeatures.LOAM_SNOW);
+        lookupBackedBuilder.feature(GenerationStep.Feature.TOP_LAYER_MODIFICATION, NWPlacedFeatures.LOAM_SNOW);
 
         //Default biome features, DO NOT CHANGE THIS
         addBasicFeatures(lookupBackedBuilder);
+        DefaultBiomeFeatures.addFrozenLavaSpring(lookupBackedBuilder);
         DefaultBiomeFeatures.addPlainsTallGrass(lookupBackedBuilder);
-        DefaultBiomeFeatures.addDefaultOres(lookupBackedBuilder, true);
+        DefaultBiomeFeatures.addDefaultOres(lookupBackedBuilder);
         DefaultBiomeFeatures.addDefaultDisks(lookupBackedBuilder);
         DefaultBiomeFeatures.addPlainsFeatures(lookupBackedBuilder);
         DefaultBiomeFeatures.addDefaultMushrooms(lookupBackedBuilder);

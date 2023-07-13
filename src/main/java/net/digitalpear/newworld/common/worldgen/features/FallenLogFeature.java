@@ -27,7 +27,7 @@ public class FallenLogFeature extends Feature<SingleStateFeatureConfig> {
         SingleStateFeatureConfig singleStateFeatureConfig = context.getConfig();
         int logLength = 2 + context.getRandom().nextBetween(2, 4);
 
-        if ((structureWorldAccess.isSkyVisible(blockPos)) || structureWorldAccess.getBlockState(blockPos.down()).isSolidBlock(structureWorldAccess, blockPos)) {
+        if ((structureWorldAccess.isSkyVisible(blockPos)) || structureWorldAccess.getBlockState(blockPos.down()).isSideSolidFullSquare(structureWorldAccess, blockPos.down(), Direction.UP)) {
             if (!structureWorldAccess.getBlockState(blockPos.down()).isOf(Blocks.WATER) && !structureWorldAccess.getBlockState(blockPos.down()).isOf(Blocks.LAVA)) {
                 placeBlock(logLength, 0, structureWorldAccess, blockPos, direction, singleStateFeatureConfig.state);
                 return true;
@@ -45,7 +45,7 @@ public class FallenLogFeature extends Feature<SingleStateFeatureConfig> {
     }
     public static void generateLog(StructureWorldAccess world, BlockPos pos, BlockState state, Direction direction){
         for (int j = -6; j < 3; ++j) {
-            if (world.getBlockState(pos.down(j + 1)).isSolidBlock(world, pos.down(j + 1)) && !world.getBlockState(pos.down(j)).isSolidBlock(world, pos.down(j))){
+            if (world.getBlockState(pos.down(j + 1)).isSolidBlock(world, pos.down(j + 1)) && !world.getBlockState(pos.down(j)).isSideSolidFullSquare(world, pos.down(j), Direction.UP)){
                 world.setBlockState(pos.down(j), state.with(PillarBlock.AXIS, direction.getAxis()), Block.NOTIFY_ALL);
                 return;
             }

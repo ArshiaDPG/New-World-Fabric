@@ -89,10 +89,7 @@ public class NWConfiguredFeatures {
 
 
         ConfiguredFeatures.register(featureRegisterable, FALLEN_FIR_LOG, NWFeature.FALLEN_LOG, new SingleStateFeatureConfig(NWBlocks.FIR_LOG.getDefaultState()));
-        ConfiguredFeatures.register(featureRegisterable, AZALEA_BUSH, NWFeature.SMALL_BUSH, new SmallBushFeatureConfig(
-                BlockStateProvider.of(Blocks.OAK_LOG), BlockStateProvider.of(Blocks.AZALEA_LEAVES),
-                BlockStateProvider.of(Blocks.FLOWERING_AZALEA_LEAVES),
-                BlockStateProvider.of(Blocks.ROOTED_DIRT)));
+
 
 
         ConfiguredFeatures.register(featureRegisterable, GROWN_FIR, Feature.TREE, grownFirConfig().build());
@@ -107,7 +104,6 @@ public class NWConfiguredFeatures {
         ConfiguredFeatures.register(featureRegisterable, MOSS_CARPET_WOODED_MEADOW, Feature.RANDOM_PATCH, ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(Blocks.MOSS_CARPET.getDefaultState())), VALID_MOSS_CARPET_BLOCKS, 60));
         ConfiguredFeatures.register(featureRegisterable,GLOW_LICHEN_WOODED_MEADOW, Feature.MULTIFACE_GROWTH, new MultifaceGrowthFeatureConfig((MultifaceGrowthBlock) Blocks.GLOW_LICHEN,20, true, true, true, 0.5f, RegistryEntryList.of(Block::getRegistryEntry, NWBlocks.FIR_LOG, Blocks.MOSSY_COBBLESTONE)));
         ConfiguredFeatures.register(featureRegisterable,FIR_SPAWN, Feature.RANDOM_SELECTOR, new RandomFeatureConfig(List.of(new RandomFeatureEntry(firBeesChecked, 0.06f)), firChecked));
-        ConfiguredFeatures.register(featureRegisterable,FIR_TAIGA, Feature.RANDOM_SELECTOR, new RandomFeatureConfig(List.of(new RandomFeatureEntry(grownFirBeesChecked, 0.0f)), grownFirChecked));
         ConfiguredFeatures.register(featureRegisterable,FIR_MEADOW, Feature.RANDOM_SELECTOR, new RandomFeatureConfig(List.of(new RandomFeatureEntry(grownFirBeesChecked, 1.0f)), grownFirChecked));
 
 
@@ -121,6 +117,11 @@ public class NWConfiguredFeatures {
             Vanilla Biome Features
          */
         ConfiguredFeatures.register(featureRegisterable, LUSH_CAVE_MUD_PATCH, Feature.ORE, new OreFeatureConfig(ruleTest, Blocks.MUD.getDefaultState(), 64));
+        ConfiguredFeatures.register(featureRegisterable,FIR_TAIGA, Feature.RANDOM_SELECTOR, new RandomFeatureConfig(List.of(new RandomFeatureEntry(grownFirBeesChecked, 0.0f)), grownFirChecked));
+        ConfiguredFeatures.register(featureRegisterable, AZALEA_BUSH, NWFeature.SMALL_BUSH, new SmallBushFeatureConfig(
+                BlockStateProvider.of(Blocks.OAK_LOG), BlockStateProvider.of(Blocks.AZALEA_LEAVES),
+                BlockStateProvider.of(Blocks.FLOWERING_AZALEA_LEAVES),
+                BlockStateProvider.of(Blocks.ROOTED_DIRT)));
     }
 
     private static TreeFeatureConfig.Builder naturalFirConfig() {
