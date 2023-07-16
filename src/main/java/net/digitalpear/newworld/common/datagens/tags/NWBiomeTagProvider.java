@@ -12,7 +12,7 @@ import net.minecraft.world.biome.BiomeKeys;
 
 import java.util.concurrent.CompletableFuture;
 
-public class NWBiomeTagGen extends FabricTagProvider<Biome> {
+public class NWBiomeTagProvider extends FabricTagProvider<Biome> {
     /**
      * Constructs a new {@link FabricTagProvider} with the default computed path.
      *
@@ -21,7 +21,7 @@ public class NWBiomeTagGen extends FabricTagProvider<Biome> {
      * @param output           the {@link FabricDataOutput} instance
      * @param registriesFuture the backing registry for the tag type
      */
-    public NWBiomeTagGen(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
+    public NWBiomeTagProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
         super(output, RegistryKeys.BIOME, registriesFuture);
     }
 

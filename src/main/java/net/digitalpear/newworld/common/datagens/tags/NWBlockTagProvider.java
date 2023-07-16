@@ -5,13 +5,14 @@ import net.digitalpear.newworld.init.data.tags.NWBlockTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
 
 import java.util.concurrent.CompletableFuture;
 
-public class NWBlockTagGen extends FabricTagProvider<Block> {
+public class NWBlockTagProvider extends FabricTagProvider<Block> {
 
     /**
      * Constructs a new {@link FabricTagProvider} with the default computed path.
@@ -21,7 +22,7 @@ public class NWBlockTagGen extends FabricTagProvider<Block> {
      * @param output           the {@link FabricDataOutput} instance
      * @param registriesFuture the backing registry for the tag type
      */
-    public NWBlockTagGen(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
+    public NWBlockTagProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
         super(output, RegistryKeys.BLOCK, registriesFuture);
     }
 
@@ -84,6 +85,10 @@ public class NWBlockTagGen extends FabricTagProvider<Block> {
                 .add(NWBlocks.FIR_WOOD)
                 .add(NWBlocks.STRIPPED_FIR_WOOD)
                 .add(NWBlocks.STRIPPED_FIR_LOG);
+
+        getOrCreateTagBuilder(BlockTags.BASE_STONE_OVERWORLD).add(NWBlocks.LOAM);
+
+        getOrCreateTagBuilder(NWBlockTags.SMALL_BUSH_PLANTABLE).forceAddTag(BlockTags.DIRT).add(Blocks.MUD).add(Blocks.CLAY).forceAddTag(BlockTags.LUSH_GROUND_REPLACEABLE);
     }
 
 }

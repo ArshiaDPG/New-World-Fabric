@@ -13,10 +13,16 @@ import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.item.Items;
+import net.minecraft.item.SpawnEggItem;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
+import net.minecraft.util.Colors;
 import net.minecraft.util.Identifier;
+import org.apache.commons.codec.binary.Hex;
+
+import java.awt.*;
+import java.text.DecimalFormat;
 
 
 @SuppressWarnings("unused")
@@ -45,11 +51,16 @@ public class NWItems {
     public static final Item MATTOCK_CRAFTING_TEMPLATE_HEAD = registerItem("mattock_crafting_template_head", new SmithingTemplatePieceItem(new Item.Settings()));
     public static final Item MATTOCK_CRAFTING_TEMPLATE_SHAFT = registerItem("mattock_crafting_template_shaft", new SmithingTemplatePieceItem(new Item.Settings()));
 
+    public static final Item AUTOMATON_SPAWN_EGG = registerItem("automaton_spawn_egg", new SpawnEggItem(NWEntityTypes.AUTOMATON, 3683645, 2828592, new Item.Settings()));
+
 
     public static final Item ANCIENT_MATTOCK = registerItem("ancient_mattock", new MattockItem(NWToolMaterials.ANCIENT, 0.0F, -3.0F, new Item.Settings()));
 
     public static void init(){
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> {
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.SPAWN_EGGS).register(entries -> {
+            entries.addAfter(Items.ALLAY_SPAWN_EGG, AUTOMATON_SPAWN_EGG);
+        });
+            ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> {
             entries.addAfter(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE, MATTOCK_CRAFTING_TEMPLATE);
             entries.addAfter(MATTOCK_CRAFTING_TEMPLATE, MATTOCK_CRAFTING_TEMPLATE_HEAD);
             entries.addAfter(MATTOCK_CRAFTING_TEMPLATE_HEAD, MATTOCK_CRAFTING_TEMPLATE_SHAFT);

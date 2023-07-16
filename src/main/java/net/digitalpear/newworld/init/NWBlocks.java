@@ -1,6 +1,7 @@
 package net.digitalpear.newworld.init;
 
 import net.digitalpear.newworld.Newworld;
+import net.digitalpear.newworld.common.blocks.AssemblyStationBlock;
 import net.digitalpear.newworld.common.worldgen.tree.FirSaplingGenerator;
 import net.digitalpear.newworld.init.data.woodset.Woodset;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
@@ -77,6 +78,11 @@ public class NWBlocks {
     public static final Block LOAM_TILE_SLAB = createBlockWithItem("loam_tile_slab", new SlabBlock(AbstractBlock.Settings.copy(LOAM_TILES)));
     public static final Block LOAM_TILE_WALL = createBlockWithItem("loam_tile_wall", new WallBlock(AbstractBlock.Settings.copy(LOAM_TILES)));
 
+    /*
+        Automaton summoning block?
+     */
+    public static final Block ASSEMBLY_STATION = createBlockWithItem("assembly_station", new AssemblyStationBlock(AbstractBlock.Settings.create().strength(6).sounds(BlockSoundGroup.CHERRY_WOOD)));
+
     public static void init(){
         Woodset.addToBuildingTab(Items.SPRUCE_BUTTON, FIR);
         
@@ -93,6 +99,8 @@ public class NWBlocks {
                     LOAM_BRICK_SLAB, LOAM_TILES, LOAM_TILE_STAIRS, LOAM_TILE_SLAB, LOAM_TILE_WALL
             );
         });
-
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(entries -> {
+           entries.add(ASSEMBLY_STATION);
+        });
     }
 }

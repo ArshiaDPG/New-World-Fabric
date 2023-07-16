@@ -1,9 +1,10 @@
 package net.digitalpear.newworld;
 
 import net.digitalpear.newworld.common.datagens.*;
-import net.digitalpear.newworld.common.datagens.tags.NWBiomeTagGen;
-import net.digitalpear.newworld.common.datagens.tags.NWBlockTagGen;
-import net.digitalpear.newworld.common.datagens.tags.NWItemTagGen;
+import net.digitalpear.newworld.common.datagens.tags.NWBiomeTagProvider;
+import net.digitalpear.newworld.common.datagens.tags.NWBlockTagProvider;
+import net.digitalpear.newworld.common.datagens.tags.NWEntityTypeTagProvider;
+import net.digitalpear.newworld.common.datagens.tags.NWItemTagProvider;
 import net.digitalpear.newworld.common.datagens.worldgen.NWBiomeProvider;
 import net.digitalpear.newworld.common.datagens.worldgen.NWConfiguredFeatureProvider;
 import net.digitalpear.newworld.common.datagens.worldgen.NWPlacedFeatureProvider;
@@ -21,9 +22,10 @@ public class NewworldDatagen implements DataGeneratorEntrypoint {
     public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
         final FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
 
-        pack.addProvider(NWItemTagGen::new);
-        pack.addProvider(NWBlockTagGen::new);
-        pack.addProvider(NWBiomeTagGen::new);
+        pack.addProvider(NWItemTagProvider::new);
+        pack.addProvider(NWBlockTagProvider::new);
+        pack.addProvider(NWBiomeTagProvider::new);
+        pack.addProvider(NWEntityTypeTagProvider::new);
 
         pack.addProvider(NWBlockLootTableProvider::new);
         pack.addProvider(NWChestLootTableProvider::new);

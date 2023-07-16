@@ -12,7 +12,7 @@ import net.minecraft.registry.tag.ItemTags;
 
 import java.util.concurrent.CompletableFuture;
 
-public class NWItemTagGen extends FabricTagProvider<Item> {
+public class NWItemTagProvider extends FabricTagProvider<Item> {
 
     /**
      * Constructs a new {@link FabricTagProvider} with the default computed path.
@@ -22,7 +22,7 @@ public class NWItemTagGen extends FabricTagProvider<Item> {
      * @param output           the {@link FabricDataOutput} instance
      * @param registriesFuture the backing registry for the tag type
      */
-    public NWItemTagGen(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
+    public NWItemTagProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
         super(output, RegistryKeys.ITEM, registriesFuture);
     }
 

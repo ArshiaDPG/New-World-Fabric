@@ -1,4 +1,4 @@
-// 1.20.1	2023-07-12T20:21:29.4958633	New World/Model Definitions
+// 1.20.1	2023-07-15T17:51:55.2684132	New World/Model Definitions
 eb334652ce87b8a4e8a6138188b11587c1db7136 assets\newworld\blockstates\stripped_fir_wood.json
 863fbb82453ac965670fbbfd88966bd24243dadc assets\newworld\models\block\fir_log.json
 38c0b55e90009c06c0752a6a293ffbbb539a962f assets\newworld\models\block\fir_door_top_right_open.json
@@ -97,6 +97,7 @@ b136a5aa1f601ec407f6d406d30fb87c4a1911b1 assets\newworld\blockstates\loam.json
 e3499966fbfec86f5a79b4208bc58c66ccb0bdb9 assets\newworld\models\block\fir_door_top_right.json
 2a238dfafc04e01523ecd82f7aa1e3a41e07d373 assets\newworld\models\item\ancient_mattock.json
 9c468f1f225ac6679ff563cdfa130cf885ebf7fc assets\newworld\models\block\fir_pressure_plate_down.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets\newworld\models\item\automaton_spawn_egg.json
 e5456cf042415a051026cc9a4d6eece076e6f233 assets\newworld\blockstates\fir_wall_hanging_sign.json
 ecb64783c4c5f10193672c7d4072d49ce34ecbe6 assets\newworld\blockstates\fir_planks.json
 b35ee4cf408c8f4bfd9a20fb6235ef36486baf01 assets\newworld\models\block\loam_brick_slab_top.json

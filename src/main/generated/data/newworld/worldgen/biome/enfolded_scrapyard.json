@@ -32,8 +32,6 @@
       "minecraft:lake_lava_surface"
     ],
     [
-      "newworld:loam_patch_ceiling",
-      "newworld:loam_ore",
       "minecraft:amethyst_geode"
     ],
     [
@@ -43,6 +41,7 @@
     [],
     [],
     [
+      "newworld:calcite_patch",
       "minecraft:ore_dirt",
       "minecraft:ore_gravel",
       "minecraft:ore_granite_upper",
@@ -72,7 +71,10 @@
       "minecraft:disk_clay",
       "minecraft:disk_gravel"
     ],
-    [],
+    [
+      "newworld:loam_patch_ceiling",
+      "newworld:loam_ore"
+    ],
     [
       "minecraft:spring_water",
       "minecraft:spring_lava",
@@ -108,7 +110,14 @@
     "axolotls": [],
     "creature": [],
     "misc": [],
-    "monster": [],
+    "monster": [
+      {
+        "type": "newworld:automaton",
+        "maxCount": 5,
+        "minCount": 1,
+        "weight": 20
+      }
+    ],
     "underground_water_creature": [
       {
         "type": "minecraft:glow_squid",

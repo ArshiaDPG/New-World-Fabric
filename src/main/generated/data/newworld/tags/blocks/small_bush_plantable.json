@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "#minecraft:dirt",
+    "minecraft:mud",
+    "minecraft:clay",
+    "#minecraft:lush_ground_replaceable"
+  ]
+}

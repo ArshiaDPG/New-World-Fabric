@@ -106,6 +106,6 @@ public class NWRecipeProvider extends FabricRecipeProvider {
     }
 
     public static void offerUpgradeRecipe(Consumer<RecipeJsonProvider> exporter, Item template, Item result) {
-        SmithingTransformRecipeJsonBuilder.create(Ingredient.ofItems(template), Ingredient.ofItems(Items.FLINT), Ingredient.ofItems(Items.STICK), RecipeCategory.TOOLS, result).criterion("has_netherite_ingot", conditionsFromItem(template)).offerTo(exporter, getItemPath(result) + "_smithing");
+        SmithingTransformRecipeJsonBuilder.create(Ingredient.ofItems(template), Ingredient.ofItems(Items.STICK), Ingredient.ofItems(Items.FLINT), RecipeCategory.TOOLS, result).criterion("has_netherite_ingot", conditionsFromItem(template)).offerTo(exporter, getItemPath(result) + "_smithing");
     }
 }

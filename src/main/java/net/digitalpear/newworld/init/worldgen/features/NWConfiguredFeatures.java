@@ -4,10 +4,7 @@ import net.digitalpear.newworld.Newworld;
 import net.digitalpear.newworld.common.worldgen.NWFeature;
 import net.digitalpear.newworld.common.worldgen.features.SmallBushFeatureConfig;
 import net.digitalpear.newworld.init.NWBlocks;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.MultifaceGrowthBlock;
-import net.minecraft.block.SweetBerryBushBlock;
+import net.minecraft.block.*;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryEntryLookup;
 import net.minecraft.registry.RegistryKey;
@@ -17,12 +14,16 @@ import net.minecraft.registry.entry.RegistryEntryList;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.structure.rule.TagMatchRuleTest;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.collection.DataPool;
 import net.minecraft.util.math.VerticalSurfaceType;
+import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
 import net.minecraft.world.gen.foliage.SpruceFoliagePlacer;
+import net.minecraft.world.gen.placementmodifier.PlacementModifier;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
+import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
 import net.minecraft.world.gen.treedecorator.AlterGroundTreeDecorator;
 import net.minecraft.world.gen.treedecorator.BeehiveTreeDecorator;
 import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
@@ -74,6 +75,8 @@ public class NWConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> LOAM_PATCH_CEILING = of("loam_patch_ceiling");
     public static final RegistryKey<ConfiguredFeature<?, ?>> LOAM_ORE = of("loam_ore");
     public static final RegistryKey<ConfiguredFeature<?, ?>> LOAM_SNOW = of("loam_snow");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> CALCITE_PATCH = of("calcite_patch");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> CALCITE_VEGETATION = of("calcite_vegetation");
 
 
     public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> featureRegisterable) {
@@ -112,6 +115,9 @@ public class NWConfiguredFeatures {
         ConfiguredFeatures.register(featureRegisterable, LOAM_PATCH_CEILING, Feature.VEGETATION_PATCH, new VegetationPatchFeatureConfig(BlockTags.MOSS_REPLACEABLE, BlockStateProvider.of(NWBlocks.LOAM), PlacedFeatures.createEntry(configuredFeatureRegistryEntryLookup.getOrThrow(MiscConfiguredFeatures.ICE_SPIKE)), VerticalSurfaceType.CEILING, UniformIntProvider.create(1, 2), 0.0F, 5, 0.008F, UniformIntProvider.create(4, 7), 0.3F));
         ConfiguredFeatures.register(featureRegisterable, LOAM_ORE, Feature.ORE, new OreFeatureConfig(ruleTest, NWBlocks.LOAM.getDefaultState(), 32));
         ConfiguredFeatures.register(featureRegisterable, LOAM_SNOW, NWFeature.LOAM_SNOW, new DefaultFeatureConfig());
+
+        ConfiguredFeatures.register(featureRegisterable, CALCITE_VEGETATION, Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(Blocks.SNOW.getDefaultState().with(SnowBlock.LAYERS, 6), 1).add(Blocks.SNOW.getDefaultState().with(SnowBlock.LAYERS, 3), 2).add(Blocks.AIR.getDefaultState(), 7).build())));
+        ConfiguredFeatures.register(featureRegisterable, CALCITE_PATCH, Feature.VEGETATION_PATCH, new VegetationPatchFeatureConfig(BlockTags.MOSS_REPLACEABLE, BlockStateProvider.of(Blocks.CALCITE), PlacedFeatures.createEntry(configuredFeatureRegistryEntryLookup.getOrThrow(CALCITE_VEGETATION), new PlacementModifier[0]), VerticalSurfaceType.FLOOR, ConstantIntProvider.create(1), 0.0f, 5, 0.8f, UniformIntProvider.create(4, 7), 0.3f));
 
         /*
             Vanilla Biome Features

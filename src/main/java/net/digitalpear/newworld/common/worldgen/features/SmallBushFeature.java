@@ -1,6 +1,7 @@
 package net.digitalpear.newworld.common.worldgen.features;
 
 import com.mojang.serialization.Codec;
+import net.digitalpear.newworld.init.data.tags.NWBlockTags;
 import net.minecraft.block.Block;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
@@ -20,6 +21,9 @@ public class SmallBushFeature extends Feature<SmallBushFeatureConfig> {
         StructureWorldAccess world = context.getWorld();
         Random random = context.getRandom();
 
+        if (world.getBlockState(pos.down()).isIn(NWBlockTags.SMALL_BUSH_PLANTABLE)){
+            return false;
+        }
         world.setBlockState(pos.down(), config.dirtProvider.get(random, pos.down()), Block.NOTIFY_ALL);
         world.setBlockState(pos, config.trunkProvider.get(random, pos), Block.NOTIFY_ALL);
 

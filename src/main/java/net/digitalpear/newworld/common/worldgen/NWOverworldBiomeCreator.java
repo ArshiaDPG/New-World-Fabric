@@ -1,5 +1,6 @@
 package net.digitalpear.newworld.common.worldgen;
 
+import net.digitalpear.newworld.init.NWEntityTypes;
 import net.digitalpear.newworld.init.worldgen.features.NWPlacedFeatures;
 import net.minecraft.client.sound.MusicType;
 import net.minecraft.entity.EntityType;
@@ -18,6 +19,7 @@ import net.minecraft.world.gen.feature.*;
 import org.jetbrains.annotations.Nullable;
 
 public class NWOverworldBiomeCreator {
+
     protected static int getSkyColor(float temperature) {
         float f = temperature / 3.0F;
         f = MathHelper.clamp(f, -1.0F, 1.0F);
@@ -33,6 +35,7 @@ public class NWOverworldBiomeCreator {
     private static Biome createBiome(boolean precipitation, float temperature, float downfall, int waterColor, int foliageColor, SpawnSettings.Builder spawnSettings, GenerationSettings.Builder generationSettings, @Nullable MusicSound music) {
         return (new net.minecraft.world.biome.Biome.Builder()).precipitation(precipitation).temperature(temperature).downfall(downfall).effects((new net.minecraft.world.biome.BiomeEffects.Builder()).waterColor(waterColor).waterFogColor(329011).fogColor(12638463).foliageColor(foliageColor).skyColor(getSkyColor(temperature)).moodSound(BiomeMoodSound.CAVE).music(music).build()).spawnSettings(spawnSettings.build()).generationSettings(generationSettings.build()).build();
     }
+
     private static void addBasicFeatures(GenerationSettings.LookupBackedBuilder generationSettings) {
         DefaultBiomeFeatures.addLandCarvers(generationSettings);
         DefaultBiomeFeatures.addAmethystGeodes(generationSettings);
@@ -42,12 +45,15 @@ public class NWOverworldBiomeCreator {
         DefaultBiomeFeatures.addFrozenTopLayer(generationSettings);
     }
 
+
+
+
     public static Biome createWoodedMeadow(RegistryEntryLookup<PlacedFeature> featureLookup, RegistryEntryLookup<ConfiguredCarver<?>> carverLookup) {
         GenerationSettings.LookupBackedBuilder lookupBackedBuilder = new GenerationSettings.LookupBackedBuilder(featureLookup, carverLookup);
-        SpawnSettings.Builder builder2 = new SpawnSettings.Builder();
-        builder2.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.DONKEY, 1, 1, 2)).spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.RABBIT, 2, 2, 6)).spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.SHEEP, 2, 2, 4));
+        SpawnSettings.Builder spawnBuilder = new SpawnSettings.Builder();
+        spawnBuilder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.DONKEY, 1, 1, 2)).spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.RABBIT, 2, 2, 6)).spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.SHEEP, 2, 2, 4));
 
-        DefaultBiomeFeatures.addBatsAndMonsters(builder2);
+        DefaultBiomeFeatures.addBatsAndMonsters(spawnBuilder);
 
 
         addBasicFeatures(lookupBackedBuilder);
@@ -72,19 +78,21 @@ public class NWOverworldBiomeCreator {
 
 
         MusicSound musicSound = MusicType.createIngameMusic(SoundEvents.MUSIC_OVERWORLD_MEADOW);
-        return createBiome(true, 0.5F, 0.8F, 937679, builder2, lookupBackedBuilder, musicSound);
+        return createBiome(true, 0.5F, 0.8F, 937679, spawnBuilder, lookupBackedBuilder, musicSound);
     }
 
     public static Biome createScrapyardCave(RegistryEntryLookup<PlacedFeature> featureLookup, RegistryEntryLookup<ConfiguredCarver<?>> carverLookup){
-        SpawnSettings.Builder builder2 = new SpawnSettings.Builder();
+        SpawnSettings.Builder spawnBuilder = new SpawnSettings.Builder();
 
-        DefaultBiomeFeatures.addCaveMobs(builder2);
+        DefaultBiomeFeatures.addCaveMobs(spawnBuilder);
 
+        spawnBuilder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(NWEntityTypes.AUTOMATON, 20, 1, 5));
 
         GenerationSettings.LookupBackedBuilder lookupBackedBuilder = new GenerationSettings.LookupBackedBuilder(featureLookup, carverLookup);
 
-        lookupBackedBuilder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, NWPlacedFeatures.LOAM_PATCH_CEILING);
-        lookupBackedBuilder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, NWPlacedFeatures.LOAM_ORE);
+        lookupBackedBuilder.feature(GenerationStep.Feature.UNDERGROUND_DECORATION, NWPlacedFeatures.LOAM_PATCH_CEILING);
+        lookupBackedBuilder.feature(GenerationStep.Feature.UNDERGROUND_DECORATION, NWPlacedFeatures.LOAM_ORE);
+        lookupBackedBuilder.feature(GenerationStep.Feature.UNDERGROUND_ORES, NWPlacedFeatures.CALCITE_PATCH);
         lookupBackedBuilder.feature(GenerationStep.Feature.TOP_LAYER_MODIFICATION, NWPlacedFeatures.LOAM_SNOW);
 
         //Default biome features, DO NOT CHANGE THIS
@@ -98,7 +106,6 @@ public class NWOverworldBiomeCreator {
         DefaultBiomeFeatures.addDefaultVegetation(lookupBackedBuilder);
 
         MusicSound musicSound = MusicType.createIngameMusic(SoundEvents.MUSIC_OVERWORLD_DEEP_DARK);
-        return createBiome(true, 0.0F, 0.4F, builder2, lookupBackedBuilder, musicSound);
+        return createBiome(true, 0.0F, 0.4F, spawnBuilder, lookupBackedBuilder, musicSound);
     }
-
 }
