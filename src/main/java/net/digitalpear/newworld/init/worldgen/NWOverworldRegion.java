@@ -51,7 +51,5 @@ public class NWOverworldRegion extends Region {
 
             scrapyardPoints.forEach(point -> addBiome(mapper, point, NWBiomes.ENFOLDED_SCRAPYARD));
         });
-
-
     }
 }

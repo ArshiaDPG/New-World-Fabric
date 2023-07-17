@@ -21,7 +21,6 @@ import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
 import net.minecraft.world.gen.foliage.SpruceFoliagePlacer;
-import net.minecraft.world.gen.placementmodifier.PlacementModifier;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
 import net.minecraft.world.gen.treedecorator.AlterGroundTreeDecorator;
@@ -82,12 +81,14 @@ public class NWConfiguredFeatures {
     public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> featureRegisterable) {
         TagMatchRuleTest ruleTest = new TagMatchRuleTest(BlockTags.BASE_STONE_OVERWORLD);
 
-        RegistryEntryLookup<PlacedFeature> registryEntryLookup = featureRegisterable.getRegistryLookup(RegistryKeys.PLACED_FEATURE);
+        RegistryEntryLookup<PlacedFeature> placedFeatures = featureRegisterable.getRegistryLookup(RegistryKeys.PLACED_FEATURE);
+        RegistryEntryLookup<ConfiguredFeature<?, ?>> configuredFeatures = featureRegisterable.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
 
-        RegistryEntry<PlacedFeature> firChecked = registryEntryLookup.getOrThrow(NWPlacedFeatures.FIR_CHECKED);
-        RegistryEntry<PlacedFeature> firBeesChecked = registryEntryLookup.getOrThrow(NWPlacedFeatures.FIR_BEES_CHECKED);
-        RegistryEntry<PlacedFeature> grownFirChecked = registryEntryLookup.getOrThrow(NWPlacedFeatures.GROWN_FIR_CHECKED);
-        RegistryEntry<PlacedFeature> grownFirBeesChecked = registryEntryLookup.getOrThrow(NWPlacedFeatures.GROWN_FIR_BEES_CHECKED);
+
+        RegistryEntry<PlacedFeature> firChecked = placedFeatures.getOrThrow(NWPlacedFeatures.FIR_CHECKED);
+        RegistryEntry<PlacedFeature> firBeesChecked = placedFeatures.getOrThrow(NWPlacedFeatures.FIR_BEES_CHECKED);
+        RegistryEntry<PlacedFeature> grownFirChecked = placedFeatures.getOrThrow(NWPlacedFeatures.GROWN_FIR_CHECKED);
+        RegistryEntry<PlacedFeature> grownFirBeesChecked = placedFeatures.getOrThrow(NWPlacedFeatures.GROWN_FIR_BEES_CHECKED);
 
 
 
@@ -110,14 +111,17 @@ public class NWConfiguredFeatures {
         ConfiguredFeatures.register(featureRegisterable,FIR_MEADOW, Feature.RANDOM_SELECTOR, new RandomFeatureConfig(List.of(new RandomFeatureEntry(grownFirBeesChecked, 1.0f)), grownFirChecked));
 
 
-        RegistryEntryLookup<ConfiguredFeature<?, ?>> configuredFeatureRegistryEntryLookup = featureRegisterable.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
 
-        ConfiguredFeatures.register(featureRegisterable, LOAM_PATCH_CEILING, Feature.VEGETATION_PATCH, new VegetationPatchFeatureConfig(BlockTags.MOSS_REPLACEABLE, BlockStateProvider.of(NWBlocks.LOAM), PlacedFeatures.createEntry(configuredFeatureRegistryEntryLookup.getOrThrow(MiscConfiguredFeatures.ICE_SPIKE)), VerticalSurfaceType.CEILING, UniformIntProvider.create(1, 2), 0.0F, 5, 0.008F, UniformIntProvider.create(4, 7), 0.3F));
+        /*
+            Scrapyard Features
+         */
+        ConfiguredFeatures.register(featureRegisterable, LOAM_PATCH_CEILING, Feature.VEGETATION_PATCH, new VegetationPatchFeatureConfig(BlockTags.MOSS_REPLACEABLE, BlockStateProvider.of(NWBlocks.LOAM), PlacedFeatures.createEntry(configuredFeatures.getOrThrow(MiscConfiguredFeatures.ICE_SPIKE)), VerticalSurfaceType.CEILING, UniformIntProvider.create(1, 2), 0.0F, 5, 0.008F, UniformIntProvider.create(4, 7), 0.3F));
         ConfiguredFeatures.register(featureRegisterable, LOAM_ORE, Feature.ORE, new OreFeatureConfig(ruleTest, NWBlocks.LOAM.getDefaultState(), 32));
         ConfiguredFeatures.register(featureRegisterable, LOAM_SNOW, NWFeature.LOAM_SNOW, new DefaultFeatureConfig());
 
-        ConfiguredFeatures.register(featureRegisterable, CALCITE_VEGETATION, Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(Blocks.SNOW.getDefaultState().with(SnowBlock.LAYERS, 6), 1).add(Blocks.SNOW.getDefaultState().with(SnowBlock.LAYERS, 3), 2).add(Blocks.AIR.getDefaultState(), 7).build())));
-        ConfiguredFeatures.register(featureRegisterable, CALCITE_PATCH, Feature.VEGETATION_PATCH, new VegetationPatchFeatureConfig(BlockTags.MOSS_REPLACEABLE, BlockStateProvider.of(Blocks.CALCITE), PlacedFeatures.createEntry(configuredFeatureRegistryEntryLookup.getOrThrow(CALCITE_VEGETATION), new PlacementModifier[0]), VerticalSurfaceType.FLOOR, ConstantIntProvider.create(1), 0.0f, 5, 0.8f, UniformIntProvider.create(4, 7), 0.3f));
+        DataPool<BlockState> calciteVegetationStates = DataPool.<BlockState>builder().add(Blocks.AIR.getDefaultState(), 16).build();
+        ConfiguredFeatures.register(featureRegisterable, CALCITE_VEGETATION, Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(calciteVegetationStates)));
+        ConfiguredFeatures.register(featureRegisterable, CALCITE_PATCH, Feature.VEGETATION_PATCH, new VegetationPatchFeatureConfig(BlockTags.MOSS_REPLACEABLE, BlockStateProvider.of(Blocks.CALCITE), PlacedFeatures.createEntry(configuredFeatures.getOrThrow(CALCITE_VEGETATION)), VerticalSurfaceType.FLOOR, ConstantIntProvider.create(1), 0.0f, 5, 0.8f, UniformIntProvider.create(4, 7), 0.3f));
 
         /*
             Vanilla Biome Features

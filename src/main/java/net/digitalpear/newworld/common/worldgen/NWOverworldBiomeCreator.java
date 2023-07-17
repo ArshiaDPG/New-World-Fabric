@@ -95,6 +95,7 @@ public class NWOverworldBiomeCreator {
         lookupBackedBuilder.feature(GenerationStep.Feature.UNDERGROUND_ORES, NWPlacedFeatures.CALCITE_PATCH);
         lookupBackedBuilder.feature(GenerationStep.Feature.TOP_LAYER_MODIFICATION, NWPlacedFeatures.LOAM_SNOW);
 
+
         //Default biome features, DO NOT CHANGE THIS
         addBasicFeatures(lookupBackedBuilder);
         DefaultBiomeFeatures.addFrozenLavaSpring(lookupBackedBuilder);

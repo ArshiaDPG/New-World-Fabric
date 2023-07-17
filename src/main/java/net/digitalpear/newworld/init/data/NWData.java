@@ -26,15 +26,9 @@ public class NWData {
         TradeOfferHelper.registerWanderingTraderOffers(1, factories -> {
             factories.add(registerSaplingTrade(NWBlocks.FIR_SAPLING));
         });
-        TradeOfferHelper.registerWanderingTraderOffers(4, factories -> {
-            factories.add((entity, random) ->  new TradeOffer(new ItemStack(Items.EMERALD, 15), new ItemStack(NWItems.MATTOCK_CRAFTING_TEMPLATE_SHAFT), 1, 1, 1));
-            factories.add((entity, random) ->  new TradeOffer(new ItemStack(Items.EMERALD, 15), new ItemStack(NWItems.MATTOCK_CRAFTING_TEMPLATE_HEAD), 1, 1, 1));
-        });
     }
 
     private static void registerStrippables() {
-        StrippableBlockRegistry.register(NWBlocks.FIR_LOG, NWBlocks.STRIPPED_FIR_LOG);
-        StrippableBlockRegistry.register(NWBlocks.FIR_WOOD, NWBlocks.STRIPPED_FIR_WOOD);
     }
 
     public static void registerCompostable(){
@@ -44,21 +38,13 @@ public class NWData {
 
     public static void registerLootTableModifications(){
         LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
-            if (id.equals(LootTables.DESERT_PYRAMID_CHEST)){
-                tableBuilder.pool(LootPool.builder().with(ItemEntry.builder(NWItems.MATTOCK_CRAFTING_TEMPLATE_SHAFT).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(0.0f, 1.0f))).build()));
+            if (id.equals(LootTables.DESERT_PYRAMID_CHEST) || id.equals(LootTables.ANCIENT_CITY_CHEST) || id.equals(LootTables.STRONGHOLD_CORRIDOR_CHEST)){
+                tableBuilder.pool(LootPool.builder()
+                        .with(ItemEntry.builder(NWItems.MATTOCK_CRAFTING_TEMPLATE_SHAFT)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(0.0f, 1.0f))).build()));
             }
             else if (id.equals(LootTables.TRAIL_RUINS_RARE_ARCHAEOLOGY)){
                 tableBuilder.modifyPools(builder -> builder.with(ItemEntry.builder(NWItems.MATTOCK_CRAFTING_TEMPLATE_SHAFT)));
-            }
-            else if (id.equals(LootTables.ANCIENT_CITY_CHEST)){
-                tableBuilder.pool(LootPool.builder()
-                        .with(ItemEntry.builder(NWItems.MATTOCK_CRAFTING_TEMPLATE_HEAD).build())
-                        .with(ItemEntry.builder(Items.SCULK).weight(3)).build());
-            }
-            else if (id.equals(LootTables.STRONGHOLD_CORRIDOR_CHEST)){
-                tableBuilder.pool(LootPool.builder()
-                        .with(ItemEntry.builder(NWItems.MATTOCK_CRAFTING_TEMPLATE_HEAD).build())
-                        .with(ItemEntry.builder(Items.IRON_INGOT).weight(2).build()));
             }
         });
     }

@@ -14,7 +14,6 @@ import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.mob.MobEntity;
-import net.minecraft.entity.mob.WardenEntity;
 import net.minecraft.entity.passive.GolemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
@@ -91,7 +90,6 @@ public class AutomatonEntity extends HostileEntity {
         automatonEntity.setRusted(true);
         automatonEntity.copyPositionAndRotation(this);
         automatonEntity.setHealth(7);
-//        playSound(getDeathSound(), 1.0f, 1.0f);
     }
 
     public static DefaultAttributeContainer.Builder createAutomatonAttributes() {

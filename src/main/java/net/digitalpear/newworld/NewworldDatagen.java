@@ -8,7 +8,9 @@ import net.digitalpear.newworld.common.datagens.tags.NWItemTagProvider;
 import net.digitalpear.newworld.common.datagens.worldgen.NWBiomeProvider;
 import net.digitalpear.newworld.common.datagens.worldgen.NWConfiguredFeatureProvider;
 import net.digitalpear.newworld.common.datagens.worldgen.NWPlacedFeatureProvider;
+import net.digitalpear.newworld.common.datagens.worldgen.NWProcessorListProvider;
 import net.digitalpear.newworld.init.worldgen.NWBiomes;
+import net.digitalpear.newworld.init.worldgen.NWProcessorLists;
 import net.digitalpear.newworld.init.worldgen.features.NWConfiguredFeatures;
 import net.digitalpear.newworld.init.worldgen.features.NWPlacedFeatures;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
@@ -37,6 +39,7 @@ public class NewworldDatagen implements DataGeneratorEntrypoint {
         pack.addProvider(NWConfiguredFeatureProvider::new);
         pack.addProvider(NWPlacedFeatureProvider::new);
         pack.addProvider(NWBiomeProvider::new);
+        pack.addProvider(NWProcessorListProvider::new);
     }
 
     @Override
@@ -44,5 +47,6 @@ public class NewworldDatagen implements DataGeneratorEntrypoint {
         registryBuilder.addRegistry(RegistryKeys.CONFIGURED_FEATURE, NWConfiguredFeatures::bootstrap);
         registryBuilder.addRegistry(RegistryKeys.PLACED_FEATURE, NWPlacedFeatures::bootstrap);
         registryBuilder.addRegistry(RegistryKeys.BIOME, NWBiomes::bootstrap);
+        registryBuilder.addRegistry(RegistryKeys.PROCESSOR_LIST, NWProcessorLists::bootstrap);
     }
 }
