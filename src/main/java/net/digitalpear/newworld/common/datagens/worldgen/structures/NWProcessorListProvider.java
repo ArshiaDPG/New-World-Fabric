@@ -1,6 +1,6 @@
-package net.digitalpear.newworld.common.datagens.worldgen;
+package net.digitalpear.newworld.common.datagens.worldgen.structures;
 
-import net.digitalpear.newworld.init.worldgen.NWProcessorLists;
+import net.digitalpear.newworld.init.worldgen.structures.NWProcessorLists;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricDynamicRegistryProvider;
 import net.minecraft.registry.RegistryKey;

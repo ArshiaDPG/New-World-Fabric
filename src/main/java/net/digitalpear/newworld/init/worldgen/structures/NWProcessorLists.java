@@ -1,4 +1,4 @@
-package net.digitalpear.newworld.init.worldgen;
+package net.digitalpear.newworld.init.worldgen.structures;
 
 import com.google.common.collect.ImmutableList;
 import net.digitalpear.newworld.Newworld;

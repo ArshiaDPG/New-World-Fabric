@@ -1,0 +1,23 @@
+{
+  "elements": [
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "minecraft:buried_bunker",
+        "processors": "newworld:buried_bunker_replacements",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "minecraft:buried_bunker_empty",
+        "processors": "newworld:buried_bunker_replacements",
+        "projection": "rigid"
+      },
+      "weight": 10
+    }
+  ],
+  "fallback": "newworld:buried_bunker"
+}

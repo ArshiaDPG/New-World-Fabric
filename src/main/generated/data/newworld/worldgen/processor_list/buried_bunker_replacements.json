@@ -67,7 +67,7 @@
           "output_state": {
             "Name": "minecraft:lantern",
             "Properties": {
-              "hanging": "false",
+              "hanging": "true",
               "waterlogged": "false"
             }
           }
@@ -76,7 +76,7 @@
           "input_predicate": {
             "block": "minecraft:mossy_stone_brick_stairs",
             "predicate_type": "minecraft:random_block_match",
-            "probability": 0.1
+            "probability": 0.8
           },
           "location_predicate": {
             "predicate_type": "minecraft:always_true"
