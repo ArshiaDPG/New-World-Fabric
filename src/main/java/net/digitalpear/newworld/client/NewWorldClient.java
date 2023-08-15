@@ -26,9 +26,10 @@ public class NewWorldClient implements ClientModInitializer {
     protected static final Identifier HANGING_SIGN_TEXTURE_ID = new Identifier(Newworld.MOD_ID, "entity/signs/hanging/fir");
 
     public static final EntityModelLayer AUTOMATON_MODEL_LAYER = new EntityModelLayer(Newworld.id("automaton"), "main");
+
     @Override
     public void onInitializeClient() {
-        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), NWBlocks.FIR_SAPLING, NWBlocks.POTTED_FIR_SAPLING, NWBlocks.FIR_LEAVES);
+        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), NWBlocks.FIR_SAPLING, NWBlocks.POTTED_FIR_SAPLING, NWBlocks.FIR_LEAVES, NWBlocks.POTTED_POINTED_DRIPSTONE);
 
         TerraformBoatClientHelper.registerModelLayers(new Identifier(Newworld.MOD_ID, "fir"), false);
 

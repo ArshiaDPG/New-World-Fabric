@@ -1,6 +1,7 @@
 plugins {
     id 'fabric-loom' version '1.2-SNAPSHOT'
     id 'maven-publish'
+    id "me.shedaniel.unified-publishing" version "0.1.+"
 }
 
 version = project.mod_version
@@ -102,6 +103,47 @@ sourceSets {
             srcDirs += [
                     'src/main/generated'
             ]
+        }
+    }
+}
+unifiedPublishing {
+    project {
+        displayName = "${project.minecraft_version}-${project.mod_version}" // Optional, name of the file
+        version = "${project.mod_version}" // Optional, Inferred from project by default
+        changelog = '''<ul>
+  <li>Added small azalea bushes to the lush caves.</li>
+  <li>Added Loam, a new mud-like building block that can be found in lush caves.</li>
+  <li>Added loam patches to the lush caves.</li>
+  <li>Added mud patches to the lush caves.</li>
+  <li>Added Potted Pointed Dripstone.</li>
+  <li>Added Mattock Crafting Template, which is used to craft mattocks in the smithing table.</li>
+  <li>Added Mattock Crafting Template Fragments, found in ancient cities, trail ruins(Shaft) and desert pyramids(Head). Combining both pieces creates a full template.</li>
+  <li>Fixed an issue with the fir leaves loot table that would cause it to crash the game.</li>
+</ul> '''
+        releaseType = "beta" // Optional, use "release", "beta" or "alpha"
+        gameVersions = ["${project.minecraft_version}"]
+        gameLoaders = ["fabric"]
+
+        mainPublication tasks.remapJar
+
+        relations {
+            depends { // Mark as a required dependency
+                curseforge = "fabric-api, terrablender" // Optional, project slug
+                modrinth = "fabric-api, terrablender" // Optional, project slug or id
+            }
+            includes {} // Mark as an included dependency
+            optional {} // Mark as an optional dependency
+            conflicts {} // Mark as a conflicted dependency
+        }
+
+        curseforge {
+            token = System.getenv("CF_TOKEN")
+            id = "654411" // Required, must be a string, ID of CurseForge project
+        }
+
+        modrinth {
+            token = System.getenv("MODRINTH_TOKEN")
+            id = "8XpQehpK" // Required, must be a string, ID of Modrinth project
         }
     }
 }

@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "newworld:potted_fir_sapling"
+    "newworld:potted_fir_sapling",
+    "newworld:potted_pointed_dripstone"
   ]
 }

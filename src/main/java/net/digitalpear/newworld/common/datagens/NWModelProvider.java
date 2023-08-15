@@ -7,6 +7,7 @@ import net.digitalpear.newworld.init.data.woodset.Woodset;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.data.client.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
@@ -28,6 +29,10 @@ public class NWModelProvider extends FabricModelProvider {
         makeStoneModels(blockStateModelGenerator, NWBlocks.LOAM_TILES, NWBlocks.LOAM_TILE_STAIRS, NWBlocks.LOAM_TILE_SLAB, NWBlocks.LOAM_TILE_WALL);
 
         blockStateModelGenerator.registerParentedItemModel(NWItems.AUTOMATON_SPAWN_EGG, new Identifier("item/template_spawn_egg"));
+
+
+        Identifier identifier = BlockStateModelGenerator.TintType.NOT_TINTED.getFlowerPotCrossModel().upload(NWBlocks.POTTED_POINTED_DRIPSTONE, TextureMap.of(TextureKey.PLANT, TextureMap.getId(Blocks.POINTED_DRIPSTONE).withSuffixedPath("_up_tip")), blockStateModelGenerator.modelCollector);
+        blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createSingletonBlockState(NWBlocks.POTTED_POINTED_DRIPSTONE, identifier));
     }
 
 

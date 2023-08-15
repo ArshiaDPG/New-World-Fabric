@@ -92,6 +92,9 @@ public class NWConfiguredFeatures {
 
 
 
+        /*
+            Wooded Meadow Features
+         */
         ConfiguredFeatures.register(featureRegisterable, FALLEN_FIR_LOG, NWFeature.FALLEN_LOG, new SingleStateFeatureConfig(NWBlocks.FIR_LOG.getDefaultState()));
 
 
@@ -106,9 +109,9 @@ public class NWConfiguredFeatures {
 
         ConfiguredFeatures.register(featureRegisterable, PATCH_BERRY_WOODED_MEADOW, Feature.RANDOM_PATCH, ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(Blocks.SWEET_BERRY_BUSH.getDefaultState().with(SweetBerryBushBlock.AGE, 2))), VALID_BERRY_BUSH_BLOCKS, 60));
         ConfiguredFeatures.register(featureRegisterable, MOSS_CARPET_WOODED_MEADOW, Feature.RANDOM_PATCH, ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(Blocks.MOSS_CARPET.getDefaultState())), VALID_MOSS_CARPET_BLOCKS, 60));
-        ConfiguredFeatures.register(featureRegisterable,GLOW_LICHEN_WOODED_MEADOW, Feature.MULTIFACE_GROWTH, new MultifaceGrowthFeatureConfig((MultifaceGrowthBlock) Blocks.GLOW_LICHEN,20, true, true, true, 0.5f, RegistryEntryList.of(Block::getRegistryEntry, NWBlocks.FIR_LOG, Blocks.MOSSY_COBBLESTONE)));
-        ConfiguredFeatures.register(featureRegisterable,FIR_SPAWN, Feature.RANDOM_SELECTOR, new RandomFeatureConfig(List.of(new RandomFeatureEntry(firBeesChecked, 0.06f)), firChecked));
-        ConfiguredFeatures.register(featureRegisterable,FIR_MEADOW, Feature.RANDOM_SELECTOR, new RandomFeatureConfig(List.of(new RandomFeatureEntry(grownFirBeesChecked, 1.0f)), grownFirChecked));
+        ConfiguredFeatures.register(featureRegisterable, GLOW_LICHEN_WOODED_MEADOW, Feature.MULTIFACE_GROWTH, new MultifaceGrowthFeatureConfig((MultifaceGrowthBlock) Blocks.GLOW_LICHEN,20, true, true, true, 0.5f, RegistryEntryList.of(Block::getRegistryEntry, NWBlocks.FIR_LOG, Blocks.MOSSY_COBBLESTONE)));
+        ConfiguredFeatures.register(featureRegisterable, FIR_SPAWN, Feature.RANDOM_SELECTOR, new RandomFeatureConfig(List.of(new RandomFeatureEntry(firBeesChecked, 0.06f)), firChecked));
+        ConfiguredFeatures.register(featureRegisterable, FIR_MEADOW, Feature.RANDOM_SELECTOR, new RandomFeatureConfig(List.of(new RandomFeatureEntry(grownFirBeesChecked, 1.0f)), grownFirChecked));
 
 
 
@@ -116,7 +119,7 @@ public class NWConfiguredFeatures {
             Scrapyard Features
          */
         ConfiguredFeatures.register(featureRegisterable, LOAM_PATCH_CEILING, Feature.VEGETATION_PATCH, new VegetationPatchFeatureConfig(BlockTags.MOSS_REPLACEABLE, BlockStateProvider.of(NWBlocks.LOAM), PlacedFeatures.createEntry(configuredFeatures.getOrThrow(MiscConfiguredFeatures.ICE_SPIKE)), VerticalSurfaceType.CEILING, UniformIntProvider.create(1, 2), 0.0F, 5, 0.008F, UniformIntProvider.create(4, 7), 0.3F));
-        ConfiguredFeatures.register(featureRegisterable, LOAM_ORE, Feature.ORE, new OreFeatureConfig(ruleTest, NWBlocks.LOAM.getDefaultState(), 32));
+        ConfiguredFeatures.register(featureRegisterable, LOAM_ORE, Feature.ORE, new OreFeatureConfig(ruleTest, NWBlocks.LOAM.getDefaultState(), 64));
         ConfiguredFeatures.register(featureRegisterable, LOAM_SNOW, NWFeature.LOAM_SNOW, new DefaultFeatureConfig());
 
         DataPool<BlockState> calciteVegetationStates = DataPool.<BlockState>builder().add(Blocks.AIR.getDefaultState(), 16).build();

@@ -68,7 +68,7 @@ public class NWBlockTagProvider extends FabricTagProvider<Block> {
         getOrCreateTagBuilder(BlockTags.WALL_HANGING_SIGNS).add(NWBlocks.FIR_HANGING_WALL_SIGN);
         getOrCreateTagBuilder(BlockTags.ALL_HANGING_SIGNS).add(NWBlocks.FIR_HANGING_SIGN).add(NWBlocks.FIR_HANGING_WALL_SIGN);
         getOrCreateTagBuilder(BlockTags.SAPLINGS).add(NWBlocks.FIR_SAPLING);
-        getOrCreateTagBuilder(BlockTags.FLOWER_POTS).add(NWBlocks.POTTED_FIR_SAPLING);
+        getOrCreateTagBuilder(BlockTags.FLOWER_POTS).add(NWBlocks.POTTED_FIR_SAPLING).add(NWBlocks.POTTED_POINTED_DRIPSTONE);
 
         getOrCreateTagBuilder(BlockTags.STAIRS).add(NWBlocks.LOAM_STAIRS, NWBlocks.LOAM_BRICK_STAIRS, NWBlocks.LOAM_TILE_STAIRS);
         getOrCreateTagBuilder(BlockTags.SLABS).add(NWBlocks.LOAM_SLAB, NWBlocks.LOAM_BRICK_SLAB, NWBlocks.LOAM_TILE_SLAB);

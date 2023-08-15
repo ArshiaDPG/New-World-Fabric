@@ -1,4 +1,4 @@
-// 1.20.1	2023-07-16T20:07:17.5868104	New World/Block Loot Tables
+// 1.20.1	2023-08-14T19:26:39.6638547	New World/Block Loot Tables
 cc5f508fb3b76d81b75776ac59a31e445c284076 data\newworld\loot_tables\blocks\fir_fence.json
 78bb4f227112d5d4b8088661cedaa19beeb28c97 data\newworld\loot_tables\blocks\fir_door.json
 92c7ec973df2e65624b8077a49285e19feb1f762 data\newworld\loot_tables\blocks\fir_pressure_plate.json
@@ -12,7 +12,8 @@ ec2d406a70c585e31e9c9bb14df18cc071a7116e data\newworld\loot_tables\blocks\loam_s
 dcf25ab5415648e44b032bddef68d86eeec7a5c2 data\newworld\loot_tables\blocks\loam_tiles.json
 f2e8afdac47c90e7b0bc6e56e37c00fd44fa9ced data\newworld\loot_tables\blocks\loam_tile_slab.json
 2d1f41fabf8b1cab2338a253a46b55d625895422 data\newworld\loot_tables\blocks\loam_tile_stairs.json
-e32239fe3b4ad362cbaa3aff6153742e1046e31c data\newworld\loot_tables\blocks\fir_leaves.json
+6832b34169d22a763a323bce99a324a4c347da67 data\newworld\loot_tables\blocks\fir_leaves.json
+d7eb04084164c8c9b9b575465000d9bd5186fcd6 data\newworld\loot_tables\blocks\potted_pointed_dripstone.json
 b5d7ded5e2ebe8f01640b06381ed8b2e38d79042 data\newworld\loot_tables\blocks\loam_bricks.json
 47e4d271533a676d43fd940cfa6a36aa57db1102 data\newworld\loot_tables\blocks\loam_brick_stairs.json
 6bde132826d56096b76350e0fd43f4ebe976b0ed data\newworld\loot_tables\blocks\loam_brick_wall.json

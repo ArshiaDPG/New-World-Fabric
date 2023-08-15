@@ -41,10 +41,10 @@ public class NWData {
             if (id.equals(LootTables.DESERT_PYRAMID_CHEST) || id.equals(LootTables.ANCIENT_CITY_CHEST) || id.equals(LootTables.STRONGHOLD_CORRIDOR_CHEST)){
                 tableBuilder.pool(LootPool.builder()
                         .with(ItemEntry.builder(NWItems.MATTOCK_CRAFTING_TEMPLATE_SHAFT)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(0.0f, 1.0f))).build()));
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(-3.0f, 1.0f))).build()));
             }
             else if (id.equals(LootTables.TRAIL_RUINS_RARE_ARCHAEOLOGY)){
-                tableBuilder.modifyPools(builder -> builder.with(ItemEntry.builder(NWItems.MATTOCK_CRAFTING_TEMPLATE_SHAFT)));
+                tableBuilder.modifyPools(builder -> builder.with(ItemEntry.builder(NWItems.MATTOCK_CRAFTING_TEMPLATE_HEAD)));
             }
         });
     }

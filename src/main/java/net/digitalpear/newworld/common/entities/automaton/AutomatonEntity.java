@@ -140,7 +140,7 @@ public class AutomatonEntity extends HostileEntity {
     @Override
     @Nullable
     protected SoundEvent getDeathSound() {
-        return SoundEvents.ENTITY_IRON_GOLEM_DEATH;
+        return isRusted() ? SoundEvents.ENTITY_IRON_GOLEM_DAMAGE : SoundEvents.ENTITY_IRON_GOLEM_DEATH;
     }
 
     @Override

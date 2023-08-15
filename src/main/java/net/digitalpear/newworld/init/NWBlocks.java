@@ -78,10 +78,12 @@ public class NWBlocks {
     public static final Block LOAM_TILE_SLAB = createBlockWithItem("loam_tile_slab", new SlabBlock(AbstractBlock.Settings.copy(LOAM_TILES)));
     public static final Block LOAM_TILE_WALL = createBlockWithItem("loam_tile_wall", new WallBlock(AbstractBlock.Settings.copy(LOAM_TILES)));
 
+
     /*
-        Automaton summoning block?
+        Experimental blocks
      */
-    public static final Block ASSEMBLY_STATION = createBlockWithItem("assembly_station", new AssemblyStationBlock(AbstractBlock.Settings.create().strength(6).sounds(BlockSoundGroup.CHERRY_WOOD)));
+    public static final Block POTTED_POINTED_DRIPSTONE = createBlockWithoutItem("potted_pointed_dripstone", new FlowerPotBlock(Blocks.POINTED_DRIPSTONE, AbstractBlock.Settings.copy(Blocks.POTTED_ACACIA_SAPLING)));
+//    public static final Block ASSEMBLY_STATION = createBlockWithItem("assembly_station", new AssemblyStationBlock(AbstractBlock.Settings.create().strength(6).sounds(BlockSoundGroup.CHERRY_WOOD)));
 
     public static void init(){
         Woodset.addToBuildingTab(Items.SPRUCE_BUTTON, FIR);
@@ -98,9 +100,6 @@ public class NWBlocks {
                     LOAM_SLAB, LOAM_BRICKS, LOAM_BRICK_STAIRS, LOAM_BRICK_WALL,
                     LOAM_BRICK_SLAB, LOAM_TILES, LOAM_TILE_STAIRS, LOAM_TILE_SLAB, LOAM_TILE_WALL
             );
-        });
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(entries -> {
-           entries.add(ASSEMBLY_STATION);
         });
     }
 }

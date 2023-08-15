@@ -3,6 +3,8 @@ package net.digitalpear.newworld.common.datagens;
 import net.digitalpear.newworld.init.NWBlocks;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
+import net.minecraft.data.server.loottable.vanilla.VanillaBlockLootTableGenerator;
+import net.minecraft.item.Items;
 
 public class NWBlockLootTableProvider extends FabricBlockLootTableProvider {
     public NWBlockLootTableProvider(FabricDataOutput dataOutput) {
@@ -24,7 +26,8 @@ public class NWBlockLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(NWBlocks.STRIPPED_FIR_WOOD);
         addDrop(NWBlocks.FIR_TRAPDOOR);
         addDrop(NWBlocks.FIR_DOOR, doorDrops(NWBlocks.FIR_DOOR));
-        addDrop(NWBlocks.FIR_LEAVES, leavesDrops(NWBlocks.FIR_LEAVES, NWBlocks.FIR_SAPLING));
+        addDrop(NWBlocks.FIR_LEAVES, leavesDrops(NWBlocks.FIR_LEAVES, NWBlocks.FIR_SAPLING, VanillaBlockLootTableGenerator.SAPLING_DROP_CHANCE));
+
 
         addDrop(NWBlocks.LOAM);
         addDrop(NWBlocks.LOAM_STAIRS);
@@ -38,6 +41,9 @@ public class NWBlockLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(NWBlocks.LOAM_TILE_STAIRS);
         addDrop(NWBlocks.LOAM_TILE_SLAB, slabDrops(NWBlocks.LOAM_TILE_SLAB));
         addDrop(NWBlocks.LOAM_TILE_WALL);
+
+
+        addDrop(NWBlocks.POTTED_POINTED_DRIPSTONE, pottedPlantDrops(Items.POINTED_DRIPSTONE));
     }
 }
 

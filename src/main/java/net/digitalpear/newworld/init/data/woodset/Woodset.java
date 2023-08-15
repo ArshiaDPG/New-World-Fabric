@@ -452,30 +452,19 @@ public class Woodset {
 
     public static void addToBuildingTab(Item proceedingItem, Woodset woodset){
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> {
-            entries.addAfter(proceedingItem, woodset.getButton());
-            entries.addAfter(proceedingItem, woodset.getPressurePlate());
-            entries.addAfter(proceedingItem, woodset.getTrapDoor());
-            entries.addAfter(proceedingItem, woodset.getDoor());
-            entries.addAfter(proceedingItem, woodset.getFenceGate());
-            entries.addAfter(proceedingItem, woodset.getFence());
-
-            if (woodset.getWoodPreset() == WoodPreset.BAMBOO){
-                entries.addAfter(proceedingItem, woodset.getMosaicSlab());
-                entries.addAfter(proceedingItem, woodset.getMosaicStairs());
-                entries.addAfter(proceedingItem, woodset.getMosaic());
-            }
-
-            entries.addAfter(proceedingItem, woodset.getSlab());
-            entries.addAfter(proceedingItem, woodset.getStairs());
-            entries.addAfter(proceedingItem, woodset.getPlanks());
-
+            entries.addAfter(proceedingItem, woodset.getLog(), woodset.getStrippedLog());
             if (woodset.getWoodPreset() != WoodPreset.BAMBOO){
-                entries.addAfter(proceedingItem, woodset.getStrippedWood());
-                entries.addAfter(proceedingItem, woodset.getStrippedLog());
+                entries.addAfter(proceedingItem, woodset.getWood(), woodset.getStrippedWood());
             }
-            entries.addAfter(proceedingItem, woodset.getWood());
-            entries.addAfter(proceedingItem, woodset.getLog());
+            else{
+                entries.addAfter(proceedingItem, woodset.getMosaic(), woodset.getMosaicStairs(), woodset.getMosaicSlab());
+            }
+            entries.addAfter(proceedingItem, woodset.getPlanks(), woodset.getStairs(), woodset.getSlab(),
+                    woodset.getFence(), woodset.getFenceGate(),
+                    woodset.getDoor(), woodset.getTrapDoor(),
+                    woodset.getPressurePlate(), woodset.getButton());
         });
     }
+
 }
 
