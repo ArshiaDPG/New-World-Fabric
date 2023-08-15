@@ -64,7 +64,7 @@ public class NWPlacedFeatures {
     public static final RegistryKey<PlacedFeature> BIRCH_CHERRY_GROVE = of("birch_cherry_grove");
     public static final RegistryKey<PlacedFeature> LUSH_CAVE_MUD_PATCH = of("lush_cave_mud_patch");
     public static final RegistryKey<PlacedFeature> LUSH_CAVE_LOAM_ORE = of("lush_cave_loam_ore");
-    public static final RegistryKey<PlacedFeature> AZALEA_BUSH = of("azalea_bush");
+//    public static final RegistryKey<PlacedFeature> AZALEA_BUSH = of("azalea_bush");
 
     public static void bootstrap(Registerable<PlacedFeature> featureRegisterable) {
         RegistryEntryLookup<ConfiguredFeature<?, ?>> holderGetter = featureRegisterable.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
@@ -87,7 +87,7 @@ public class NWPlacedFeatures {
 
         RegistryEntry<ConfiguredFeature<?, ?>> birchTall = holderGetter.getOrThrow(VegetationConfiguredFeatures.BIRCH_TALL);
         RegistryEntry<ConfiguredFeature<?, ?>> lushCaveMud = holderGetter.getOrThrow(NWConfiguredFeatures.LUSH_CAVE_MUD_PATCH);
-        RegistryEntry<ConfiguredFeature<?, ?>> azaleaBush = holderGetter.getOrThrow(NWConfiguredFeatures.AZALEA_BUSH);
+//        RegistryEntry<ConfiguredFeature<?, ?>> azaleaBush = holderGetter.getOrThrow(NWConfiguredFeatures.AZALEA_BUSH);
 
         RegistryEntry<ConfiguredFeature<?, ?>> loamPatchCeiling = holderGetter.getOrThrow(NWConfiguredFeatures.LOAM_PATCH_CEILING);
         RegistryEntry<ConfiguredFeature<?, ?>> loamOre = holderGetter.getOrThrow(NWConfiguredFeatures.LOAM_ORE);
@@ -129,7 +129,7 @@ public class NWPlacedFeatures {
         PlacedFeatures.register(featureRegisterable,BIRCH_CHERRY_GROVE, birchTall, treeModifiers(RarityFilterPlacementModifier.of(3)));
         PlacedFeatures.register(featureRegisterable, LUSH_CAVE_MUD_PATCH, lushCaveMud, CountPlacementModifier.of(35), SquarePlacementModifier.of(), HeightRangePlacementModifier.uniform(YOffset.getBottom(), YOffset.fixed(0)), BiomePlacementModifier.of());
         PlacedFeatures.register(featureRegisterable, LUSH_CAVE_LOAM_ORE, loamOre, CountPlacementModifier.of(27), SquarePlacementModifier.of(), HeightRangePlacementModifier.uniform(YOffset.getBottom(), YOffset.fixed(0)), BiomePlacementModifier.of());
-        PlacedFeatures.register(featureRegisterable, AZALEA_BUSH, azaleaBush, CountPlacementModifier.of(125), SquarePlacementModifier.of(), PlacedFeatures.BOTTOM_TO_120_RANGE, EnvironmentScanPlacementModifier.of(Direction.DOWN, BlockPredicate.solid(), BlockPredicate.IS_AIR, 5), RandomOffsetPlacementModifier.vertically(ConstantIntProvider.create(1)), BiomePlacementModifier.of());
+//        PlacedFeatures.register(featureRegisterable, AZALEA_BUSH, azaleaBush, CountPlacementModifier.of(125), SquarePlacementModifier.of(), PlacedFeatures.BOTTOM_TO_120_RANGE, EnvironmentScanPlacementModifier.of(Direction.DOWN, BlockPredicate.solid(), BlockPredicate.IS_AIR, 5), RandomOffsetPlacementModifier.vertically(ConstantIntProvider.create(1)), BiomePlacementModifier.of());
     }
 
 
@@ -140,6 +140,6 @@ public class NWPlacedFeatures {
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.CHERRY_GROVE), GenerationStep.Feature.VEGETAL_DECORATION, BIRCH_CHERRY_GROVE);
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.LUSH_CAVES), GenerationStep.Feature.VEGETAL_DECORATION, LUSH_CAVE_MUD_PATCH);
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.LUSH_CAVES), GenerationStep.Feature.VEGETAL_DECORATION, LUSH_CAVE_LOAM_ORE);
-        BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.LUSH_CAVES), GenerationStep.Feature.VEGETAL_DECORATION, AZALEA_BUSH);
+//        BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.LUSH_CAVES), GenerationStep.Feature.VEGETAL_DECORATION, AZALEA_BUSH);
     }
 }

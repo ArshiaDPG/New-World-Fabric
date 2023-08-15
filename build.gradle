@@ -111,7 +111,7 @@ unifiedPublishing {
         displayName = "${project.minecraft_version}-${project.mod_version}" // Optional, name of the file
         version = "${project.mod_version}" // Optional, Inferred from project by default
         changelog = '''<ul>
-  <li>[Please note that all additions not listed here are purely experimental and may be removed at any time].</li>
+  <li>[Please note that anything not listed here are purely experimental and may be removed at any time].</li>
   <li>Added small azalea bushes to the lush caves.</li>
   <li>Added Loam, a new mud-like building block that can be found in lush caves.</li>
   <li>Added loam patches to the lush caves.</li>
@@ -130,8 +130,8 @@ unifiedPublishing {
 
         relations {
             depends { // Mark as a required dependency
-                curseforge = "fabric-api, terrablender" // Optional, project slug
-                modrinth = "fabric-api, terrablender" // Optional, project slug or id
+                curseforge = "terrablender" // Optional, project slug
+                modrinth = "terrablender" // Optional, project slug or id
             }
             includes {} // Mark as an included dependency
             optional {} // Mark as an optional dependency

@@ -64,7 +64,7 @@ public class NWConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> GROWN_FIR_BEES_002 = of("grown_fir_bees_002");
 
     public static final RegistryKey<ConfiguredFeature<?, ?>> LUSH_CAVE_MUD_PATCH = of("lush_cave_mud_patch");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> AZALEA_BUSH = of("azalea_bush");
+//    public static final RegistryKey<ConfiguredFeature<?, ?>> AZALEA_BUSH = of("azalea_bush");
 
 
     /*
@@ -131,10 +131,10 @@ public class NWConfiguredFeatures {
          */
         ConfiguredFeatures.register(featureRegisterable, LUSH_CAVE_MUD_PATCH, Feature.ORE, new OreFeatureConfig(ruleTest, Blocks.MUD.getDefaultState(), 64));
         ConfiguredFeatures.register(featureRegisterable,FIR_TAIGA, Feature.RANDOM_SELECTOR, new RandomFeatureConfig(List.of(new RandomFeatureEntry(grownFirBeesChecked, 0.0f)), grownFirChecked));
-        ConfiguredFeatures.register(featureRegisterable, AZALEA_BUSH, NWFeature.SMALL_BUSH, new SmallBushFeatureConfig(
-                BlockStateProvider.of(Blocks.OAK_LOG), BlockStateProvider.of(Blocks.AZALEA_LEAVES),
-                BlockStateProvider.of(Blocks.FLOWERING_AZALEA_LEAVES),
-                BlockStateProvider.of(Blocks.ROOTED_DIRT)));
+//        ConfiguredFeatures.register(featureRegisterable, AZALEA_BUSH, NWFeature.SMALL_BUSH, new SmallBushFeatureConfig(
+//                BlockStateProvider.of(Blocks.OAK_LOG), BlockStateProvider.of(Blocks.AZALEA_LEAVES),
+//                BlockStateProvider.of(Blocks.FLOWERING_AZALEA_LEAVES),
+//                BlockStateProvider.of(Blocks.ROOTED_DIRT)));
     }
 
     private static TreeFeatureConfig.Builder naturalFirConfig() {

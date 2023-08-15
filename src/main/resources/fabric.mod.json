@@ -29,7 +29,6 @@
       "net.digitalpear.newworld.Newworld"
     ]
   },
-
           "mixins": [
         "newworld.mixins.json"
       ],
