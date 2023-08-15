@@ -118,7 +118,9 @@ unifiedPublishing {
   <li>Added Potted Pointed Dripstone.</li>
   <li>Added Mattock Crafting Template, which is used to craft mattocks in the smithing table.</li>
   <li>Added Mattock Crafting Template Fragments, found in ancient cities, trail ruins(Shaft) and desert pyramids(Head). Combining both pieces creates a full template.</li>
+  <li>added Ukrainian translation made by Unroman.</li>
   <li>Fixed an issue with the fir leaves loot table that would cause it to crash the game.</li>
+  <li>Removed tall grass from lush caves vegetation.</li>
 </ul> '''
         releaseType = "beta" // Optional, use "release", "beta" or "alpha"
         gameVersions = ["${project.minecraft_version}"]
