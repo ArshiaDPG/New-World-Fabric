@@ -81,7 +81,7 @@ public class NWOverworldBiomeCreator {
         return createBiome(true, 0.5F, 0.8F, 937679, spawnBuilder, lookupBackedBuilder, musicSound);
     }
 
-    public static Biome createScrapyardCave(RegistryEntryLookup<PlacedFeature> featureLookup, RegistryEntryLookup<ConfiguredCarver<?>> carverLookup){
+    public static Biome createEnfoldedScrapyard(RegistryEntryLookup<PlacedFeature> featureLookup, RegistryEntryLookup<ConfiguredCarver<?>> carverLookup){
         SpawnSettings.Builder spawnBuilder = new SpawnSettings.Builder();
 
         DefaultBiomeFeatures.addCaveMobs(spawnBuilder);

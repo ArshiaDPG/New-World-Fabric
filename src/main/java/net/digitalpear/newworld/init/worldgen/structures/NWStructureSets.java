@@ -32,7 +32,6 @@ public class NWStructureSets {
 
         structureSetRegisterable.register(BURIED_BUNKER, new StructureSet(registryEntryLookup.getOrThrow(NWStructures.BURIED_BUNKER),
                 new RandomSpreadStructurePlacement(24, 4, SpreadType.LINEAR, 1694767080)));
-
     }
 
 }

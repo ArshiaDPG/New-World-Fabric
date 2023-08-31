@@ -41,7 +41,7 @@ public class NWStructures {
         RegistryEntryLookup<StructurePool> registryEntryLookup2 = structureRegisterable.getRegistryLookup(RegistryKeys.TEMPLATE_POOL);
 
 
-        structureRegisterable.register(BURIED_BUNKER, new BuriedBunkerFeature(createConfig(registryEntryLookup.getOrThrow(NWBiomeTags.BURIED_BUNKER_HAS_STRUCTURE), GenerationStep.Feature.SURFACE_STRUCTURES, StructureTerrainAdaptation.NONE), registryEntryLookup2.getOrThrow(NWStructurePools.BURIED_BUNKER), Optional.of(new Identifier("newworld:buried_bunker")), 1, ConstantHeightProvider.create(YOffset.fixed(60)), Optional.of(Heightmap.Type.WORLD_SURFACE_WG), 80));
+        structureRegisterable.register(BURIED_BUNKER, new BuriedBunkerFeature(createConfig(registryEntryLookup.getOrThrow(NWBiomeTags.BURIED_BUNKER_HAS_STRUCTURE), GenerationStep.Feature.UNDERGROUND_STRUCTURES, StructureTerrainAdaptation.NONE), registryEntryLookup2.getOrThrow(NWStructurePools.BURIED_BUNKER), Optional.empty(), 1, ConstantHeightProvider.create(YOffset.fixed(60)), Optional.of(Heightmap.Type.WORLD_SURFACE_WG), 80));
     }
 
     private static Structure.Config createConfig(RegistryEntryList<Biome> biomes, Map<SpawnGroup, StructureSpawns> spawns, GenerationStep.Feature featureStep, StructureTerrainAdaptation terrainAdaptation) {

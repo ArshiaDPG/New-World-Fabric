@@ -17,9 +17,14 @@ public class NWPlacedFeatureProvider extends FabricDynamicRegistryProvider {
         super(output, registriesFuture);
     }
 
+    @Override
+    protected void configure(RegistryWrapper.WrapperLookup registries, Entries entries) {
+
+        NWPlacedFeatures.features.forEach(placedFeatureRegistryKey -> add(registries, entries, placedFeatureRegistryKey));
+    }
+
     private void add(RegistryWrapper.WrapperLookup registries, Entries entries, RegistryKey<PlacedFeature> resourceKey) {
         final RegistryWrapper.Impl<PlacedFeature> configuredFeatureRegistryLookup = registries.getWrapperOrThrow(RegistryKeys.PLACED_FEATURE);
-
         entries.add(resourceKey, configuredFeatureRegistryLookup.getOrThrow(resourceKey).value());
     }
 
@@ -29,9 +34,4 @@ public class NWPlacedFeatureProvider extends FabricDynamicRegistryProvider {
     }
 
 
-    @Override
-    protected void configure(RegistryWrapper.WrapperLookup registries, Entries entries) {
-
-        NWPlacedFeatures.features.forEach(placedFeatureRegistryKey -> add(registries, entries, placedFeatureRegistryKey));
-    }
 }

@@ -111,16 +111,7 @@ unifiedPublishing {
         displayName = "${project.minecraft_version}-${project.mod_version}" // Optional, name of the file
         version = "${project.mod_version}" // Optional, Inferred from project by default
         changelog = '''<ul>
-  <li>[Please note that anything not listed here are purely experimental and may be removed at any time].</li>
-  <li>Added small azalea bushes to the lush caves.</li>
-  <li>Added Loam, a new mud-like building block that can be found in lush caves.</li>
-  <li>Added loam patches to the lush caves.</li>
-  <li>Added mud patches to the lush caves.</li>
-  <li>Added Mattock Crafting Template, which is used to craft mattocks in the smithing table.</li>
-  <li>Added Mattock Crafting Template Fragments, found in ancient cities, trail ruins(Shaft) and desert pyramids(Head). Combining both pieces creates a full template.</li>
-  <li>Added Ukrainian translation made by Unroman.</li>
-  <li>Fixed an issue with the fir leaves loot table that would cause it to crash the game.</li>
-  <li>Removed tall grass from lush caves vegetation.</li>
+  <li>Loot tables have now actually been modified as described previously.</li>
 </ul> '''
         releaseType = "release" // Optional, use "release", "beta" or "alpha"
         gameVersions = ["${project.minecraft_version}"]

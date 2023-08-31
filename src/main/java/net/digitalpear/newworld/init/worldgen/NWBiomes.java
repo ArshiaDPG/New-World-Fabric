@@ -32,7 +32,7 @@ public class NWBiomes {
 
 
         bootstapContext.register(WOODED_MEADOW, NWOverworldBiomeCreator.createWoodedMeadow(placeddFeatureHolder, configuredWorldCarverHolderGetter));
-        bootstapContext.register(ENFOLDED_SCRAPYARD, NWOverworldBiomeCreator.createScrapyardCave(placeddFeatureHolder, configuredWorldCarverHolderGetter));
+        bootstapContext.register(ENFOLDED_SCRAPYARD, NWOverworldBiomeCreator.createEnfoldedScrapyard(placeddFeatureHolder, configuredWorldCarverHolderGetter));
     }
 
     public static void init(){

@@ -27,18 +27,13 @@ public class NWStructurePools {
     }
     public static final RegistryKey<StructurePool> BURIED_BUNKER = of("buried_bunker");
 
-    public static void register(Registerable<StructurePool> structurePoolsRegisterable, String id, StructurePool pool) {
-        structurePoolsRegisterable.register(StructurePools.of(id), pool);
-    }
-
     public static void bootstrap(Registerable<StructurePool> structurePoolsRegisterable) {
         RegistryEntryLookup<StructureProcessorList> processorListRegistryEntryLookup = structurePoolsRegisterable.getRegistryLookup(RegistryKeys.PROCESSOR_LIST);
         RegistryEntryLookup<StructurePool> registryEntryLookup = structurePoolsRegisterable.getRegistryLookup(RegistryKeys.TEMPLATE_POOL);
 
-        RegistryEntry.Reference<StructurePool> registryEntry = registryEntryLookup.getOrThrow(BURIED_BUNKER);
         RegistryEntry.Reference<StructureProcessorList> bunkerProcessor = processorListRegistryEntryLookup.getOrThrow(NWProcessorLists.BURIED_BUNKER_REPLACEMENTS);
 
-        structurePoolsRegisterable.register(BURIED_BUNKER, new StructurePool(registryEntry, ImmutableList.of(
+        structurePoolsRegisterable.register(BURIED_BUNKER, new StructurePool(registryEntryLookup.getOrThrow(StructurePools.EMPTY), ImmutableList.of(
                 Pair.of(StructurePoolElement.ofProcessedSingle("buried_bunker", bunkerProcessor), 1),
                 Pair.of(StructurePoolElement.ofProcessedSingle("buried_bunker_empty", bunkerProcessor), 10)),
                 StructurePool.Projection.RIGID));

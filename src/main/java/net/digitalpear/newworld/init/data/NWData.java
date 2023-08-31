@@ -41,16 +41,16 @@ public class NWData {
         LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
             if (id.equals(LootTables.ANCIENT_CITY_CHEST) || id.equals(LootTables.STRONGHOLD_CORRIDOR_CHEST)){
                 tableBuilder.pool(LootPool.builder()
-                        .with(ItemEntry.builder(NWItems.MATTOCK_CRAFTING_TEMPLATE_SHAFT))
+                        .with(ItemEntry.builder(NWItems.MATTOCK_CRAFTING_TEMPLATE_HEAD))
                         .conditionally(RandomChanceLootCondition.builder(0.15f)));
             }
             else if (id.equals(LootTables.DESERT_PYRAMID_CHEST)){
                 tableBuilder.pool(LootPool.builder()
-                        .with(ItemEntry.builder(NWItems.MATTOCK_CRAFTING_TEMPLATE_HEAD)
+                        .with(ItemEntry.builder(NWItems.MATTOCK_CRAFTING_TEMPLATE_SHAFT)
                                 .build()).conditionally(RandomChanceLootCondition.builder(0.15f)));
             }
             else if (id.equals(LootTables.TRAIL_RUINS_RARE_ARCHAEOLOGY)){
-                tableBuilder.modifyPools(builder -> builder.with(ItemEntry.builder(NWItems.MATTOCK_CRAFTING_TEMPLATE_HEAD)));
+                tableBuilder.modifyPools(builder -> builder.with(ItemEntry.builder(NWItems.MATTOCK_CRAFTING_TEMPLATE_SHAFT)));
             }
         });
     }

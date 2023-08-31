@@ -8,7 +8,6 @@
   "start_height": {
     "absolute": 60
   },
-  "start_jigsaw_name": "newworld:buried_bunker",
   "start_pool": "newworld:buried_bunker",
-  "step": "surface_structures"
+  "step": "underground_structures"
 }

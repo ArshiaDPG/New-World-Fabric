@@ -19,5 +19,5 @@
       "weight": 10
     }
   ],
-  "fallback": "newworld:buried_bunker"
+  "fallback": "minecraft:empty"
 }
