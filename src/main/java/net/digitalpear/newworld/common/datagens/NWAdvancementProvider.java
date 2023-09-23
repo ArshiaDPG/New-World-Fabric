@@ -5,6 +5,7 @@ import net.digitalpear.newworld.init.NWItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricAdvancementProvider;
 import net.minecraft.advancement.Advancement;
+import net.minecraft.advancement.AdvancementEntry;
 import net.minecraft.advancement.AdvancementFrame;
 import net.minecraft.advancement.AdvancementRewards;
 import net.minecraft.advancement.criterion.InventoryChangedCriterion;
@@ -19,12 +20,13 @@ public class NWAdvancementProvider extends FabricAdvancementProvider {
         super(output);
     }
 
+
     @Override
-    public void generateAdvancement(Consumer<Advancement> consumer) {
+    public void generateAdvancement(Consumer<AdvancementEntry> consumer) {
         /*
             BROKEN
          */
-//        Advancement collectAncientMattock = Advancement.Builder.create()
+//        AdvancementEntry collectAncientMattock = Advancement.Builder.create()
 //                .display(
 //                        NWItems.ANCIENT_MATTOCK, // The display icon
 //                        Text.translatable("advancements.story.collect_ancient_mattock.title"), // The title

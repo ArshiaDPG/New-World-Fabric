@@ -3,7 +3,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "minecraft:buried_bunker",
+        "location": "newworld:buried_bunker",
         "processors": "newworld:buried_bunker_replacements",
         "projection": "rigid"
       },
@@ -12,7 +12,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "minecraft:buried_bunker_empty",
+        "location": "newworld:buried_bunker_empty",
         "processors": "newworld:buried_bunker_replacements",
         "projection": "rigid"
       },

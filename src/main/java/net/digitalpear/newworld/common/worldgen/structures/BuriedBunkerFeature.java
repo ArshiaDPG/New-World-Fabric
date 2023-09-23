@@ -48,7 +48,7 @@ public class BuriedBunkerFeature extends Structure {
     {
         super(config);
         this.startPool = startPool;
-        this.startJigsawName = startJigsawName;
+        this.startJigsawName = Optional.empty();
         this.size = size;
         this.startHeight = startHeight;
         this.projectStartToHeightmap = projectStartToHeightmap;
@@ -64,12 +64,13 @@ public class BuriedBunkerFeature extends Structure {
         // Checks to make sure our structure does not spawn above land that's higher than y = 150
         // to demonstrate how this method is good for checking extra conditions for spawning
         return context.chunkGenerator().getHeightInGround(
-                chunkpos.getStartX(),
-                chunkpos.getStartZ(),
+                chunkpos.getStartX() + random.nextInt(16),
+                chunkpos.getStartZ() + random.nextInt(16),
                 Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
                 context.world(),
                 context.noiseConfig()) < 150;
     }
+
 
     @Override
     protected Optional<StructurePosition> getStructurePosition(Context context) {

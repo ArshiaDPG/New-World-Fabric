@@ -34,8 +34,9 @@ public class NWStructurePools {
         RegistryEntry.Reference<StructureProcessorList> bunkerProcessor = processorListRegistryEntryLookup.getOrThrow(NWProcessorLists.BURIED_BUNKER_REPLACEMENTS);
 
         structurePoolsRegisterable.register(BURIED_BUNKER, new StructurePool(registryEntryLookup.getOrThrow(StructurePools.EMPTY), ImmutableList.of(
-                Pair.of(StructurePoolElement.ofProcessedSingle("buried_bunker", bunkerProcessor), 1),
-                Pair.of(StructurePoolElement.ofProcessedSingle("buried_bunker_empty", bunkerProcessor), 10)),
+                Pair.of(StructurePoolElement.ofProcessedSingle("newworld:buried_bunker", bunkerProcessor), 1),
+                Pair.of(StructurePoolElement.ofProcessedSingle("newworld:buried_bunker_empty", bunkerProcessor), 10)
+        ),
                 StructurePool.Projection.RIGID));
     }
 

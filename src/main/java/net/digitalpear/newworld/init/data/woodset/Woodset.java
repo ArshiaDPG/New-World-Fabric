@@ -107,6 +107,13 @@ public class Woodset {
         this.topColor = topColor;
         registerWood();
     }
+    public Woodset(Identifier name, MapColor sideColor, MapColor topColor){
+        this.woodPreset = WoodPreset.DEFAULT;
+        this.name = name;
+        this.sideColor = sideColor;
+        this.topColor = topColor;
+        registerWood();
+    }
 
     private BlockItem createBlockItem(String blockID, Block block){
         return Registry.register(Registries.ITEM, new Identifier(this.getModID(), blockID), new BlockItem(block, new Item.Settings()));

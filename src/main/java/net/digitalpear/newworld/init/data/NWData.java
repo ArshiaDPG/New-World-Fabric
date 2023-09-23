@@ -2,12 +2,14 @@ package net.digitalpear.newworld.init.data;
 
 import net.digitalpear.newworld.init.NWBlocks;
 import net.digitalpear.newworld.init.NWItems;
+import net.digitalpear.newworld.init.data.woodset.Woodset;
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
 import net.fabricmc.fabric.api.object.builder.v1.trade.TradeOfferHelper;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.fabricmc.fabric.impl.content.registry.CompostingChanceRegistryImpl;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -30,6 +32,10 @@ public class NWData {
     }
 
     private static void registerStrippables() {
+    }
+
+    public static void registerFlammables(){
+        registerWoodsetFlammables(NWBlocks.FIR);
     }
 
     public static void registerCompostable(){
@@ -62,8 +68,29 @@ public class NWData {
     public static void addFlammable(TagKey<Block> block, int burn, int spread){
         FlammableBlockRegistry.getDefaultInstance().add(block, burn, spread);
     }
-    public static void registerFlammables(){
+    public static void registerWoodsetFlammables(Woodset woodset){
 
+        addFlammable(woodset.getLog(), 5, 20);
+        addFlammable(woodset.getStrippedLog(), 5, 20);
+
+        if (woodset.getWoodPreset() != Woodset.WoodPreset.BAMBOO){
+            addFlammable(woodset.getWood(), 5, 5);
+            addFlammable(woodset.getStrippedWood(), 5, 5);
+        }
+        else{
+            addFlammable(woodset.getMosaic(), 5, 20);
+            addFlammable(woodset.getMosaicStairs(), 5, 20);
+            addFlammable(woodset.getMosaicSlab(), 5, 20);
+        }
+        if (woodset.isNormalWood()){
+            addFlammable(woodset.getLeaves(), 30, 60);
+        }
+
+        addFlammable(woodset.getPlanks(), 5, 20);
+        addFlammable(woodset.getSlab(), 5, 20);
+        addFlammable(woodset.getStairs(), 5, 20);
+        addFlammable(woodset.getFence(), 5, 20);
+        addFlammable(woodset.getFenceGate(), 5, 20);
     }
 
 

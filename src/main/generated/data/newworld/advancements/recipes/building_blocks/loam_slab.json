@@ -22,8 +22,8 @@
   },
   "requirements": [
     [
-      "has_loam",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_loam"
     ]
   ],
   "rewards": {
