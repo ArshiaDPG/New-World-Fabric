@@ -6,6 +6,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
@@ -35,10 +36,13 @@ public class AssemblyStationBlock extends Block {
             world.scheduleBlockTick(pos, this, 4);
         }
     }
+    public boolean isAcceptableStack(ItemStack stack){
+        return stack.isOf(Items.IRON_BLOCK);
+    }
 
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        if (player.getStackInHand(hand).isOf(Items.IRON_BLOCK) && state.get(FAULTY)){
+        if (isAcceptableStack(player.getStackInHand(hand)) && state.get(FAULTY)){
             world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BLOCK_IRON_XYLOPHONE.value(), SoundCategory.BLOCKS, 1.0f, 1.0f);
             world.setBlockState(pos, state);
             world.setBlockState(pos, state.with(FAULTY, false));

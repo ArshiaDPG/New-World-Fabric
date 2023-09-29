@@ -30,8 +30,8 @@ public class NWLanguageProvider extends FabricLanguageProvider {
         makeTranslation(translationBuilder, NWBlocks.FIR_SAPLING);
         makeTranslation(translationBuilder, NWItems.ANCIENT_MATTOCK);
 
-        makeTranslation(translationBuilder, NWItems.MATTOCK_CRAFTING_TEMPLATE_HEAD, "Template Fragment", "Mattock Head");
-        makeTranslation(translationBuilder, NWItems.MATTOCK_CRAFTING_TEMPLATE_SHAFT, "Template Fragment", "Mattock Shaft");
+        makeTemplateFragmentTranslation(translationBuilder, NWItems.MATTOCK_CRAFTING_TEMPLATE_HEAD, "Mattock Head");
+        makeTemplateFragmentTranslation(translationBuilder, NWItems.MATTOCK_CRAFTING_TEMPLATE_SHAFT, "Mattock Shaft");
 
         makeSmithingTemplateTranslation(translationBuilder, NWItems.MATTOCK_CRAFTING_TEMPLATE, "mattock_crafting", "Stick", "Flint");
 
@@ -64,10 +64,10 @@ public class NWLanguageProvider extends FabricLanguageProvider {
     public void makeWoodTranslations(TranslationBuilder translationBuilder, Woodset woodset){
         woodset.getRegisteredBlocksList().forEach(block -> {
             if (!(block instanceof AbstractSignBlock)){
-                translationBuilder.add(block, formatString(Registries.BLOCK.getId(block).getPath()));
+                makeTranslation(translationBuilder, block);
             }
         });
-        woodset.getRegisteredItemsList().forEach(item -> translationBuilder.add(item, formatString(Registries.ITEM.getId(item).getPath())));
+        woodset.getRegisteredItemsList().forEach(item -> makeTranslation(translationBuilder, item));
     }
 
     public static void makeSmithingTemplateTranslation(TranslationBuilder translationBuilder, Item template, String templateId, String appliesTo, String ingredient){
@@ -78,9 +78,8 @@ public class NWLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("item.newworld.smithing_template." + templateId + ".ingredients", ingredient);
         translationBuilder.add("upgrade.newworld." + templateId, formatString(templateId));
     }
-
-    public static void makeTranslation(TranslationBuilder translationBuilder, Item item, String name, String desc){
-        translationBuilder.add(item, name);
+    public static void makeTemplateFragmentTranslation(TranslationBuilder translationBuilder, Item item, String desc){
+        translationBuilder.add(item,"Template Fragment");
         translationBuilder.add(item.getTranslationKey() + ".desc", desc);
     }
 
