@@ -459,17 +459,17 @@ public class Woodset {
 
     public static void addToBuildingTab(Item proceedingItem, Woodset woodset){
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> {
-            entries.addAfter(proceedingItem, woodset.getLog(), woodset.getStrippedLog());
+            entries.addAfter(proceedingItem, woodset.getPlanks(), woodset.getStairs(), woodset.getSlab(),
+                    woodset.getFence(), woodset.getFenceGate(),
+                    woodset.getDoor(), woodset.getTrapDoor(),
+                    woodset.getPressurePlate(), woodset.getButton());
             if (woodset.getWoodPreset() != WoodPreset.BAMBOO){
                 entries.addAfter(proceedingItem, woodset.getWood(), woodset.getStrippedWood());
             }
             else{
                 entries.addAfter(proceedingItem, woodset.getMosaic(), woodset.getMosaicStairs(), woodset.getMosaicSlab());
             }
-            entries.addAfter(proceedingItem, woodset.getPlanks(), woodset.getStairs(), woodset.getSlab(),
-                    woodset.getFence(), woodset.getFenceGate(),
-                    woodset.getDoor(), woodset.getTrapDoor(),
-                    woodset.getPressurePlate(), woodset.getButton());
+            entries.addAfter(proceedingItem, woodset.getLog(), woodset.getStrippedLog());
         });
     }
 
