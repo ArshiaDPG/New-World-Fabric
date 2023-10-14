@@ -88,6 +88,13 @@ public class NWRecipeProvider extends FabricRecipeProvider {
                 .criterion(RecipeProvider.hasItem(NWBlocks.LOAM_BRICKS), RecipeProvider.conditionsFromItem(NWBlocks.LOAM_BRICKS))
                 .offerTo(exporter);
 
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM, 4).input('C', Items.CLAY).input('D', Items.DIRT)
+                .pattern("CD")
+                .pattern("DC")
+                .criterion(RecipeProvider.hasItem(NWBlocks.LOAM_BRICKS), RecipeProvider.conditionsFromItem(NWBlocks.LOAM_BRICKS))
+                .offerTo(exporter);
+
+
 
     }
 

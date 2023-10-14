@@ -52,10 +52,10 @@ public class NWOverworldBiomeCreator {
         GenerationSettings.LookupBackedBuilder lookupBackedBuilder = new GenerationSettings.LookupBackedBuilder(featureLookup, carverLookup);
         SpawnSettings.Builder spawnBuilder = new SpawnSettings.Builder();
         spawnBuilder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.DONKEY, 1, 1, 2)).spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.RABBIT, 2, 2, 6)).spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.SHEEP, 2, 2, 4));
-
         DefaultBiomeFeatures.addBatsAndMonsters(spawnBuilder);
 
 
+        addBasicFeatures(lookupBackedBuilder);
 
         lookupBackedBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, NWPlacedFeatures.TREES_FIR);
         lookupBackedBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, NWPlacedFeatures.GLOW_LICHEN_WOODED_MEADOW);
@@ -69,7 +69,6 @@ public class NWOverworldBiomeCreator {
 
 
         //Default biome features, DO NOT CHANGE THIS
-        addBasicFeatures(lookupBackedBuilder);
         DefaultBiomeFeatures.addPlainsTallGrass(lookupBackedBuilder);
         DefaultBiomeFeatures.addDefaultOres(lookupBackedBuilder);
         DefaultBiomeFeatures.addDefaultDisks(lookupBackedBuilder);
