@@ -1,4 +1,4 @@
-// 1.20.2	2023-10-16T20:38:49.3511256	New World/Tags for minecraft:block
+// 1.20.2	2023-10-17T09:42:14.9590277	New World/Tags for minecraft:block
 54c1945e2943451b7e7ff0b1646ec4e85974df1d data\minecraft\tags\blocks\wooden_pressure_plates.json
 3a72e823c844c31d76b6083edbc8ddd7ae4bfa7c data\minecraft\tags\blocks\planks.json
 11c406eba5704d9cc1c162244e9754db5d518ec2 data\newworld\tags\blocks\mattock_mineable.json
@@ -25,6 +25,7 @@ f987c048609ae0b63393d4acb6a798fd494a9e4f data\minecraft\tags\blocks\wooden_stair
 e57a275a6639993c98311bffefef48f78ad3d241 data\minecraft\tags\blocks\wooden_slabs.json
 9bceb13bd9e77e9c5a99f2af53f951fc28b9b87f data\minecraft\tags\blocks\wooden_doors.json
 1c13777d5c90adee09a855c41831139cf4dcd29b data\minecraft\tags\blocks\flower_pots.json
+8aa3886b12e40f2071d0101f20ac8b772a81b6ae data\newworld\tags\blocks\tombstone_replaceable.json
 c411a794f22d5e64951a4c4bbbee4537cd8cd170 data\newworld\tags\blocks\fir_logs.json
-491d0895d1712703992060b2a1c1e94196aa8362 data\minecraft\tags\blocks\leaves.json
 c8f11b29557a4d25b6413255fb0a1fb20f295ee9 data\newworld\tags\blocks\small_bush_plantable.json
+491d0895d1712703992060b2a1c1e94196aa8362 data\minecraft\tags\blocks\leaves.json

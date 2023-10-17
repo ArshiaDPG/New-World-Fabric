@@ -93,6 +93,18 @@ public class NWBlockTagProvider extends FabricTagProvider<Block> {
         getOrCreateTagBuilder(BlockTags.BASE_STONE_OVERWORLD).add(NWBlocks.LOAM);
 
         getOrCreateTagBuilder(NWBlockTags.SMALL_BUSH_PLANTABLE).forceAddTag(BlockTags.DIRT).add(Blocks.MUD).add(Blocks.CLAY).forceAddTag(BlockTags.LUSH_GROUND_REPLACEABLE);
+
+        getOrCreateTagBuilder(NWBlockTags.TOMBSTONE_REPLACEABLE)
+                .forceAddTag(BlockTags.CORAL_PLANTS)
+                .forceAddTag(BlockTags.SMALL_FLOWERS)
+                .add(Blocks.GRASS)
+                .add(Blocks.TALL_GRASS)
+                .add(Blocks.WATER)
+                .add(Blocks.SEAGRASS)
+                .add(Blocks.TALL_SEAGRASS)
+                .add(Blocks.CRIMSON_ROOTS)
+                .add(Blocks.WARPED_ROOTS)
+                .add(Blocks.HANGING_ROOTS);
     }
 
 }

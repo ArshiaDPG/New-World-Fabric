@@ -3,6 +3,7 @@ package net.digitalpear.newworld.mixin;
 
 import net.digitalpear.newworld.init.NWBlockEntityTypes;
 import net.digitalpear.newworld.init.NWBlocks;
+import net.digitalpear.newworld.init.data.tags.NWBlockTags;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
@@ -26,17 +27,10 @@ public class PlayerDeathMixin {
 
     @Inject(method = "dropAll", cancellable = true, at = @At("HEAD"))
     private void method(CallbackInfo ci){
-        boolean canProceed = false;
         World world = player.getWorld();
-        BlockPos pos = player.getBlockPos();
-        for (DefaultedList<ItemStack> itemStacks : combinedInventory) {
-            if (itemStacks.stream().anyMatch(stack -> stack.isOf(NWBlocks.TOMBSTONE.asItem()))){
-                canProceed = true;
-                break;
-            }
-        }
+        BlockPos pos = getValidPos(world, player.getBlockPos());
 
-        if (!canProceed) {
+        if (pos == null || !hasTombstoneInInventory()) {
             ci.cancel();
         }
         else{
@@ -75,5 +69,25 @@ public class PlayerDeathMixin {
                 }
             });
         }
+    }
+
+    private boolean hasTombstoneInInventory(){
+        for (DefaultedList<ItemStack> itemStacks : combinedInventory) {
+            if (itemStacks.stream().anyMatch(stack -> stack.isOf(NWBlocks.TOMBSTONE.asItem()))){
+                return true;
+            }
+        }
+        return false;
+
+    }
+    private BlockPos getValidPos(World world, BlockPos pos){
+        if (!world.getBlockState(pos).isIn(NWBlockTags.TOMBSTONE_REPLACEABLE)){
+            for (BlockPos pos1 : BlockPos.iterate(pos.up(), pos.up(6))) {
+                if (world.getBlockState(pos1).isIn(NWBlockTags.TOMBSTONE_REPLACEABLE) || world.getBlockState(pos1).isAir()){
+                    return pos1;
+                }
+            }
+        }
+        return null;
     }
 }
