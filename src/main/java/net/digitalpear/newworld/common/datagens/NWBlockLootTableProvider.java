@@ -42,6 +42,7 @@ public class NWBlockLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(NWBlocks.LOAM_TILE_SLAB, slabDrops(NWBlocks.LOAM_TILE_SLAB));
         addDrop(NWBlocks.LOAM_TILE_WALL);
 
+        addDrop(NWBlocks.TOMBSTONE);
 
         addDrop(NWBlocks.POTTED_POINTED_DRIPSTONE, pottedPlantDrops(Items.POINTED_DRIPSTONE));
     }

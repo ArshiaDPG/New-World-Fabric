@@ -67,6 +67,10 @@ public class NWConfiguredFeatures {
 //    public static final RegistryKey<ConfiguredFeature<?, ?>> AZALEA_BUSH = of("azalea_bush");
 
 
+
+    public static final RegistryKey<ConfiguredFeature<?, ?>> BURIAL_SITE = of("burial_site");
+
+
     /*
         Scrapyard Features
      */
@@ -125,6 +129,7 @@ public class NWConfiguredFeatures {
         DataPool<BlockState> calciteVegetationStates = DataPool.<BlockState>builder().add(Blocks.AIR.getDefaultState(), 16).build();
         ConfiguredFeatures.register(featureRegisterable, CALCITE_VEGETATION, Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(calciteVegetationStates)));
         ConfiguredFeatures.register(featureRegisterable, CALCITE_PATCH, Feature.VEGETATION_PATCH, new VegetationPatchFeatureConfig(BlockTags.MOSS_REPLACEABLE, BlockStateProvider.of(Blocks.CALCITE), PlacedFeatures.createEntry(configuredFeatures.getOrThrow(CALCITE_VEGETATION)), VerticalSurfaceType.FLOOR, ConstantIntProvider.create(1), 0.0f, 5, 0.8f, UniformIntProvider.create(4, 7), 0.3f));
+        ConfiguredFeatures.register(featureRegisterable, BURIAL_SITE, NWFeature.BURIAL_SITE, new DefaultFeatureConfig());
 
         /*
             Vanilla Biome Features

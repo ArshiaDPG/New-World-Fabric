@@ -44,6 +44,8 @@ public class NWBlockTagProvider extends FabricTagProvider<Block> {
                 .add(NWBlocks.FIR_HANGING_SIGN)
                 .add(NWBlocks.FIR_HANGING_WALL_SIGN);
 
+        getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(NWBlocks.TOMBSTONE);
+
         getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE).add(
                 NWBlocks.LOAM, NWBlocks.LOAM_STAIRS, NWBlocks.LOAM_SLAB, NWBlocks.LOAM_WALL,
                 NWBlocks.LOAM_BRICKS, NWBlocks.LOAM_BRICK_STAIRS, NWBlocks.LOAM_BRICK_SLAB, NWBlocks.LOAM_BRICK_WALL,

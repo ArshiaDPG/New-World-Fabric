@@ -1,16 +1,8 @@
 package net.digitalpear.newworld.common.datagens;
 
-import net.digitalpear.newworld.Newworld;
-import net.digitalpear.newworld.init.NWItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricAdvancementProvider;
-import net.minecraft.advancement.Advancement;
 import net.minecraft.advancement.AdvancementEntry;
-import net.minecraft.advancement.AdvancementFrame;
-import net.minecraft.advancement.AdvancementRewards;
-import net.minecraft.advancement.criterion.InventoryChangedCriterion;
-import net.minecraft.text.Text;
-import net.minecraft.util.Identifier;
 
 import java.util.function.Consumer;
 

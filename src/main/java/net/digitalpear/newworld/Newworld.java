@@ -7,9 +7,6 @@ import net.digitalpear.newworld.init.worldgen.NWBiomes;
 import net.digitalpear.newworld.init.worldgen.features.NWConfiguredFeatures;
 import net.digitalpear.newworld.init.worldgen.features.NWPlacedFeatures;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.mixin.networking.accessor.ThreadedAnvilChunkStorageAccessor;
-import net.minecraft.enchantment.EnchantmentTarget;
-import net.minecraft.predicate.item.EnchantmentPredicate;
 import net.minecraft.util.Identifier;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -26,6 +23,7 @@ public class Newworld implements ModInitializer {
     @Override
     public void onInitialize() {
         NWBlocks.init();
+        NWBlockEntityTypes.init();
         NWBoatTypes.init();
         NWItems.init();
         NWBiomes.init();

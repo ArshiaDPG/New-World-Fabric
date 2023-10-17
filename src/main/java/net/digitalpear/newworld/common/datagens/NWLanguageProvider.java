@@ -16,8 +16,6 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.biome.Biome;
 
-import java.util.Arrays;
-
 public class NWLanguageProvider extends FabricLanguageProvider {
     public NWLanguageProvider(FabricDataOutput dataOutput) {
         super(dataOutput);
@@ -50,6 +48,8 @@ public class NWLanguageProvider extends FabricLanguageProvider {
 
         makeTranslation(translationBuilder, NWItems.AUTOMATON_SPAWN_EGG);
         makeTranslation(translationBuilder, NWEntityTypes.AUTOMATON);
+
+        makeTranslation(translationBuilder, NWBlocks.TOMBSTONE);
 
         translationBuilder.add(NWItems.FIR_BOAT, "Fir Boat");
         translationBuilder.add(NWItems.FIR_CHEST_BOAT, "Fir Boat with Chest");

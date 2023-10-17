@@ -76,6 +76,8 @@ public class NWItems {
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(entries -> {
             entries.addAfter(Items.SPRUCE_HANGING_SIGN, FIR_SIGN);
             entries.addAfter(FIR_SIGN, FIR_HANGING_SIGN);
+            entries.add(NWBlocks.TOMBSTONE);
         });
+
     }
 }

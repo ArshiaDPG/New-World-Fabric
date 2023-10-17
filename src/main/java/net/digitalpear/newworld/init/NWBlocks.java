@@ -1,7 +1,7 @@
 package net.digitalpear.newworld.init;
 
 import net.digitalpear.newworld.Newworld;
-import net.digitalpear.newworld.common.blocks.AssemblyStationBlock;
+import net.digitalpear.newworld.common.blocks.TombstoneBlock;
 import net.digitalpear.newworld.common.worldgen.tree.FirSaplingGenerator;
 import net.digitalpear.newworld.init.data.woodset.Woodset;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
@@ -19,6 +19,14 @@ import net.minecraft.util.Identifier;
 @SuppressWarnings("unused")
 public class NWBlocks {
 
+    public static BlockItem createCustomBlockItem(String blockID, Block block, Item.Settings item){
+        return Registry.register(Registries.ITEM, new Identifier(Newworld.MOD_ID, blockID), new BlockItem(block, item));
+    }
+
+    private static Block createBlockWithCustomItem(String blockID, Block block, Item.Settings item){
+        createCustomBlockItem(blockID, block, item);
+        return Registry.register(Registries.BLOCK, new Identifier(Newworld.MOD_ID, blockID), block);
+    }
     public static BlockItem createBlockItem(String blockID, Block block){
         return Registry.register(Registries.ITEM, new Identifier(Newworld.MOD_ID, blockID), new BlockItem(block, new Item.Settings()));
     }
@@ -77,6 +85,8 @@ public class NWBlocks {
     public static final Block LOAM_TILE_STAIRS = createBlockWithItem("loam_tile_stairs", new StairsBlock(LOAM_BRICKS.getDefaultState(), AbstractBlock.Settings.copy(LOAM_TILES)));
     public static final Block LOAM_TILE_SLAB = createBlockWithItem("loam_tile_slab", new SlabBlock(AbstractBlock.Settings.copy(LOAM_TILES)));
     public static final Block LOAM_TILE_WALL = createBlockWithItem("loam_tile_wall", new WallBlock(AbstractBlock.Settings.copy(LOAM_TILES)));
+
+    public static final Block TOMBSTONE = createBlockWithCustomItem("tombstone", new TombstoneBlock(AbstractBlock.Settings.copy(Blocks.DEEPSLATE).nonOpaque()), new Item.Settings().maxCount(1));
 
 
     /*

@@ -8,9 +8,12 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.enums.BlockFace;
 import net.minecraft.data.client.*;
 import net.minecraft.registry.Registries;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.Direction;
 
 public class NWModelProvider extends FabricModelProvider {
 
@@ -30,10 +33,11 @@ public class NWModelProvider extends FabricModelProvider {
 
         blockStateModelGenerator.registerParentedItemModel(NWItems.AUTOMATON_SPAWN_EGG, new Identifier("item/template_spawn_egg"));
 
+        generateDripstonePot(blockStateModelGenerator);
 
-        Identifier identifier = BlockStateModelGenerator.TintType.NOT_TINTED.getFlowerPotCrossModel().upload(NWBlocks.POTTED_POINTED_DRIPSTONE, TextureMap.of(TextureKey.PLANT, TextureMap.getId(Blocks.POINTED_DRIPSTONE).withSuffixedPath("_up_tip")), blockStateModelGenerator.modelCollector);
-        blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createSingletonBlockState(NWBlocks.POTTED_POINTED_DRIPSTONE, identifier));
+        registerTombstone(blockStateModelGenerator);
     }
+
 
 
 
@@ -71,6 +75,24 @@ public class NWModelProvider extends FabricModelProvider {
             blockStateModelGenerator.registerLog(woodset.getStrippedLog()).uvLockedLog(woodset.getStrippedLog());
 
         }
+    }
+
+    public final void registerTombstone(BlockStateModelGenerator blockStateModelGenerator) {
+        blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(NWBlocks.TOMBSTONE, BlockStateVariant.create()
+                .put(VariantSettings.MODEL, ModelIds.getBlockModelId(NWBlocks.TOMBSTONE)))
+                .coordinate(BlockStateVariantMap.create(Properties.FACING)
+                        .register(Direction.UP, BlockStateVariant.create())
+                        .register(Direction.DOWN, BlockStateVariant.create().put(VariantSettings.X, VariantSettings.Rotation.R180))
+                        .register(Direction.NORTH, BlockStateVariant.create().put(VariantSettings.X, VariantSettings.Rotation.R90))
+                        .register(Direction.EAST, BlockStateVariant.create().put(VariantSettings.X, VariantSettings.Rotation.R90).put(VariantSettings.Y, VariantSettings.Rotation.R90))
+                        .register(Direction.WEST, BlockStateVariant.create().put(VariantSettings.X, VariantSettings.Rotation.R90).put(VariantSettings.Y, VariantSettings.Rotation.R270))
+                        .register(Direction.SOUTH, BlockStateVariant.create().put(VariantSettings.X, VariantSettings.Rotation.R90).put(VariantSettings.Y, VariantSettings.Rotation.R180))));
+    }
+
+    public void generateDripstonePot(BlockStateModelGenerator blockStateModelGenerator){
+        Identifier identifier = BlockStateModelGenerator.TintType.NOT_TINTED.getFlowerPotCrossModel().upload(NWBlocks.POTTED_POINTED_DRIPSTONE, TextureMap.of(TextureKey.PLANT, TextureMap.getId(Blocks.POINTED_DRIPSTONE).withSuffixedPath("_up_tip")), blockStateModelGenerator.modelCollector);
+        blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createSingletonBlockState(NWBlocks.POTTED_POINTED_DRIPSTONE, identifier));
+
     }
     public void makeStoneModels(BlockStateModelGenerator blockStateModelGenerator, Block block, Block stairs, Block slab, Block wall){
         blockStateModelGenerator.registerSimpleCubeAll(block);
