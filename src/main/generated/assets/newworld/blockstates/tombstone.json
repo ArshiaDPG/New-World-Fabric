@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "newworld:block/tombstone",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "newworld:block/tombstone",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "newworld:block/tombstone",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "newworld:block/tombstone",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "newworld:block/tombstone"
+    },
+    "facing=west": {
+      "model": "newworld:block/tombstone",
+      "x": 90,
+      "y": 270
+    }
+  }
+}
