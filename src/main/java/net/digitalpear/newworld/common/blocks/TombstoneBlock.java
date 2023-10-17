@@ -68,14 +68,6 @@ public class TombstoneBlock extends BlockWithEntity implements Waterloggable {
         return directionToShapeMap.get(state.get(FACING));
     }
 
-    public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        BlockEntity blockEntity = world.getBlockEntity(pos);
-        if (blockEntity instanceof TombstoneBlockEntity) {
-            ((TombstoneBlockEntity)blockEntity).tick();
-        }
-
-    }
-
     public boolean hasComparatorOutput(BlockState state) {
         return true;
     }
