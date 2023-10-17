@@ -1,27 +1,54 @@
 {
   "variants": {
-    "facing=down": {
+    "face=ceiling,facing=east": {
+      "model": "newworld:block/tombstone",
+      "x": 180,
+      "y": 90
+    },
+    "face=ceiling,facing=north": {
       "model": "newworld:block/tombstone",
       "x": 180
     },
-    "facing=east": {
+    "face=ceiling,facing=south": {
+      "model": "newworld:block/tombstone",
+      "x": 180,
+      "y": 180
+    },
+    "face=ceiling,facing=west": {
+      "model": "newworld:block/tombstone",
+      "x": 180,
+      "y": 270
+    },
+    "face=floor,facing=east": {
+      "model": "newworld:block/tombstone",
+      "y": 90
+    },
+    "face=floor,facing=north": {
+      "model": "newworld:block/tombstone"
+    },
+    "face=floor,facing=south": {
+      "model": "newworld:block/tombstone",
+      "y": 180
+    },
+    "face=floor,facing=west": {
+      "model": "newworld:block/tombstone",
+      "y": 270
+    },
+    "face=wall,facing=east": {
       "model": "newworld:block/tombstone",
       "x": 90,
       "y": 90
     },
-    "facing=north": {
+    "face=wall,facing=north": {
       "model": "newworld:block/tombstone",
       "x": 90
     },
-    "facing=south": {
+    "face=wall,facing=south": {
       "model": "newworld:block/tombstone",
       "x": 90,
       "y": 180
     },
-    "facing=up": {
-      "model": "newworld:block/tombstone"
-    },
-    "facing=west": {
+    "face=wall,facing=west": {
       "model": "newworld:block/tombstone",
       "x": 90,
       "y": 270

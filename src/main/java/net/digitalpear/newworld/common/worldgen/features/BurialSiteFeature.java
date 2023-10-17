@@ -1,6 +1,7 @@
 package net.digitalpear.newworld.common.worldgen.features;
 
 import com.mojang.serialization.Codec;
+import net.digitalpear.newworld.common.blocks.TombstoneBlock;
 import net.digitalpear.newworld.init.NWBlockEntityTypes;
 import net.digitalpear.newworld.init.NWBlocks;
 import net.minecraft.block.BlockState;
@@ -8,6 +9,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.loot.LootTables;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
@@ -26,7 +28,9 @@ public class BurialSiteFeature extends Feature<DefaultFeatureConfig> {
     public boolean generate(FeatureContext<DefaultFeatureConfig> context) {
         StructureWorldAccess world = context.getWorld();
         BlockPos origin = context.getOrigin().down();
-        int width = 12;
+
+        int width = world.getRandom().nextBetween(5, 10);
+
         BlockState bricks = Blocks.DEEPSLATE_BRICKS.getDefaultState();
         BlockState crackedBricks = Blocks.CRACKED_DEEPSLATE_BRICKS.getDefaultState();
         BlockState tiles = Blocks.DEEPSLATE_TILES.getDefaultState();
@@ -39,10 +43,10 @@ public class BurialSiteFeature extends Feature<DefaultFeatureConfig> {
         }
         for (BlockPos pos : BlockPos.iterate(origin.add(-width, 0, -width), origin.add(width, 0, width))){
             if (pos.getX() == origin.getX() || pos.getZ() == origin.getZ()){
-                placeBlock(world, pos, bricks, crackedBricks, Blocks.AIR.getDefaultState());
+                placeBlock(world, pos, bricks, crackedBricks);
             }
             else{
-                placeBlock(world, pos, tiles, crackedTiles, Blocks.AIR.getDefaultState());
+                placeBlock(world, pos, tiles, crackedTiles);
             }
         }
 
@@ -64,7 +68,7 @@ public class BurialSiteFeature extends Feature<DefaultFeatureConfig> {
                 }
             }
         }
-
+        placeBlock(world, origin.up(), NWBlocks.TOMBSTONE.getDefaultState());
 
         return true;
     }
@@ -79,7 +83,7 @@ public class BurialSiteFeature extends Feature<DefaultFeatureConfig> {
     }
 
     private static void generateTombstone(StructureWorldAccess world, BlockPos pos) {
-        placeBlock(world, pos, NWBlocks.TOMBSTONE.getDefaultState());
+        placeBlock(world, pos, NWBlocks.TOMBSTONE.getDefaultState().with(TombstoneBlock.FACING, Direction.byId(world.getRandom().nextBetween(2, 5))));
         world.getBlockEntity(pos, NWBlockEntityTypes.TOMBSTONE).ifPresent((blockEntity) ->
                 blockEntity.setLootTable(LootTables.TRAIL_RUINS_RARE_ARCHAEOLOGY, pos.asLong()));
     }
