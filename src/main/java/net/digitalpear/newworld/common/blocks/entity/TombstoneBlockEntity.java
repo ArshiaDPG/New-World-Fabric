@@ -8,17 +8,25 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.SidedInventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.screen.GenericContainerScreenHandler;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
+import net.minecraft.util.crash.CrashException;
+import net.minecraft.util.crash.CrashReport;
+import net.minecraft.util.crash.CrashReportSection;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.Iterator;
+import java.util.List;
 
 public class TombstoneBlockEntity extends LootableContainerBlockEntity {
     private DefaultedList<ItemStack> inventory;
@@ -66,65 +74,39 @@ public class TombstoneBlockEntity extends LootableContainerBlockEntity {
         return GenericContainerScreenHandler.createGeneric9x3(syncId, playerInventory, this);
     }
 
+    public int getEmptySlot() {
+        for(int i = 0; i < size(); ++i) {
+            if ((inventory.get(i)).isEmpty()) {
+                return i;
+            }
+        }
 
-//    public void addToLootTable(ItemStack itemStack){
-//        getInvStackList().stream().filter(itemStack1 -> !itemStack1.isEmpty());
-//
-//        for (int i = 0; i < size(); i++){
-//            ItemStack stack = getInvStackList().get(i);
-//            if (stack == itemStack && stack.getCount() < stack.getMaxCount()){
-//                if (stack.getCount() + itemStack.getCount() > stack.getMaxCount()){
-//                    stack.setCount(stack.getMaxCount());
-//                    itemStack.setCount(stack.getCount() + itemStack.getCount() - stack.getMaxCount());
-//                    getInvStackList().stream().findAny().ifPresent(itemStack1 -> itemStack1.isEmpty());
-//                }
-//                else {
-//                    stack.increment(itemStack.getCount());
-//                }
-//            }
-//        }
-//    }
-//    private static ItemStack transfer(@Nullable Inventory from, Inventory to, ItemStack stack, int slot, @Nullable Direction side) {
-//        ItemStack itemStack = to.getStack(slot);
-//        if (canInsert(to, stack, slot, side)) {
-//            boolean bl = false;
-//            boolean bl2 = to.isEmpty();
-//            if (itemStack.isEmpty()) {
-//                to.setStack(slot, stack);
-//                stack = ItemStack.EMPTY;
-//                bl = true;
-//            } else if (canMergeItems(itemStack, stack)) {
-//                int i = stack.getMaxCount() - itemStack.getCount();
-//                int j = Math.min(stack.getCount(), i);
-//                stack.decrement(j);
-//                itemStack.increment(j);
-//                bl = j > 0;
-//            }
-//        }
-//
-//        return stack;
-//    }
-//    private static boolean canInsert(Inventory inventory, ItemStack stack, int slot, @Nullable Direction side) {
-//        if (!inventory.isValid(slot, stack)) {
-//            return false;
-//        } else {
-//            boolean var10000;
-//            if (inventory instanceof SidedInventory) {
-//                SidedInventory sidedInventory = (SidedInventory)inventory;
-//                if (!sidedInventory.canInsert(slot, stack, side)) {
-//                    var10000 = false;
-//                    return var10000;
-//                }
-//            }
-//
-//            var10000 = true;
-//            return var10000;
-//        }
-//    }
-//    private static boolean canMergeItems(ItemStack first, ItemStack second) {
-//        return first.getCount() <= first.getMaxCount() && ItemStack.canCombine(first, second);
-//    }
+        return -1;
+    }
+    public int getCompatibleSlot(ItemStack stack) {
+        for(int i = 0; i < size(); ++i) {
+            if ((inventory.get(i)).isEmpty() || (ItemStack.canCombine((inventory.get(i)), stack) && inventory.get(i).getCount() + stack.getCount() <= 64)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+    public static boolean contains(List<DefaultedList<ItemStack>> inv, Item item) {
+        Iterator var2 = inv.iterator();
 
+        while(var2.hasNext()) {
+            List<ItemStack> list = (List)var2.next();
+            Iterator var4 = list.iterator();
+
+            while(var4.hasNext()) {
+                ItemStack itemStack = (ItemStack)var4.next();
+                if (!itemStack.isEmpty() && itemStack.isOf(item)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
     void playSound(BlockState state, SoundEvent soundEvent) {
         double d = (double)this.pos.getX() + 0.5;

@@ -13,6 +13,7 @@ import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -20,12 +21,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.List;
 
 @Mixin(PlayerInventory.class)
-public class PlayerDeathMixin {
+public abstract class PlayerDeathMixin {
     @Shadow @Final public PlayerEntity player;
 
     @Shadow @Final private List<DefaultedList<ItemStack>> combinedInventory;
 
-    @Inject(method = "dropAll", cancellable = true, at = @At("HEAD"))
+
+
+    @Inject(method = "dropAll", at = @At("HEAD"))
     private void method(CallbackInfo ci){
         World world = player.getWorld();
         BlockPos pos = getValidPos(world, player.getBlockPos());
@@ -35,37 +38,63 @@ public class PlayerDeathMixin {
                 world.setBlockState(pos, NWBlocks.TOMBSTONE.getDefaultState());
             }
             world.getBlockEntity(pos, NWBlockEntityTypes.TOMBSTONE).ifPresent(tombstoneBlockEntity -> {
-                if (!tombstoneBlockEntity.getInvStackList().stream().noneMatch(ItemStack::isEmpty)) {
+
+                if (tombstoneBlockEntity.getInvStackList().stream().anyMatch(ItemStack::isEmpty)) {
+
                     boolean decrementedTombstone = false;
-                    int tombstoneIndex = 0;
+
                     for (DefaultedList<ItemStack> itemStacks : combinedInventory) {
+                        for (int i = 0; i < ((List<ItemStack>) itemStacks).size(); ++i) {
+                            ItemStack itemStack = ((List<ItemStack>) itemStacks).get(i);
+                            /*
+                                Remove a single tombstone from the player's inventory.
+                             */
+                            if (itemStack.isOf(NWBlocks.TOMBSTONE.asItem()) && !decrementedTombstone) {
+                                itemStack.decrement(1);
+                                decrementedTombstone = true;
+                            }
 
-
-                        List<ItemStack> list = itemStacks;
-                        for (int i = 0; i < list.size(); ++i) {
-                            ItemStack itemStack = list.get(i);
                             if (!itemStack.isEmpty()) {
-                                if (tombstoneIndex < tombstoneBlockEntity.getInvStackList().size()) {
-                                    if (itemStack.isOf(NWBlocks.TOMBSTONE.asItem()) && !decrementedTombstone) {
-                                        itemStack.decrement(1);
-                                        decrementedTombstone = true;
-                                    } else if (tombstoneBlockEntity.getInvStackList().get(tombstoneIndex).isEmpty()) {
-                                        tombstoneBlockEntity.setStack(tombstoneIndex, itemStack);
-                                        tombstoneIndex++;
+                                int compatibleSlot = tombstoneBlockEntity.getCompatibleSlot(itemStack);
+                                ItemStack tombstoneStack = tombstoneBlockEntity.getStack(compatibleSlot);
+
+                                /*
+                                    Place the stack inside the tombstone.
+                                 */
+                                if (compatibleSlot != -1){
+                                    if (tombstoneStack.isEmpty()){
+                                        tombstoneBlockEntity.setStack(compatibleSlot, itemStack);
                                     }
-                                } else {
+                                    else if (ItemStack.canCombine(tombstoneStack, itemStack)){
+                                        if (tombstoneStack.getCount() + itemStack.getCount() > tombstoneStack.getMaxCount()){
+                                            tombstoneStack.setCount(tombstoneStack.getMaxCount());
+                                            itemStack.setCount(tombstoneStack.getCount() + itemStack.getCount() - tombstoneStack.getMaxCount());
+                                            if (tombstoneBlockEntity.getEmptySlot() != -1){
+                                                tombstoneBlockEntity.setStack(tombstoneBlockEntity.getEmptySlot(), itemStack);
+                                            }
+                                            else{
+                                                this.player.dropItem(itemStack, true, false);
+                                            }
+
+                                        }
+                                        else{
+                                            tombstoneStack.setCount(tombstoneStack.getCount() + itemStack.getCount());
+                                        }
+                                    }
+                                }
+                                else {
                                     this.player.dropItem(itemStack, true, false);
                                 }
-                                list.set(i, ItemStack.EMPTY);
+                                ((List<ItemStack>) itemStacks).set(i, ItemStack.EMPTY);
                             }
                         }
                     }
                 }
             });
-
         }
     }
 
+    @Unique
     private boolean hasTombstoneInInventory(){
         for (DefaultedList<ItemStack> itemStacks : combinedInventory) {
             if (itemStacks.stream().anyMatch(stack -> stack.isOf(NWBlocks.TOMBSTONE.asItem()))){
@@ -75,6 +104,7 @@ public class PlayerDeathMixin {
         return false;
 
     }
+    @Unique
     private BlockPos getValidPos(World world, BlockPos pos){
         BlockPos finalPos = pos;
         while (finalPos.getY() < pos.getY() + 6){
