@@ -30,44 +30,39 @@ public class PlayerDeathMixin {
         World world = player.getWorld();
         BlockPos pos = getValidPos(world, player.getBlockPos());
 
-        if (pos == null || !hasTombstoneInInventory()) {
-            ci.cancel();
-        }
-        else{
+        if (pos != null && hasTombstoneInInventory()) {
             if (!world.getBlockState(pos).isOf(NWBlocks.TOMBSTONE)){
                 world.setBlockState(pos, NWBlocks.TOMBSTONE.getDefaultState());
             }
             world.getBlockEntity(pos, NWBlockEntityTypes.TOMBSTONE).ifPresent(tombstoneBlockEntity -> {
-                if (tombstoneBlockEntity.getInvStackList().stream().noneMatch(ItemStack::isEmpty)){
-                    ci.cancel();
-                }
-                boolean decrementedTombstone = false;
-                int tombstoneIndex = 0;
-                for (DefaultedList<ItemStack> itemStacks : combinedInventory) {
+                if (!tombstoneBlockEntity.getInvStackList().stream().noneMatch(ItemStack::isEmpty)) {
+                    boolean decrementedTombstone = false;
+                    int tombstoneIndex = 0;
+                    for (DefaultedList<ItemStack> itemStacks : combinedInventory) {
 
 
-                    List<ItemStack> list = itemStacks;
-                    for(int i = 0; i < list.size(); ++i) {
-                        ItemStack itemStack = list.get(i);
-                        if (!itemStack.isEmpty()) {
-                            if (tombstoneIndex < tombstoneBlockEntity.getInvStackList().size()){
-                                if (itemStack.isOf(NWBlocks.TOMBSTONE.asItem()) && !decrementedTombstone){
-                                    itemStack.decrement(1);
-                                    decrementedTombstone = true;
+                        List<ItemStack> list = itemStacks;
+                        for (int i = 0; i < list.size(); ++i) {
+                            ItemStack itemStack = list.get(i);
+                            if (!itemStack.isEmpty()) {
+                                if (tombstoneIndex < tombstoneBlockEntity.getInvStackList().size()) {
+                                    if (itemStack.isOf(NWBlocks.TOMBSTONE.asItem()) && !decrementedTombstone) {
+                                        itemStack.decrement(1);
+                                        decrementedTombstone = true;
+                                    } else if (tombstoneBlockEntity.getInvStackList().get(tombstoneIndex).isEmpty()) {
+                                        tombstoneBlockEntity.setStack(tombstoneIndex, itemStack);
+                                        tombstoneIndex++;
+                                    }
+                                } else {
+                                    this.player.dropItem(itemStack, true, false);
                                 }
-                                else if (tombstoneBlockEntity.getInvStackList().get(tombstoneIndex).isEmpty()){
-                                    tombstoneBlockEntity.setStack(tombstoneIndex, itemStack);
-                                    tombstoneIndex++;
-                                }
+                                list.set(i, ItemStack.EMPTY);
                             }
-                            else{
-                                this.player.dropItem(itemStack, true, false);
-                            }
-                            list.set(i, ItemStack.EMPTY);
                         }
                     }
                 }
             });
+
         }
     }
 
