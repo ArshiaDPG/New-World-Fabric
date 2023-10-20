@@ -38,7 +38,7 @@ public class PlayerDeathMixin {
                 world.setBlockState(pos, NWBlocks.TOMBSTONE.getDefaultState());
             }
             world.getBlockEntity(pos, NWBlockEntityTypes.TOMBSTONE).ifPresent(tombstoneBlockEntity -> {
-                if (tombstoneBlockEntity.getInvStackList().stream().noneMatch(stack -> stack.isEmpty())){
+                if (tombstoneBlockEntity.getInvStackList().stream().noneMatch(ItemStack::isEmpty)){
                     ci.cancel();
                 }
                 boolean decrementedTombstone = false;
@@ -81,12 +81,12 @@ public class PlayerDeathMixin {
 
     }
     private BlockPos getValidPos(World world, BlockPos pos){
-        if (!world.getBlockState(pos).isIn(NWBlockTags.TOMBSTONE_REPLACEABLE)){
-            for (BlockPos pos1 : BlockPos.iterate(pos.up(), pos.up(6))) {
-                if (world.getBlockState(pos1).isIn(NWBlockTags.TOMBSTONE_REPLACEABLE) || world.getBlockState(pos1).isAir()){
-                    return pos1;
-                }
+        BlockPos finalPos = pos;
+        while (finalPos.getY() < pos.getY() + 6){
+            if (world.getBlockState(finalPos).isIn(NWBlockTags.TOMBSTONE_REPLACEABLE) || world.getBlockState(finalPos).isAir()){
+                return finalPos;
             }
+            finalPos = finalPos.up();
         }
         return null;
     }

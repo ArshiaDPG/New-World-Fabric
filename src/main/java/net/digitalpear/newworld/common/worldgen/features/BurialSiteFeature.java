@@ -85,7 +85,7 @@ public class BurialSiteFeature extends Feature<DefaultFeatureConfig> {
     private static void generateTombstone(StructureWorldAccess world, BlockPos pos) {
         placeBlock(world, pos, NWBlocks.TOMBSTONE.getDefaultState().with(TombstoneBlock.FACING, Direction.byId(world.getRandom().nextBetween(2, 5))));
         world.getBlockEntity(pos, NWBlockEntityTypes.TOMBSTONE).ifPresent((blockEntity) ->
-                blockEntity.setLootTable(LootTables.TRAIL_RUINS_RARE_ARCHAEOLOGY, pos.asLong()));
+                blockEntity.setLootTable(LootTables.UNDERWATER_RUIN_SMALL_CHEST, pos.asLong()));
     }
     private static void generateTombstone(StructureWorldAccess world, BlockPos pos, float chance) {
         if (world.getRandom().nextFloat() < chance){
