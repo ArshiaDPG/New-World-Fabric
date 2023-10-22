@@ -87,7 +87,6 @@ public class NWModelProvider extends FabricModelProvider {
 
     public final void registerTombstone(BlockStateModelGenerator blockStateModelGenerator) {
         Identifier tombstone = TOMBSTONE.upload(NWBlocks.TOMBSTONE, new TextureMap().put(TextureKey.TEXTURE, getId(NWBlocks.TOMBSTONE)).put(TextureKey.PARTICLE, getId(Blocks.POLISHED_DEEPSLATE)), blockStateModelGenerator.modelCollector);
-        Identifier crackedTombstone = TOMBSTONE.upload(NWBlocks.TOMBSTONE, "_cracked", new TextureMap().put(TextureKey.TEXTURE, getId(NWBlocks.TOMBSTONE, "_cracked")).put(TextureKey.PARTICLE, getId(Blocks.POLISHED_DEEPSLATE)), blockStateModelGenerator.modelCollector);
 
         blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(NWBlocks.TOMBSTONE).coordinate(BlockStateVariantMap.create(Properties.CRACKED, Properties.BLOCK_FACE, Properties.HORIZONTAL_FACING).register((cracked, blockFace, horizontalFacing) ->{
             BlockStateVariant blockStateVariant = BlockStateVariant.create();
@@ -107,7 +106,7 @@ public class NWModelProvider extends FabricModelProvider {
                 blockStateVariant.put(VariantSettings.Y, VariantSettings.Rotation.R270);
             }
 
-            return blockStateVariant.put(VariantSettings.MODEL, cracked ? crackedTombstone : tombstone);
+            return blockStateVariant.put(VariantSettings.MODEL, tombstone);
 
         })));
     }

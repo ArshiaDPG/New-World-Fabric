@@ -1,7 +1,0 @@
-{
-  "parent": "newworld:block/template_tombstone",
-  "textures": {
-    "particle": "minecraft:block/polished_deepslate",
-    "texture": "newworld:block/tombstone_cracked"
-  }
-}

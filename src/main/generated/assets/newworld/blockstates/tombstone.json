@@ -54,55 +54,55 @@
       "y": 270
     },
     "cracked=true,face=ceiling,facing=east": {
-      "model": "newworld:block/tombstone_cracked",
+      "model": "newworld:block/tombstone",
       "x": 180,
       "y": 90
     },
     "cracked=true,face=ceiling,facing=north": {
-      "model": "newworld:block/tombstone_cracked",
+      "model": "newworld:block/tombstone",
       "x": 180
     },
     "cracked=true,face=ceiling,facing=south": {
-      "model": "newworld:block/tombstone_cracked",
+      "model": "newworld:block/tombstone",
       "x": 180,
       "y": 180
     },
     "cracked=true,face=ceiling,facing=west": {
-      "model": "newworld:block/tombstone_cracked",
+      "model": "newworld:block/tombstone",
       "x": 180,
       "y": 270
     },
     "cracked=true,face=floor,facing=east": {
-      "model": "newworld:block/tombstone_cracked",
+      "model": "newworld:block/tombstone",
       "y": 90
     },
     "cracked=true,face=floor,facing=north": {
-      "model": "newworld:block/tombstone_cracked"
+      "model": "newworld:block/tombstone"
     },
     "cracked=true,face=floor,facing=south": {
-      "model": "newworld:block/tombstone_cracked",
+      "model": "newworld:block/tombstone",
       "y": 180
     },
     "cracked=true,face=floor,facing=west": {
-      "model": "newworld:block/tombstone_cracked",
+      "model": "newworld:block/tombstone",
       "y": 270
     },
     "cracked=true,face=wall,facing=east": {
-      "model": "newworld:block/tombstone_cracked",
+      "model": "newworld:block/tombstone",
       "x": 90,
       "y": 90
     },
     "cracked=true,face=wall,facing=north": {
-      "model": "newworld:block/tombstone_cracked",
+      "model": "newworld:block/tombstone",
       "x": 90
     },
     "cracked=true,face=wall,facing=south": {
-      "model": "newworld:block/tombstone_cracked",
+      "model": "newworld:block/tombstone",
       "x": 90,
       "y": 180
     },
     "cracked=true,face=wall,facing=west": {
-      "model": "newworld:block/tombstone_cracked",
+      "model": "newworld:block/tombstone",
       "x": 90,
       "y": 270
     }
