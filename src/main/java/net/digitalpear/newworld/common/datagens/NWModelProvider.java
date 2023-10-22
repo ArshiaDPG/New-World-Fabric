@@ -15,6 +15,8 @@ import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
 
+import java.util.Optional;
+
 public class NWModelProvider extends FabricModelProvider {
 
 
@@ -77,26 +79,37 @@ public class NWModelProvider extends FabricModelProvider {
         }
     }
 
+    public static final Model TOMBSTONE = block("template_tombstone", TextureKey.TEXTURE, TextureKey.PARTICLE);
+
+    private static Model block(String parent, TextureKey... requiredTextureKeys) {
+        return new Model(Optional.of(new Identifier(Newworld.MOD_ID, "block/" + parent)), Optional.empty(), requiredTextureKeys);
+    }
+
     public final void registerTombstone(BlockStateModelGenerator blockStateModelGenerator) {
-        blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(NWBlocks.TOMBSTONE, BlockStateVariant.create()
-                .put(VariantSettings.MODEL, ModelIds.getBlockModelId(NWBlocks.TOMBSTONE)))
-                .coordinate(BlockStateVariantMap.create(Properties.BLOCK_FACE, Properties.HORIZONTAL_FACING)
+        Identifier tombstone = TOMBSTONE.upload(NWBlocks.TOMBSTONE, new TextureMap().put(TextureKey.TEXTURE, getId(NWBlocks.TOMBSTONE)).put(TextureKey.PARTICLE, getId(Blocks.POLISHED_DEEPSLATE)), blockStateModelGenerator.modelCollector);
+        Identifier crackedTombstone = TOMBSTONE.upload(NWBlocks.TOMBSTONE, "_cracked", new TextureMap().put(TextureKey.TEXTURE, getId(NWBlocks.TOMBSTONE, "_cracked")).put(TextureKey.PARTICLE, getId(Blocks.POLISHED_DEEPSLATE)), blockStateModelGenerator.modelCollector);
 
-                        .register(BlockFace.FLOOR, Direction.NORTH, BlockStateVariant.create())
-                        .register(BlockFace.FLOOR, Direction.SOUTH, BlockStateVariant.create().put(VariantSettings.Y, VariantSettings.Rotation.R180))
-                        .register(BlockFace.FLOOR, Direction.EAST, BlockStateVariant.create().put(VariantSettings.Y, VariantSettings.Rotation.R90))
-                        .register(BlockFace.FLOOR, Direction.WEST, BlockStateVariant.create().put(VariantSettings.Y, VariantSettings.Rotation.R270))
+        blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(NWBlocks.TOMBSTONE).coordinate(BlockStateVariantMap.create(Properties.CRACKED, Properties.BLOCK_FACE, Properties.HORIZONTAL_FACING).register((cracked, blockFace, horizontalFacing) ->{
+            BlockStateVariant blockStateVariant = BlockStateVariant.create();
 
-                        .register(BlockFace.CEILING, Direction.NORTH, BlockStateVariant.create().put(VariantSettings.X, VariantSettings.Rotation.R180))
-                        .register(BlockFace.CEILING, Direction.SOUTH, BlockStateVariant.create().put(VariantSettings.X, VariantSettings.Rotation.R180).put(VariantSettings.Y, VariantSettings.Rotation.R180))
-                        .register(BlockFace.CEILING, Direction.EAST, BlockStateVariant.create().put(VariantSettings.X, VariantSettings.Rotation.R180).put(VariantSettings.Y, VariantSettings.Rotation.R90))
-                        .register(BlockFace.CEILING, Direction.WEST, BlockStateVariant.create().put(VariantSettings.X, VariantSettings.Rotation.R180).put(VariantSettings.Y, VariantSettings.Rotation.R270))
+            if (blockFace == BlockFace.WALL){
+                blockStateVariant.put(VariantSettings.X, VariantSettings.Rotation.R90);
+            }
+            else if (blockFace == BlockFace.CEILING){
+                blockStateVariant.put(VariantSettings.X, VariantSettings.Rotation.R180);
+            }
 
-                        .register(BlockFace.WALL, Direction.NORTH, BlockStateVariant.create().put(VariantSettings.X, VariantSettings.Rotation.R90))
-                        .register(BlockFace.WALL, Direction.SOUTH, BlockStateVariant.create().put(VariantSettings.X, VariantSettings.Rotation.R90).put(VariantSettings.Y, VariantSettings.Rotation.R180))
-                        .register(BlockFace.WALL, Direction.EAST, BlockStateVariant.create().put(VariantSettings.X, VariantSettings.Rotation.R90).put(VariantSettings.Y, VariantSettings.Rotation.R90))
-                        .register(BlockFace.WALL, Direction.WEST, BlockStateVariant.create().put(VariantSettings.X, VariantSettings.Rotation.R90).put(VariantSettings.Y, VariantSettings.Rotation.R270))
-                ));
+            if (horizontalFacing == Direction.EAST){
+                blockStateVariant.put(VariantSettings.Y, VariantSettings.Rotation.R90);
+            } else if (horizontalFacing == Direction.SOUTH) {
+                blockStateVariant.put(VariantSettings.Y, VariantSettings.Rotation.R180);
+            } else if (horizontalFacing == Direction.WEST) {
+                blockStateVariant.put(VariantSettings.Y, VariantSettings.Rotation.R270);
+            }
+
+            return blockStateVariant.put(VariantSettings.MODEL, cracked ? crackedTombstone : tombstone);
+
+        })));
     }
 
     public void generateDripstonePot(BlockStateModelGenerator blockStateModelGenerator){

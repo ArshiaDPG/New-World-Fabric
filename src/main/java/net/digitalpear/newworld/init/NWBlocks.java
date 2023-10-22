@@ -6,6 +6,7 @@ import net.digitalpear.newworld.common.worldgen.tree.FirSaplingGenerator;
 import net.digitalpear.newworld.init.data.woodset.Woodset;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.*;
+import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
@@ -86,7 +87,7 @@ public class NWBlocks {
     public static final Block LOAM_TILE_SLAB = createBlockWithItem("loam_tile_slab", new SlabBlock(AbstractBlock.Settings.copy(LOAM_TILES)));
     public static final Block LOAM_TILE_WALL = createBlockWithItem("loam_tile_wall", new WallBlock(AbstractBlock.Settings.copy(LOAM_TILES)));
 
-    public static final Block TOMBSTONE = createBlockWithCustomItem("tombstone", new TombstoneBlock(AbstractBlock.Settings.copy(Blocks.DEEPSLATE).nonOpaque()), new Item.Settings().maxCount(1));
+    public static final Block TOMBSTONE = createBlockWithCustomItem("tombstone", new TombstoneBlock(AbstractBlock.Settings.create().mapColor(Blocks.DEEPSLATE.getDefaultMapColor()).strength(0.7f, 7).pistonBehavior(PistonBehavior.IGNORE).sounds(BlockSoundGroup.POLISHED_DEEPSLATE).suffocates((state, world, pos) -> false).nonOpaque()), new Item.Settings().maxCount(1));
 
 
     /*

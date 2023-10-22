@@ -9,6 +9,8 @@ import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.item.ItemStack;
+import net.minecraft.loot.context.LootContextParameterSet;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
@@ -25,10 +27,13 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 
 public class TombstoneBlock extends BlockWithEntity implements Waterloggable {
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
+    public static final BooleanProperty CRACKED = Properties.CRACKED;
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
     public static final EnumProperty<BlockFace> FACE = Properties.BLOCK_FACE;
 
@@ -40,9 +45,10 @@ public class TombstoneBlock extends BlockWithEntity implements Waterloggable {
             Direction.EAST, Block.createCuboidShape(0.0, 0.0, 0.0, 9.0, 16.0, 16.0),
             Direction.WEST, Block.createCuboidShape(7.0, 0.0, 0.0, 16.0, 16.0, 16.0)
     );
+
     public TombstoneBlock(Settings settings) {
         super(settings);
-        setDefaultState(this.stateManager.getDefaultState().with(WATERLOGGED, false).with(FACE, BlockFace.FLOOR).with(FACING, Direction.NORTH));
+        setDefaultState(this.stateManager.getDefaultState().with(WATERLOGGED, false).with(FACE, BlockFace.FLOOR).with(FACING, Direction.NORTH).with(CRACKED, false));
     }
 
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
@@ -66,6 +72,15 @@ public class TombstoneBlock extends BlockWithEntity implements Waterloggable {
             return directionToShapeMap.get(Direction.UP);
         }
         return directionToShapeMap.get(state.get(FACING));
+    }
+
+
+    @Override
+    public List<ItemStack> getDroppedStacks(BlockState state, LootContextParameterSet.Builder builder) {
+        if(state.get(CRACKED)){
+            return Collections.emptyList();
+        }
+        return super.getDroppedStacks(state, builder);
     }
 
     public boolean hasComparatorOutput(BlockState state) {
@@ -109,7 +124,7 @@ public class TombstoneBlock extends BlockWithEntity implements Waterloggable {
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(WATERLOGGED, FACE, FACING);
+        builder.add(WATERLOGGED, FACE, FACING, CRACKED);
     }
 
     @Nullable
