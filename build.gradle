@@ -143,10 +143,6 @@ unifiedPublishing {
             conflicts {} // Mark as a conflicted dependency
         }
 
-        curseforge {
-            token = System.getenv("CF_TOKEN")
-            id = "654411" // Required, must be a string, ID of CurseForge project
-        }
 
         modrinth {
             token = System.getenv("MODRINTH_TOKEN")
