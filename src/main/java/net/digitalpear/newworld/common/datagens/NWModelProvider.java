@@ -55,6 +55,7 @@ public class NWModelProvider extends FabricModelProvider {
         itemModelGenerator.register(NWItems.MATTOCK_CRAFTING_TEMPLATE_HEAD, Models.GENERATED);
         itemModelGenerator.register(NWItems.MATTOCK_CRAFTING_TEMPLATE_SHAFT, Models.GENERATED);
 
+        itemModelGenerator.register(NWItems.ARCANE_TOME, Models.GENERATED);
     }
 
     public static void fullWoodset(BlockStateModelGenerator blockStateModelGenerator, Woodset woodset){

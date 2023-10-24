@@ -35,6 +35,7 @@
   "block.newworld.tombstone": "Tombstone",
   "entity.newworld.automaton": "Automaton",
   "item.newworld.ancient_mattock": "Ancient Mattock",
+  "item.newworld.arcane_tome": "Arcane Tome",
   "item.newworld.automaton_spawn_egg": "Automaton Spawn Egg",
   "item.newworld.fir_boat": "Fir Boat",
   "item.newworld.fir_chest_boat": "Fir Boat with Chest",
@@ -47,5 +48,6 @@
   "item.newworld.smithing_template.mattock_crafting.applies_to": "Stick",
   "item.newworld.smithing_template.mattock_crafting.base_slot_description": "Add Stick",
   "item.newworld.smithing_template.mattock_crafting.ingredients": "Flint",
+  "newworld.tombstone_activation": "Tombstones Activated",
   "upgrade.newworld.mattock_crafting": "Mattock Crafting"
 }

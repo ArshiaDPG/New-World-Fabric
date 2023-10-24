@@ -94,6 +94,19 @@ public class NWRecipeProvider extends FabricRecipeProvider {
                 .criterion(RecipeProvider.hasItem(NWBlocks.LOAM_BRICKS), RecipeProvider.conditionsFromItem(NWBlocks.LOAM_BRICKS))
                 .offerTo(exporter);
 
+        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, NWBlocks.TOMBSTONE)
+                .input('D', Items.DIAMOND)
+                .input('S', Items.POLISHED_DEEPSLATE)
+                .input('A', NWItems.ARCANE_TOME)
+                .input('T', NWBlocks.TOMBSTONE)
+
+                .pattern("SDS")
+                .pattern("SAS")
+                .pattern("STS")
+                .showNotification(true)
+                .criterion("has_tombstone_or_arcane_tome", conditionsFromItemPredicates(ItemPredicate.Builder.create().items(NWItems.ARCANE_TOME, NWBlocks.TOMBSTONE).build()))
+                .offerTo(exporter);
+
 
 
     }

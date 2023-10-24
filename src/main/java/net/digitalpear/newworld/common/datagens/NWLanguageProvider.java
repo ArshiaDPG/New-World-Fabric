@@ -3,6 +3,7 @@ package net.digitalpear.newworld.common.datagens;
 import net.digitalpear.newworld.init.NWBlocks;
 import net.digitalpear.newworld.init.NWEntityTypes;
 import net.digitalpear.newworld.init.NWItems;
+import net.digitalpear.newworld.init.data.NWStats;
 import net.digitalpear.newworld.init.data.woodset.Woodset;
 import net.digitalpear.newworld.init.worldgen.NWBiomes;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -50,12 +51,15 @@ public class NWLanguageProvider extends FabricLanguageProvider {
         makeTranslation(translationBuilder, NWEntityTypes.AUTOMATON);
 
         makeTranslation(translationBuilder, NWBlocks.TOMBSTONE);
+        makeTranslation(translationBuilder, NWItems.ARCANE_TOME);
 
         translationBuilder.add(NWItems.FIR_BOAT, "Fir Boat");
         translationBuilder.add(NWItems.FIR_CHEST_BOAT, "Fir Boat with Chest");
 
         translationBuilder.add("advancements.story.collect_ancient_mattock.title", "Renaissance Tool");
         translationBuilder.add("advancements.story.collect_ancient_mattock.description", "Discover an Ancient Mattock.");
+
+        translationBuilder.add(NWStats.TOMBSTONE_ACTIVATION, "Tombstones Activated");
 
 
         NWBiomes.biomes.forEach(biomeRegistryKey -> makeBiomeTranslation(translationBuilder, biomeRegistryKey));
@@ -91,6 +95,9 @@ public class NWLanguageProvider extends FabricLanguageProvider {
     }
     public static void makeTranslation(TranslationBuilder translationBuilder, EntityType entity){
         translationBuilder.add(entity, formatString(Registries.ENTITY_TYPE.getId(entity).getPath()));
+    }
+    public static void makeTranslation(TranslationBuilder translationBuilder, Identifier identifier){
+        translationBuilder.add(identifier, formatString(identifier.getPath()));
     }
 
 

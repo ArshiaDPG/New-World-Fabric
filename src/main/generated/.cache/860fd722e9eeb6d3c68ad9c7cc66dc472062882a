@@ -1,4 +1,4 @@
-// 1.20.2	2023-10-21T19:22:23.8499879	New World/Model Definitions
+// 1.20.2	2023-10-23T22:21:23.600124	New World/Model Definitions
 eb334652ce87b8a4e8a6138188b11587c1db7136 assets\newworld\blockstates\stripped_fir_wood.json
 863fbb82453ac965670fbbfd88966bd24243dadc assets\newworld\models\block\fir_log.json
 38c0b55e90009c06c0752a6a293ffbbb539a962f assets\newworld\models\block\fir_door_top_right_open.json
@@ -23,8 +23,8 @@ abbeae424f47e33ea5bfdbab9d93257c0a46092b assets\newworld\blockstates\tombstone.j
 40436be2174f37c8389b335fd4b62896cb22a22c assets\newworld\models\block\fir_button_inventory.json
 2c3b15a95d003f63c74233c97e62c405b91c1c64 assets\newworld\models\item\tombstone.json
 2d710e948222631d57cf5e3c5e6817668abf6f98 assets\newworld\blockstates\fir_sign.json
-dee0a6d4f31cf3017dd103949403aa84ffb0dab8 assets\newworld\models\item\loam.json
 57ee29f6112838d2b87b4b1cc008861299d20ccf assets\newworld\models\block\loam_brick_stairs_outer.json
+dee0a6d4f31cf3017dd103949403aa84ffb0dab8 assets\newworld\models\item\loam.json
 08b642f874f25956887ec0310178c994673c21e9 assets\newworld\blockstates\fir_pressure_plate.json
 0bedf0e00d063169bd9dcc4c5428991e8564a720 assets\newworld\models\item\loam_brick_wall.json
 81366a0b247985fd497e0324c5b1d3b48661ee2f assets\newworld\blockstates\loam_brick_slab.json
@@ -51,6 +51,7 @@ be2d39db5a184fc11fbf5629ad31f6a368fe56a3 assets\newworld\models\block\fir_stairs
 5203b91776cf107fcaa3c79dc5319be11c0a81c7 assets\newworld\models\block\loam_brick_wall_post.json
 50212fe757e12ea215f9ff6e1e20aa7e99d35b18 assets\newworld\models\block\loam_bricks.json
 555adbc8d91898aa7e4a21b27e029b13e465912e assets\newworld\models\block\stripped_fir_log_horizontal.json
+97e5b067777ef1eb07f52cb740f4b66742f54b9e assets\newworld\models\item\arcane_tome.json
 1aa6e8aa715050cdb13ef3e604f90cd350672fdc assets\newworld\blockstates\loam_tiles.json
 d951ef2dd064c0b1874bdcbfe9e9505a56d16a6f assets\newworld\models\item\loam_tile_slab.json
 f85a8e0c9839049748c854f85e23d1ced28e8bcd assets\newworld\models\block\stripped_fir_wood.json
@@ -62,8 +63,8 @@ bb6098246077ccf4a4dd95db181cc775705ede76 assets\newworld\models\item\loam_tile_s
 3447a5acbce248a18bbf4020ae45fb34cffd6046 assets\newworld\models\block\fir_fence_post.json
 0657d0aae18936d70bf7342a8b767e99e24775f3 assets\newworld\models\block\fir_trapdoor_bottom.json
 1c855fc380a4bbd4a025b12931909d16c1caa64e assets\newworld\models\item\loam_slab.json
-0368dd8aab7a7f1bba5cee3f991fba81fe5025a8 assets\newworld\models\block\loam_tile_wall_post.json
 7bdf7018729288941e2dd6f4bce5aaf1cfaefc81 assets\newworld\models\block\loam_tile_stairs_inner.json
+0368dd8aab7a7f1bba5cee3f991fba81fe5025a8 assets\newworld\models\block\loam_tile_wall_post.json
 039b229ae79bba512eb26832018b2ece7303a63a assets\newworld\models\block\fir_door_top_left.json
 b434d66d1f2daf8ccebc405dded61430d6e33ed0 assets\newworld\models\block\fir_log_horizontal.json
 fb081c054c26313ffa0395277af5bd2e1f3491f3 assets\newworld\models\block\fir_slab_top.json
@@ -74,8 +75,8 @@ fb081c054c26313ffa0395277af5bd2e1f3491f3 assets\newworld\models\block\fir_slab_t
 6807b70913af03f21307ecf622475d01c42e188f assets\newworld\models\block\loam_tile_wall_side_tall.json
 8bcc2bc0ea2730b9aff73132b8c7d00fa888d12b assets\newworld\models\block\fir_fence_side.json
 0a0105b29f8dcccb3ee3faaf08d64b5eff68946c assets\newworld\models\block\fir_door_bottom_left.json
-62b0163c4f7190cff7168ed98706ef4a23ddabaa assets\newworld\models\block\loam_brick_wall_side.json
 3428fdcf79c128d0fb6318887bb84aaa68eca4c9 assets\newworld\models\item\fir_log.json
+62b0163c4f7190cff7168ed98706ef4a23ddabaa assets\newworld\models\block\loam_brick_wall_side.json
 61b57e2f8154f19f2b88a8549888b659f52f993d assets\newworld\blockstates\potted_fir_sapling.json
 162dcbcdab2e69d23ec592cf936fa21cfecb7be7 assets\newworld\models\item\fir_sapling.json
 97453568a930b7e108e9f1d223ac2ed1851dfea4 assets\newworld\models\item\fir_wood.json

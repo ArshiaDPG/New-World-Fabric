@@ -5,10 +5,7 @@ import com.terraformersmc.terraform.boat.api.TerraformBoatType;
 import com.terraformersmc.terraform.boat.api.TerraformBoatTypeRegistry;
 import com.terraformersmc.terraform.boat.impl.item.TerraformBoatItem;
 import net.digitalpear.newworld.Newworld;
-import net.digitalpear.newworld.common.items.AncientSmithingTemplateItem;
-import net.digitalpear.newworld.common.items.MattockItem;
-import net.digitalpear.newworld.common.items.NWToolMaterials;
-import net.digitalpear.newworld.common.items.SmithingTemplatePieceItem;
+import net.digitalpear.newworld.common.items.*;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
@@ -53,8 +50,12 @@ public class NWItems {
 
     public static final Item AUTOMATON_SPAWN_EGG = registerItem("automaton_spawn_egg", new SpawnEggItem(NWEntityTypes.AUTOMATON, 3683645, 2828592, new Item.Settings()));
 
+    public static final Item TOMBSTONE = registerItem("tombstone", new TombstoneBlockItem(NWBlocks.TOMBSTONE, new Item.Settings().maxCount(1)));
 
     public static final Item ANCIENT_MATTOCK = registerItem("ancient_mattock", new MattockItem(NWToolMaterials.ANCIENT, 0.0F, -3.0F, new Item.Settings()));
+
+    public static final Item ARCANE_TOME = registerItem("arcane_tome", new ArcaneTomeItem(new Item.Settings()));
+
 
     public static void init(){
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.SPAWN_EGGS).register(entries -> {
@@ -64,6 +65,7 @@ public class NWItems {
             entries.addAfter(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE, MATTOCK_CRAFTING_TEMPLATE);
             entries.addAfter(MATTOCK_CRAFTING_TEMPLATE, MATTOCK_CRAFTING_TEMPLATE_HEAD);
             entries.addAfter(MATTOCK_CRAFTING_TEMPLATE_HEAD, MATTOCK_CRAFTING_TEMPLATE_SHAFT);
+            entries.add(ARCANE_TOME);
         });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> {
             entries.addAfter(Items.SPRUCE_LOG, NWBlocks.FIR_LOG);

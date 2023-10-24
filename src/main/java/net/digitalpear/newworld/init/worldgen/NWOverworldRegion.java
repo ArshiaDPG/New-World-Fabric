@@ -48,7 +48,6 @@ public class NWOverworldRegion extends Region {
                     .weirdness(Weirdness.FULL_RANGE)
                     .build();
 
-
 //            scrapyardPoints.forEach(point -> addBiome(mapper, point, NWBiomes.ENFOLDED_SCRAPYARD));
         });
     }

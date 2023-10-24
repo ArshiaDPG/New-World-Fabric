@@ -3,6 +3,7 @@ package net.digitalpear.newworld.mixin;
 
 import net.digitalpear.newworld.init.NWBlockEntityTypes;
 import net.digitalpear.newworld.init.NWBlocks;
+import net.digitalpear.newworld.init.data.NWStats;
 import net.digitalpear.newworld.init.data.tags.NWBlockTags;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -39,6 +40,7 @@ public abstract class PlayerDeathMixin {
                 world.setBlockState(pos, NWBlocks.TOMBSTONE.getDefaultState().with(Properties.CRACKED, true));
             }
             world.getBlockEntity(pos, NWBlockEntityTypes.TOMBSTONE).ifPresent(tombstoneBlockEntity -> {
+                player.increaseStat(NWStats.TOMBSTONE_ACTIVATION, 1);
 
                 if (tombstoneBlockEntity.getInvStackList().stream().anyMatch(ItemStack::isEmpty)) {
 

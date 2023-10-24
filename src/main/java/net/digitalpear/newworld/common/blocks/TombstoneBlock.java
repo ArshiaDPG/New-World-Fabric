@@ -8,11 +8,13 @@ import net.minecraft.block.enums.BlockFace;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.inventory.Inventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.loot.context.LootContextParameterSet;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
@@ -49,6 +51,11 @@ public class TombstoneBlock extends BlockWithEntity implements Waterloggable {
     public TombstoneBlock(Settings settings) {
         super(settings);
         setDefaultState(this.stateManager.getDefaultState().with(WATERLOGGED, false).with(FACE, BlockFace.FLOOR).with(FACING, Direction.NORTH).with(CRACKED, false));
+    }
+
+    @Override
+    public BlockSoundGroup getSoundGroup(BlockState state) {
+        return state.get(CRACKED) ? BlockSoundGroup.DEEPSLATE_TILES : super.getSoundGroup(state);
     }
 
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {

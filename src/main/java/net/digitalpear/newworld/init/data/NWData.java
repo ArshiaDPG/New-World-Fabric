@@ -49,6 +49,10 @@ public class NWData {
                 }
                 else if (id.equals(LootTables.DESERT_PYRAMID_ARCHAEOLOGY) || id.equals(LootTables.TRAIL_RUINS_RARE_ARCHAEOLOGY)){
                     tableBuilder.modifyPools(builder -> builder.with(ItemEntry.builder(NWItems.MATTOCK_CRAFTING_TEMPLATE_SHAFT)));
+
+                } else if (id.equals(LootTables.WOODLAND_MANSION_CHEST)) {
+                    tableBuilder.pool(LootPool.builder().conditionally(RandomChanceLootCondition.builder(0.85f))
+                            .with(ItemEntry.builder(NWItems.ARCANE_TOME)).build());
                 }
             }
         });
