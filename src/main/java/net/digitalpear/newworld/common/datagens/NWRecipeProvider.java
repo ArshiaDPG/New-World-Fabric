@@ -15,7 +15,6 @@ import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.Registries;
 
 import java.util.Arrays;
-import java.util.function.Consumer;
 
 public class NWRecipeProvider extends FabricRecipeProvider {
     public NWRecipeProvider(FabricDataOutput output) {
@@ -97,14 +96,14 @@ public class NWRecipeProvider extends FabricRecipeProvider {
         ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, NWBlocks.TOMBSTONE)
                 .input('D', Items.DIAMOND)
                 .input('S', Items.POLISHED_DEEPSLATE)
-                .input('A', NWItems.ARCANE_TOME)
+                .input('A', NWItems.ILLAGER_TOME)
                 .input('T', NWBlocks.TOMBSTONE)
 
                 .pattern("SDS")
                 .pattern("SAS")
                 .pattern("STS")
                 .showNotification(true)
-                .criterion("has_tombstone_or_arcane_tome", conditionsFromItemPredicates(ItemPredicate.Builder.create().items(NWItems.ARCANE_TOME, NWBlocks.TOMBSTONE).build()))
+                .criterion("has_tombstone_or_arcane_tome", conditionsFromItemPredicates(ItemPredicate.Builder.create().items(NWItems.ILLAGER_TOME, NWBlocks.TOMBSTONE).build()))
                 .offerTo(exporter);
 
 

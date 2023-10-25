@@ -1,4 +1,4 @@
-// 1.20.2	2023-10-23T22:21:23.6051112	New World/Recipes
+// 1.20.2	2023-10-24T17:32:45.5467536	New World/Recipes
 845c91dc18ec9e51f7b92a6f3a6898ed0e5d9b39 data\newworld\advancements\recipes\building_blocks\loam_brick_stairs_from_loam_stonecutting.json
 2a0306154279021b0787174f82efb9efd2a00eaa data\newworld\advancements\recipes\building_blocks\loam_tile_stairs.json
 66dd0174d5d953b44fd9256ef5e5413c47b15d2a data\newworld\recipes\loam_slab.json
@@ -79,8 +79,8 @@ bb3592c346e52260c5ac34cab54979efc95ebc03 data\newworld\recipes\loam_brick_wall_f
 bb8d6600b21a8d68b720937ee50e9e8ef681cf64 data\newworld\recipes\loam_tile_stairs_from_loam_tiles_stonecutting.json
 a04d1fa5fc1d7207d887648632370f65f4eaebe7 data\newworld\recipes\loam_tiles.json
 9528feb0939d023e2044ed54962206c991e2f397 data\newworld\recipes\loam_stairs_from_loam_stonecutting.json
-62ea9f568b093a8aad593b67d985b37b3c898dc1 data\newworld\recipes\tombstone.json
-166cfa1dfc5587fe9aade858ef166a0a447e1d99 data\newworld\advancements\recipes\combat\tombstone.json
+58fad06880f32794a96f883ecadb33dc34d17fce data\newworld\recipes\tombstone.json
+58ae85ab349aef40539c67a6d48fc2c01929e1d9 data\newworld\advancements\recipes\combat\tombstone.json
 5f58553b341e5d1b300f01b30845c26f550f062c data\newworld\recipes\fir_slab.json
 aa8a373694539f169d958d5795376efecf7c4f11 data\newworld\advancements\recipes\redstone\fir_button.json
 c91d5866950729c9a896120b2732454dd7da23bb data\newworld\recipes\loam_tile_wall.json

@@ -52,7 +52,7 @@ public class NWData {
 
                 } else if (id.equals(LootTables.WOODLAND_MANSION_CHEST)) {
                     tableBuilder.pool(LootPool.builder().conditionally(RandomChanceLootCondition.builder(0.85f))
-                            .with(ItemEntry.builder(NWItems.ARCANE_TOME)).build());
+                            .with(ItemEntry.builder(NWItems.ILLAGER_TOME)).build());
                 }
             }
         });

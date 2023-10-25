@@ -5,8 +5,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Rarity;
 
-public class ArcaneTomeItem extends Item {
-    public ArcaneTomeItem(Settings settings) {
+public class IllagerTomeItem extends Item {
+    public IllagerTomeItem(Settings settings) {
         super(settings);
     }
 
@@ -17,6 +17,6 @@ public class ArcaneTomeItem extends Item {
 
     @Override
     public ItemStack getRecipeRemainder(ItemStack stack) {
-        return new ItemStack(NWItems.ARCANE_TOME);
+        return new ItemStack(NWItems.ILLAGER_TOME);
     }
 }

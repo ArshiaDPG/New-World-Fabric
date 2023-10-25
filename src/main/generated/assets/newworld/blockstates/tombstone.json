@@ -5,7 +5,7 @@
       "x": 180
     },
     "cracked=false,face=ceiling,facing=north": {
-      "model": "newworld:block/tombstone",
+      "model": "newworld:block/tombstone_north",
       "x": 180
     },
     "cracked=false,face=ceiling,facing=south": {
@@ -20,7 +20,7 @@
       "model": "newworld:block/tombstone_east"
     },
     "cracked=false,face=floor,facing=north": {
-      "model": "newworld:block/tombstone"
+      "model": "newworld:block/tombstone_north"
     },
     "cracked=false,face=floor,facing=south": {
       "model": "newworld:block/tombstone_south"
@@ -32,7 +32,7 @@
       "model": "newworld:block/tombstone_wall_east"
     },
     "cracked=false,face=wall,facing=north": {
-      "model": "newworld:block/tombstone_wall"
+      "model": "newworld:block/tombstone_wall_north"
     },
     "cracked=false,face=wall,facing=south": {
       "model": "newworld:block/tombstone_wall_south"
@@ -45,7 +45,7 @@
       "x": 180
     },
     "cracked=true,face=ceiling,facing=north": {
-      "model": "newworld:block/tombstone",
+      "model": "newworld:block/tombstone_north",
       "x": 180
     },
     "cracked=true,face=ceiling,facing=south": {
@@ -60,7 +60,7 @@
       "model": "newworld:block/tombstone_east"
     },
     "cracked=true,face=floor,facing=north": {
-      "model": "newworld:block/tombstone"
+      "model": "newworld:block/tombstone_north"
     },
     "cracked=true,face=floor,facing=south": {
       "model": "newworld:block/tombstone_south"
@@ -72,8 +72,7 @@
       "model": "newworld:block/tombstone_wall_east"
     },
     "cracked=true,face=wall,facing=north": {
-      "model": "newworld:block/tombstone_wall"
-
+      "model": "newworld:block/tombstone_wall_north"
     },
     "cracked=true,face=wall,facing=south": {
       "model": "newworld:block/tombstone_wall_south"

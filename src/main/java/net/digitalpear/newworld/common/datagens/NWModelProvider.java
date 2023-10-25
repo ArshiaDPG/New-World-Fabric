@@ -13,9 +13,6 @@ import net.minecraft.data.client.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.math.Direction;
-
-import java.util.Optional;
 
 public class NWModelProvider extends FabricModelProvider {
 
@@ -55,7 +52,7 @@ public class NWModelProvider extends FabricModelProvider {
         itemModelGenerator.register(NWItems.MATTOCK_CRAFTING_TEMPLATE_HEAD, Models.GENERATED);
         itemModelGenerator.register(NWItems.MATTOCK_CRAFTING_TEMPLATE_SHAFT, Models.GENERATED);
 
-        itemModelGenerator.register(NWItems.ARCANE_TOME, Models.GENERATED);
+        itemModelGenerator.register(NWItems.ILLAGER_TOME, Models.GENERATED);
     }
 
     public static void fullWoodset(BlockStateModelGenerator blockStateModelGenerator, Woodset woodset){
@@ -80,35 +77,39 @@ public class NWModelProvider extends FabricModelProvider {
         }
     }
 
-    public static final Model TOMBSTONE = block("template_tombstone", TextureKey.TEXTURE, TextureKey.PARTICLE);
-
-    private static Model block(String parent, TextureKey... requiredTextureKeys) {
-        return new Model(Optional.of(new Identifier(Newworld.MOD_ID, "block/" + parent)), Optional.empty(), requiredTextureKeys);
-    }
+//    public static final Model TOMBSTONE = block("template_tombstone", TextureKey.TEXTURE, TextureKey.PARTICLE);
+//
+//    private static Model block(String parent, TextureKey... requiredTextureKeys) {
+//        return new Model(Optional.of(new Identifier(Newworld.MOD_ID, "block/" + parent)), Optional.empty(), requiredTextureKeys);
+//    }
 
     public final void registerTombstone(BlockStateModelGenerator blockStateModelGenerator) {
-        Identifier tombstone = TOMBSTONE.upload(NWBlocks.TOMBSTONE, new TextureMap().put(TextureKey.TEXTURE, getId(NWBlocks.TOMBSTONE)).put(TextureKey.PARTICLE, getId(Blocks.POLISHED_DEEPSLATE)), blockStateModelGenerator.modelCollector);
-
+        blockStateModelGenerator.registerParentedItemModel(NWBlocks.TOMBSTONE, Newworld.id("block/tombstone_north"));
         blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(NWBlocks.TOMBSTONE).coordinate(BlockStateVariantMap.create(Properties.CRACKED, Properties.BLOCK_FACE, Properties.HORIZONTAL_FACING).register((cracked, blockFace, horizontalFacing) ->{
             BlockStateVariant blockStateVariant = BlockStateVariant.create();
 
-            if (blockFace == BlockFace.WALL){
-                blockStateVariant.put(VariantSettings.X, VariantSettings.Rotation.R90);
-            }
-            else if (blockFace == BlockFace.CEILING){
+            String wallName = blockFace == BlockFace.WALL ? "_" + blockFace.asString() + "_" :  "_";
+            Identifier tombstone = Newworld.id("block/tombstone").withSuffixedPath(wallName).withSuffixedPath(horizontalFacing.asString());
+//            if (blockFace == BlockFace.WALL){
+//                blockStateVariant.put(VariantSettings.X, VariantSettings.Rotation.R90);
+//            }
+//            else if (blockFace == BlockFace.CEILING){
+//                blockStateVariant.put(VariantSettings.X, VariantSettings.Rotation.R180);
+//            }
+//
+//            if (horizontalFacing == Direction.EAST){
+//                blockStateVariant.put(VariantSettings.Y, VariantSettings.Rotation.R90);
+//            } else if (horizontalFacing == Direction.SOUTH) {
+//                blockStateVariant.put(VariantSettings.Y, VariantSettings.Rotation.R180);
+//            } else if (horizontalFacing == Direction.WEST) {
+//                blockStateVariant.put(VariantSettings.Y, VariantSettings.Rotation.R270);
+//            }
+
+            if (blockFace == BlockFace.CEILING){
                 blockStateVariant.put(VariantSettings.X, VariantSettings.Rotation.R180);
             }
 
-            if (horizontalFacing == Direction.EAST){
-                blockStateVariant.put(VariantSettings.Y, VariantSettings.Rotation.R90);
-            } else if (horizontalFacing == Direction.SOUTH) {
-                blockStateVariant.put(VariantSettings.Y, VariantSettings.Rotation.R180);
-            } else if (horizontalFacing == Direction.WEST) {
-                blockStateVariant.put(VariantSettings.Y, VariantSettings.Rotation.R270);
-            }
-
             return blockStateVariant.put(VariantSettings.MODEL, tombstone);
-
         })));
     }
 
@@ -207,6 +208,4 @@ public class NWModelProvider extends FabricModelProvider {
         Identifier identifier = Registries.BLOCK.getId(block).withPrefixedPath(prefix);
         return identifier.withPrefixedPath("block/");
     }
-
-
 }

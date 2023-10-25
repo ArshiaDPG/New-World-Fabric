@@ -3,7 +3,7 @@
   "category": "equipment",
   "key": {
     "A": {
-      "item": "newworld:arcane_tome"
+      "item": "newworld:illager_tome"
     },
     "D": {
       "item": "minecraft:diamond"

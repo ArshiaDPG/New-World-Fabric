@@ -51,7 +51,7 @@ public class NWLanguageProvider extends FabricLanguageProvider {
         makeTranslation(translationBuilder, NWEntityTypes.AUTOMATON);
 
         makeTranslation(translationBuilder, NWBlocks.TOMBSTONE);
-        makeTranslation(translationBuilder, NWItems.ARCANE_TOME);
+        makeTranslation(translationBuilder, NWItems.ILLAGER_TOME);
 
         translationBuilder.add(NWItems.FIR_BOAT, "Fir Boat");
         translationBuilder.add(NWItems.FIR_CHEST_BOAT, "Fir Boat with Chest");
