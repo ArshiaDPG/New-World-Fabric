@@ -54,6 +54,8 @@ public class NWItemTagProvider extends FabricTagProvider<Item> {
         getOrCreateTagBuilder(ItemTags.STAIRS).add(NWBlocks.LOAM_STAIRS.asItem(), NWBlocks.LOAM_BRICK_STAIRS.asItem(), NWBlocks.LOAM_TILE_STAIRS.asItem());
         getOrCreateTagBuilder(ItemTags.SLABS).add(NWBlocks.LOAM_SLAB.asItem(), NWBlocks.LOAM_BRICK_SLAB.asItem(), NWBlocks.LOAM_TILE_SLAB.asItem());
         getOrCreateTagBuilder(ItemTags.WALLS).add(NWBlocks.LOAM_WALL.asItem(), NWBlocks.LOAM_BRICK_WALL.asItem(), NWBlocks.LOAM_TILE_WALL.asItem());
+
+        getOrCreateTagBuilder(ItemTags.BOOKSHELF_BOOKS).add(NWItems.ILLAGER_TOME);
     }
 }
 

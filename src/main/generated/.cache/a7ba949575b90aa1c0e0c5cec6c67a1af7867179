@@ -1,4 +1,4 @@
-// 1.20.2	2023-10-24T17:32:45.5178296	New World/Tags for minecraft:item
+// 1.20.2	2023-10-25T18:03:58.4351131	New World/Tags for minecraft:item
 f987c048609ae0b63393d4acb6a798fd494a9e4f data\minecraft\tags\items\wooden_stairs.json
 54c1945e2943451b7e7ff0b1646ec4e85974df1d data\minecraft\tags\items\wooden_pressure_plates.json
 d58e74ffd082e2c7dd11f18e9e29550f899aa72f data\minecraft\tags\items\walls.json
@@ -17,3 +17,4 @@ cc18168805198fe2f91b8db7225f4c5a92992efa data\minecraft\tags\items\buttons.json
 3a72e823c844c31d76b6083edbc8ddd7ae4bfa7c data\minecraft\tags\items\planks.json
 76a17350dfd2664118bf745fcbb6fa72a8287c14 data\minecraft\tags\items\boats.json
 7f6a82571990bff6aa85f4b828f3b0fe66389a4f data\minecraft\tags\items\chest_boats.json
+d1a44921baadc157091e50ee89f81dd1d78c604d data\minecraft\tags\items\bookshelf_books.json
