@@ -1,4 +1,4 @@
-// 1.20.2	2023-10-25T18:03:58.4430909	New World/Model Definitions
+// 1.20.2	2023-10-27T10:11:16.6162665	New World/Model Definitions
 eb334652ce87b8a4e8a6138188b11587c1db7136 assets\newworld\blockstates\stripped_fir_wood.json
 863fbb82453ac965670fbbfd88966bd24243dadc assets\newworld\models\block\fir_log.json
 38c0b55e90009c06c0752a6a293ffbbb539a962f assets\newworld\models\block\fir_door_top_right_open.json
@@ -132,8 +132,8 @@ c21bdcd6415aa5215c30a58dfaf9307e89a12c88 assets\newworld\blockstates\loam_stairs
 0f063c9bd245ffd1e8305e087cf85971beb00141 assets\newworld\blockstates\fir_button.json
 e6aa956b972c6940a2094ab9150bfc5d0318c0dc assets\newworld\models\item\fir_pressure_plate.json
 4bb747bafcea4ab880f0471947edef02adf1e000 assets\newworld\blockstates\fir_fence_gate.json
-696a309729659bc474ddc1dcb043fb34d804493e assets\newworld\models\item\fir_leaves.json
 74789c17f8f5d6e9b512f8a187ce8f6dd13906a3 assets\newworld\models\block\loam_brick_stairs.json
+696a309729659bc474ddc1dcb043fb34d804493e assets\newworld\models\item\fir_leaves.json
 62b26d4d7f57db7524f867df7ae3b547319f469f assets\newworld\models\item\mattock_crafting_template.json
 53daf8c3847de145872e6594b16e9c8a6615e1a6 assets\newworld\models\item\fir_trapdoor.json
 52ec85ab0123bef8b32d2e592ebd8a330e22d7a9 assets\newworld\models\block\loam_tile_slab_top.json

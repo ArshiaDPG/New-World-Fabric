@@ -1,6 +1,8 @@
 {
-  "advancements.story.collect_ancient_mattock.description": "Discover an Ancient Mattock.",
-  "advancements.story.collect_ancient_mattock.title": "Renaissance Tool",
+  "advancements.adventure.collect_ancient_mattock.description": "Craft an Ancient Mattock using template fragments.",
+  "advancements.adventure.collect_ancient_mattock.title": "Renaissance Tool",
+  "advancements.adventure.collect_template_fragment.description": "Discover an ancient crafting template fragment.",
+  "advancements.adventure.collect_template_fragment.title": "A Piece of History",
   "biome.newworld.enfolded_scrapyard": "Enfolded Scrapyard",
   "biome.newworld.wooded_meadow": "Wooded Meadow",
   "block.newworld.fir_button": "Fir Button",

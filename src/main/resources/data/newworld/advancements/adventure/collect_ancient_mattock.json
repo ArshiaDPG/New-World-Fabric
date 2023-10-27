@@ -1,14 +1,14 @@
 {
-  "parent": "minecraft:story/iron_tools",
+  "parent": "newworld:adventure/collect_template_fragment",
   "display": {
     "icon": {
       "item": "newworld:ancient_mattock"
     },
     "title": {
-      "translate": "advancements.story.collect_ancient_mattock.title"
+      "translate": "advancements.adventure.collect_ancient_mattock.title"
     },
     "description": {
-      "translate": "advancements.story.collect_ancient_mattock.description"
+      "translate": "advancements.adventure.collect_ancient_mattock.description"
     },
     "frame": "task",
     "show_toast": true,

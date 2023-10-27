@@ -56,8 +56,11 @@ public class NWLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(NWItems.FIR_BOAT, "Fir Boat");
         translationBuilder.add(NWItems.FIR_CHEST_BOAT, "Fir Boat with Chest");
 
-        translationBuilder.add("advancements.story.collect_ancient_mattock.title", "Renaissance Tool");
-        translationBuilder.add("advancements.story.collect_ancient_mattock.description", "Discover an Ancient Mattock.");
+        translationBuilder.add("advancements.adventure.collect_ancient_mattock.title", "Renaissance Tool");
+        translationBuilder.add("advancements.adventure.collect_ancient_mattock.description", "Craft an Ancient Mattock using template fragments.");
+
+        translationBuilder.add("advancements.adventure.collect_template_fragment.title", "A Piece of History");
+        translationBuilder.add("advancements.adventure.collect_template_fragment.description", "Discover an ancient crafting template fragment.");
 
         translationBuilder.add(NWStats.TOMBSTONE_ACTIVATION, "Tombstones Activated");
 
