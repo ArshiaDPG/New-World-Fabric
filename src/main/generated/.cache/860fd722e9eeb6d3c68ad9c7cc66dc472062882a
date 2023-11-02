@@ -1,4 +1,4 @@
-// 1.20.2	2023-10-27T10:11:16.6162665	New World/Model Definitions
+// 1.20.2	2023-11-02T10:52:21.7629299	New World/Model Definitions
 eb334652ce87b8a4e8a6138188b11587c1db7136 assets\newworld\blockstates\stripped_fir_wood.json
 863fbb82453ac965670fbbfd88966bd24243dadc assets\newworld\models\block\fir_log.json
 38c0b55e90009c06c0752a6a293ffbbb539a962f assets\newworld\models\block\fir_door_top_right_open.json
@@ -99,7 +99,6 @@ b136a5aa1f601ec407f6d406d30fb87c4a1911b1 assets\newworld\blockstates\loam.json
 e3499966fbfec86f5a79b4208bc58c66ccb0bdb9 assets\newworld\models\block\fir_door_top_right.json
 2a238dfafc04e01523ecd82f7aa1e3a41e07d373 assets\newworld\models\item\ancient_mattock.json
 9c468f1f225ac6679ff563cdfa130cf885ebf7fc assets\newworld\models\block\fir_pressure_plate_down.json
-63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets\newworld\models\item\automaton_spawn_egg.json
 e5456cf042415a051026cc9a4d6eece076e6f233 assets\newworld\blockstates\fir_wall_hanging_sign.json
 ecb64783c4c5f10193672c7d4072d49ce34ecbe6 assets\newworld\blockstates\fir_planks.json
 b35ee4cf408c8f4bfd9a20fb6235ef36486baf01 assets\newworld\models\block\loam_brick_slab_top.json
@@ -132,8 +131,8 @@ c21bdcd6415aa5215c30a58dfaf9307e89a12c88 assets\newworld\blockstates\loam_stairs
 0f063c9bd245ffd1e8305e087cf85971beb00141 assets\newworld\blockstates\fir_button.json
 e6aa956b972c6940a2094ab9150bfc5d0318c0dc assets\newworld\models\item\fir_pressure_plate.json
 4bb747bafcea4ab880f0471947edef02adf1e000 assets\newworld\blockstates\fir_fence_gate.json
-74789c17f8f5d6e9b512f8a187ce8f6dd13906a3 assets\newworld\models\block\loam_brick_stairs.json
 696a309729659bc474ddc1dcb043fb34d804493e assets\newworld\models\item\fir_leaves.json
+74789c17f8f5d6e9b512f8a187ce8f6dd13906a3 assets\newworld\models\block\loam_brick_stairs.json
 62b26d4d7f57db7524f867df7ae3b547319f469f assets\newworld\models\item\mattock_crafting_template.json
 53daf8c3847de145872e6594b16e9c8a6615e1a6 assets\newworld\models\item\fir_trapdoor.json
 52ec85ab0123bef8b32d2e592ebd8a330e22d7a9 assets\newworld\models\block\loam_tile_slab_top.json

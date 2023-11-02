@@ -86,7 +86,7 @@ public class NWOverworldBiomeCreator {
 
         DefaultBiomeFeatures.addCaveMobs(spawnBuilder);
 
-        spawnBuilder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(NWEntityTypes.AUTOMATON, 20, 1, 5));
+//        spawnBuilder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(NWEntityTypes.AUTOMATON, 20, 1, 5));
 
         GenerationSettings.LookupBackedBuilder lookupBackedBuilder = new GenerationSettings.LookupBackedBuilder(featureLookup, carverLookup);
 

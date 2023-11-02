@@ -24,7 +24,6 @@ public class NWBiomes {
     }
 
     public static final RegistryKey<Biome> WOODED_MEADOW = createBiomeKey("wooded_meadow");
-    public static final RegistryKey<Biome> ENFOLDED_SCRAPYARD = createBiomeKey("enfolded_scrapyard");
 
     public static void bootstrap(Registerable<Biome> bootstapContext) {
         RegistryEntryLookup<PlacedFeature> placeddFeatureHolder = bootstapContext.getRegistryLookup(RegistryKeys.PLACED_FEATURE);
@@ -32,7 +31,6 @@ public class NWBiomes {
 
 
         bootstapContext.register(WOODED_MEADOW, NWOverworldBiomeCreator.createWoodedMeadow(placeddFeatureHolder, configuredWorldCarverHolderGetter));
-        bootstapContext.register(ENFOLDED_SCRAPYARD, NWOverworldBiomeCreator.createEnfoldedScrapyard(placeddFeatureHolder, configuredWorldCarverHolderGetter));
     }
 
     public static void init(){

@@ -30,10 +30,8 @@ public class NWModelProvider extends FabricModelProvider {
         makeStoneModels(blockStateModelGenerator, NWBlocks.LOAM_BRICKS, NWBlocks.LOAM_BRICK_STAIRS, NWBlocks.LOAM_BRICK_SLAB, NWBlocks.LOAM_BRICK_WALL);
         makeStoneModels(blockStateModelGenerator, NWBlocks.LOAM_TILES, NWBlocks.LOAM_TILE_STAIRS, NWBlocks.LOAM_TILE_SLAB, NWBlocks.LOAM_TILE_WALL);
 
-        blockStateModelGenerator.registerParentedItemModel(NWItems.AUTOMATON_SPAWN_EGG, new Identifier("item/template_spawn_egg"));
 
         generateDripstonePot(blockStateModelGenerator);
-
         registerTombstone(blockStateModelGenerator);
     }
 
@@ -90,20 +88,6 @@ public class NWModelProvider extends FabricModelProvider {
 
             String wallName = blockFace == BlockFace.WALL ? "_" + blockFace.asString() + "_" :  "_";
             Identifier tombstone = Newworld.id("block/tombstone").withSuffixedPath(wallName).withSuffixedPath(horizontalFacing.asString());
-//            if (blockFace == BlockFace.WALL){
-//                blockStateVariant.put(VariantSettings.X, VariantSettings.Rotation.R90);
-//            }
-//            else if (blockFace == BlockFace.CEILING){
-//                blockStateVariant.put(VariantSettings.X, VariantSettings.Rotation.R180);
-//            }
-//
-//            if (horizontalFacing == Direction.EAST){
-//                blockStateVariant.put(VariantSettings.Y, VariantSettings.Rotation.R90);
-//            } else if (horizontalFacing == Direction.SOUTH) {
-//                blockStateVariant.put(VariantSettings.Y, VariantSettings.Rotation.R180);
-//            } else if (horizontalFacing == Direction.WEST) {
-//                blockStateVariant.put(VariantSettings.Y, VariantSettings.Rotation.R270);
-//            }
 
             if (blockFace == BlockFace.CEILING){
                 blockStateVariant.put(VariantSettings.X, VariantSettings.Rotation.R180);

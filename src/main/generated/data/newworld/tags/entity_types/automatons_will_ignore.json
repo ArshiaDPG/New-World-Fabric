@@ -2,7 +2,6 @@
   "replace": false,
   "values": [
     "minecraft:ghast",
-    "newworld:automaton",
     "minecraft:ender_dragon",
     "minecraft:creeper"
   ]

@@ -1,7 +1,6 @@
 package net.digitalpear.newworld.common.datagens;
 
 import net.digitalpear.newworld.init.NWBlocks;
-import net.digitalpear.newworld.init.NWEntityTypes;
 import net.digitalpear.newworld.init.NWItems;
 import net.digitalpear.newworld.init.data.NWStats;
 import net.digitalpear.newworld.init.data.woodset.Woodset;
@@ -47,8 +46,6 @@ public class NWLanguageProvider extends FabricLanguageProvider {
         makeTranslation(translationBuilder, NWBlocks.LOAM_TILE_SLAB);
         makeTranslation(translationBuilder, NWBlocks.LOAM_TILE_WALL);
 
-        makeTranslation(translationBuilder, NWItems.AUTOMATON_SPAWN_EGG);
-        makeTranslation(translationBuilder, NWEntityTypes.AUTOMATON);
 
         makeTranslation(translationBuilder, NWBlocks.TOMBSTONE);
         makeTranslation(translationBuilder, NWItems.ILLAGER_TOME);

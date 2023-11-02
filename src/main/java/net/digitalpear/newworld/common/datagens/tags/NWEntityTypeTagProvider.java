@@ -28,7 +28,7 @@ public class NWEntityTypeTagProvider extends FabricTagProvider<EntityType<?>> {
     protected void configure(RegistryWrapper.WrapperLookup arg) {
         getOrCreateTagBuilder(NWEntityTypeTags.AUTOMATONS_WILL_IGNORE)
                 .add(EntityType.GHAST)
-                .add(NWEntityTypes.AUTOMATON)
+//                .add(NWEntityTypes.AUTOMATON)
                 .add(EntityType.ENDER_DRAGON)
                 .add(EntityType.CREEPER);
     }
