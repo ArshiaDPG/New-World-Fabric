@@ -1,4 +1,4 @@
-// 1.20.2	2023-11-02T10:52:21.7659247	New World/Recipes
+// 1.20.2	2023-11-02T10:58:16.0018828	New World/Recipes
 845c91dc18ec9e51f7b92a6f3a6898ed0e5d9b39 data\newworld\advancements\recipes\building_blocks\loam_brick_stairs_from_loam_stonecutting.json
 2a0306154279021b0787174f82efb9efd2a00eaa data\newworld\advancements\recipes\building_blocks\loam_tile_stairs.json
 66dd0174d5d953b44fd9256ef5e5413c47b15d2a data\newworld\recipes\loam_slab.json
@@ -44,7 +44,7 @@ dfbbfc58f72d37a397755e1410e5d5b5f650699d data\newworld\advancements\recipes\buil
 f911de6786aaddfbb23ee0504441311629d464ff data\newworld\advancements\recipes\redstone\fir_fence_gate.json
 45e3abc1b70b16b4eec0629b86c086be0847065b data\newworld\advancements\recipes\building_blocks\loam_tile_wall_from_loam_bricks_stonecutting.json
 7811d7cef671eac8647c31f5ee0417d794e4f073 data\newworld\recipes\fir_planks.json
-4045f38cd9fd241f093b3471e3698b319f931c11 data\newworld\advancements\recipes\tools\ancient_mattock_smithing.json
+58066a402cf8a75b074fc2da6ae70f5a6b0d9d1e data\newworld\advancements\recipes\tools\ancient_mattock_smithing.json
 4cbdf1993035caf667f4ab86a9acc1aed1d02e79 data\newworld\advancements\recipes\building_blocks\loam_brick_slab_from_loam_bricks_stonecutting.json
 e94ef1fcfbf9b43e68ded0a62448b2e59861a628 data\newworld\recipes\fir_chest_boat.json
 53df4b953ef2805aa6c4fa39e59b2dfcdc62b8cc data\newworld\recipes\loam_brick_stairs_from_loam_stonecutting.json
@@ -101,5 +101,5 @@ d45e922b0877b5f56c0d38ef3f8e0c708efffc3a data\newworld\advancements\recipes\tran
 2014b177728a3660307d1a79ef47749f951ea68b data\newworld\advancements\recipes\building_blocks\loam_brick_stairs.json
 d290779d05f7be577cfd5fee2930a1e3b43f66ed data\newworld\recipes\loam_bricks.json
 bfa37007972d0e753c51e6d60b7f8e3ce696b4cd data\newworld\advancements\recipes\building_blocks\loam_wall.json
-a66aececfdf0e6598e28ae12969af07392e6c797 data\newworld\recipes\mattock_crafting_template.json
+09f47629a967efb604454ee118821ab72b8bdb92 data\newworld\recipes\mattock_crafting_template.json
 605541a209b497ff44dac3d7451f90b09012ccc5 data\newworld\recipes\fir_trapdoor.json

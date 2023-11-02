@@ -44,7 +44,7 @@ public class NWRecipeProvider extends FabricRecipeProvider {
         makeTemplateRecipe(exporter, NWItems.MATTOCK_CRAFTING_TEMPLATE, NWItems.MATTOCK_CRAFTING_TEMPLATE_HEAD, NWItems.MATTOCK_CRAFTING_TEMPLATE_SHAFT);
 
         offerUpgradeRecipe(exporter, NWItems.MATTOCK_CRAFTING_TEMPLATE, NWItems.ANCIENT_MATTOCK);
-        offerSmithingTemplateCopyingRecipe(exporter, NWItems.MATTOCK_CRAFTING_TEMPLATE, Items.STONE);
+        offerSmithingTemplateCopyingRecipe(exporter, NWItems.MATTOCK_CRAFTING_TEMPLATE, Items.COBBLED_DEEPSLATE);
 
         createStoneSetRecipes(exporter, NWBlocks.LOAM, NWBlocks.LOAM_STAIRS, NWBlocks.LOAM_SLAB, NWBlocks.LOAM_WALL);
         createStoneSetRecipes(exporter, NWBlocks.LOAM_BRICKS, NWBlocks.LOAM_BRICK_STAIRS, NWBlocks.LOAM_BRICK_SLAB, NWBlocks.LOAM_BRICK_WALL);
@@ -127,6 +127,6 @@ public class NWRecipeProvider extends FabricRecipeProvider {
     }
 
     public static void offerUpgradeRecipe(RecipeExporter exporter, Item template, Item result) {
-        SmithingTransformRecipeJsonBuilder.create(Ingredient.ofItems(template), Ingredient.ofItems(Items.STICK), Ingredient.ofItems(Items.FLINT), RecipeCategory.TOOLS, result).criterion("has_netherite_ingot", conditionsFromItem(template)).offerTo(exporter, getItemPath(result) + "_smithing");
+        SmithingTransformRecipeJsonBuilder.create(Ingredient.ofItems(template), Ingredient.ofItems(Items.STICK), Ingredient.ofItems(Items.FLINT), RecipeCategory.TOOLS, result).criterion(hasItem(template), conditionsFromItem(template)).offerTo(exporter, getItemPath(result) + "_smithing");
     }
 }

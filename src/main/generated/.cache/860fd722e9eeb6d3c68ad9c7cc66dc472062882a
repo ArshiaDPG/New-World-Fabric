@@ -1,4 +1,4 @@
-// 1.20.2	2023-11-02T10:52:21.7629299	New World/Model Definitions
+// 1.20.2	2023-11-02T10:58:15.9978933	New World/Model Definitions
 eb334652ce87b8a4e8a6138188b11587c1db7136 assets\newworld\blockstates\stripped_fir_wood.json
 863fbb82453ac965670fbbfd88966bd24243dadc assets\newworld\models\block\fir_log.json
 38c0b55e90009c06c0752a6a293ffbbb539a962f assets\newworld\models\block\fir_door_top_right_open.json
@@ -76,8 +76,8 @@ fb081c054c26313ffa0395277af5bd2e1f3491f3 assets\newworld\models\block\fir_slab_t
 3428fdcf79c128d0fb6318887bb84aaa68eca4c9 assets\newworld\models\item\fir_log.json
 62b0163c4f7190cff7168ed98706ef4a23ddabaa assets\newworld\models\block\loam_brick_wall_side.json
 61b57e2f8154f19f2b88a8549888b659f52f993d assets\newworld\blockstates\potted_fir_sapling.json
-162dcbcdab2e69d23ec592cf936fa21cfecb7be7 assets\newworld\models\item\fir_sapling.json
 97453568a930b7e108e9f1d223ac2ed1851dfea4 assets\newworld\models\item\fir_wood.json
+162dcbcdab2e69d23ec592cf936fa21cfecb7be7 assets\newworld\models\item\fir_sapling.json
 b9ada26047389b5d5d5cb3ff73803fbf66492dcf assets\newworld\models\block\loam.json
 3b804539c23cefe781b0d3278fc4f2dd45881587 assets\newworld\models\block\loam_stairs_outer.json
 6de75386c9250606b4bd0e39547fc399254b66c8 assets\newworld\models\block\loam_stairs.json
