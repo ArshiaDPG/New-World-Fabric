@@ -4,7 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import net.digitalpear.newworld.common.blocks.entity.TombstoneBlockEntity;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.enums.BlockFace;
+import net.minecraft.block.enums.WallMountLocation;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.inventory.Inventory;
@@ -34,7 +34,7 @@ public class TombstoneBlock extends BlockWithEntity implements Waterloggable {
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
     public static final BooleanProperty CRACKED = Properties.CRACKED;
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
-    public static final EnumProperty<BlockFace> FACE = Properties.BLOCK_FACE;
+    public static final EnumProperty<WallMountLocation> FACE = Properties.WALL_MOUNT_LOCATION;
 
     protected static final Map<Direction, VoxelShape> directionToShapeMap = ImmutableMap.of(
             Direction.DOWN, Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 9.0, 16.0),
@@ -47,7 +47,11 @@ public class TombstoneBlock extends BlockWithEntity implements Waterloggable {
 
     public TombstoneBlock(Settings settings) {
         super(settings);
-        setDefaultState(this.stateManager.getDefaultState().with(WATERLOGGED, false).with(FACE, BlockFace.FLOOR).with(FACING, Direction.NORTH).with(CRACKED, false));
+        setDefaultState(this.stateManager.getDefaultState()
+                .with(WATERLOGGED, false)
+                .with(FACE, WallMountLocation.FLOOR)
+                .with(FACING, Direction.NORTH).with(CRACKED, false)
+        );
     }
 
     @Override
@@ -68,10 +72,10 @@ public class TombstoneBlock extends BlockWithEntity implements Waterloggable {
 
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        if (state.get(FACE) == BlockFace.FLOOR){
+        if (state.get(FACE) == WallMountLocation.FLOOR){
             return directionToShapeMap.get(Direction.DOWN);
         }
-        else if (state.get(FACE) == BlockFace.CEILING){
+        else if (state.get(FACE) == WallMountLocation.CEILING){
             return directionToShapeMap.get(Direction.UP);
         }
         return directionToShapeMap.get(state.get(FACING));
@@ -101,22 +105,22 @@ public class TombstoneBlock extends BlockWithEntity implements Waterloggable {
         World world = ctx.getWorld();
         FluidState fluidState = world.getFluidState(blockPos);
         Direction direction = ctx.getSide();
-        BlockFace face = getFaceFromDirection(direction);
+        WallMountLocation face = getFaceFromDirection(direction);
 
         return super.getPlacementState(ctx)
                 .with(WATERLOGGED, fluidState.isOf(Fluids.WATER)).with(FACE, face)
                 .with(FACING, ctx.getHorizontalPlayerFacing().getOpposite());
     }
 
-    public BlockFace getFaceFromDirection(Direction direction){
+    public WallMountLocation getFaceFromDirection(Direction direction){
         if (direction == Direction.UP){
-            return BlockFace.FLOOR;
+            return WallMountLocation.FLOOR;
         }
         else if (direction == Direction.DOWN){
-            return BlockFace.CEILING;
+            return WallMountLocation.CEILING;
         }
         else{
-            return BlockFace.WALL;
+            return WallMountLocation.WALL;
         }
     }
 

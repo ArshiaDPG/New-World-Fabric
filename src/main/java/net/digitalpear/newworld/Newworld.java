@@ -38,8 +38,6 @@ public class Newworld implements ModInitializer {
         NWPlacedFeatures.init();
         NWStats.init();
 
-
-
         LOGGER.info(MOD_NAME + " has initialized.");
     }
 }

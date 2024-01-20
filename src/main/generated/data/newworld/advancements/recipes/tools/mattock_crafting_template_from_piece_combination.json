@@ -23,8 +23,8 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_mattock_crafting_template_piece"
+      "has_mattock_crafting_template_piece",
+      "has_the_recipe"
     ]
   ],
   "rewards": {

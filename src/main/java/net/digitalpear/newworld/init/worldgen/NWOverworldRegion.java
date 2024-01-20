@@ -33,7 +33,7 @@ public class NWOverworldRegion extends Region {
                     .continentalness(Continentalness.span(Continentalness.FAR_INLAND, Continentalness.FAR_INLAND), Continentalness.span(Continentalness.MID_INLAND, Continentalness.FAR_INLAND))
                     .erosion(Erosion.EROSION_0, Erosion.EROSION_1, Erosion.EROSION_2)
                     .depth(Depth.SURFACE)
-                    .weirdness(Weirdness.HIGH_SLICE_VARIANT_ASCENDING, Weirdness.HIGH_SLICE_VARIANT_DESCENDING, Weirdness.MID_SLICE_NORMAL_ASCENDING)
+                    .weirdness(Weirdness.MID_SLICE_NORMAL_DESCENDING, Weirdness.MID_SLICE_NORMAL_ASCENDING, Weirdness.MID_SLICE_VARIANT_DESCENDING, Weirdness.MID_SLICE_VARIANT_ASCENDING)
                     .build();
             meadowPoints.forEach(point -> builder.replaceBiome(point, NWBiomes.WOODED_MEADOW));
 
@@ -48,7 +48,6 @@ public class NWOverworldRegion extends Region {
                     .weirdness(Weirdness.FULL_RANGE)
                     .build();
 
-//            scrapyardPoints.forEach(point -> addBiome(mapper, point, NWBiomes.ENFOLDED_SCRAPYARD));
         });
     }
 }

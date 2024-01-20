@@ -45,7 +45,8 @@ public class NWData {
                 if (id.equals(LootTables.ANCIENT_CITY_CHEST) || id.equals(LootTables.STRONGHOLD_CORRIDOR_CHEST)){
                     tableBuilder.pool(LootPool.builder()
                             .with(ItemEntry.builder(NWItems.MATTOCK_CRAFTING_TEMPLATE_HEAD))
-                            .conditionally(RandomChanceLootCondition.builder(0.15f)));
+                            .conditionally(RandomChanceLootCondition.builder(0.15f))
+                    );
                 }
                 else if (id.equals(LootTables.DESERT_PYRAMID_ARCHAEOLOGY) || id.equals(LootTables.TRAIL_RUINS_RARE_ARCHAEOLOGY)){
                     tableBuilder.modifyPools(builder -> builder.with(ItemEntry.builder(NWItems.MATTOCK_CRAFTING_TEMPLATE_SHAFT)));
@@ -53,6 +54,13 @@ public class NWData {
                 } else if (id.equals(LootTables.WOODLAND_MANSION_CHEST)) {
                     tableBuilder.pool(LootPool.builder().conditionally(RandomChanceLootCondition.builder(0.85f))
                             .with(ItemEntry.builder(NWItems.ILLAGER_TOME)).build());
+                }
+
+                if (id.equals(LootTables.ANCIENT_CITY_CHEST)){
+                    tableBuilder.pool(LootPool.builder().conditionally(RandomChanceLootCondition.builder(0.15f))
+                            .with(ItemEntry.builder(NWBlocks.TOMBSTONE).weight(7))
+                            .with(ItemEntry.builder(NWItems.MATTOCK_CRAFTING_TEMPLATE_HEAD).weight(1))
+                    );
                 }
             }
         });

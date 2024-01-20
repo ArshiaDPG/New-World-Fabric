@@ -23,8 +23,8 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_tombstone_or_arcane_tome"
+      "has_tombstone_or_arcane_tome",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
