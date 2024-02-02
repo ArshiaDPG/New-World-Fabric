@@ -1,4 +1,4 @@
-// 1.20.1	2024-01-19T17:19:04.8317681	New World/Model Definitions
+// 1.20.1	2024-02-02T14:54:21.28699	New World/Model Definitions
 eb334652ce87b8a4e8a6138188b11587c1db7136 assets\newworld\blockstates\stripped_fir_wood.json
 863fbb82453ac965670fbbfd88966bd24243dadc assets\newworld\models\block\fir_log.json
 38c0b55e90009c06c0752a6a293ffbbb539a962f assets\newworld\models\block\fir_door_top_right_open.json
@@ -43,8 +43,8 @@ b6f8ab35e862070d4bae586a739d5f8e303a47ad assets\newworld\models\item\mattock_cra
 ee5edcab6990b2c296da216a4f94a0a74c0c3d51 assets\newworld\models\block\fir_door_bottom_right_open.json
 604916af9507a40e315bfb8bab4ec666e2048157 assets\newworld\models\item\loam_wall.json
 fb9878e925a4a5d68738b24e126b3e98e4bbee91 assets\newworld\models\block\loam_tile_wall_side.json
-8a29173a5308273e290007c9f80f848b8a0a6736 assets\newworld\models\block\loam_wall_side_tall.json
 be2d39db5a184fc11fbf5629ad31f6a368fe56a3 assets\newworld\models\block\fir_stairs_outer.json
+8a29173a5308273e290007c9f80f848b8a0a6736 assets\newworld\models\block\loam_wall_side_tall.json
 6765a519740a470327527c634c941316f521891f assets\newworld\blockstates\loam_tile_wall.json
 635e26ab10b63f694aa40d45b0d70e87fcec5b32 assets\newworld\models\item\stripped_fir_wood.json
 5203b91776cf107fcaa3c79dc5319be11c0a81c7 assets\newworld\models\block\loam_brick_wall_post.json
@@ -56,8 +56,8 @@ f85a8e0c9839049748c854f85e23d1ced28e8bcd assets\newworld\models\block\stripped_f
 58b33d4c679205de8ccf1053709b9f5b6cbd945a assets\newworld\blockstates\loam_brick_wall.json
 c7908b97aa7f0b65b195621c56c678b397e992b0 assets\newworld\models\item\mattock_crafting_template_shaft.json
 a745b030529ad4b33b7fa37bd0266ab365fc0b44 assets\newworld\models\block\loam_wall_inventory.json
-bb6098246077ccf4a4dd95db181cc775705ede76 assets\newworld\models\item\loam_tile_stairs.json
 7e52bb71ed66a7201bb163b080b248019a93f272 assets\newworld\models\item\loam_tile_wall.json
+bb6098246077ccf4a4dd95db181cc775705ede76 assets\newworld\models\item\loam_tile_stairs.json
 3447a5acbce248a18bbf4020ae45fb34cffd6046 assets\newworld\models\block\fir_fence_post.json
 0657d0aae18936d70bf7342a8b767e99e24775f3 assets\newworld\models\block\fir_trapdoor_bottom.json
 1c855fc380a4bbd4a025b12931909d16c1caa64e assets\newworld\models\item\loam_slab.json

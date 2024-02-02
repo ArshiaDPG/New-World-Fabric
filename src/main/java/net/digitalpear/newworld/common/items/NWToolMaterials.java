@@ -1,11 +1,14 @@
 package net.digitalpear.newworld.common.items;
 
+import net.minecraft.item.Items;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
 
 public enum NWToolMaterials implements ToolMaterial {
-    ANCIENT(4, 3086, 9.0F, 7.0F, 10, Ingredient.EMPTY);
+    ANCIENT(4, 3086, 9.0F, 7.0F, 10, Ingredient.EMPTY),
+    EMERALD(400, 308600, 900.0F, 7.000F, 1000, Ingredient.ofItems(Items.EMERALD));
 
+    
     private final int level;
     private final int uses;
     private final float speed;
@@ -22,7 +25,7 @@ public enum NWToolMaterials implements ToolMaterial {
         this.enchantmentValue = enchantmentValue;
         this.repairIngredient = repairIngredient;
     }
-
+    @Override
     public int getDurability() {
         return this.uses;
     }

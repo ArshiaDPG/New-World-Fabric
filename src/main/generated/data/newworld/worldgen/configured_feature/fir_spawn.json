@@ -6,6 +6,10 @@
       {
         "chance": 0.06,
         "feature": "newworld:fir_bees_checked"
+      },
+      {
+        "chance": 0.1,
+        "feature": "minecraft:spruce_checked"
       }
     ]
   }

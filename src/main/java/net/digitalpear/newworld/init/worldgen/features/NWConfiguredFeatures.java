@@ -2,7 +2,6 @@ package net.digitalpear.newworld.init.worldgen.features;
 
 import net.digitalpear.newworld.Newworld;
 import net.digitalpear.newworld.common.worldgen.NWFeature;
-import net.digitalpear.newworld.common.worldgen.features.SmallBushFeatureConfig;
 import net.digitalpear.newworld.init.NWBlocks;
 import net.minecraft.block.*;
 import net.minecraft.registry.Registerable;
@@ -42,8 +41,6 @@ public class NWConfiguredFeatures {
     private static final BeehiveTreeDecorator BEES = new BeehiveTreeDecorator(1.0F);
     private static final BeehiveTreeDecorator BEES_02 = new BeehiveTreeDecorator(0.02F);
     public static List<Block> VALID_BERRY_BUSH_BLOCKS = List.of(Blocks.GRASS_BLOCK, Blocks.PODZOL, Blocks.DIRT, Blocks.COARSE_DIRT, Blocks.ROOTED_DIRT, Blocks.MOSS_BLOCK);
-    public static List<Block> VALID_MOSS_CARPET_BLOCKS = List.of(Blocks.GRASS_BLOCK, Blocks.PODZOL, Blocks.DIRT, Blocks.COARSE_DIRT, Blocks.ROOTED_DIRT, Blocks.MOSS_BLOCK, Blocks.STONE, Blocks.COBBLESTONE, Blocks.DEEPSLATE, Blocks.COBBLED_DEEPSLATE, Blocks.MOSSY_COBBLESTONE);
-
 
     public static final RegistryKey<ConfiguredFeature<?, ?>> FALLEN_FIR_LOG = of("fallen_fir_log");
 
@@ -56,7 +53,6 @@ public class NWConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> FIR_TAIGA = of("fir_taiga");
 
     public static final RegistryKey<ConfiguredFeature<?, ?>> GLOW_LICHEN_WOODED_MEADOW = of("glow_lichen_wooded_meadow");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> MOSS_CARPET_WOODED_MEADOW = of("moss_carpet_wooded_meadow");
     public static final RegistryKey<ConfiguredFeature<?, ?>> PATCH_BERRY_WOODED_MEADOW = of("patch_berry_bush_wooded_meadow");
 
     public static final RegistryKey<ConfiguredFeature<?, ?>> GROWN_FIR = of("grown_fir");
@@ -65,7 +61,6 @@ public class NWConfiguredFeatures {
 
     public static final RegistryKey<ConfiguredFeature<?, ?>> LUSH_CAVE_MUD_PATCH = of("lush_cave_mud_patch");
 //    public static final RegistryKey<ConfiguredFeature<?, ?>> AZALEA_BUSH = of("azalea_bush");
-
 
 
     public static final RegistryKey<ConfiguredFeature<?, ?>> BURIAL_SITE = of("burial_site");
@@ -91,6 +86,7 @@ public class NWConfiguredFeatures {
 
         RegistryEntry<PlacedFeature> firChecked = placedFeatures.getOrThrow(NWPlacedFeatures.FIR_CHECKED);
         RegistryEntry<PlacedFeature> firBeesChecked = placedFeatures.getOrThrow(NWPlacedFeatures.FIR_BEES_CHECKED);
+        RegistryEntry<PlacedFeature> spruceChecked = placedFeatures.getOrThrow(TreePlacedFeatures.SPRUCE_CHECKED);
         RegistryEntry<PlacedFeature> grownFirChecked = placedFeatures.getOrThrow(NWPlacedFeatures.GROWN_FIR_CHECKED);
         RegistryEntry<PlacedFeature> grownFirBeesChecked = placedFeatures.getOrThrow(NWPlacedFeatures.GROWN_FIR_BEES_CHECKED);
 
@@ -112,9 +108,8 @@ public class NWConfiguredFeatures {
 
 
         ConfiguredFeatures.register(featureRegisterable, PATCH_BERRY_WOODED_MEADOW, Feature.RANDOM_PATCH, ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(Blocks.SWEET_BERRY_BUSH.getDefaultState().with(SweetBerryBushBlock.AGE, 2))), VALID_BERRY_BUSH_BLOCKS, 60));
-        ConfiguredFeatures.register(featureRegisterable, MOSS_CARPET_WOODED_MEADOW, Feature.RANDOM_PATCH, ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(Blocks.MOSS_CARPET.getDefaultState())), VALID_MOSS_CARPET_BLOCKS, 60));
         ConfiguredFeatures.register(featureRegisterable, GLOW_LICHEN_WOODED_MEADOW, Feature.MULTIFACE_GROWTH, new MultifaceGrowthFeatureConfig((MultifaceGrowthBlock) Blocks.GLOW_LICHEN,20, true, true, true, 0.5f, RegistryEntryList.of(Block::getRegistryEntry, NWBlocks.FIR_LOG, Blocks.MOSSY_COBBLESTONE)));
-        ConfiguredFeatures.register(featureRegisterable, FIR_SPAWN, Feature.RANDOM_SELECTOR, new RandomFeatureConfig(List.of(new RandomFeatureEntry(firBeesChecked, 0.06f)), firChecked));
+        ConfiguredFeatures.register(featureRegisterable, FIR_SPAWN, Feature.RANDOM_SELECTOR, new RandomFeatureConfig(List.of(new RandomFeatureEntry(firBeesChecked, 0.06f), new RandomFeatureEntry(spruceChecked, 0.1f)), firChecked));
         ConfiguredFeatures.register(featureRegisterable, FIR_MEADOW, Feature.RANDOM_SELECTOR, new RandomFeatureConfig(List.of(new RandomFeatureEntry(grownFirBeesChecked, 1.0f)), grownFirChecked));
 
 

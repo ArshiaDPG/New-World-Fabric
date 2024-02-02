@@ -50,7 +50,6 @@ public class NWPlacedFeatures {
     public static final RegistryKey<PlacedFeature> TREES_FIR_MEADOW = of("trees_fir_meadow");
 
     public static final RegistryKey<PlacedFeature> GLOW_LICHEN_WOODED_MEADOW = of("glow_lichen_wooded_meadow");
-    public static final RegistryKey<PlacedFeature> MOSS_CARPET_WOODED_MEADOW = of("moss_carpet_wooded_meadow");
     public static final RegistryKey<PlacedFeature> PATCH_BERRY_WOODED_MEADOW = of("patch_berry_bush_wooded_meadow");
 
 
@@ -82,7 +81,6 @@ public class NWPlacedFeatures {
 
 
         RegistryEntry<ConfiguredFeature<?, ?>> patchBerryBush = holderGetter.getOrThrow(NWConfiguredFeatures.PATCH_BERRY_WOODED_MEADOW);
-        RegistryEntry<ConfiguredFeature<?, ?>> patchMossCarpet = holderGetter.getOrThrow(NWConfiguredFeatures.MOSS_CARPET_WOODED_MEADOW);
         RegistryEntry<ConfiguredFeature<?, ?>> patchLichen = holderGetter.getOrThrow(NWConfiguredFeatures.GLOW_LICHEN_WOODED_MEADOW);
 
         RegistryEntry<ConfiguredFeature<?, ?>> birchTall = holderGetter.getOrThrow(VegetationConfiguredFeatures.BIRCH_TALL);
@@ -110,10 +108,7 @@ public class NWPlacedFeatures {
         PlacedFeatures.register(featureRegisterable,FALLEN_FIR_LOG, fallenFirLog, List.of(RarityFilterPlacementModifier.of(7), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, BiomePlacementModifier.of()));
 
         PlacedFeatures.register(featureRegisterable,PATCH_BERRY_WOODED_MEADOW, patchBerryBush, List.of(RarityFilterPlacementModifier.of(12), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, BiomePlacementModifier.of()));
-        PlacedFeatures.register(featureRegisterable,MOSS_CARPET_WOODED_MEADOW, patchMossCarpet, List.of(CountPlacementModifier.of(2), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, BiomePlacementModifier.of()));
         PlacedFeatures.register(featureRegisterable,GLOW_LICHEN_WOODED_MEADOW, patchLichen, List.of(CountPlacementModifier.of(UniformIntProvider.create(104, 157)), PlacedFeatures.BOTTOM_TO_TOP_RANGE, RarityFilterPlacementModifier.of(2), SurfaceThresholdFilterPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR_WG, 30, 300), BiomePlacementModifier.of()));
-
-
 
 
 

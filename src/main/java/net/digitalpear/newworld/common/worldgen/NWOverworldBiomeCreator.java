@@ -60,9 +60,8 @@ public class NWOverworldBiomeCreator {
         lookupBackedBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, NWPlacedFeatures.TREES_FIR);
         lookupBackedBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, NWPlacedFeatures.GLOW_LICHEN_WOODED_MEADOW);
         lookupBackedBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, NWPlacedFeatures.PATCH_BERRY_WOODED_MEADOW);
-        lookupBackedBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, NWPlacedFeatures.MOSS_CARPET_WOODED_MEADOW);
+//        lookupBackedBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, NWPlacedFeatures.MOSS_CARPET_WOODED_MEADOW);
         DefaultBiomeFeatures.addForestFlowers(lookupBackedBuilder);
-        DefaultBiomeFeatures.addExtraDefaultFlowers(lookupBackedBuilder);
         lookupBackedBuilder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, MiscPlacedFeatures.FOREST_ROCK);
         lookupBackedBuilder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, NWPlacedFeatures.FALLEN_FIR_LOG);
 
