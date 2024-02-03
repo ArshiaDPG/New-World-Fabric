@@ -12,6 +12,7 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.GenerationSettings;
+import net.minecraft.world.biome.OverworldBiomeCreator;
 import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.carver.ConfiguredCarver;
@@ -46,39 +47,40 @@ public class NWOverworldBiomeCreator {
     }
 
 
-
-
     public static Biome createWoodedMeadow(RegistryEntryLookup<PlacedFeature> featureLookup, RegistryEntryLookup<ConfiguredCarver<?>> carverLookup) {
-        GenerationSettings.LookupBackedBuilder lookupBackedBuilder = new GenerationSettings.LookupBackedBuilder(featureLookup, carverLookup);
+        GenerationSettings.LookupBackedBuilder featureBuilder = new GenerationSettings.LookupBackedBuilder(featureLookup, carverLookup);
         SpawnSettings.Builder spawnBuilder = new SpawnSettings.Builder();
         spawnBuilder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.DONKEY, 1, 1, 2)).spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.RABBIT, 2, 2, 6)).spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.SHEEP, 2, 2, 4));
         DefaultBiomeFeatures.addBatsAndMonsters(spawnBuilder);
 
 
-        addBasicFeatures(lookupBackedBuilder);
+        addBasicFeatures(featureBuilder);
 
-        lookupBackedBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, NWPlacedFeatures.TREES_FIR);
-        lookupBackedBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, NWPlacedFeatures.GLOW_LICHEN_WOODED_MEADOW);
-        lookupBackedBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, NWPlacedFeatures.PATCH_BERRY_WOODED_MEADOW);
-//        lookupBackedBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, NWPlacedFeatures.MOSS_CARPET_WOODED_MEADOW);
-        DefaultBiomeFeatures.addForestFlowers(lookupBackedBuilder);
-        lookupBackedBuilder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, MiscPlacedFeatures.FOREST_ROCK);
-        lookupBackedBuilder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, NWPlacedFeatures.FALLEN_FIR_LOG);
+        featureBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, NWPlacedFeatures.TREES_FIR);
+        featureBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, NWPlacedFeatures.GLOW_LICHEN_WOODED_MEADOW);
+        featureBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, NWPlacedFeatures.PATCH_BERRY_WOODED_MEADOW);
+        DefaultBiomeFeatures.addForestFlowers(featureBuilder);
+        DefaultBiomeFeatures.addLargeFerns(featureBuilder);
+        featureBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.PATCH_GRASS_TAIGA);
+        featureBuilder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, MiscPlacedFeatures.FOREST_ROCK);
+        featureBuilder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, NWPlacedFeatures.FALLEN_FIR_LOG);
 
 
 
         //Default biome features, DO NOT CHANGE THIS
-        DefaultBiomeFeatures.addPlainsTallGrass(lookupBackedBuilder);
-        DefaultBiomeFeatures.addDefaultOres(lookupBackedBuilder);
-        DefaultBiomeFeatures.addDefaultDisks(lookupBackedBuilder);
-        DefaultBiomeFeatures.addMeadowFlowers(lookupBackedBuilder);
-        DefaultBiomeFeatures.addEmeraldOre(lookupBackedBuilder);
-        DefaultBiomeFeatures.addInfestedStone(lookupBackedBuilder);
+        DefaultBiomeFeatures.addPlainsTallGrass(featureBuilder);
+        DefaultBiomeFeatures.addDefaultOres(featureBuilder);
+        DefaultBiomeFeatures.addDefaultDisks(featureBuilder);
+        DefaultBiomeFeatures.addMeadowFlowers(featureBuilder);
+        DefaultBiomeFeatures.addEmeraldOre(featureBuilder);
+        DefaultBiomeFeatures.addInfestedStone(featureBuilder);
 
 
         MusicSound musicSound = MusicType.createIngameMusic(SoundEvents.MUSIC_OVERWORLD_MEADOW);
-        return createBiome(true, 0.5F, 0.8F, 937679, spawnBuilder, lookupBackedBuilder, musicSound);
+        return createBiome(true, 0.5F, 0.8F, 937679, spawnBuilder, featureBuilder, musicSound);
     }
+
+
 
     public static Biome createEnfoldedScrapyard(RegistryEntryLookup<PlacedFeature> featureLookup, RegistryEntryLookup<ConfiguredCarver<?>> carverLookup){
         SpawnSettings.Builder spawnBuilder = new SpawnSettings.Builder();
@@ -87,25 +89,25 @@ public class NWOverworldBiomeCreator {
 
 //        spawnBuilder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(NWEntityTypes.AUTOMATON, 20, 1, 5));
 
-        GenerationSettings.LookupBackedBuilder lookupBackedBuilder = new GenerationSettings.LookupBackedBuilder(featureLookup, carverLookup);
+        GenerationSettings.LookupBackedBuilder featureBuilder = new GenerationSettings.LookupBackedBuilder(featureLookup, carverLookup);
 
-        lookupBackedBuilder.feature(GenerationStep.Feature.UNDERGROUND_DECORATION, NWPlacedFeatures.LOAM_PATCH_CEILING);
-        lookupBackedBuilder.feature(GenerationStep.Feature.UNDERGROUND_DECORATION, NWPlacedFeatures.LOAM_ORE);
-        lookupBackedBuilder.feature(GenerationStep.Feature.UNDERGROUND_ORES, NWPlacedFeatures.CALCITE_PATCH);
-        lookupBackedBuilder.feature(GenerationStep.Feature.TOP_LAYER_MODIFICATION, NWPlacedFeatures.LOAM_SNOW);
+        featureBuilder.feature(GenerationStep.Feature.UNDERGROUND_DECORATION, NWPlacedFeatures.LOAM_PATCH_CEILING);
+        featureBuilder.feature(GenerationStep.Feature.UNDERGROUND_DECORATION, NWPlacedFeatures.LOAM_ORE);
+        featureBuilder.feature(GenerationStep.Feature.UNDERGROUND_ORES, NWPlacedFeatures.CALCITE_PATCH);
+        featureBuilder.feature(GenerationStep.Feature.TOP_LAYER_MODIFICATION, NWPlacedFeatures.LOAM_SNOW);
 
 
         //Default biome features, DO NOT CHANGE THIS
-        addBasicFeatures(lookupBackedBuilder);
-        DefaultBiomeFeatures.addFrozenLavaSpring(lookupBackedBuilder);
-        DefaultBiomeFeatures.addPlainsTallGrass(lookupBackedBuilder);
-        DefaultBiomeFeatures.addDefaultOres(lookupBackedBuilder);
-        DefaultBiomeFeatures.addDefaultDisks(lookupBackedBuilder);
-        DefaultBiomeFeatures.addPlainsFeatures(lookupBackedBuilder);
-        DefaultBiomeFeatures.addDefaultMushrooms(lookupBackedBuilder);
-        DefaultBiomeFeatures.addDefaultVegetation(lookupBackedBuilder);
+        addBasicFeatures(featureBuilder);
+        DefaultBiomeFeatures.addFrozenLavaSpring(featureBuilder);
+        DefaultBiomeFeatures.addPlainsTallGrass(featureBuilder);
+        DefaultBiomeFeatures.addDefaultOres(featureBuilder);
+        DefaultBiomeFeatures.addDefaultDisks(featureBuilder);
+        DefaultBiomeFeatures.addPlainsFeatures(featureBuilder);
+        DefaultBiomeFeatures.addDefaultMushrooms(featureBuilder);
+        DefaultBiomeFeatures.addDefaultVegetation(featureBuilder);
 
         MusicSound musicSound = MusicType.createIngameMusic(SoundEvents.MUSIC_OVERWORLD_DEEP_DARK);
-        return createBiome(true, 0.0F, 0.4F, spawnBuilder, lookupBackedBuilder, musicSound);
+        return createBiome(true, 0.0F, 0.4F, spawnBuilder, featureBuilder, musicSound);
     }
 }
