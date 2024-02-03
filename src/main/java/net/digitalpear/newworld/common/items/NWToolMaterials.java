@@ -5,7 +5,7 @@ import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
 
 public enum NWToolMaterials implements ToolMaterial {
-    ANCIENT(4, 3086, 9.0F, 7.0F, 10, Ingredient.EMPTY),
+    ANCIENT(4, 3086, 9.0F, 7.0F, 10, Ingredient.ofItems(Items.FLINT)),
     EMERALD(400, 308600, 900.0F, 7.000F, 1000, Ingredient.ofItems(Items.EMERALD));
 
     
