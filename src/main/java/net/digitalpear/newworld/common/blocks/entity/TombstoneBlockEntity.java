@@ -16,7 +16,6 @@ import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 
-import java.util.Iterator;
 import java.util.List;
 
 public class TombstoneBlockEntity extends LootableContainerBlockEntity {
@@ -83,23 +82,15 @@ public class TombstoneBlockEntity extends LootableContainerBlockEntity {
         return -1;
     }
     public static boolean contains(List<DefaultedList<ItemStack>> inv, Item item) {
-        Iterator var2 = inv.iterator();
-
-        while(var2.hasNext()) {
-            List<ItemStack> list = (List)var2.next();
-            Iterator var4 = list.iterator();
-
-            while(var4.hasNext()) {
-                ItemStack itemStack = (ItemStack)var4.next();
-                if (!itemStack.isEmpty() && itemStack.isOf(item)) {
-                    return true;
-                }
+        for (DefaultedList<ItemStack> itemStacks : inv) {
+            if (itemStacks.stream().anyMatch(itemStack -> itemStack.isOf(item))){
+                return true;
             }
         }
         return false;
     }
 
-    void playSound(BlockState state, SoundEvent soundEvent) {
+    void playSound(SoundEvent soundEvent) {
         double d = (double)this.pos.getX() + 0.5;
         double e = (double)this.pos.getY() + 0.5;
         double f = (double)this.pos.getZ() + 0.5;

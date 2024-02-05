@@ -51,6 +51,7 @@ public class NWPlacedFeatures {
 
     public static final RegistryKey<PlacedFeature> GLOW_LICHEN_WOODED_MEADOW = of("glow_lichen_wooded_meadow");
     public static final RegistryKey<PlacedFeature> PATCH_BERRY_WOODED_MEADOW = of("patch_berry_bush_wooded_meadow");
+    public static final RegistryKey<PlacedFeature> PATCH_FERN_WOODED_MEADOW = of("patch_fern_wooded_meadow");
 
 
 
@@ -91,6 +92,7 @@ public class NWPlacedFeatures {
         RegistryEntry<ConfiguredFeature<?, ?>> loamOre = holderGetter.getOrThrow(NWConfiguredFeatures.LOAM_ORE);
         RegistryEntry<ConfiguredFeature<?, ?>> loamSnow = holderGetter.getOrThrow(NWConfiguredFeatures.LOAM_SNOW);
         RegistryEntry<ConfiguredFeature<?, ?>> calcitePatch = holderGetter.getOrThrow(NWConfiguredFeatures.CALCITE_PATCH);
+        RegistryEntry<ConfiguredFeature<?, ?>> fernPatch = holderGetter.getOrThrow(VegetationConfiguredFeatures.PATCH_TAIGA_GRASS);
 
 
 
@@ -116,6 +118,7 @@ public class NWPlacedFeatures {
         PlacedFeatures.register(featureRegisterable, LOAM_ORE, loamOre, CountPlacementModifier.of(250), SquarePlacementModifier.of(), HeightRangePlacementModifier.uniform(YOffset.getBottom(), YOffset.fixed(32)), BiomePlacementModifier.of());
         PlacedFeatures.register(featureRegisterable, LOAM_SNOW, loamSnow, CountPlacementModifier.of(8), SquarePlacementModifier.of(), HeightRangePlacementModifier.uniform(YOffset.getBottom(), YOffset.fixed(32)), BiomePlacementModifier.of());
         PlacedFeatures.register(featureRegisterable, CALCITE_PATCH, calcitePatch, CountPlacementModifier.of(100), SquarePlacementModifier.of(), PlacedFeatures.BOTTOM_TO_120_RANGE, EnvironmentScanPlacementModifier.of(Direction.DOWN, BlockPredicate.solid(), BlockPredicate.IS_AIR, 12), RandomOffsetPlacementModifier.vertically(ConstantIntProvider.create(1)), BiomePlacementModifier.of());
+        PlacedFeatures.register(featureRegisterable, PATCH_FERN_WOODED_MEADOW, fernPatch, modifiers(4));
 
 
         /*
@@ -125,6 +128,10 @@ public class NWPlacedFeatures {
         PlacedFeatures.register(featureRegisterable, LUSH_CAVE_MUD_PATCH, lushCaveMud, CountPlacementModifier.of(35), SquarePlacementModifier.of(), HeightRangePlacementModifier.uniform(YOffset.getBottom(), YOffset.fixed(0)), BiomePlacementModifier.of());
         PlacedFeatures.register(featureRegisterable, LUSH_CAVE_LOAM_ORE, loamOre, CountPlacementModifier.of(27), SquarePlacementModifier.of(), HeightRangePlacementModifier.uniform(YOffset.getBottom(), YOffset.fixed(0)), BiomePlacementModifier.of());
 //        PlacedFeatures.register(featureRegisterable, AZALEA_BUSH, azaleaBush, CountPlacementModifier.of(125), SquarePlacementModifier.of(), PlacedFeatures.BOTTOM_TO_120_RANGE, EnvironmentScanPlacementModifier.of(Direction.DOWN, BlockPredicate.solid(), BlockPredicate.IS_AIR, 5), RandomOffsetPlacementModifier.vertically(ConstantIntProvider.create(1)), BiomePlacementModifier.of());
+    }
+
+    public static List<PlacementModifier> modifiers(int count) {
+        return List.of(CountPlacementModifier.of(count), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, BiomePlacementModifier.of());
     }
 
 
@@ -137,4 +144,6 @@ public class NWPlacedFeatures {
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.LUSH_CAVES), GenerationStep.Feature.VEGETAL_DECORATION, LUSH_CAVE_LOAM_ORE);
 //        BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.LUSH_CAVES), GenerationStep.Feature.VEGETAL_DECORATION, AZALEA_BUSH);
     }
+
+
 }

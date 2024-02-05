@@ -61,7 +61,7 @@ public class NWOverworldBiomeCreator {
         featureBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, NWPlacedFeatures.PATCH_BERRY_WOODED_MEADOW);
         DefaultBiomeFeatures.addForestFlowers(featureBuilder);
         DefaultBiomeFeatures.addLargeFerns(featureBuilder);
-        featureBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.PATCH_GRASS_TAIGA);
+        featureBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, NWPlacedFeatures.PATCH_FERN_WOODED_MEADOW);
         featureBuilder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, MiscPlacedFeatures.FOREST_ROCK);
         featureBuilder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, NWPlacedFeatures.FALLEN_FIR_LOG);
 

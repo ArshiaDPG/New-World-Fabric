@@ -8,6 +8,7 @@ import net.digitalpear.newworld.init.data.tags.NWBlockTags;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.sound.SoundCategory;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
@@ -37,6 +38,7 @@ public abstract class PlayerDeathMixin {
 
         if (pos != null && hasTombstoneInInventory()) {
             if (!world.getBlockState(pos).isOf(NWBlocks.TOMBSTONE)){
+                world.playSound(player, pos, world.getBlockState(pos).getSoundGroup().getBreakSound(), SoundCategory.BLOCKS);
                 world.setBlockState(pos, NWBlocks.TOMBSTONE.getDefaultState().with(Properties.CRACKED, true));
             }
             world.getBlockEntity(pos, NWBlockEntityTypes.TOMBSTONE).ifPresent(tombstoneBlockEntity -> {
@@ -105,7 +107,6 @@ public abstract class PlayerDeathMixin {
             }
         }
         return false;
-
     }
     @Unique
     private BlockPos getValidPos(World world, BlockPos pos){

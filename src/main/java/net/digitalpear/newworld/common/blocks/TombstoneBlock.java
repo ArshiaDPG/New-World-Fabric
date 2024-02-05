@@ -9,8 +9,6 @@ import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemPlacementContext;
-import net.minecraft.item.ItemStack;
-import net.minecraft.loot.context.LootContextParameterSet;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.state.StateManager;
@@ -26,8 +24,6 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Collections;
-import java.util.List;
 import java.util.Map;
 
 public class TombstoneBlock extends BlockWithEntity implements Waterloggable {
@@ -50,7 +46,8 @@ public class TombstoneBlock extends BlockWithEntity implements Waterloggable {
         setDefaultState(this.stateManager.getDefaultState()
                 .with(WATERLOGGED, false)
                 .with(FACE, WallMountLocation.FLOOR)
-                .with(FACING, Direction.NORTH).with(CRACKED, false)
+                .with(FACING, Direction.NORTH)
+                .with(CRACKED, false)
         );
     }
 
@@ -81,17 +78,8 @@ public class TombstoneBlock extends BlockWithEntity implements Waterloggable {
         return directionToShapeMap.get(state.get(FACING));
     }
 
-
-    @Override
-    public List<ItemStack> getDroppedStacks(BlockState state, LootContextParameterSet.Builder builder) {
-        if(state.get(CRACKED)){
-            return Collections.emptyList();
-        }
-        return super.getDroppedStacks(state, builder);
-    }
-
     public boolean hasComparatorOutput(BlockState state) {
-        return true;
+        return state.get(CRACKED);
     }
 
     public int getComparatorOutput(BlockState state, World world, BlockPos pos) {
