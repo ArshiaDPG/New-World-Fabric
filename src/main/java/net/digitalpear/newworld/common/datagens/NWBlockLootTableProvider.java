@@ -27,7 +27,8 @@ public class NWBlockLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(NWBlocks.FIR_TRAPDOOR);
         addDrop(NWBlocks.FIR_DOOR, doorDrops(NWBlocks.FIR_DOOR));
         addDrop(NWBlocks.FIR_LEAVES, leavesDrops(NWBlocks.FIR_LEAVES, NWBlocks.FIR_SAPLING, VanillaBlockLootTableGenerator.SAPLING_DROP_CHANCE));
-
+        addDrop(NWBlocks.FIR_SIGN);
+        addDrop(NWBlocks.FIR_HANGING_SIGN);
 
         addDrop(NWBlocks.LOAM);
         addDrop(NWBlocks.LOAM_STAIRS);

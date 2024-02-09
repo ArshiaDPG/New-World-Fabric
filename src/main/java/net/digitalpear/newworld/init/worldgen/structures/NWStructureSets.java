@@ -27,7 +27,7 @@ public class NWStructureSets {
 
     public static void bootstrap(Registerable<StructureSet> structureSetRegisterable) {
         RegistryEntryLookup<Structure> registryEntryLookup = structureSetRegisterable.getRegistryLookup(RegistryKeys.STRUCTURE);
-        RegistryEntryLookup<Biome> registryEntryLookup2 = structureSetRegisterable.getRegistryLookup(RegistryKeys.BIOME);
+        //RegistryEntryLookup<Biome> registryEntryLookup2 = structureSetRegisterable.getRegistryLookup(RegistryKeys.BIOME);
 
 
         structureSetRegisterable.register(BURIED_BUNKER, new StructureSet(registryEntryLookup.getOrThrow(NWStructures.BURIED_BUNKER),

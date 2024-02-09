@@ -33,7 +33,7 @@ public class NWProcessorLists {
 
 
     public static void bootstrap(Registerable<StructureProcessorList> processorListRegisterable) {
-        RegistryEntryLookup<Block> blockRegistry = processorListRegisterable.getRegistryLookup(RegistryKeys.BLOCK);
+        //RegistryEntryLookup<Block> blockRegistry = processorListRegisterable.getRegistryLookup(RegistryKeys.BLOCK);
 
         register(processorListRegisterable, BURIED_BUNKER_REPLACEMENTS, ImmutableList.of(new RuleStructureProcessor(List.of(
                 new StructureProcessorRule(new RandomBlockMatchRuleTest(Blocks.STONE, 0.1f), AlwaysTrueRuleTest.INSTANCE, Blocks.INFESTED_STONE.getDefaultState()),
