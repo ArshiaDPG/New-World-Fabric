@@ -1,8 +1,10 @@
 package net.digitalpear.newworld.common.datagens;
 
 import net.digitalpear.newworld.init.NWBlocks;
+import net.digitalpear.newworld.init.data.woodset.Woodset;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
+import net.minecraft.block.Block;
 import net.minecraft.data.server.loottable.vanilla.VanillaBlockLootTableGenerator;
 import net.minecraft.item.Items;
 
@@ -13,22 +15,7 @@ public class NWBlockLootTableProvider extends FabricBlockLootTableProvider {
 
     @Override
     public void generate() {
-        addDrop(NWBlocks.FIR_PLANKS);
-        addDrop(NWBlocks.FIR_STAIRS);
-        addDrop(NWBlocks.FIR_SLAB, slabDrops(NWBlocks.FIR_SLAB));
-        addDrop(NWBlocks.FIR_FENCE);
-        addDrop(NWBlocks.FIR_FENCE_GATE);
-        addDrop(NWBlocks.FIR_BUTTON);
-        addDrop(NWBlocks.FIR_PRESSURE_PLATE);
-        addDrop(NWBlocks.FIR_LOG);
-        addDrop(NWBlocks.FIR_WOOD);
-        addDrop(NWBlocks.STRIPPED_FIR_LOG);
-        addDrop(NWBlocks.STRIPPED_FIR_WOOD);
-        addDrop(NWBlocks.FIR_TRAPDOOR);
-        addDrop(NWBlocks.FIR_DOOR, doorDrops(NWBlocks.FIR_DOOR));
-        addDrop(NWBlocks.FIR_LEAVES, leavesDrops(NWBlocks.FIR_LEAVES, NWBlocks.FIR_SAPLING, VanillaBlockLootTableGenerator.SAPLING_DROP_CHANCE));
-        addDrop(NWBlocks.FIR_SIGN);
-        addDrop(NWBlocks.FIR_HANGING_SIGN);
+        makeWoodLoot(NWBlocks.FIR, NWBlocks.FIR_SAPLING);
 
         addDrop(NWBlocks.LOAM);
         addDrop(NWBlocks.LOAM_STAIRS);
@@ -46,6 +33,35 @@ public class NWBlockLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(NWBlocks.TOMBSTONE);
 
         addDrop(NWBlocks.POTTED_POINTED_DRIPSTONE, pottedPlantDrops(Items.POINTED_DRIPSTONE));
+    }
+    public void makeWoodLoot(Woodset woodset, Block sapling){
+        addDrop(woodset.getPlanks());
+        addDrop(woodset.getStairs());
+        addDrop(woodset.getSlab(), slabDrops(woodset.getSlab()));
+        addDrop(woodset.getFence());
+        addDrop(woodset.getFenceGate());
+        addDrop(woodset.getButton());
+        addDrop(woodset.getPressurePlate());
+        addDrop(woodset.getLog());
+
+        if (woodset.getWoodPreset() == Woodset.WoodPreset.BAMBOO) {
+            addDrop(woodset.getMosaic());
+            addDrop(woodset.getMosaicStairs());
+            addDrop(woodset.getMosaicSlab(), slabDrops(woodset.getMosaic()));
+        }
+        else{
+            addDrop(woodset.getWood());
+            addDrop(woodset.getStrippedLog());
+            addDrop(woodset.getStrippedWood());
+        }
+        
+        addDrop(woodset.getTrapDoor());
+        addDrop(woodset.getDoor(), doorDrops(woodset.getDoor()));
+        if (woodset.isNormalWood()){
+            addDrop(woodset.getLeaves(), leavesDrops(woodset.getLeaves(), sapling, VanillaBlockLootTableGenerator.SAPLING_DROP_CHANCE));
+        }
+        addDrop(woodset.getSign());
+        addDrop(woodset.getHangingSign());
     }
 }
 
