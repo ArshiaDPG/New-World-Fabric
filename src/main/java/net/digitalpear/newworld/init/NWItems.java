@@ -52,9 +52,7 @@ public class NWItems {
 
 
     public static void init(){
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.SPAWN_EGGS).register(entries -> {
-        });
-            ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> {
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> {
             entries.addAfter(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE, MATTOCK_CRAFTING_TEMPLATE);
             entries.addAfter(MATTOCK_CRAFTING_TEMPLATE, MATTOCK_CRAFTING_TEMPLATE_HEAD);
             entries.addAfter(MATTOCK_CRAFTING_TEMPLATE_HEAD, MATTOCK_CRAFTING_TEMPLATE_SHAFT);
@@ -64,13 +62,11 @@ public class NWItems {
             entries.addAfter(Items.SPRUCE_LOG, NWBlocks.FIR_LOG);
                 });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(entries -> {
-            entries.addAfter(Items.SPRUCE_CHEST_BOAT, FIR_BOAT);
-            entries.addAfter(FIR_BOAT, FIR_CHEST_BOAT);
+            entries.addAfter(Items.SPRUCE_CHEST_BOAT, FIR_BOAT, FIR_CHEST_BOAT);
             entries.addAfter(Items.NETHERITE_HOE, ANCIENT_MATTOCK);
         });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(entries -> {
-            entries.addAfter(Items.SPRUCE_HANGING_SIGN, FIR_SIGN);
-            entries.addAfter(FIR_SIGN, FIR_HANGING_SIGN);
+            entries.addAfter(Items.SPRUCE_HANGING_SIGN, FIR_SIGN, FIR_HANGING_SIGN);
             entries.add(NWBlocks.TOMBSTONE);
         });
 

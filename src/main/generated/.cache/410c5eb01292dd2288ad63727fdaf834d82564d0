@@ -1,4 +1,4 @@
-// 1.20.1	2024-02-09T19:44:51.7128887	New World/Block Loot Tables
+// 1.20.1	2024-02-17T10:10:51.7744832	New World/Block Loot Tables
 cc5f508fb3b76d81b75776ac59a31e445c284076 data\newworld\loot_tables\blocks\fir_fence.json
 0b43349db02afb5d67ddf27b70e30e2dfa949aa1 data\newworld\loot_tables\blocks\fir_hanging_sign.json
 78bb4f227112d5d4b8088661cedaa19beeb28c97 data\newworld\loot_tables\blocks\fir_door.json
@@ -9,6 +9,7 @@ cc5f508fb3b76d81b75776ac59a31e445c284076 data\newworld\loot_tables\blocks\fir_fe
 36198306c2f61049de055083a0fb78b0ad4c2699 data\newworld\loot_tables\blocks\fir_log.json
 ad4eafda53c7a518e22e64ed4e94310cc39658e1 data\newworld\loot_tables\blocks\tombstone.json
 ec2d406a70c585e31e9c9bb14df18cc071a7116e data\newworld\loot_tables\blocks\loam_slab.json
+64b40e7663f8601dad269cf39d4eb30ff18dcb59 data\newworld\loot_tables\blocks\fir_sapling.json
 527d51c592a696c6fff8724627360efe5164b917 data\newworld\loot_tables\blocks\loam_tile_wall.json
 7d20aecf0949123ecf8c9ab0ca44c3bb7801a496 data\newworld\loot_tables\blocks\loam.json
 dcf25ab5415648e44b032bddef68d86eeec7a5c2 data\newworld\loot_tables\blocks\loam_tiles.json

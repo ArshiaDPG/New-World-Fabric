@@ -88,6 +88,7 @@ public class NWBlocks {
     public static final Block LOAM_TILE_WALL = createBlockWithItem("loam_tile_wall", new WallBlock(AbstractBlock.Settings.copy(LOAM_TILES)));
 
     public static final Block TOMBSTONE = createBlockWithoutItem("tombstone", new TombstoneBlock(AbstractBlock.Settings.create().mapColor(Blocks.DEEPSLATE.getDefaultMapColor()).strength(0.7f, 1200).pistonBehavior(PistonBehavior.IGNORE).sounds(BlockSoundGroup.POLISHED_DEEPSLATE).suffocates((state, world, pos) -> false).nonOpaque()));
+
     /*
         Experimental blocks
      */

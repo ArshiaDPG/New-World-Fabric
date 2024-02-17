@@ -27,18 +27,6 @@ public class NWOverworldRegion extends Region {
 
 
         this.addModifiedVanillaOverworldBiomes(mapper, builder -> {
-
-//            List<MultiNoiseUtil.NoiseHypercube> meadowPoints = new ParameterPointListBuilder()
-//                    .temperature(Temperature.COOL, Temperature.NEUTRAL, Temperature.UNFROZEN, Temperature.ICY)
-//                    .humidity(Humidity.NEUTRAL, Humidity.WET, Humidity.HUMID)
-//                    .continentalness(Continentalness.span(Continentalness.FAR_INLAND, Continentalness.FAR_INLAND), Continentalness.span(Continentalness.MID_INLAND, Continentalness.FAR_INLAND))
-//                    .erosion(Erosion.EROSION_0, Erosion.EROSION_1, Erosion.EROSION_2)
-//                    .depth(Depth.SURFACE)
-//                    .weirdness(Weirdness.HIGH_SLICE_VARIANT_DESCENDING, Weirdness.MID_SLICE_NORMAL_DESCENDING, Weirdness.MID_SLICE_NORMAL_ASCENDING, Weirdness.MID_SLICE_VARIANT_DESCENDING, Weirdness.MID_SLICE_VARIANT_ASCENDING)
-//                    .build();
-//            meadowPoints.forEach(point -> builder.replaceBiome(point, NWBiomes.WOODED_MEADOW));
-
-//            builder.replaceBiome(BiomeKeys.CHERRY_GROVE, NWBiomes.WOODED_MEADOW);
             addBiomeSimilar(mapper, BiomeKeys.MEADOW, NWBiomes.WOODED_MEADOW);
 
 //            List<MultiNoiseUtil.NoiseHypercube> scrapyardPoints = new ParameterPointListBuilder()
