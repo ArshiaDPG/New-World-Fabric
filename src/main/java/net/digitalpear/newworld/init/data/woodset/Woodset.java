@@ -10,6 +10,7 @@ import net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeRegistry
 import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeRegistry;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.minecraft.block.*;
+import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -292,7 +293,10 @@ public class Woodset {
         return createBlockWithItem("stripped_" + getWoodName(), createLogBlock(this.getTopColor(), this.getTopColor()));
     }
     private Block createLeaves() {
-        return createBlockWithItem(this.getName() + "_leaves", new LeavesBlock(AbstractBlock.Settings.copy(getBaseLeaves())));
+        if (woodPreset == WoodPreset.FANCY){
+            return createBlockWithItem(this.getName() + "_leaves", createLeavesBlock(BlockSoundGroup.AZALEA_LEAVES));
+        }
+        return createBlockWithItem(this.getName() + "_leaves", createLeavesBlock(BlockSoundGroup.GRASS));
     }
     private Block createPlanks(){
         return createBlockWithItem(this.getName() + "_planks", new Block(AbstractBlock.Settings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor())));
@@ -373,16 +377,6 @@ public class Woodset {
         }
         return name;
     }
-    private Block getBaseLeaves(){
-        Block base;
-        if (this.getWoodPreset() == WoodPreset.FANCY){
-            base = Blocks.AZALEA_LEAVES;
-        }
-        else{
-            base = Blocks.OAK_LEAVES;
-        }
-        return base;
-    }
     private Block getBase(){
         Block base;
         if (this.getWoodPreset() == WoodPreset.BAMBOO){
@@ -456,7 +450,9 @@ public class Woodset {
         NETHER,
         BAMBOO
     }
-
+    public static LeavesBlock createLeavesBlock(BlockSoundGroup soundGroup) {
+        return new LeavesBlock(AbstractBlock.Settings.create().mapColor(MapColor.DARK_GREEN).strength(0.2F).ticksRandomly().sounds(soundGroup).nonOpaque().allowsSpawning(Blocks::canSpawnOnLeaves).suffocates(Blocks::never).blockVision(Blocks::never).burnable().pistonBehavior(PistonBehavior.DESTROY).solidBlock(Blocks::never));
+    }
     public static void addToBuildingTab(Item proceedingItem, Woodset woodset){
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> {
             entries.addAfter(proceedingItem, woodset.getPlanks(), woodset.getStairs(), woodset.getSlab(),
