@@ -41,7 +41,7 @@ public class NWBlocks {
         return Registry.register(Registries.BLOCK, new Identifier(Newworld.MOD_ID, blockID), block);
     }
 
-    public static final Woodset FIR = new Woodset(Newworld.id("fir"), MapColor.DEEPSLATE_GRAY, MapColor.SPRUCE_BROWN, Woodset.WoodPreset.DEFAULT);
+    public static final Woodset FIR = new Woodset(Newworld.id("fir"), MapColor.DEEPSLATE_GRAY, MapColor.SPRUCE_BROWN, BlockSoundGroup.AZALEA_LEAVES);
 
     public static final Block FIR_LOG = FIR.getLog();
     public static final Block FIR_WOOD = FIR.getWood();

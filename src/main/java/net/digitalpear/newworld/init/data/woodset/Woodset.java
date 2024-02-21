@@ -33,6 +33,7 @@ public class Woodset {
     private WoodPreset woodPreset;
     private BlockSetType blockSetType;
     private WoodType woodType;
+    private BlockSoundGroup leaveSounds;
 
     private Block log;
     private Block strippedLog;
@@ -106,6 +107,19 @@ public class Woodset {
         this.name = name;
         this.sideColor = sideColor;
         this.topColor = topColor;
+        if (isNormalWood() && woodPreset == WoodPreset.DEFAULT){
+            this.leaveSounds = BlockSoundGroup.GRASS;
+        } else if (woodPreset == WoodPreset.FANCY) {
+            this.leaveSounds = BlockSoundGroup.AZALEA_LEAVES;
+        }
+        registerWood();
+    }
+    public Woodset(Identifier name, MapColor sideColor, MapColor topColor, WoodPreset woodPreset, BlockSoundGroup leaveSounds){
+        this.woodPreset = woodPreset;
+        this.name = name;
+        this.sideColor = sideColor;
+        this.topColor = topColor;
+        this.leaveSounds = leaveSounds;
         registerWood();
     }
     public Woodset(Identifier name, MapColor sideColor, MapColor topColor){
@@ -113,8 +127,22 @@ public class Woodset {
         this.name = name;
         this.sideColor = sideColor;
         this.topColor = topColor;
+        if (isNormalWood() && woodPreset == WoodPreset.DEFAULT){
+            this.leaveSounds = BlockSoundGroup.GRASS;
+        } else if (woodPreset == WoodPreset.FANCY) {
+            this.leaveSounds = BlockSoundGroup.AZALEA_LEAVES;
+        }
         registerWood();
     }
+    public Woodset(Identifier name, MapColor sideColor, MapColor topColor, BlockSoundGroup leaveSounds){
+        this.woodPreset = WoodPreset.DEFAULT;
+        this.name = name;
+        this.sideColor = sideColor;
+        this.topColor = topColor;
+        this.leaveSounds = leaveSounds;
+        registerWood();
+    }
+
 
     private BlockItem createBlockItem(String blockID, Block block){
         return Registry.register(Registries.ITEM, new Identifier(this.getModID(), blockID), new BlockItem(block, new Item.Settings()));
@@ -293,10 +321,7 @@ public class Woodset {
         return createBlockWithItem("stripped_" + getWoodName(), createLogBlock(this.getTopColor(), this.getTopColor()));
     }
     private Block createLeaves() {
-        if (woodPreset == WoodPreset.FANCY){
-            return createBlockWithItem(this.getName() + "_leaves", createLeavesBlock(BlockSoundGroup.AZALEA_LEAVES));
-        }
-        return createBlockWithItem(this.getName() + "_leaves", createLeavesBlock(BlockSoundGroup.GRASS));
+        return createBlockWithItem(this.getName() + "_leaves", createLeavesBlock(leaveSounds));
     }
     private Block createPlanks(){
         return createBlockWithItem(this.getName() + "_planks", new Block(AbstractBlock.Settings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor())));
