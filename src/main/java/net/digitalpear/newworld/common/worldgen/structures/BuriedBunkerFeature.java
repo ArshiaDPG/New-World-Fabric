@@ -6,6 +6,7 @@ import net.digitalpear.newworld.init.NWStructures;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.structure.pool.StructurePool;
 import net.minecraft.structure.pool.StructurePoolBasedGenerator;
+import net.minecraft.structure.pool.alias.StructurePoolAliasLookup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
@@ -85,7 +86,8 @@ public class BuriedBunkerFeature extends Structure {
                 blockpos.down(6), // Where to spawn the structure.
                 false,
                 this.projectStartToHeightmap,
-                this.maxDistanceFromCenter);
+                this.maxDistanceFromCenter,
+                StructurePoolAliasLookup.EMPTY);
 
         return structurePiecesGenerator;
     }

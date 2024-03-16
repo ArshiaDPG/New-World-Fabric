@@ -6,11 +6,9 @@ import net.digitalpear.newworld.init.NWItems;
 import net.digitalpear.newworld.init.data.woodset.Woodset;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
-import net.minecraft.advancement.Advancement;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-
-import net.minecraft.block.enums.WallMountLocation;
+import net.minecraft.block.enums.BlockFace;
 import net.minecraft.data.client.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.state.property.Properties;
@@ -53,6 +51,8 @@ public class NWModelProvider extends FabricModelProvider {
         itemModelGenerator.register(NWItems.MATTOCK_CRAFTING_TEMPLATE_SHAFT, Models.GENERATED);
 
         itemModelGenerator.register(NWItems.ILLAGER_TOME, Models.GENERATED);
+
+        itemModelGenerator.register(NWItems.JEB_BOOK, Models.GENERATED);
     }
 
     public static void fullWoodset(BlockStateModelGenerator blockStateModelGenerator, Woodset woodset){
@@ -85,13 +85,13 @@ public class NWModelProvider extends FabricModelProvider {
 
     public final void registerTombstone(BlockStateModelGenerator blockStateModelGenerator) {
         blockStateModelGenerator.registerParentedItemModel(NWBlocks.TOMBSTONE, Newworld.id("block/tombstone_north"));
-        blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(NWBlocks.TOMBSTONE).coordinate(BlockStateVariantMap.create(Properties.CRACKED, Properties.WALL_MOUNT_LOCATION, Properties.HORIZONTAL_FACING).register((cracked, blockFace, horizontalFacing) ->{
+        blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(NWBlocks.TOMBSTONE).coordinate(BlockStateVariantMap.create(Properties.CRACKED, Properties.BLOCK_FACE, Properties.HORIZONTAL_FACING).register((cracked, blockFace, horizontalFacing) ->{
             BlockStateVariant blockStateVariant = BlockStateVariant.create();
 
-            String wallName = blockFace == WallMountLocation.WALL ? "_" + blockFace.asString() + "_" :  "_";
+            String wallName = blockFace == BlockFace.WALL ? "_" + blockFace.asString() + "_" :  "_";
             Identifier tombstone = Newworld.id("block/tombstone").withSuffixedPath(wallName).withSuffixedPath(horizontalFacing.asString());
 
-            if (blockFace == WallMountLocation.CEILING){
+            if (blockFace == BlockFace.CEILING){
                 blockStateVariant.put(VariantSettings.X, VariantSettings.Rotation.R180);
             }
 

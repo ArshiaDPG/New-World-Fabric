@@ -50,6 +50,10 @@ public class NWLanguageProvider extends FabricLanguageProvider {
         makeTranslation(translationBuilder, NWBlocks.TOMBSTONE);
         makeTranslation(translationBuilder, NWItems.ILLAGER_TOME);
 
+        makeTranslation(translationBuilder, NWItems.JEB_BOOK);
+        translationBuilder.add(NWItems.JEB_BOOK.getTranslationKey() + ".attack_desc", "Will instantly kill any modded entity.");
+        translationBuilder.add(NWItems.JEB_BOOK.getTranslationKey() + ".mining_desc", "Will mine modded blocks much faster.");
+
         translationBuilder.add(NWItems.FIR_BOAT, "Fir Boat");
         translationBuilder.add(NWItems.FIR_CHEST_BOAT, "Fir Boat with Chest");
 

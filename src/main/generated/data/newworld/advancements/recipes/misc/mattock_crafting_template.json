@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_mattock_crafting_template",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_mattock_crafting_template"
     ]
   ],
   "rewards": {
     "recipes": [
       "newworld:mattock_crafting_template"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '1.3-SNAPSHOT'
+    id 'fabric-loom' version '1.5-SNAPSHOT'
     id 'maven-publish'
     id "me.shedaniel.unified-publishing" version "0.1.+"
 }
@@ -120,16 +120,8 @@ unifiedPublishing {
         displayName = "${project.minecraft_version}-${project.mod_version}" // Optional, name of the file
         version = "${project.mod_version}" // Optional, Inferred from project by default
         changelog = '''<ul>
-  <li>Ported to 1.20.1.</li>
-  <li>Added Tombstone. A frail but extremely blast resistant way to save your items on death.</li>
-  <li>Added Illager Tome for Tombstone duplication.</li>
-  <li>Removed moss carpets and extra flowers from wooded meadow generation.</li>
-  <li>Made wooded meadows conform more to how meadows generate (Hopefully no more wooded meadows at mountain tops).</li>
-  <li>Spruce trees now rarely generate in wooded meadows.</li>
-  <li>Fir leaves now have the same sounds as Azalea Leaves.</li>
-  <li>Fir Leaves no longer suffocate mobs.</li>
-  <li>Fir Saplings now drop themselves.</li>
-  <li>Slightly tweaked Fir Door textures.</li>
+  <li>Ported to 1.20.4.</li>
+  <li>Added a new debug feature for fun.</li>
 </ul> '''
         releaseType = "release" // Optional, use "release", "beta" or "alpha"
         gameVersions = ["${project.minecraft_version}"]

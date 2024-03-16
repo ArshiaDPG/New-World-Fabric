@@ -29,19 +29,17 @@ public class TombstoneBlockEntity extends LootableContainerBlockEntity {
 
     protected void writeNbt(NbtCompound nbt) {
         super.writeNbt(nbt);
-        if (!this.serializeLootTable(nbt)) {
+        if (!this.writeLootTable(nbt)) {
             Inventories.writeNbt(nbt, this.inventory);
         }
-
     }
 
     public void readNbt(NbtCompound nbt) {
         super.readNbt(nbt);
         this.inventory = DefaultedList.ofSize(this.size(), ItemStack.EMPTY);
-        if (!this.deserializeLootTable(nbt)) {
+        if (!this.readLootTable(nbt)) {
             Inventories.readNbt(nbt, this.inventory);
         }
-
     }
 
     public int size() {
@@ -49,6 +47,11 @@ public class TombstoneBlockEntity extends LootableContainerBlockEntity {
     }
 
     public DefaultedList<ItemStack> getInvStackList() {
+        return this.inventory;
+    }
+
+    @Override
+    protected DefaultedList<ItemStack> method_11282() {
         return this.inventory;
     }
 

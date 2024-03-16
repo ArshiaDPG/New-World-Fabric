@@ -28,6 +28,7 @@ import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class NWConfiguredFeatures {
     public static List<RegistryKey<ConfiguredFeature<?, ?>>> features = new ArrayList<>();
@@ -37,6 +38,7 @@ public class NWConfiguredFeatures {
         features.add(registryKey);
         return registryKey;
     }
+
 
     private static final BeehiveTreeDecorator BEES = new BeehiveTreeDecorator(1.0F);
     private static final BeehiveTreeDecorator BEES_02 = new BeehiveTreeDecorator(0.02F);

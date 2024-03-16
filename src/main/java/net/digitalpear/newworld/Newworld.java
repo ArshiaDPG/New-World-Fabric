@@ -33,7 +33,6 @@ public class Newworld implements ModInitializer {
         NWData.init();
         NWStructures.init();
         NWFeature.init();
-        NWEntityTypes.init();
         NWConfiguredFeatures.init();
         NWPlacedFeatures.init();
         NWStats.init();

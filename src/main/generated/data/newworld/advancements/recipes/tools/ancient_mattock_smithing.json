@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_mattock_crafting_template",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_mattock_crafting_template"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:ancient_mattock_smithing"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

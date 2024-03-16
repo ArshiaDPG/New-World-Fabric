@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_loam_bricks",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_loam_bricks"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:loam_brick_stairs_from_loam_bricks_stonecutting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

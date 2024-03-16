@@ -1,6 +1,5 @@
 package net.digitalpear.newworld.common.worldgen;
 
-import net.digitalpear.newworld.init.NWEntityTypes;
 import net.digitalpear.newworld.init.worldgen.features.NWPlacedFeatures;
 import net.minecraft.client.sound.MusicType;
 import net.minecraft.entity.EntityType;
@@ -12,7 +11,6 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.GenerationSettings;
-import net.minecraft.world.biome.OverworldBiomeCreator;
 import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.carver.ConfiguredCarver;

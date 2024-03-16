@@ -7,14 +7,13 @@ import com.terraformersmc.terraform.boat.impl.item.TerraformBoatItem;
 import net.digitalpear.newworld.Newworld;
 import net.digitalpear.newworld.common.items.*;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroups;
-import net.minecraft.item.Items;
-import net.minecraft.item.SpawnEggItem;
+import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.util.Identifier;
+
+import java.awt.print.Book;
 
 
 @SuppressWarnings("unused")
@@ -50,6 +49,7 @@ public class NWItems {
 
     public static final Item ILLAGER_TOME = registerItem("illager_tome", new IllagerTomeItem(new Item.Settings()));
 
+    public static final Item JEB_BOOK = registerItem("jeb_book", new JebBookItem(new Item.Settings()));
 
     public static void init(){
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> {
@@ -68,6 +68,9 @@ public class NWItems {
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(entries -> {
             entries.addAfter(Items.SPRUCE_HANGING_SIGN, FIR_SIGN, FIR_HANGING_SIGN);
             entries.add(NWBlocks.TOMBSTONE);
+        });
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.OPERATOR).register(entries -> {
+            entries.add(JEB_BOOK);
         });
 
     }

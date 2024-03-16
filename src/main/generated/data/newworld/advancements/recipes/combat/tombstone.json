@@ -23,14 +23,13 @@
   },
   "requirements": [
     [
-      "has_tombstone_or_arcane_tome",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_tombstone_or_arcane_tome"
     ]
   ],
   "rewards": {
     "recipes": [
       "newworld:tombstone"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

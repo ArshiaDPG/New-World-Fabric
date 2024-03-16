@@ -6,8 +6,8 @@ import com.terraformersmc.terraform.sign.block.TerraformWallHangingSignBlock;
 import com.terraformersmc.terraform.sign.block.TerraformWallSignBlock;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeRegistry;
-import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeRegistry;
+import net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder;
+import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.minecraft.block.*;
 import net.minecraft.block.piston.PistonBehavior;
@@ -63,7 +63,7 @@ public class Woodset {
 
     private void registerWood(){
         blockSetType = createBlockSetType();
-        woodType = WoodTypeRegistry.register(this.getNameID(), getBlockSetType());
+        woodType = new WoodTypeBuilder().build(this.getNameID(), getBlockSetType());
 
         log = createLog();
         strippedLog = createStrippedLog();
@@ -345,19 +345,19 @@ public class Woodset {
         return createBlockWithItem(this.getName() + "_fence", new FenceBlock(AbstractBlock.Settings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor())));
     }
     private Block createFenceGate(){
-        return createBlockWithItem(this.getName() + "_fence_gate", new FenceGateBlock(AbstractBlock.Settings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor()), this.getWoodType()));
+        return createBlockWithItem(this.getName() + "_fence_gate", new FenceGateBlock(this.getWoodType(), AbstractBlock.Settings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor())));
     }
     private Block createPressurePlate(){
-        return createBlockWithItem(this.getName() + "_pressure_plate", new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, AbstractBlock.Settings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor()), this.getBlockSetType()));
+        return createBlockWithItem(this.getName() + "_pressure_plate", new PressurePlateBlock(this.getBlockSetType(), AbstractBlock.Settings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor())));
     }
     private Block createButton(){
-        return createBlockWithItem(this.getName() + "_button", new ButtonBlock(AbstractBlock.Settings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor()), this.getBlockSetType(), 30, true));
+        return createBlockWithItem(this.getName() + "_button", new ButtonBlock(this.getBlockSetType(), 30, AbstractBlock.Settings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor())));
     }
     private Block createDoor(){
-        return createBlockWithItem(this.getName() + "_door", new DoorBlock(AbstractBlock.Settings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor()), this.getBlockSetType()));
+        return createBlockWithItem(this.getName() + "_door", new DoorBlock(this.getBlockSetType(), AbstractBlock.Settings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor())));
     }
     private Block createTrapDoor(){
-        return createBlockWithItem(this.getName() + "_trapdoor", new TrapdoorBlock(AbstractBlock.Settings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor()), this.getBlockSetType()));
+        return createBlockWithItem(this.getName() + "_trapdoor", new TrapdoorBlock(this.getBlockSetType(), AbstractBlock.Settings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor())));
     }
     private Block createSign(){
         return createBlockWithoutItem(this.getName() + "_sign", new TerraformSignBlock(new Identifier(getModID(), "entity/signs/" + this.getName()), AbstractBlock.Settings.copy(getSignBase()).mapColor(this.getTopColor())));
@@ -453,16 +453,46 @@ public class Woodset {
 
     private BlockSetType createBlockSetType(){
         if (this.woodPreset == WoodPreset.BAMBOO){
-            return BlockSetTypeRegistry.register(this.getNameID(), true, BlockSoundGroup.BAMBOO_WOOD, SoundEvents.BLOCK_BAMBOO_WOOD_DOOR_CLOSE, SoundEvents.BLOCK_BAMBOO_WOOD_DOOR_OPEN, SoundEvents.BLOCK_BAMBOO_WOOD_TRAPDOOR_CLOSE, SoundEvents.BLOCK_BAMBOO_WOOD_TRAPDOOR_OPEN, SoundEvents.BLOCK_BAMBOO_WOOD_PRESSURE_PLATE_CLICK_OFF, SoundEvents.BLOCK_BAMBOO_WOOD_PRESSURE_PLATE_CLICK_ON, SoundEvents.BLOCK_BAMBOO_WOOD_BUTTON_CLICK_OFF, SoundEvents.BLOCK_BAMBOO_WOOD_BUTTON_CLICK_ON);
+            return new BlockSetTypeBuilder()
+                    .soundGroup(BlockSoundGroup.BAMBOO_WOOD)
+                    .doorCloseSound(SoundEvents.BLOCK_BAMBOO_WOOD_DOOR_CLOSE)
+                    .doorOpenSound(SoundEvents.BLOCK_BAMBOO_WOOD_DOOR_OPEN)
+                    .trapdoorCloseSound(SoundEvents.BLOCK_BAMBOO_WOOD_TRAPDOOR_CLOSE)
+                    .trapdoorOpenSound(SoundEvents.BLOCK_BAMBOO_WOOD_TRAPDOOR_OPEN)
+                    .pressurePlateClickOffSound(SoundEvents.BLOCK_BAMBOO_WOOD_PRESSURE_PLATE_CLICK_OFF)
+                    .pressurePlateClickOnSound(SoundEvents.BLOCK_BAMBOO_WOOD_PRESSURE_PLATE_CLICK_ON)
+                    .buttonClickOffSound(SoundEvents.BLOCK_BAMBOO_WOOD_BUTTON_CLICK_OFF)
+                    .buttonClickOnSound(SoundEvents.BLOCK_BAMBOO_WOOD_BUTTON_CLICK_ON)
+                    .build(this.getNameID());
         }
         else if (this.getWoodPreset() == WoodPreset.FANCY){
-            return BlockSetTypeRegistry.register(this.getNameID(), true, BlockSoundGroup.CHERRY_WOOD, SoundEvents.BLOCK_CHERRY_WOOD_DOOR_CLOSE, SoundEvents.BLOCK_CHERRY_WOOD_DOOR_OPEN, SoundEvents.BLOCK_CHERRY_WOOD_TRAPDOOR_CLOSE, SoundEvents.BLOCK_CHERRY_WOOD_TRAPDOOR_OPEN, SoundEvents.BLOCK_CHERRY_WOOD_PRESSURE_PLATE_CLICK_OFF, SoundEvents.BLOCK_CHERRY_WOOD_PRESSURE_PLATE_CLICK_ON, SoundEvents.BLOCK_CHERRY_WOOD_BUTTON_CLICK_OFF, SoundEvents.BLOCK_CHERRY_WOOD_BUTTON_CLICK_ON);
+            return new BlockSetTypeBuilder()
+                    .soundGroup(BlockSoundGroup.CHERRY_WOOD)
+                    .doorCloseSound(SoundEvents.BLOCK_CHERRY_WOOD_DOOR_CLOSE)
+                    .doorOpenSound(SoundEvents.BLOCK_CHERRY_WOOD_DOOR_OPEN)
+                    .trapdoorCloseSound(SoundEvents.BLOCK_CHERRY_WOOD_TRAPDOOR_CLOSE)
+                    .trapdoorOpenSound(SoundEvents.BLOCK_CHERRY_WOOD_TRAPDOOR_OPEN)
+                    .pressurePlateClickOffSound(SoundEvents.BLOCK_CHERRY_WOOD_PRESSURE_PLATE_CLICK_OFF)
+                    .pressurePlateClickOnSound(SoundEvents.BLOCK_CHERRY_WOOD_PRESSURE_PLATE_CLICK_ON)
+                    .buttonClickOffSound(SoundEvents.BLOCK_CHERRY_WOOD_BUTTON_CLICK_OFF)
+                    .buttonClickOnSound(SoundEvents.BLOCK_CHERRY_WOOD_BUTTON_CLICK_ON)
+                    .build(this.getNameID());
         }
         else if (this.woodPreset == WoodPreset.NETHER){
-            return BlockSetTypeRegistry.register(this.getNameID(), true, BlockSoundGroup.NETHER_WOOD, SoundEvents.BLOCK_NETHER_WOOD_DOOR_CLOSE, SoundEvents.BLOCK_NETHER_WOOD_DOOR_OPEN, SoundEvents.BLOCK_NETHER_WOOD_TRAPDOOR_CLOSE, SoundEvents.BLOCK_NETHER_WOOD_TRAPDOOR_OPEN, SoundEvents.BLOCK_NETHER_WOOD_PRESSURE_PLATE_CLICK_OFF, SoundEvents.BLOCK_NETHER_WOOD_PRESSURE_PLATE_CLICK_ON, SoundEvents.BLOCK_NETHER_WOOD_BUTTON_CLICK_OFF, SoundEvents.BLOCK_NETHER_WOOD_BUTTON_CLICK_ON);
+            return new BlockSetTypeBuilder()
+                    .soundGroup(BlockSoundGroup.NETHER_WOOD)
+                    .doorCloseSound(SoundEvents.BLOCK_NETHER_WOOD_DOOR_CLOSE)
+                    .doorOpenSound(SoundEvents.BLOCK_NETHER_WOOD_DOOR_OPEN)
+                    .trapdoorCloseSound(SoundEvents.BLOCK_NETHER_WOOD_TRAPDOOR_CLOSE)
+                    .trapdoorOpenSound(SoundEvents.BLOCK_NETHER_WOOD_TRAPDOOR_OPEN)
+                    .pressurePlateClickOffSound(SoundEvents.BLOCK_NETHER_WOOD_PRESSURE_PLATE_CLICK_OFF)
+                    .pressurePlateClickOnSound(SoundEvents.BLOCK_NETHER_WOOD_PRESSURE_PLATE_CLICK_ON)
+                    .buttonClickOffSound(SoundEvents.BLOCK_NETHER_WOOD_BUTTON_CLICK_OFF)
+                    .buttonClickOnSound(SoundEvents.BLOCK_NETHER_WOOD_BUTTON_CLICK_ON)
+                    .build(this.getNameID());
         }
         else{
-            return BlockSetTypeRegistry.registerWood(this.getNameID());
+            return new BlockSetTypeBuilder().build(this.getNameID());
         }
     }
 

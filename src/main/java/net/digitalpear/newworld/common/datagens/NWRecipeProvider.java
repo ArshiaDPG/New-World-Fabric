@@ -15,15 +15,15 @@ import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.Registries;
 
 import java.util.Arrays;
-import java.util.function.Consumer;
 
 public class NWRecipeProvider extends FabricRecipeProvider {
     public NWRecipeProvider(FabricDataOutput output) {
         super(output);
     }
 
+
     @Override
-    public void generate(Consumer<RecipeJsonProvider> exporter) {
+    public void generate(RecipeExporter exporter) {
         offerPlanksRecipe(exporter, NWBlocks.FIR_PLANKS, NWItemTags.FIR_LOGS, 4);
         createStairsRecipe(NWBlocks.FIR_STAIRS, Ingredient.ofItems(NWBlocks.FIR_PLANKS)).criterion(hasItem(NWBlocks.FIR_PLANKS), conditionsFromItem(NWBlocks.FIR_PLANKS)).offerTo(exporter);
         offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, NWBlocks.FIR_SLAB, NWBlocks.FIR_PLANKS);
@@ -109,13 +109,13 @@ public class NWRecipeProvider extends FabricRecipeProvider {
 
     }
 
-    public void createStoneSetRecipes(Consumer<RecipeJsonProvider> exporter, ItemConvertible base, ItemConvertible stairs, ItemConvertible slab, ItemConvertible wall){
+    public void createStoneSetRecipes(RecipeExporter exporter, ItemConvertible base, ItemConvertible stairs, ItemConvertible slab, ItemConvertible wall){
         createStairsRecipe(stairs, Ingredient.ofItems(base)).criterion(hasItem(base), conditionsFromItem(base)).offerTo(exporter);
         offerSlabRecipe(exporter,RecipeCategory.BUILDING_BLOCKS, slab, base);
         offerWallRecipe(exporter,RecipeCategory.BUILDING_BLOCKS, wall, base);
 
     }
-    public void makeTemplateRecipe(Consumer<RecipeJsonProvider> exporter, Item fullTemplate, Item... pieces){
+    public void makeTemplateRecipe(RecipeExporter exporter, Item fullTemplate, Item... pieces){
         ShapelessRecipeJsonBuilder recipeJsonBuilder = ShapelessRecipeJsonBuilder.create(RecipeCategory.TOOLS, NWItems.MATTOCK_CRAFTING_TEMPLATE)
                 .criterion("has_" + Registries.ITEM.getId(fullTemplate).getPath() + "_piece",
                         conditionsFromItemPredicates(ItemPredicate.Builder.create().items(pieces).build()));
@@ -125,7 +125,7 @@ public class NWRecipeProvider extends FabricRecipeProvider {
         recipeJsonBuilder.offerTo(exporter, Registries.ITEM.getId(fullTemplate).withSuffixedPath("_from_piece_combination"));
     }
 
-    public static void offerUpgradeRecipe(Consumer<RecipeJsonProvider> exporter, Item template, Item result) {
+    public static void offerUpgradeRecipe(RecipeExporter exporter, Item template, Item result) {
         SmithingTransformRecipeJsonBuilder.create(Ingredient.ofItems(template), Ingredient.ofItems(Items.STICK), Ingredient.ofItems(Items.FLINT), RecipeCategory.TOOLS, result).criterion(hasItem(template), conditionsFromItem(template)).offerTo(exporter, getItemPath(result) + "_smithing");
     }
 }

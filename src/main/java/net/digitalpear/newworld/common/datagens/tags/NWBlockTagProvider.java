@@ -97,7 +97,7 @@ public class NWBlockTagProvider extends FabricTagProvider<Block> {
         getOrCreateTagBuilder(NWBlockTags.TOMBSTONE_REPLACEABLE)
                 .forceAddTag(BlockTags.CORAL_PLANTS)
                 .forceAddTag(BlockTags.SMALL_FLOWERS)
-                .add(Blocks.GRASS)
+                .add(Blocks.SHORT_GRASS)
                 .add(Blocks.TALL_GRASS)
                 .add(Blocks.WATER)
                 .add(Blocks.SEAGRASS)

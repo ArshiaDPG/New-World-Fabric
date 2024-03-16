@@ -2,8 +2,9 @@ package net.digitalpear.newworld.init;
 
 import net.digitalpear.newworld.Newworld;
 import net.digitalpear.newworld.common.blocks.TombstoneBlock;
-import net.digitalpear.newworld.common.worldgen.tree.FirSaplingGenerator;
 import net.digitalpear.newworld.init.data.woodset.Woodset;
+import net.digitalpear.newworld.init.worldgen.NWSaplingGenerators;
+import net.digitalpear.newworld.init.worldgen.features.NWConfiguredFeatures;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.*;
 import net.minecraft.block.piston.PistonBehavior;
@@ -15,6 +16,8 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
+
+import java.util.Optional;
 
 
 @SuppressWarnings("unused")
@@ -41,6 +44,8 @@ public class NWBlocks {
         return Registry.register(Registries.BLOCK, new Identifier(Newworld.MOD_ID, blockID), block);
     }
 
+
+
     public static final Woodset FIR = new Woodset(Newworld.id("fir"), MapColor.DEEPSLATE_GRAY, MapColor.SPRUCE_BROWN, BlockSoundGroup.AZALEA_LEAVES);
 
     public static final Block FIR_LOG = FIR.getLog();
@@ -63,7 +68,7 @@ public class NWBlocks {
 
     public static final Block FIR_LEAVES = FIR.getLeaves();
 
-    public static final Block FIR_SAPLING = createBlockWithItem("fir_sapling", new SaplingBlock(new FirSaplingGenerator(),AbstractBlock.Settings.copy(Blocks.OAK_SAPLING)));
+    public static final Block FIR_SAPLING = createBlockWithItem("fir_sapling", new SaplingBlock(NWSaplingGenerators.FIR, AbstractBlock.Settings.copy(Blocks.OAK_SAPLING)));
     public static final Block POTTED_FIR_SAPLING = createBlockWithoutItem("potted_fir_sapling", new FlowerPotBlock(NWBlocks.FIR_SAPLING, AbstractBlock.Settings.copy(Blocks.POTTED_ACACIA_SAPLING)));
 
     public static final Block FIR_SIGN = FIR.getSign();
