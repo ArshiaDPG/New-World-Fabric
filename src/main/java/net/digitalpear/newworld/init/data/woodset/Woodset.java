@@ -4,7 +4,6 @@ import com.terraformersmc.terraform.sign.block.TerraformHangingSignBlock;
 import com.terraformersmc.terraform.sign.block.TerraformSignBlock;
 import com.terraformersmc.terraform.sign.block.TerraformWallHangingSignBlock;
 import com.terraformersmc.terraform.sign.block.TerraformWallSignBlock;
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder;
@@ -159,10 +158,10 @@ public class Woodset {
         return Registry.register(Registries.BLOCK, new Identifier(this.getModID(), blockID), block);
     }
     private Item createSignItem(Block sign, Block wallSign) {
-        return new SignItem(new FabricItemSettings().maxCount(16), sign, wallSign);
+        return new SignItem(new Item.Settings().maxCount(16), sign, wallSign);
     }
     private Item createHangingSignItem(Block hangingSign, Block hangingWallSign) {
-        return new HangingSignItem(hangingSign, hangingWallSign, new FabricItemSettings().maxCount(16));
+        return new HangingSignItem(hangingSign, hangingWallSign, new Item.Settings().maxCount(16));
     }
     public Item createItem(String blockID, Item item){
         Item listItem = Registry.register(Registries.ITEM, new Identifier(this.getModID(), blockID), item);

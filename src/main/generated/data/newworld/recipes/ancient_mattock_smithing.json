@@ -7,7 +7,8 @@
     "item": "minecraft:stick"
   },
   "result": {
-    "item": "newworld:ancient_mattock"
+    "count": 1,
+    "id": "newworld:ancient_mattock"
   },
   "template": {
     "item": "newworld:mattock_crafting_template"

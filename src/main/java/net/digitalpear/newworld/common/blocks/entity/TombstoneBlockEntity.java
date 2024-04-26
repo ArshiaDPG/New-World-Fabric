@@ -8,6 +8,7 @@ import net.minecraft.inventory.Inventories;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.screen.GenericContainerScreenHandler;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.sound.SoundCategory;
@@ -27,19 +28,23 @@ public class TombstoneBlockEntity extends LootableContainerBlockEntity {
         this.inventory = DefaultedList.ofSize(45, ItemStack.EMPTY);
     }
 
-    protected void writeNbt(NbtCompound nbt) {
-        super.writeNbt(nbt);
+    @Override
+    protected void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
+        super.writeNbt(nbt, registryLookup);
         if (!this.writeLootTable(nbt)) {
-            Inventories.writeNbt(nbt, this.inventory);
+            Inventories.writeNbt(nbt, this.inventory, registryLookup);
         }
+        super.writeNbt(nbt, registryLookup);
     }
 
-    public void readNbt(NbtCompound nbt) {
-        super.readNbt(nbt);
+    @Override
+    protected void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
+        super.readNbt(nbt, registryLookup);
         this.inventory = DefaultedList.ofSize(this.size(), ItemStack.EMPTY);
         if (!this.readLootTable(nbt)) {
-            Inventories.readNbt(nbt, this.inventory);
+            Inventories.readNbt(nbt, this.inventory, registryLookup);
         }
+        super.readNbt(nbt, registryLookup);
     }
 
     public int size() {
@@ -50,17 +55,19 @@ public class TombstoneBlockEntity extends LootableContainerBlockEntity {
         return this.inventory;
     }
 
-    @Override
-    protected DefaultedList<ItemStack> method_11282() {
-        return this.inventory;
-    }
-
-    public void setInvStackList(DefaultedList<ItemStack> list) {
-        this.inventory = list;
-    }
 
     protected Text getContainerName() {
         return Text.translatable("container.tombstone");
+    }
+
+    @Override
+    protected DefaultedList<ItemStack> getHeldStacks() {
+        return this.inventory;
+    }
+
+    @Override
+    protected void setHeldStacks(DefaultedList<ItemStack> inventory) {
+        this.inventory = inventory;
     }
 
     protected ScreenHandler createScreenHandler(int syncId, PlayerInventory playerInventory) {
@@ -76,14 +83,18 @@ public class TombstoneBlockEntity extends LootableContainerBlockEntity {
 
         return -1;
     }
+
     public int getCompatibleSlot(ItemStack stack) {
         for(int i = 0; i < size(); ++i) {
-            if ((inventory.get(i)).isEmpty() || (ItemStack.canCombine((inventory.get(i)), stack) && inventory.get(i).getCount() + stack.getCount() <= 64)) {
-                return i;
+            if ((inventory.get(i)).isEmpty()) {
+                //if ((ItemStack.canCombine((inventory.get(i)), stack) && inventory.get(i).getCount() + stack.getCount() <= 64)){
+                    return i;
+                //}
             }
         }
         return -1;
     }
+
     public static boolean contains(List<DefaultedList<ItemStack>> inv, Item item) {
         for (DefaultedList<ItemStack> itemStacks : inv) {
             if (itemStacks.stream().anyMatch(itemStack -> itemStack.isOf(item))){

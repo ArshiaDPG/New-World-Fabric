@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "newworld:fir_planks"
-            ]
+            "items": "newworld:fir_planks"
           }
         ]
       },

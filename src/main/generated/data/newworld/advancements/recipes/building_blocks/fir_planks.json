@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "newworld:fir_logs"
+            "items": "#newworld:fir_logs"
           }
         ]
       },

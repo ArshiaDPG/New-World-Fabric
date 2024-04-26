@@ -2,11 +2,9 @@ package net.digitalpear.newworld.init.worldgen.structures;
 
 import com.google.common.collect.ImmutableList;
 import net.digitalpear.newworld.Newworld;
-import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.LanternBlock;
 import net.minecraft.registry.Registerable;
-import net.minecraft.registry.RegistryEntryLookup;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.structure.processor.RuleStructureProcessor;
@@ -44,6 +42,8 @@ public class NWProcessorLists {
                 new StructureProcessorRule(new RandomBlockMatchRuleTest(Blocks.MOSSY_STONE_BRICK_STAIRS, 0.8f), AlwaysTrueRuleTest.INSTANCE, Blocks.MOSSY_STONE_BRICK_SLAB.getDefaultState())
         ))));
     }
+
+
     private static void register(Registerable<StructureProcessorList> processorListRegisterable, RegistryKey<StructureProcessorList> key, List<StructureProcessor> processors) {
         processorListRegisterable.register(key, new StructureProcessorList(processors));
     }

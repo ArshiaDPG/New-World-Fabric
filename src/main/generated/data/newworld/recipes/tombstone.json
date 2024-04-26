@@ -21,6 +21,7 @@
     "STS"
   ],
   "result": {
-    "item": "newworld:tombstone"
+    "count": 1,
+    "id": "newworld:tombstone"
   }
 }

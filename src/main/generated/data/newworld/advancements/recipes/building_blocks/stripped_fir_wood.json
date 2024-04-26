@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "newworld:stripped_fir_log"
-            ]
+            "items": "newworld:stripped_fir_log"
           }
         ]
       },

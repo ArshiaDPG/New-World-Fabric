@@ -12,8 +12,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.util.Identifier;
-
-import java.awt.print.Book;
+import net.minecraft.util.Rarity;
 
 
 @SuppressWarnings("unused")
@@ -45,9 +44,10 @@ public class NWItems {
 
     public static final Item TOMBSTONE = registerItem("tombstone", new TombstoneBlockItem(NWBlocks.TOMBSTONE, new Item.Settings().maxCount(1)));
 
-    public static final Item ANCIENT_MATTOCK = registerItem("ancient_mattock", new MattockItem(NWToolMaterials.ANCIENT, 0.0F, -3.0F, new Item.Settings()));
+    public static final Item ANCIENT_MATTOCK = registerItem("ancient_mattock", new MattockItem(NWToolMaterials.ANCIENT, new Item.Settings().attributeModifiers(AxeItem.createAttributeModifiers(ToolMaterials.DIAMOND, 0.0F, -3.0F))));
 
-    public static final Item ILLAGER_TOME = registerItem("illager_tome", new IllagerTomeItem(new Item.Settings()));
+
+    public static final Item ILLAGER_TOME = registerItem("illager_tome", new IllagerTomeItem(new Item.Settings().rarity(Rarity.EPIC)));
 
     public static final Item JEB_BOOK = registerItem("jeb_book", new JebBookItem(new Item.Settings()));
 

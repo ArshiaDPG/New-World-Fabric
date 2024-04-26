@@ -70,22 +70,22 @@ public abstract class PlayerDeathMixin {
                                     if (tombstoneStack.isEmpty()){
                                         tombstoneBlockEntity.setStack(compatibleSlot, itemStack);
                                     }
-                                    else if (ItemStack.canCombine(tombstoneStack, itemStack)){
-                                        if (tombstoneStack.getCount() + itemStack.getCount() > tombstoneStack.getMaxCount()){
-                                            tombstoneStack.setCount(tombstoneStack.getMaxCount());
-                                            itemStack.setCount(tombstoneStack.getCount() + itemStack.getCount() - tombstoneStack.getMaxCount());
-                                            if (tombstoneBlockEntity.getEmptySlot() != -1){
-                                                tombstoneBlockEntity.setStack(tombstoneBlockEntity.getEmptySlot(), itemStack);
-                                            }
-                                            else{
-                                                this.player.dropItem(itemStack, true, false);
-                                            }
-
-                                        }
-                                        else{
-                                            tombstoneStack.setCount(tombstoneStack.getCount() + itemStack.getCount());
-                                        }
-                                    }
+//                                    else if (ItemStack.canCombine(tombstoneStack, itemStack)){
+//                                        if (tombstoneStack.getCount() + itemStack.getCount() > tombstoneStack.getMaxCount()){
+//                                            tombstoneStack.setCount(tombstoneStack.getMaxCount());
+//                                            itemStack.setCount(tombstoneStack.getCount() + itemStack.getCount() - tombstoneStack.getMaxCount());
+//                                            if (tombstoneBlockEntity.getEmptySlot() != -1){
+//                                                tombstoneBlockEntity.setStack(tombstoneBlockEntity.getEmptySlot(), itemStack);
+//                                            }
+//                                            else{
+//                                                this.player.dropItem(itemStack, true, false);
+//                                            }
+//
+//                                        }
+//                                        else{
+//                                            tombstoneStack.setCount(tombstoneStack.getCount() + itemStack.getCount());
+//                                        }
+//                                    }
                                 }
                                 else {
                                     this.player.dropItem(itemStack, true, false);

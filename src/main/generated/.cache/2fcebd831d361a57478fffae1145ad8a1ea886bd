@@ -1,6 +1,6 @@
-// 1.20.4	2024-03-16T16:19:06.1475709	New World/Tags for minecraft:worldgen/biome
-5afee9db923ca2def797714a8b57171e39f227b3 data\minecraft\tags\worldgen\biome\has_structure\trail_ruins.json
-5afee9db923ca2def797714a8b57171e39f227b3 data\minecraft\tags\worldgen\biome\has_structure\mineshaft.json
-5afee9db923ca2def797714a8b57171e39f227b3 data\minecraft\tags\worldgen\biome\has_structure\village_taiga.json
-f7881d91e65f3324674871c1ac3cf0438fbce28a data\newworld\tags\worldgen\biome\has_structure\buried_bunker.json
-5afee9db923ca2def797714a8b57171e39f227b3 data\minecraft\tags\worldgen\biome\is_mountain.json
+// 1.20.5	2024-04-26T11:38:59.6632297	New World/Tags for minecraft:worldgen/biome
+c91c0bd6322449f95e8c2d3920ef57a2a7353f84 data\minecraft\tags\worldgen\biome\has_structure\trail_ruins.json
+c91c0bd6322449f95e8c2d3920ef57a2a7353f84 data\minecraft\tags\worldgen\biome\has_structure\mineshaft.json
+c91c0bd6322449f95e8c2d3920ef57a2a7353f84 data\minecraft\tags\worldgen\biome\has_structure\village_taiga.json
+c91c0bd6322449f95e8c2d3920ef57a2a7353f84 data\minecraft\tags\worldgen\biome\is_mountain.json
+becbb3e6d736ab8feb41683bc5afacce936c4825 data\newworld\tags\worldgen\biome\has_structure\buried_bunker.json

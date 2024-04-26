@@ -18,6 +18,7 @@ import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.village.TradeOffer;
 import net.minecraft.village.TradeOffers;
+import net.minecraft.village.TradedItem;
 
 public class NWData {
     //Adds to wandering trader trades
@@ -40,23 +41,23 @@ public class NWData {
     }
 
     public static void registerLootTableModifications(){
-        LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
+        LootTableEvents.MODIFY.register((key, tableBuilder, source) -> {
             if (source.isBuiltin()){
-                if (id.equals(LootTables.ANCIENT_CITY_CHEST) || id.equals(LootTables.STRONGHOLD_CORRIDOR_CHEST)){
+                if (key.equals(LootTables.ANCIENT_CITY_CHEST) || key.equals(LootTables.STRONGHOLD_CORRIDOR_CHEST)){
                     tableBuilder.pool(LootPool.builder()
                             .with(ItemEntry.builder(NWItems.MATTOCK_CRAFTING_TEMPLATE_HEAD))
                             .conditionally(RandomChanceLootCondition.builder(0.15f))
                     );
                 }
-                else if (id.equals(LootTables.DESERT_PYRAMID_ARCHAEOLOGY) || id.equals(LootTables.TRAIL_RUINS_RARE_ARCHAEOLOGY)){
+                else if (key.equals(LootTables.DESERT_PYRAMID_ARCHAEOLOGY) || key.equals(LootTables.TRAIL_RUINS_RARE_ARCHAEOLOGY)){
                     tableBuilder.modifyPools(builder -> builder.with(ItemEntry.builder(NWItems.MATTOCK_CRAFTING_TEMPLATE_SHAFT)));
 
-                } else if (id.equals(LootTables.WOODLAND_MANSION_CHEST)) {
+                } else if (key.equals(LootTables.WOODLAND_MANSION_CHEST)) {
                     tableBuilder.pool(LootPool.builder().conditionally(RandomChanceLootCondition.builder(0.85f))
                             .with(ItemEntry.builder(NWItems.ILLAGER_TOME)).build());
                 }
 
-                if (id.equals(LootTables.ANCIENT_CITY_CHEST)){
+                if (key.equals(LootTables.ANCIENT_CITY_CHEST)){
                     tableBuilder.pool(LootPool.builder().conditionally(RandomChanceLootCondition.builder(0.15f))
                             .with(ItemEntry.builder(NWBlocks.TOMBSTONE).weight(7))
                             .with(ItemEntry.builder(NWItems.MATTOCK_CRAFTING_TEMPLATE_HEAD).weight(1))
@@ -108,9 +109,7 @@ public class NWData {
     }
 
 
-
-
     public static TradeOffers.Factory registerSaplingTrade(ItemConvertible sapling){
-        return (entity, random) ->  new TradeOffer(new ItemStack(Items.EMERALD, 5), new ItemStack(sapling), 8, 1, 1);
+        return (entity, random) ->  new TradeOffer(new TradedItem(Items.EMERALD, 5), new ItemStack(sapling), 8, 1, 1);
     }
 }

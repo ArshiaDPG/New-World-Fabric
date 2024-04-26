@@ -1,15 +1,17 @@
 package net.digitalpear.newworld.common.items;
 
+import net.minecraft.block.Block;
 import net.minecraft.item.Items;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
+import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.registry.tag.TagKey;
 
 public enum NWToolMaterials implements ToolMaterial {
-    ANCIENT(4, 3086, 9.0F, 7.0F, 10, Ingredient.ofItems(Items.FLINT)),
-    EMERALD(400, 308600, 900.0F, 7.000F, 1000, Ingredient.ofItems(Items.EMERALD));
+    ANCIENT(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3086, 9.0F, 7.0F, 10, Ingredient.ofItems(Items.FLINT));
 
-    
-    private final int level;
+    private TagKey<Block> inverseTag;
+
     private final int uses;
     private final float speed;
     private final float damage;
@@ -17,8 +19,8 @@ public enum NWToolMaterials implements ToolMaterial {
     private final Ingredient repairIngredient;
 
 
-    NWToolMaterials(int miningLevel, int durability, float miningSpeed, float attackDamage, int enchantmentValue, Ingredient repairIngredient) {
-        this.level = miningLevel;
+    NWToolMaterials(TagKey<Block> inverseTag, int durability, float miningSpeed, float attackDamage, int enchantmentValue, Ingredient repairIngredient) {
+        this.inverseTag = inverseTag;
         this.uses = durability;
         this.speed = miningSpeed;
         this.damage = attackDamage;
@@ -41,8 +43,8 @@ public enum NWToolMaterials implements ToolMaterial {
     }
 
     @Override
-    public int getMiningLevel() {
-        return this.level;
+    public TagKey<Block> getInverseTag() {
+        return this.inverseTag;
     }
 
     @Override

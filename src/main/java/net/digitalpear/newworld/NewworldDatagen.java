@@ -1,10 +1,9 @@
 package net.digitalpear.newworld;
 
 import net.digitalpear.newworld.common.datagens.*;
-import net.digitalpear.newworld.common.datagens.tags.NWBiomeTagProvider;
-import net.digitalpear.newworld.common.datagens.tags.NWBlockTagProvider;
-import net.digitalpear.newworld.common.datagens.tags.NWEntityTypeTagProvider;
-import net.digitalpear.newworld.common.datagens.tags.NWItemTagProvider;
+import net.digitalpear.newworld.common.datagens.loot.NWBlockLootTableProvider;
+import net.digitalpear.newworld.common.datagens.loot.NWChestLootTableProvider;
+import net.digitalpear.newworld.common.datagens.tags.*;
 import net.digitalpear.newworld.common.datagens.worldgen.NWBiomeProvider;
 import net.digitalpear.newworld.common.datagens.worldgen.NWConfiguredFeatureProvider;
 import net.digitalpear.newworld.common.datagens.worldgen.NWPlacedFeatureProvider;
@@ -13,9 +12,9 @@ import net.digitalpear.newworld.common.datagens.worldgen.structures.NWStructureP
 import net.digitalpear.newworld.common.datagens.worldgen.structures.NWStructureProvider;
 import net.digitalpear.newworld.common.datagens.worldgen.structures.NWStructureSetProvider;
 import net.digitalpear.newworld.init.worldgen.NWBiomes;
-import net.digitalpear.newworld.init.worldgen.structures.NWProcessorLists;
 import net.digitalpear.newworld.init.worldgen.features.NWConfiguredFeatures;
 import net.digitalpear.newworld.init.worldgen.features.NWPlacedFeatures;
+import net.digitalpear.newworld.init.worldgen.structures.NWProcessorLists;
 import net.digitalpear.newworld.init.worldgen.structures.NWStructurePools;
 import net.digitalpear.newworld.init.worldgen.structures.NWStructureSets;
 import net.digitalpear.newworld.init.worldgen.structures.NWStructures;

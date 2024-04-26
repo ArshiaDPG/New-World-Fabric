@@ -2,21 +2,24 @@ package net.digitalpear.newworld.common.datagens;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricAdvancementProvider;
-import net.minecraft.advancement.Advancement;
 import net.minecraft.advancement.AdvancementEntry;
+import net.minecraft.registry.RegistryWrapper;
 
-
+import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
 
 public class NWAdvancementProvider extends FabricAdvancementProvider {
 
-    public NWAdvancementProvider(FabricDataOutput output) {
-        super(output);
+
+    public NWAdvancementProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup) {
+        super(output, registryLookup);
     }
 
+
+
     @Override
-    public void generateAdvancement(Consumer<AdvancementEntry> consumer) {
-        /*
+    public void generateAdvancement(RegistryWrapper.WrapperLookup registryLookup, Consumer<AdvancementEntry> consumer) {
+                /*
             BROKEN
          */
 //        AdvancementEntry collectAncientMattock = Advancement.Builder.create()

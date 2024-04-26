@@ -13,60 +13,17 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.biome.Biome;
 
+import java.util.concurrent.CompletableFuture;
+
 public class NWLanguageProvider extends FabricLanguageProvider {
-    public NWLanguageProvider(FabricDataOutput dataOutput) {
-        super(dataOutput);
-    }
-
-    @Override
-    public void generateTranslations(TranslationBuilder translationBuilder) {
-        makeWoodTranslations(translationBuilder,NWBlocks.FIR);
-
-        makeTranslation(translationBuilder, NWBlocks.FIR_SAPLING);
-        makeTranslation(translationBuilder, NWItems.ANCIENT_MATTOCK);
-
-        makeTemplateFragmentTranslation(translationBuilder, NWItems.MATTOCK_CRAFTING_TEMPLATE_HEAD, "Mattock Head");
-        makeTemplateFragmentTranslation(translationBuilder, NWItems.MATTOCK_CRAFTING_TEMPLATE_SHAFT, "Mattock Shaft");
-
-        makeSmithingTemplateTranslation(translationBuilder, NWItems.MATTOCK_CRAFTING_TEMPLATE, "mattock_crafting", "Stick", "Flint");
-
-        makeTranslation(translationBuilder, NWBlocks.LOAM);
-        makeTranslation(translationBuilder, NWBlocks.LOAM_STAIRS);
-        makeTranslation(translationBuilder, NWBlocks.LOAM_SLAB);
-        makeTranslation(translationBuilder, NWBlocks.LOAM_WALL);
-        makeTranslation(translationBuilder, NWBlocks.LOAM_BRICKS);
-        makeTranslation(translationBuilder, NWBlocks.LOAM_BRICK_STAIRS);
-        makeTranslation(translationBuilder, NWBlocks.LOAM_BRICK_SLAB);
-        makeTranslation(translationBuilder, NWBlocks.LOAM_BRICK_WALL);
-        makeTranslation(translationBuilder, NWBlocks.LOAM_TILES);
-        makeTranslation(translationBuilder, NWBlocks.LOAM_TILE_STAIRS);
-        makeTranslation(translationBuilder, NWBlocks.LOAM_TILE_SLAB);
-        makeTranslation(translationBuilder, NWBlocks.LOAM_TILE_WALL);
 
 
-        makeTranslation(translationBuilder, NWBlocks.TOMBSTONE);
-        makeTranslation(translationBuilder, NWItems.ILLAGER_TOME);
-
-        makeTranslation(translationBuilder, NWItems.JEB_BOOK);
-        translationBuilder.add(NWItems.JEB_BOOK.getTranslationKey() + ".attack_desc", "Will instantly kill any modded entity.");
-        translationBuilder.add(NWItems.JEB_BOOK.getTranslationKey() + ".mining_desc", "Will mine modded blocks much faster.");
-
-        translationBuilder.add(NWItems.FIR_BOAT, "Fir Boat");
-        translationBuilder.add(NWItems.FIR_CHEST_BOAT, "Fir Boat with Chest");
-
-        translationBuilder.add("advancements.adventure.collect_ancient_mattock.title", "Renaissance Tool");
-        translationBuilder.add("advancements.adventure.collect_ancient_mattock.description", "Craft an Ancient Mattock using template fragments.");
-
-        translationBuilder.add("advancements.adventure.collect_template_fragment.title", "A Piece of History");
-        translationBuilder.add("advancements.adventure.collect_template_fragment.description", "Discover an ancient crafting template fragment.");
-
-        translationBuilder.add(NWStats.TOMBSTONE_ACTIVATION, "Tombstones Activated");
-
-
-        NWBiomes.biomes.forEach(biomeRegistryKey -> makeBiomeTranslation(translationBuilder, biomeRegistryKey));
+    public NWLanguageProvider(FabricDataOutput dataOutput, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup) {
+        super(dataOutput, registryLookup);
     }
 
     public void makeWoodTranslations(TranslationBuilder translationBuilder, Woodset woodset){
@@ -127,5 +84,50 @@ public class NWLanguageProvider extends FabricLanguageProvider {
         }
 
         return result.toString().trim(); // Trim any leading/trailing spaces and return the formatted string
+    }
+
+    @Override
+    public void generateTranslations(RegistryWrapper.WrapperLookup registryLookup, TranslationBuilder translationBuilder) {
+        makeWoodTranslations(translationBuilder, NWBlocks.FIR);
+
+        makeTranslation(translationBuilder, NWBlocks.FIR_SAPLING);
+        makeTranslation(translationBuilder, NWItems.ANCIENT_MATTOCK);
+
+        makeTemplateFragmentTranslation(translationBuilder, NWItems.MATTOCK_CRAFTING_TEMPLATE_HEAD, "Mattock Head");
+        makeTemplateFragmentTranslation(translationBuilder, NWItems.MATTOCK_CRAFTING_TEMPLATE_SHAFT, "Mattock Shaft");
+
+        makeSmithingTemplateTranslation(translationBuilder, NWItems.MATTOCK_CRAFTING_TEMPLATE, "mattock_crafting", "Stick", "Flint");
+
+        makeTranslation(translationBuilder, NWBlocks.LOAM);
+        makeTranslation(translationBuilder, NWBlocks.LOAM_STAIRS);
+        makeTranslation(translationBuilder, NWBlocks.LOAM_SLAB);
+        makeTranslation(translationBuilder, NWBlocks.LOAM_WALL);
+        makeTranslation(translationBuilder, NWBlocks.LOAM_BRICKS);
+        makeTranslation(translationBuilder, NWBlocks.LOAM_BRICK_STAIRS);
+        makeTranslation(translationBuilder, NWBlocks.LOAM_BRICK_SLAB);
+        makeTranslation(translationBuilder, NWBlocks.LOAM_BRICK_WALL);
+        makeTranslation(translationBuilder, NWBlocks.LOAM_TILES);
+        makeTranslation(translationBuilder, NWBlocks.LOAM_TILE_STAIRS);
+        makeTranslation(translationBuilder, NWBlocks.LOAM_TILE_SLAB);
+        makeTranslation(translationBuilder, NWBlocks.LOAM_TILE_WALL);
+
+
+        makeTranslation(translationBuilder, NWBlocks.TOMBSTONE);
+        makeTranslation(translationBuilder, NWItems.ILLAGER_TOME);
+
+        makeTranslation(translationBuilder, NWItems.JEB_BOOK);
+        translationBuilder.add(NWItems.FIR_BOAT, "Fir Boat");
+        translationBuilder.add(NWItems.FIR_CHEST_BOAT, "Fir Boat with Chest");
+
+        translationBuilder.add("advancements.adventure.collect_ancient_mattock.title", "Renaissance Tool");
+        translationBuilder.add("advancements.adventure.collect_ancient_mattock.description", "Craft an Ancient Mattock using template fragments.");
+
+        translationBuilder.add("advancements.adventure.collect_template_fragment.title", "A Piece of History");
+        translationBuilder.add("advancements.adventure.collect_template_fragment.description", "Discover an ancient crafting template fragment.");
+
+        translationBuilder.add(NWStats.TOMBSTONE_ACTIVATION, "Tombstones Activated");
+
+
+        NWBiomes.biomes.forEach(biomeRegistryKey -> makeBiomeTranslation(translationBuilder, biomeRegistryKey));
     }
 }

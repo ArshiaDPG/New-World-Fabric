@@ -13,14 +13,17 @@ import net.minecraft.predicate.item.ItemPredicate;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.Registries;
+import net.minecraft.registry.RegistryWrapper;
 
 import java.util.Arrays;
+import java.util.concurrent.CompletableFuture;
 
 public class NWRecipeProvider extends FabricRecipeProvider {
-    public NWRecipeProvider(FabricDataOutput output) {
-        super(output);
-    }
 
+
+    public NWRecipeProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
+        super(output, registriesFuture);
+    }
 
     @Override
     public void generate(RecipeExporter exporter) {

@@ -7,7 +7,6 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.structure.StructureSet;
 import net.minecraft.util.Identifier;
-import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.chunk.placement.RandomSpreadStructurePlacement;
 import net.minecraft.world.gen.chunk.placement.SpreadType;
 import net.minecraft.world.gen.structure.Structure;
@@ -24,6 +23,7 @@ public class NWStructureSets {
         return registryKey;
     }
     public static final RegistryKey<StructureSet> BURIED_BUNKER = of("buried_bunker");
+
 
     public static void bootstrap(Registerable<StructureSet> structureSetRegisterable) {
         RegistryEntryLookup<Structure> registryEntryLookup = structureSetRegisterable.getRegistryLookup(RegistryKeys.STRUCTURE);

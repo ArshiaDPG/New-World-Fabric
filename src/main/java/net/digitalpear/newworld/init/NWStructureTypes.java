@@ -7,9 +7,11 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.gen.structure.StructureType;
 
-public class NWStructures {
+public class NWStructureTypes {
+
 
     public static StructureType<BuriedBunkerFeature> BURIED_BUNKER = Registry.register(Registries.STRUCTURE_TYPE, new Identifier(Newworld.MOD_ID, "buried_bunker"), () -> BuriedBunkerFeature.CODEC);
+
 
     public static void init() {
     }

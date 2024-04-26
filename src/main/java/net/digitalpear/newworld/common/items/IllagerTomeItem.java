@@ -10,10 +10,6 @@ public class IllagerTomeItem extends Item {
         super(settings);
     }
 
-    @Override
-    public Rarity getRarity(ItemStack stack) {
-        return Rarity.EPIC;
-    }
 
     @Override
     public ItemStack getRecipeRemainder(ItemStack stack) {

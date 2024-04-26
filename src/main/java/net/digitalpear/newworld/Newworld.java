@@ -8,8 +8,6 @@ import net.digitalpear.newworld.init.worldgen.NWBiomes;
 import net.digitalpear.newworld.init.worldgen.features.NWConfiguredFeatures;
 import net.digitalpear.newworld.init.worldgen.features.NWPlacedFeatures;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
-import net.minecraft.network.packet.c2s.play.PlayerInteractEntityC2SPacket;
 import net.minecraft.util.Identifier;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -31,7 +29,7 @@ public class Newworld implements ModInitializer {
         NWItems.init();
         NWBiomes.init();
         NWData.init();
-        NWStructures.init();
+        NWStructureTypes.init();
         NWFeature.init();
         NWConfiguredFeatures.init();
         NWPlacedFeatures.init();

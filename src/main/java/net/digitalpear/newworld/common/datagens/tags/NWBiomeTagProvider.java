@@ -30,6 +30,7 @@ public class NWBiomeTagProvider extends FabricTagProvider<Biome> {
         getOrCreateTagBuilder(NWBiomeTags.BURIED_BUNKER_HAS_STRUCTURE)
                 .add(BiomeKeys.PLAINS)
                 .add(BiomeKeys.MEADOW);
+
         getOrCreateTagBuilder(BiomeTags.IS_MOUNTAIN).add(NWBiomes.WOODED_MEADOW);
         getOrCreateTagBuilder(BiomeTags.VILLAGE_TAIGA_HAS_STRUCTURE).add(NWBiomes.WOODED_MEADOW);
         getOrCreateTagBuilder(BiomeTags.MINESHAFT_HAS_STRUCTURE).add(NWBiomes.WOODED_MEADOW);

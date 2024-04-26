@@ -1,4 +1,4 @@
-package net.digitalpear.newworld.common.datagens;
+package net.digitalpear.newworld.common.datagens.loot;
 
 import net.digitalpear.newworld.init.NWBlocks;
 import net.digitalpear.newworld.init.data.woodset.Woodset;
@@ -7,10 +7,13 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.minecraft.block.Block;
 import net.minecraft.data.server.loottable.vanilla.VanillaBlockLootTableGenerator;
 import net.minecraft.item.Items;
+import net.minecraft.registry.RegistryWrapper;
+
+import java.util.concurrent.CompletableFuture;
 
 public class NWBlockLootTableProvider extends FabricBlockLootTableProvider {
-    public NWBlockLootTableProvider(FabricDataOutput dataOutput) {
-        super(dataOutput);
+    public NWBlockLootTableProvider(FabricDataOutput dataOutput, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup) {
+        super(dataOutput, registryLookup);
     }
 
     @Override

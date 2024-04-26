@@ -56,6 +56,8 @@ public class NWItemTagProvider extends FabricTagProvider<Item> {
         getOrCreateTagBuilder(ItemTags.WALLS).add(NWBlocks.LOAM_WALL.asItem(), NWBlocks.LOAM_BRICK_WALL.asItem(), NWBlocks.LOAM_TILE_WALL.asItem());
 
         getOrCreateTagBuilder(ItemTags.BOOKSHELF_BOOKS).add(NWItems.ILLAGER_TOME);
+
+        getOrCreateTagBuilder(ItemTags.DURABILITY_ENCHANTABLE).add(NWItems.ANCIENT_MATTOCK);
     }
 }
 
