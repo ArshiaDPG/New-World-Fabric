@@ -1,6 +1,7 @@
 package net.digitalpear.newworld.mixin;
 
 
+import net.digitalpear.newworld.common.blocks.entity.TombstoneBlockEntity;
 import net.digitalpear.newworld.init.NWBlockEntityTypes;
 import net.digitalpear.newworld.init.NWBlocks;
 import net.digitalpear.newworld.init.data.NWStats;
@@ -44,58 +45,65 @@ public abstract class PlayerDeathMixin {
             world.getBlockEntity(pos, NWBlockEntityTypes.TOMBSTONE).ifPresent(tombstoneBlockEntity -> {
                 player.increaseStat(NWStats.TOMBSTONE_ACTIVATION, 1);
 
-                if (tombstoneBlockEntity.getInvStackList().stream().anyMatch(ItemStack::isEmpty)) {
+                boolean decrementedTombstone = false;
 
-                    boolean decrementedTombstone = false;
-
-                    for (DefaultedList<ItemStack> itemStacks : combinedInventory) {
-                        for (int i = 0; i < ((List<ItemStack>) itemStacks).size(); ++i) {
-                            ItemStack itemStack = ((List<ItemStack>) itemStacks).get(i);
-                            /*
-                                Remove a single tombstone from the player's inventory.
-                             */
-                            if (itemStack.isOf(NWBlocks.TOMBSTONE.asItem()) && !decrementedTombstone) {
-                                itemStack.decrement(1);
-                                decrementedTombstone = true;
-                            }
-
-                            if (!itemStack.isEmpty()) {
-                                int compatibleSlot = tombstoneBlockEntity.getCompatibleSlot(itemStack);
-                                ItemStack tombstoneStack = tombstoneBlockEntity.getStack(compatibleSlot);
-
-                                /*
-                                    Place the stack inside the tombstone.
-                                 */
-                                if (compatibleSlot != -1){
-                                    if (tombstoneStack.isEmpty()){
-                                        tombstoneBlockEntity.setStack(compatibleSlot, itemStack);
-                                    }
-//                                    else if (ItemStack.canCombine(tombstoneStack, itemStack)){
-//                                        if (tombstoneStack.getCount() + itemStack.getCount() > tombstoneStack.getMaxCount()){
-//                                            tombstoneStack.setCount(tombstoneStack.getMaxCount());
-//                                            itemStack.setCount(tombstoneStack.getCount() + itemStack.getCount() - tombstoneStack.getMaxCount());
-//                                            if (tombstoneBlockEntity.getEmptySlot() != -1){
-//                                                tombstoneBlockEntity.setStack(tombstoneBlockEntity.getEmptySlot(), itemStack);
-//                                            }
-//                                            else{
-//                                                this.player.dropItem(itemStack, true, false);
-//                                            }
-//
-//                                        }
-//                                        else{
-//                                            tombstoneStack.setCount(tombstoneStack.getCount() + itemStack.getCount());
-//                                        }
-//                                    }
-                                }
-                                else {
-                                    this.player.dropItem(itemStack, true, false);
-                                }
-                                ((List<ItemStack>) itemStacks).set(i, ItemStack.EMPTY);
-                            }
+                for (DefaultedList<ItemStack> itemStacks : combinedInventory) {
+                    for (int i = 0; i < ((List<ItemStack>) itemStacks).size(); ++i) {
+                        ItemStack itemStack = ((List<ItemStack>) itemStacks).get(i);
+                        /*
+                            Remove a single tombstone from the player's inventory.
+                         */
+                        if (itemStack.isOf(NWBlocks.TOMBSTONE.asItem()) && !decrementedTombstone) {
+                            itemStack.decrement(1);
+                            decrementedTombstone = true;
                         }
+
+                        placeOrDropStack(tombstoneBlockEntity, itemStack);
+                        itemStacks.set(i, ItemStack.EMPTY);
                     }
                 }
+
             });
+        }
+    }
+
+    @Unique
+    private void placeOrDropStack(TombstoneBlockEntity tombstoneBlockEntity, ItemStack currentStack){
+        if (tombstoneBlockEntity.getCompatibleSlot(currentStack) < 0 || currentStack.isEmpty()){
+            return;
+        }
+        int compatibleSlot = tombstoneBlockEntity.getCompatibleSlot(currentStack);
+
+        if (compatibleSlot != -1){
+            ItemStack tombstoneStack = tombstoneBlockEntity.getStack(compatibleSlot);
+            /*
+                If slot is empty.
+             */
+            if (tombstoneStack.isEmpty()){
+                tombstoneBlockEntity.setStack(compatibleSlot, currentStack);
+            }
+            /*
+                If slot is not empty but is compatible.
+             */
+            else if (ItemStack.areItemsAndComponentsEqual(tombstoneStack, currentStack)){
+                if (tombstoneStack.getCount() + currentStack.getCount() > tombstoneStack.getMaxCount()){
+                    tombstoneStack.setCount(tombstoneStack.getMaxCount());
+                    currentStack.setCount(tombstoneStack.getCount() + currentStack.getCount() - tombstoneStack.getMaxCount());
+
+                    /*
+                        If there is more left over then try to place it in another slot.
+                     */
+                    placeOrDropStack(tombstoneBlockEntity, currentStack.copyWithCount(tombstoneStack.getCount() + currentStack.getCount() - tombstoneStack.getMaxCount()));
+                    currentStack.copyAndEmpty();
+
+                }
+                else{
+                    tombstoneStack.setCount(tombstoneStack.getCount() + currentStack.getCount());
+                }
+            }
+        }
+        else{
+            this.player.dropStack(currentStack);
         }
     }
 

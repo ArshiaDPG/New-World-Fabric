@@ -1,11 +1,11 @@
-// 1.20.5	2024-04-26T11:38:59.6652241	New World/Tags for minecraft:item
+// 1.20.5	2024-04-26T16:38:05.6425591	New World/Tags for minecraft:item
 99b4564d813a0f419a00c0d1d85f284096915f38 data\minecraft\tags\items\wooden_stairs.json
 dd771db6ce6e3eee74d99c9a66b103ad3280bcdc data\minecraft\tags\items\wooden_pressure_plates.json
 db91eaa6168fef9805d22ff605a38650214403a7 data\minecraft\tags\items\walls.json
 ac38b843f9bf0c00ec9faf74507be917d8fd9863 data\newworld\tags\items\fir_logs.json
 9432c56432b8be4a4e24441479371d1cdcd5501d data\minecraft\tags\items\saplings.json
-fd3b0b387684bb98d2be5e9a51c2b91ef2db8508 data\minecraft\tags\items\wooden_doors.json
 18c247502a1009e063f940978676924fea90d23c data\minecraft\tags\items\wooden_slabs.json
+fd3b0b387684bb98d2be5e9a51c2b91ef2db8508 data\minecraft\tags\items\wooden_doors.json
 a05ffb0112a755a264958d236d52fe9de224beeb data\minecraft\tags\items\logs_that_burn.json
 615ea889f0871604cf96fe2a3fffab5e014e971c data\minecraft\tags\items\stairs.json
 9cbd98ee10efc15e1590434ac4fc66589b754ba1 data\minecraft\tags\items\wooden_fences.json
@@ -19,3 +19,4 @@ d35647d3c66e9e809d19a89a87109437297eddea data\minecraft\tags\items\enchantable\d
 252b718ef38f950caa76826167ee6cbcfd13f46f data\minecraft\tags\items\boats.json
 8144d336a9c77bcc2d41704410d5d1f3a2f6bd06 data\minecraft\tags\items\chest_boats.json
 5c67cddfa694ae8c88954da173bca77aa59da04f data\minecraft\tags\items\bookshelf_books.json
+d35647d3c66e9e809d19a89a87109437297eddea data\minecraft\tags\items\enchantable\vanishing.json

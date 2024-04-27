@@ -58,6 +58,7 @@ public class NWItemTagProvider extends FabricTagProvider<Item> {
         getOrCreateTagBuilder(ItemTags.BOOKSHELF_BOOKS).add(NWItems.ILLAGER_TOME);
 
         getOrCreateTagBuilder(ItemTags.DURABILITY_ENCHANTABLE).add(NWItems.ANCIENT_MATTOCK);
+        getOrCreateTagBuilder(ItemTags.VANISHING_ENCHANTABLE).add(NWItems.ANCIENT_MATTOCK);
     }
 }
 

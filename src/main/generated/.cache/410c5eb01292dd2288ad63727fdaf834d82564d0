@@ -1,4 +1,4 @@
-// 1.20.5	2024-04-26T11:38:59.6821798	New World/Block Loot Tables
+// 1.20.5	2024-04-26T16:38:05.6732139	New World/Block Loot Tables
 cc5f508fb3b76d81b75776ac59a31e445c284076 data\newworld\loot_tables\blocks\fir_fence.json
 0b43349db02afb5d67ddf27b70e30e2dfa949aa1 data\newworld\loot_tables\blocks\fir_hanging_sign.json
 78bb4f227112d5d4b8088661cedaa19beeb28c97 data\newworld\loot_tables\blocks\fir_door.json
@@ -24,8 +24,8 @@ adfa6581cff098cfe800a0e38baf10aef910d2ed data\newworld\loot_tables\blocks\fir_si
 2b300c63d5d29e25ac55104e4c4a7a0c5012ae59 data\newworld\loot_tables\blocks\fir_planks.json
 33d2889795ad83634c224e3658f0e3964fa8246d data\newworld\loot_tables\blocks\fir_trapdoor.json
 0d41bbc93c84267300ea2706c2e70e1f552978d4 data\newworld\loot_tables\blocks\loam_stairs.json
-657038178444333631f9ddf6910e1cb24a90d9f5 data\newworld\loot_tables\blocks\loam_brick_slab.json
 74e7747f1695bfc64d376c58b388656fa1883b46 data\newworld\loot_tables\blocks\fir_fence_gate.json
+657038178444333631f9ddf6910e1cb24a90d9f5 data\newworld\loot_tables\blocks\loam_brick_slab.json
 224c9b37807e6eb95f64f8bc0b334f858a6c793e data\newworld\loot_tables\blocks\fir_button.json
 8aa5b9abe12924dfd2e2ddf0c09dc908adcca559 data\newworld\loot_tables\blocks\stripped_fir_wood.json
 aaef242c7b06b04f4960017c39ae4d669479f7a0 data\newworld\loot_tables\blocks\fir_wood.json

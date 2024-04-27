@@ -1,4 +1,4 @@
-// 1.20.5	2024-04-26T11:38:59.673203	New World/Model Definitions
+// 1.20.5	2024-04-26T16:38:05.6576949	New World/Model Definitions
 eb334652ce87b8a4e8a6138188b11587c1db7136 assets\newworld\blockstates\stripped_fir_wood.json
 863fbb82453ac965670fbbfd88966bd24243dadc assets\newworld\models\block\fir_log.json
 38c0b55e90009c06c0752a6a293ffbbb539a962f assets\newworld\models\block\fir_door_top_right_open.json
@@ -44,8 +44,8 @@ b6f8ab35e862070d4bae586a739d5f8e303a47ad assets\newworld\models\item\mattock_cra
 ee5edcab6990b2c296da216a4f94a0a74c0c3d51 assets\newworld\models\block\fir_door_bottom_right_open.json
 604916af9507a40e315bfb8bab4ec666e2048157 assets\newworld\models\item\loam_wall.json
 fb9878e925a4a5d68738b24e126b3e98e4bbee91 assets\newworld\models\block\loam_tile_wall_side.json
-8a29173a5308273e290007c9f80f848b8a0a6736 assets\newworld\models\block\loam_wall_side_tall.json
 be2d39db5a184fc11fbf5629ad31f6a368fe56a3 assets\newworld\models\block\fir_stairs_outer.json
+8a29173a5308273e290007c9f80f848b8a0a6736 assets\newworld\models\block\loam_wall_side_tall.json
 6765a519740a470327527c634c941316f521891f assets\newworld\blockstates\loam_tile_wall.json
 635e26ab10b63f694aa40d45b0d70e87fcec5b32 assets\newworld\models\item\stripped_fir_wood.json
 5203b91776cf107fcaa3c79dc5319be11c0a81c7 assets\newworld\models\block\loam_brick_wall_post.json
@@ -74,8 +74,8 @@ fb081c054c26313ffa0395277af5bd2e1f3491f3 assets\newworld\models\block\fir_slab_t
 6807b70913af03f21307ecf622475d01c42e188f assets\newworld\models\block\loam_tile_wall_side_tall.json
 8bcc2bc0ea2730b9aff73132b8c7d00fa888d12b assets\newworld\models\block\fir_fence_side.json
 0a0105b29f8dcccb3ee3faaf08d64b5eff68946c assets\newworld\models\block\fir_door_bottom_left.json
-62b0163c4f7190cff7168ed98706ef4a23ddabaa assets\newworld\models\block\loam_brick_wall_side.json
 3428fdcf79c128d0fb6318887bb84aaa68eca4c9 assets\newworld\models\item\fir_log.json
+62b0163c4f7190cff7168ed98706ef4a23ddabaa assets\newworld\models\block\loam_brick_wall_side.json
 61b57e2f8154f19f2b88a8549888b659f52f993d assets\newworld\blockstates\potted_fir_sapling.json
 162dcbcdab2e69d23ec592cf936fa21cfecb7be7 assets\newworld\models\item\fir_sapling.json
 97453568a930b7e108e9f1d223ac2ed1851dfea4 assets\newworld\models\item\fir_wood.json

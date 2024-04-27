@@ -120,8 +120,9 @@ unifiedPublishing {
         displayName = "${project.minecraft_version}-${project.mod_version}" // Optional, name of the file
         version = "${project.mod_version}" // Optional, Inferred from project by default
         changelog = '''<ul>
-  <li>Ported to 1.20.4.</li>
-  <li>Added a new debug feature for fun.</li>
+  <li>Ported to 1.20.5.</li>
+  <li>Refactored tombstone code to hopefully work better.</li>
+  <li>Ancient Mattock can now only be enchanted with Unbreaking, Mending and Curse of Vanishing.</li>
 </ul> '''
         releaseType = "release" // Optional, use "release", "beta" or "alpha"
         gameVersions = ["${project.minecraft_version}"]

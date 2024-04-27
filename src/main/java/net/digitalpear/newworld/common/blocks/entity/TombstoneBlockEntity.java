@@ -86,14 +86,13 @@ public class TombstoneBlockEntity extends LootableContainerBlockEntity {
 
     public int getCompatibleSlot(ItemStack stack) {
         for(int i = 0; i < size(); ++i) {
-            if ((inventory.get(i)).isEmpty()) {
-                //if ((ItemStack.canCombine((inventory.get(i)), stack) && inventory.get(i).getCount() + stack.getCount() <= 64)){
-                    return i;
-                //}
+            if ((inventory.get(i)).isEmpty() || (ItemStack.areItemsAndComponentsEqual((inventory.get(i)), stack))) {
+                return i;
             }
         }
         return -1;
     }
+
 
     public static boolean contains(List<DefaultedList<ItemStack>> inv, Item item) {
         for (DefaultedList<ItemStack> itemStacks : inv) {

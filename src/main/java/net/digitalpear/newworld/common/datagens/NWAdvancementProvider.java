@@ -19,7 +19,7 @@ public class NWAdvancementProvider extends FabricAdvancementProvider {
 
     @Override
     public void generateAdvancement(RegistryWrapper.WrapperLookup registryLookup, Consumer<AdvancementEntry> consumer) {
-                /*
+        /*
             BROKEN
          */
 //        AdvancementEntry collectAncientMattock = Advancement.Builder.create()
@@ -31,12 +31,13 @@ public class NWAdvancementProvider extends FabricAdvancementProvider {
 //                        AdvancementFrame.TASK, // Options: TASK, CHALLENGE, GOAL
 //                        true, // Show toast top right
 //                        true, // Announce to chat
-//                        true // Hidden in the advancement tab
+//                        false // Hidden in the advancement tab
 //                )
 //                .rewards(AdvancementRewards.Builder.experience(60))
 //                // The first string used in criterion is the name referenced by other advancements when they want to have 'requirements'
 //                .criterion("has_ancient_mattock", InventoryChangedCriterion.Conditions.items(NWItems.ANCIENT_MATTOCK))
-//                .parent(new Identifier("story/iron_tools"))
+//                .parent("story/iron_tools")
 //                .build(consumer, Newworld.MOD_ID + "/collect_ancient_mattock");
     }
+
 }

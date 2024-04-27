@@ -23,8 +23,6 @@ public class NWChestLootTableProvider extends SimpleFabricLootTableProvider {
         super(output, registryLookup, LootContextTypes.CHEST);
     }
 
-
-
     @Override
     public void accept(RegistryWrapper.WrapperLookup registryLookup, BiConsumer<RegistryKey<LootTable>, LootTable.Builder> exporter) {
         exporter.accept(NWLootTables.BUNKER_BARREL, LootTable.builder()

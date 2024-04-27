@@ -35,7 +35,7 @@ public class NWProcessorLists {
 
         register(processorListRegisterable, BURIED_BUNKER_REPLACEMENTS, ImmutableList.of(new RuleStructureProcessor(List.of(
                 new StructureProcessorRule(new RandomBlockMatchRuleTest(Blocks.STONE, 0.1f), AlwaysTrueRuleTest.INSTANCE, Blocks.INFESTED_STONE.getDefaultState()),
-                new StructureProcessorRule(new RandomBlockMatchRuleTest(Blocks.DIRT, 0.1f), AlwaysTrueRuleTest.INSTANCE, Blocks.ROOTED_DIRT.getDefaultState()),
+                new StructureProcessorRule(new RandomBlockMatchRuleTest(Blocks.DIRT, 0.2f), AlwaysTrueRuleTest.INSTANCE, Blocks.ROOTED_DIRT.getDefaultState()),
                 new StructureProcessorRule(new RandomBlockMatchRuleTest(Blocks.DIRT, 0.1f), AlwaysTrueRuleTest.INSTANCE, Blocks.COARSE_DIRT.getDefaultState()),
                 new StructureProcessorRule(new RandomBlockMatchRuleTest(Blocks.DIRT, 0.05f), AlwaysTrueRuleTest.INSTANCE, Blocks.AIR.getDefaultState()),
                 new StructureProcessorRule(new RandomBlockMatchRuleTest(Blocks.CHAIN, 0.1f), AlwaysTrueRuleTest.INSTANCE, Blocks.LANTERN.getDefaultState().with(LanternBlock.HANGING, true)),
