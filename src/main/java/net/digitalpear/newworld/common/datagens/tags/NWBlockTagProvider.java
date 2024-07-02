@@ -98,7 +98,6 @@ public class NWBlockTagProvider extends FabricTagProvider<Block> {
                 .forceAddTag(BlockTags.LEAVES)
                 .forceAddTag(BlockTags.FIRE)
                 .forceAddTag(BlockTags.CROPS)
-                .forceAddTag(BlockTags.SMALL_FLOWERS)
                 .add(Blocks.SHORT_GRASS)
                 .add(Blocks.TALL_GRASS)
                 .add(Blocks.WATER)
