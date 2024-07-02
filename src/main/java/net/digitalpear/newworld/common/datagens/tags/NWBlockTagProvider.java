@@ -51,9 +51,7 @@ public class NWBlockTagProvider extends FabricTagProvider<Block> {
                 NWBlocks.LOAM_BRICKS, NWBlocks.LOAM_BRICK_STAIRS, NWBlocks.LOAM_BRICK_SLAB, NWBlocks.LOAM_BRICK_WALL,
                 NWBlocks.LOAM_TILES, NWBlocks.LOAM_TILE_STAIRS, NWBlocks.LOAM_TILE_SLAB, NWBlocks.LOAM_TILE_WALL
         );
-
         getOrCreateTagBuilder(BlockTags.HOE_MINEABLE).add(NWBlocks.FIR_LEAVES);
-
 
         getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN).addTag(NWBlockTags.FIR_LOGS);
         getOrCreateTagBuilder(BlockTags.PLANKS).add(NWBlocks.FIR_PLANKS);
@@ -97,6 +95,10 @@ public class NWBlockTagProvider extends FabricTagProvider<Block> {
         getOrCreateTagBuilder(NWBlockTags.TOMBSTONE_REPLACEABLE)
                 .forceAddTag(BlockTags.CORAL_PLANTS)
                 .forceAddTag(BlockTags.SMALL_FLOWERS)
+                .forceAddTag(BlockTags.LEAVES)
+                .forceAddTag(BlockTags.FIRE)
+                .forceAddTag(BlockTags.CROPS)
+                .forceAddTag(BlockTags.SMALL_FLOWERS)
                 .add(Blocks.SHORT_GRASS)
                 .add(Blocks.TALL_GRASS)
                 .add(Blocks.WATER)
@@ -104,7 +106,9 @@ public class NWBlockTagProvider extends FabricTagProvider<Block> {
                 .add(Blocks.TALL_SEAGRASS)
                 .add(Blocks.CRIMSON_ROOTS)
                 .add(Blocks.WARPED_ROOTS)
-                .add(Blocks.HANGING_ROOTS);
+                .add(Blocks.HANGING_ROOTS)
+        ;
+
     }
 
 }

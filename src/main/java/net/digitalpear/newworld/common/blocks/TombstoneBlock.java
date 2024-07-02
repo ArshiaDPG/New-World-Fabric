@@ -101,7 +101,6 @@ public class TombstoneBlock extends BlockWithEntity implements Waterloggable {
         World world = ctx.getWorld();
         FluidState fluidState = world.getFluidState(blockPos);
 
-
         return Objects.requireNonNull(super.getPlacementState(ctx))
                 .with(WATERLOGGED, fluidState.isOf(Fluids.WATER))
                 .with(FACE, getFaceFromDirection(ctx.getSide()))
