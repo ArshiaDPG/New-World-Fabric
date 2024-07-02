@@ -1,9 +1,9 @@
 package net.digitalpear.newworld.common.items;
 
 
-import net.minecraft.client.item.TooltipType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
@@ -14,6 +14,7 @@ public class SmithingTemplatePieceItem extends Item {
     public SmithingTemplatePieceItem(Settings settings) {
         super(settings);
     }
+
 
     @Override
     public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {

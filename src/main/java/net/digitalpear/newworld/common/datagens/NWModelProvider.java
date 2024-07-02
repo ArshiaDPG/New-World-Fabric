@@ -3,7 +3,7 @@ package net.digitalpear.newworld.common.datagens;
 import net.digitalpear.newworld.Newworld;
 import net.digitalpear.newworld.init.NWBlocks;
 import net.digitalpear.newworld.init.NWItems;
-import net.digitalpear.newworld.init.data.woodset.Woodset;
+import net.digitalpear.newworld.init.data.Woodset;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.block.Block;
@@ -60,7 +60,7 @@ public class NWModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerDoor(woodset.getDoor());
         blockStateModelGenerator.registerTrapdoor(woodset.getTrapDoor());
         makeParticles(blockStateModelGenerator, woodset.getPlanks(), woodset.getSign(), woodset.getWallSign());
-        makeParticles(blockStateModelGenerator, woodset.getStrippedLog(), woodset.getHangingSign(), woodset.getHangingWallSign());
+        makeParticles(blockStateModelGenerator, woodset.getStrippedLog(), woodset.getHangingSign(), woodset.getWallHangingSign());
 
         if (woodset.isNormalWood()){
             blockStateModelGenerator.registerSimpleCubeAll(woodset.getLeaves());
@@ -125,7 +125,7 @@ public class NWModelProvider extends FabricModelProvider {
     }
 
     public static void makeParticles(BlockStateModelGenerator blockStateModelGenerator, Block particle, Block sign, Block wallSign){
-        Identifier identifier = Models.PARTICLE.upload(sign, TextureMap.particle(new Identifier(Newworld.MOD_ID, "block/" + Registries.BLOCK.getId(particle).getPath())), blockStateModelGenerator.modelCollector);
+        Identifier identifier = Models.PARTICLE.upload(sign, TextureMap.particle(Newworld.id("block/" + Registries.BLOCK.getId(particle).getPath())), blockStateModelGenerator.modelCollector);
         blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createSingletonBlockState(sign, identifier));
         blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createSingletonBlockState(wallSign, identifier));
     }

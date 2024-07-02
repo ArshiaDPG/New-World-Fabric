@@ -6,7 +6,6 @@ import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryEntryLookup;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
-import net.minecraft.util.Identifier;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.carver.ConfiguredCarver;
 import net.minecraft.world.gen.feature.PlacedFeature;
@@ -18,7 +17,7 @@ public class NWBiomes {
 
     public static List<RegistryKey<Biome>> biomes = new ArrayList<>();
     public static RegistryKey<Biome> createBiomeKey(String id){
-        RegistryKey<Biome> registryKey = RegistryKey.of(RegistryKeys.BIOME, new Identifier(Newworld.MOD_ID, id));
+        RegistryKey<Biome> registryKey = RegistryKey.of(RegistryKeys.BIOME, Newworld.id(id));
         biomes.add(registryKey);
         return registryKey;
     }

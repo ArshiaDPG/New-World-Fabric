@@ -1,7 +1,7 @@
 package net.digitalpear.newworld.common.datagens.loot;
 
 import net.digitalpear.newworld.init.NWBlocks;
-import net.digitalpear.newworld.init.data.woodset.Woodset;
+import net.digitalpear.newworld.init.data.Woodset;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.minecraft.block.Block;

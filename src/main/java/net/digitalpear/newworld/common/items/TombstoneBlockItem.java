@@ -1,6 +1,5 @@
 package net.digitalpear.newworld.common.items;
 
-import net.digitalpear.newworld.init.NWItems;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemStack;
@@ -12,6 +11,6 @@ public class TombstoneBlockItem extends BlockItem {
 
     @Override
     public ItemStack getRecipeRemainder(ItemStack stack) {
-        return new ItemStack(NWItems.TOMBSTONE);
+        return new ItemStack(this);
     }
 }

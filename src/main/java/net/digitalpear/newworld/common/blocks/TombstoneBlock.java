@@ -26,6 +26,7 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Map;
+import java.util.Objects;
 
 public class TombstoneBlock extends BlockWithEntity implements Waterloggable {
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
@@ -99,23 +100,25 @@ public class TombstoneBlock extends BlockWithEntity implements Waterloggable {
         BlockPos blockPos = ctx.getBlockPos();
         World world = ctx.getWorld();
         FluidState fluidState = world.getFluidState(blockPos);
-        Direction direction = ctx.getSide();
-        BlockFace face = getFaceFromDirection(direction);
 
-        return super.getPlacementState(ctx)
-                .with(WATERLOGGED, fluidState.isOf(Fluids.WATER)).with(FACE, face)
+
+        return Objects.requireNonNull(super.getPlacementState(ctx))
+                .with(WATERLOGGED, fluidState.isOf(Fluids.WATER))
+                .with(FACE, getFaceFromDirection(ctx.getSide()))
                 .with(FACING, ctx.getHorizontalPlayerFacing().getOpposite());
     }
 
     public BlockFace getFaceFromDirection(Direction direction){
-        if (direction == Direction.UP){
-            return BlockFace.FLOOR;
-        }
-        else if (direction == Direction.DOWN){
-            return BlockFace.CEILING;
-        }
-        else{
-            return BlockFace.WALL;
+        switch (direction){
+            case DOWN -> {
+                return BlockFace.CEILING;
+            }
+            case UP -> {
+                return BlockFace.FLOOR;
+            }
+            default -> {
+                return BlockFace.WALL;
+            }
         }
     }
 

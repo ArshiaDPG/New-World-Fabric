@@ -24,7 +24,7 @@ public class NWChestLootTableProvider extends SimpleFabricLootTableProvider {
     }
 
     @Override
-    public void accept(RegistryWrapper.WrapperLookup registryLookup, BiConsumer<RegistryKey<LootTable>, LootTable.Builder> exporter) {
+    public void accept(BiConsumer<RegistryKey<LootTable>, LootTable.Builder> exporter) {
         exporter.accept(NWLootTables.BUNKER_BARREL, LootTable.builder()
                 .pool(LootPool.builder().rolls(UniformLootNumberProvider.create(3, 10))
                         .with(ItemEntry.builder(Items.PAPER).weight(7).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0F, 4.0F))))

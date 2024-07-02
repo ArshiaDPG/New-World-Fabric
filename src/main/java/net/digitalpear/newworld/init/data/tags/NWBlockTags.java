@@ -4,7 +4,6 @@ import net.digitalpear.newworld.Newworld;
 import net.minecraft.block.Block;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
-import net.minecraft.util.Identifier;
 
 public class NWBlockTags {
     public static final TagKey<Block> FIR_LOGS = of("fir_logs");
@@ -13,6 +12,6 @@ public class NWBlockTags {
     public static final TagKey<Block> TOMBSTONE_REPLACEABLE = of("tombstone_replaceable");
 
     private static TagKey<Block> of(String id) {
-        return TagKey.of(RegistryKeys.BLOCK, new Identifier(Newworld.MOD_ID, id));
+        return TagKey.of(RegistryKeys.BLOCK, Newworld.id(id));
     }
 }

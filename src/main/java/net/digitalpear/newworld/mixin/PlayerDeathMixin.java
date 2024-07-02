@@ -30,8 +30,6 @@ public abstract class PlayerDeathMixin {
 
     @Shadow @Final private List<DefaultedList<ItemStack>> combinedInventory;
 
-
-
     @Inject(method = "dropAll", at = @At("HEAD"))
     private void method(CallbackInfo ci){
         World world = player.getWorld();

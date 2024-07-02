@@ -5,6 +5,7 @@ import net.digitalpear.newworld.init.NWStructureTypes;
 import net.digitalpear.newworld.init.worldgen.structures.NWStructurePools;
 import net.minecraft.registry.RegistryEntryLookup;
 import net.minecraft.registry.RegistryKeys;
+import net.minecraft.structure.StructureLiquidSettings;
 import net.minecraft.structure.pool.StructurePool;
 import net.minecraft.structure.pool.StructurePoolBasedGenerator;
 import net.minecraft.structure.pool.alias.StructurePoolAliasLookup;
@@ -12,6 +13,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.Heightmap;
+import net.minecraft.world.gen.structure.DimensionPadding;
 import net.minecraft.world.gen.structure.Structure;
 import net.minecraft.world.gen.structure.StructureType;
 
@@ -59,7 +61,9 @@ public class BuriedBunkerFeature extends Structure {
                 false,
                 Optional.of(Heightmap.Type.WORLD_SURFACE_WG),
                 80,
-                StructurePoolAliasLookup.EMPTY);
+                StructurePoolAliasLookup.EMPTY,
+                DimensionPadding.NONE,
+                StructureLiquidSettings.APPLY_WATERLOGGING);
 
         return structurePiecesGenerator;
     }

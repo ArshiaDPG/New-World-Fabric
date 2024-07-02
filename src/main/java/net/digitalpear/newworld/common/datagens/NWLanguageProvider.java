@@ -1,19 +1,22 @@
 package net.digitalpear.newworld.common.datagens;
 
+import net.digitalpear.newworld.Newworld;
 import net.digitalpear.newworld.init.NWBlocks;
 import net.digitalpear.newworld.init.NWItems;
 import net.digitalpear.newworld.init.data.NWStats;
-import net.digitalpear.newworld.init.data.woodset.Woodset;
+import net.digitalpear.newworld.init.data.Woodset;
 import net.digitalpear.newworld.init.worldgen.NWBiomes;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.block.AbstractSignBlock;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.biome.Biome;
 
@@ -65,6 +68,17 @@ public class NWLanguageProvider extends FabricLanguageProvider {
     public static void makeBiomeTranslation(TranslationBuilder translationBuilder, RegistryKey<Biome> biomeRegistryKey){
         Identifier identifier = biomeRegistryKey.getValue();
         translationBuilder.add("biome" + "." + identifier.getNamespace() + "." + identifier.getPath(), formatString(identifier.getPath()));
+    }
+    public static void makeStatusEffectTranslation(TranslationBuilder translationBuilder, RegistryEntry<StatusEffect> effect){
+        String name = effect.getIdAsString().split(":")[1];
+        translationBuilder.add("effect." + Newworld.MOD_ID + "." + name, formatString(name));
+        makePotionTranslation(translationBuilder, name);
+    }
+    public static void makePotionTranslation(TranslationBuilder translationBuilder, String name){
+        translationBuilder.add("item.minecraft.potion.effect." + name, "Potion of " + formatString(name));
+        translationBuilder.add("item.minecraft.splash_potion.effect." + name, "Splash Potion of " + formatString(name));
+        translationBuilder.add("item.minecraft.lingering_potion.effect." + name, "Lingering Potion of " + formatString(name));
+        translationBuilder.add("item.minecraft.tipped_arrow.effect." + name, "Arrow of " + formatString(name));
     }
 
     public static String formatString(String input) {

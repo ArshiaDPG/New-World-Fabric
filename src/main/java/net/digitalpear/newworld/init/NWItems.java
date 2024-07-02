@@ -11,14 +11,13 @@ import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 
 
 @SuppressWarnings("unused")
 public class NWItems {
 
-    public static final RegistryKey<TerraformBoatType> FIR_BOAT_TYPE = TerraformBoatTypeRegistry.createKey(new Identifier(Newworld.MOD_ID, "fir"));
+    public static final RegistryKey<TerraformBoatType> FIR_BOAT_TYPE = TerraformBoatTypeRegistry.createKey(Newworld.id("fir"));
 
     public static Item createBoatItem(RegistryKey<TerraformBoatType> registryKey) {
         return new TerraformBoatItem(registryKey, false, new Item.Settings().maxCount(1));
@@ -28,7 +27,7 @@ public class NWItems {
     }
 
     private static Item registerItem(String name, Item item) {
-        return Registry.register(Registries.ITEM, new Identifier(Newworld.MOD_ID, name), item);
+        return Registry.register(Registries.ITEM, Newworld.id(name), item);
     }
 
 
@@ -46,10 +45,10 @@ public class NWItems {
 
     public static final Item ANCIENT_MATTOCK = registerItem("ancient_mattock", new MattockItem(NWToolMaterials.ANCIENT, new Item.Settings().attributeModifiers(AxeItem.createAttributeModifiers(ToolMaterials.DIAMOND, 0.0F, -3.0F))));
 
-
     public static final Item ILLAGER_TOME = registerItem("illager_tome", new IllagerTomeItem(new Item.Settings().rarity(Rarity.EPIC)));
 
     public static final Item JEB_BOOK = registerItem("jeb_book", new JebBookItem(new Item.Settings()));
+
 
     public static void init(){
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> {
@@ -68,9 +67,6 @@ public class NWItems {
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(entries -> {
             entries.addAfter(Items.SPRUCE_HANGING_SIGN, FIR_SIGN, FIR_HANGING_SIGN);
             entries.add(NWBlocks.TOMBSTONE);
-        });
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.OPERATOR).register(entries -> {
-            entries.add(JEB_BOOK);
         });
 
     }

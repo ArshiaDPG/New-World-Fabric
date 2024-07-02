@@ -8,7 +8,6 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.minecraft.client.render.RenderLayer;
-import net.minecraft.util.Identifier;
 
 @Environment(EnvType.CLIENT)
 public class NewWorldClient implements ClientModInitializer {
@@ -18,6 +17,12 @@ public class NewWorldClient implements ClientModInitializer {
     public void onInitializeClient() {
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), NWBlocks.FIR_SAPLING, NWBlocks.POTTED_FIR_SAPLING, NWBlocks.FIR_LEAVES, NWBlocks.POTTED_POINTED_DRIPSTONE);
 
-        TerraformBoatClientHelper.registerModelLayers(new Identifier(Newworld.MOD_ID, "fir"), false);
+        TerraformBoatClientHelper.registerModelLayers(Newworld.id("fir"), false);
+
+
+
+//        TexturedRenderLayers.SIGN_TYPE_TEXTURES.put(NWBlocks.FIR.getWoodType(), TexturedRenderLayers.getSignTextureId(NWBlocks.FIR.getWoodType()));
+//        TexturedRenderLayers.HANGING_SIGN_TYPE_TEXTURES.put(NWBlocks.FIR.getWoodType(), TexturedRenderLayers.getHangingSignTextureId(NWBlocks.FIR.getWoodType()));
+
     }
 }

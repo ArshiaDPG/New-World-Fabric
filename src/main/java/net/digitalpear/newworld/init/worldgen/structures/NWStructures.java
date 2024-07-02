@@ -10,7 +10,6 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.entry.RegistryEntryList;
 import net.minecraft.structure.pool.StructurePool;
-import net.minecraft.util.Identifier;
 import net.minecraft.world.StructureSpawns;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStep;
@@ -26,7 +25,7 @@ public class NWStructures {
     public static List<RegistryKey<Structure>> structures = new ArrayList<>();
 
     public static RegistryKey<Structure> of(String id) {
-        RegistryKey<Structure> registryKey = RegistryKey.of(RegistryKeys.STRUCTURE, new Identifier(Newworld.MOD_ID, id));
+        RegistryKey<Structure> registryKey = RegistryKey.of(RegistryKeys.STRUCTURE, Newworld.id(id));
         structures.add(registryKey);
         return registryKey;
     }

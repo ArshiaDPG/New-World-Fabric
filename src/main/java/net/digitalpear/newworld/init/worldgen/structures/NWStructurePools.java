@@ -12,7 +12,6 @@ import net.minecraft.structure.pool.StructurePool;
 import net.minecraft.structure.pool.StructurePoolElement;
 import net.minecraft.structure.pool.StructurePools;
 import net.minecraft.structure.processor.StructureProcessorList;
-import net.minecraft.util.Identifier;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +20,7 @@ public class NWStructurePools {
     public static List<RegistryKey<StructurePool>> structurePools = new ArrayList<>();
 
     public static RegistryKey<StructurePool> of(String id) {
-        RegistryKey<StructurePool> registryKey = RegistryKey.of(RegistryKeys.TEMPLATE_POOL, new Identifier(Newworld.MOD_ID, id));
+        RegistryKey<StructurePool> registryKey = RegistryKey.of(RegistryKeys.TEMPLATE_POOL, Newworld.id(id));
         structurePools.add(registryKey);
         return registryKey;
     }

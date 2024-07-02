@@ -1,12 +1,12 @@
 package net.digitalpear.newworld.common.worldgen;
 
 import net.digitalpear.newworld.init.worldgen.features.NWPlacedFeatures;
-import net.minecraft.client.sound.MusicType;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.registry.RegistryEntryLookup;
 import net.minecraft.sound.BiomeMoodSound;
 import net.minecraft.sound.MusicSound;
+import net.minecraft.sound.MusicType;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.biome.Biome;
@@ -14,7 +14,9 @@ import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.carver.ConfiguredCarver;
-import net.minecraft.world.gen.feature.*;
+import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
+import net.minecraft.world.gen.feature.MiscPlacedFeatures;
+import net.minecraft.world.gen.feature.PlacedFeature;
 import org.jetbrains.annotations.Nullable;
 
 public class NWOverworldBiomeCreator {
@@ -28,11 +30,11 @@ public class NWOverworldBiomeCreator {
         return createBiome(precipitation, temperature, downfall, 4159204, spawnSettings, generationSettings, music);
     }
     private static Biome createBiome(boolean precipitation, float temperature, float downfall, int waterColor, SpawnSettings.Builder spawnSettings, GenerationSettings.Builder generationSettings, @Nullable MusicSound music) {
-        return (new net.minecraft.world.biome.Biome.Builder()).precipitation(precipitation).temperature(temperature).downfall(downfall).effects((new net.minecraft.world.biome.BiomeEffects.Builder()).waterColor(waterColor).waterFogColor(329011).fogColor(12638463).skyColor(getSkyColor(temperature)).moodSound(BiomeMoodSound.CAVE).music(music).build()).spawnSettings(spawnSettings.build()).generationSettings(generationSettings.build()).build();
+        return new Biome.Builder().precipitation(precipitation).temperature(temperature).downfall(downfall).effects((new net.minecraft.world.biome.BiomeEffects.Builder()).waterColor(waterColor).waterFogColor(329011).fogColor(12638463).skyColor(getSkyColor(temperature)).moodSound(BiomeMoodSound.CAVE).music(music).build()).spawnSettings(spawnSettings.build()).generationSettings(generationSettings.build()).build();
     }
     //Biome with custom foliage color
     private static Biome createBiome(boolean precipitation, float temperature, float downfall, int waterColor, int foliageColor, SpawnSettings.Builder spawnSettings, GenerationSettings.Builder generationSettings, @Nullable MusicSound music) {
-        return (new net.minecraft.world.biome.Biome.Builder()).precipitation(precipitation).temperature(temperature).downfall(downfall).effects((new net.minecraft.world.biome.BiomeEffects.Builder()).waterColor(waterColor).waterFogColor(329011).fogColor(12638463).foliageColor(foliageColor).skyColor(getSkyColor(temperature)).moodSound(BiomeMoodSound.CAVE).music(music).build()).spawnSettings(spawnSettings.build()).generationSettings(generationSettings.build()).build();
+        return new Biome.Builder().precipitation(precipitation).temperature(temperature).downfall(downfall).effects((new net.minecraft.world.biome.BiomeEffects.Builder()).waterColor(waterColor).waterFogColor(329011).fogColor(12638463).foliageColor(foliageColor).skyColor(getSkyColor(temperature)).moodSound(BiomeMoodSound.CAVE).music(music).build()).spawnSettings(spawnSettings.build()).generationSettings(generationSettings.build()).build();
     }
 
     private static void addBasicFeatures(GenerationSettings.LookupBackedBuilder generationSettings) {
@@ -104,6 +106,7 @@ public class NWOverworldBiomeCreator {
         DefaultBiomeFeatures.addPlainsFeatures(featureBuilder);
         DefaultBiomeFeatures.addDefaultMushrooms(featureBuilder);
         DefaultBiomeFeatures.addDefaultVegetation(featureBuilder);
+
 
         MusicSound musicSound = MusicType.createIngameMusic(SoundEvents.MUSIC_OVERWORLD_DEEP_DARK);
         return createBiome(true, 0.0F, 0.4F, spawnBuilder, featureBuilder, musicSound);

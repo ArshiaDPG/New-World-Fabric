@@ -12,7 +12,6 @@ import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.registry.entry.RegistryEntryList;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.structure.rule.TagMatchRuleTest;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DataPool;
 import net.minecraft.util.math.VerticalSurfaceType;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
@@ -28,13 +27,12 @@ import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class NWConfiguredFeatures {
     public static List<RegistryKey<ConfiguredFeature<?, ?>>> features = new ArrayList<>();
 
     public static RegistryKey<ConfiguredFeature<?, ?>> of(String id){
-        RegistryKey<ConfiguredFeature<?, ?>> registryKey = RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, new Identifier(Newworld.MOD_ID, id));
+        RegistryKey<ConfiguredFeature<?, ?>> registryKey = RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, Newworld.id(id));
         features.add(registryKey);
         return registryKey;
     }

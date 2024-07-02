@@ -1,9 +1,9 @@
-package net.digitalpear.newworld.init.data.woodset;
+package net.digitalpear.newworld.init.data;
 
-import com.terraformersmc.terraform.sign.block.TerraformHangingSignBlock;
-import com.terraformersmc.terraform.sign.block.TerraformSignBlock;
-import com.terraformersmc.terraform.sign.block.TerraformWallHangingSignBlock;
-import com.terraformersmc.terraform.sign.block.TerraformWallSignBlock;
+import com.terraformersmc.terraform.sign.api.block.TerraformHangingSignBlock;
+import com.terraformersmc.terraform.sign.api.block.TerraformSignBlock;
+import com.terraformersmc.terraform.sign.api.block.TerraformWallHangingSignBlock;
+import com.terraformersmc.terraform.sign.api.block.TerraformWallSignBlock;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder;
@@ -23,13 +23,17 @@ import java.util.List;
 
 public class Woodset {
 
+    private static final String SIGN_PATH = "entity/signs/";
+    private static final String HANGING_SIGN_PATH = SIGN_PATH + "hanging/";
+    private static final String HANGING_SIGN_GUI_PATH = "textures/gui/hanging_signs/";
 
-    private List<Block> registeredBlocksList = new ArrayList<>();
-    private List<Item> registeredItemsList = new ArrayList<>();
-    private Identifier name;
-    private MapColor sideColor;
-    private MapColor topColor;
-    private WoodPreset woodPreset;
+
+    private final List<Block> registeredBlocksList = new ArrayList<>();
+    private final List<Item> registeredItemsList = new ArrayList<>();
+    private final Identifier name;
+    private final MapColor sideColor;
+    private final MapColor topColor;
+    private final WoodPreset woodPreset;
     private BlockSetType blockSetType;
     private WoodType woodType;
     private BlockSoundGroup leaveSounds;
@@ -54,7 +58,7 @@ public class Woodset {
     private Block sign;
     private Block wallSign;
     private Block hangingSign;
-    private Block hangingWallSign;
+    private Block wallHangingSign;
     private Item signItem;
     private Item hangingSignItem;
 
@@ -93,7 +97,7 @@ public class Woodset {
         sign = createSign();
         wallSign = createWallSign();
         hangingSign = createHangingSign();
-        hangingWallSign = createWallHangingSign();
+        wallHangingSign = createWallHangingSign();
         signItem = createSignItem();
         hangingSignItem = createHangingSignItem();
     }
@@ -106,11 +110,7 @@ public class Woodset {
         this.name = name;
         this.sideColor = sideColor;
         this.topColor = topColor;
-        if (isNormalWood() && woodPreset == WoodPreset.DEFAULT){
-            this.leaveSounds = BlockSoundGroup.GRASS;
-        } else if (woodPreset == WoodPreset.FANCY) {
-            this.leaveSounds = BlockSoundGroup.AZALEA_LEAVES;
-        }
+        setLeavesSounds();
         registerWood();
     }
     public Woodset(Identifier name, MapColor sideColor, MapColor topColor, WoodPreset woodPreset, BlockSoundGroup leaveSounds){
@@ -126,11 +126,7 @@ public class Woodset {
         this.name = name;
         this.sideColor = sideColor;
         this.topColor = topColor;
-        if (isNormalWood() && woodPreset == WoodPreset.DEFAULT){
-            this.leaveSounds = BlockSoundGroup.GRASS;
-        } else if (woodPreset == WoodPreset.FANCY) {
-            this.leaveSounds = BlockSoundGroup.AZALEA_LEAVES;
-        }
+        setLeavesSounds();
         registerWood();
     }
     public Woodset(Identifier name, MapColor sideColor, MapColor topColor, BlockSoundGroup leaveSounds){
@@ -141,21 +137,27 @@ public class Woodset {
         this.leaveSounds = leaveSounds;
         registerWood();
     }
-
+    private void setLeavesSounds(){
+        if (isNormalWood() && woodPreset == WoodPreset.DEFAULT){
+            this.leaveSounds = BlockSoundGroup.GRASS;
+        } else if (woodPreset == WoodPreset.FANCY) {
+            this.leaveSounds = BlockSoundGroup.CHERRY_LEAVES;
+        }
+    }
 
     private BlockItem createBlockItem(String blockID, Block block){
-        return Registry.register(Registries.ITEM, new Identifier(this.getModID(), blockID), new BlockItem(block, new Item.Settings()));
+        return Registry.register(Registries.ITEM, Identifier.of(this.getModID(), blockID), new BlockItem(block, new Item.Settings()));
     }
 
     private Block createBlockWithItem(String blockID, Block block){
         createBlockItem(blockID, block);
-        Block listBlock = Registry.register(Registries.BLOCK, new Identifier(this.getModID(), blockID), block);
+        Block listBlock = Registry.register(Registries.BLOCK, Identifier.of(this.getModID(), blockID), block);
         registeredBlocksList.add(listBlock);
         return listBlock;
     }
 
     private Block createBlockWithoutItem(String blockID, Block block){
-        return Registry.register(Registries.BLOCK, new Identifier(this.getModID(), blockID), block);
+        return Registry.register(Registries.BLOCK, Identifier.of(this.getModID(), blockID), block);
     }
     private Item createSignItem(Block sign, Block wallSign) {
         return new SignItem(new Item.Settings().maxCount(16), sign, wallSign);
@@ -164,7 +166,7 @@ public class Woodset {
         return new HangingSignItem(hangingSign, hangingWallSign, new Item.Settings().maxCount(16));
     }
     public Item createItem(String blockID, Item item){
-        Item listItem = Registry.register(Registries.ITEM, new Identifier(this.getModID(), blockID), item);
+        Item listItem = Registry.register(Registries.ITEM, Identifier.of(this.getModID(), blockID), item);
         registeredItemsList.add(listItem);
         return listItem;
     }
@@ -239,8 +241,8 @@ public class Woodset {
         return hangingSign;
     }
 
-    public Block getHangingWallSign() {
-        return hangingWallSign;
+    public Block getWallHangingSign() {
+        return wallHangingSign;
     }
 
     public Block getPressurePlate() {
@@ -359,16 +361,16 @@ public class Woodset {
         return createBlockWithItem(this.getName() + "_trapdoor", new TrapdoorBlock(this.getBlockSetType(), AbstractBlock.Settings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor())));
     }
     private Block createSign(){
-        return createBlockWithoutItem(this.getName() + "_sign", new TerraformSignBlock(new Identifier(getModID(), "entity/signs/" + this.getName()), AbstractBlock.Settings.copy(getSignBase()).mapColor(this.getTopColor())));
+        return createBlockWithoutItem(this.getName() + "_sign", new TerraformSignBlock(this.getNameID().withPrefixedPath(SIGN_PATH), AbstractBlock.Settings.copy(getSignBase()).mapColor(this.getTopColor())));
     }
     private Block createWallSign(){
-        return createBlockWithoutItem(this.getName() + "_wall_sign", new TerraformWallSignBlock(new Identifier(getModID(), "entity/signs/" + this.getName()), AbstractBlock.Settings.copy(getSignBase()).mapColor(this.getTopColor()).dropsLike(sign)));
+        return createBlockWithoutItem(this.getName() + "_wall_sign", new TerraformWallSignBlock(this.getNameID().withPrefixedPath(SIGN_PATH), AbstractBlock.Settings.copy(getSignBase()).mapColor(this.getTopColor()).dropsLike(sign)));
     }
     private Block createHangingSign(){
-        return createBlockWithoutItem(this.getName() + "_hanging_sign", new TerraformHangingSignBlock(getNameID().withPrefixedPath("entity/signs/hanging/"), getNameID().withPrefixedPath("textures/gui/hanging_signs/"), AbstractBlock.Settings.copy(getHangingSignBase()).mapColor(this.getTopColor())));
+        return createBlockWithoutItem(this.getName() + "_hanging_sign", new TerraformHangingSignBlock(this.getNameID().withPrefixedPath(HANGING_SIGN_PATH), this.getNameID().withPrefixedPath(HANGING_SIGN_GUI_PATH), AbstractBlock.Settings.copy(getHangingSignBase()).mapColor(this.getTopColor())));
     }
     private Block createWallHangingSign(){
-        return createBlockWithoutItem(this.getName() + "_wall_hanging_sign", new TerraformWallHangingSignBlock(getNameID().withPrefixedPath("entity/signs/hanging/"), getNameID().withPrefixedPath("textures/gui/hanging_signs/"), AbstractBlock.Settings.copy(getHangingSignBase()).mapColor(this.getTopColor()).dropsLike(hangingSign)));
+        return createBlockWithoutItem(this.getName() + "_wall_hanging_sign", new TerraformWallHangingSignBlock(this.getNameID().withPrefixedPath(HANGING_SIGN_PATH), this.getNameID().withPrefixedPath(HANGING_SIGN_GUI_PATH), AbstractBlock.Settings.copy(getHangingSignBase()).mapColor(this.getTopColor()).dropsLike(hangingSign)));
     }
 
 
@@ -376,7 +378,7 @@ public class Woodset {
         return createItem(this.getName() + "_sign", createSignItem(this.getSign(), this.getWallSign()));
     }
     private Item createHangingSignItem(){
-        return createItem(this.getName() + "_hanging_sign", createHangingSignItem(this.getHangingSign(), this.getHangingWallSign()));
+        return createItem(this.getName() + "_hanging_sign", createHangingSignItem(this.getHangingSign(), this.getWallHangingSign()));
     }
     private String getWoodName(){
         String name;

@@ -10,7 +10,6 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.registry.tag.BiomeTags;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
@@ -19,7 +18,10 @@ import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.YOffset;
 import net.minecraft.world.gen.blockpredicate.BlockPredicate;
-import net.minecraft.world.gen.feature.*;
+import net.minecraft.world.gen.feature.ConfiguredFeature;
+import net.minecraft.world.gen.feature.PlacedFeature;
+import net.minecraft.world.gen.feature.PlacedFeatures;
+import net.minecraft.world.gen.feature.VegetationConfiguredFeatures;
 import net.minecraft.world.gen.placementmodifier.*;
 
 import java.util.ArrayList;
@@ -32,7 +34,7 @@ public class NWPlacedFeatures {
     public static List<RegistryKey<PlacedFeature>> features = new ArrayList<>();
 
     public static RegistryKey<PlacedFeature> of(String id){
-        RegistryKey<PlacedFeature> registryKey = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(Newworld.MOD_ID, id));
+        RegistryKey<PlacedFeature> registryKey = RegistryKey.of(RegistryKeys.PLACED_FEATURE, Newworld.id(id));
         features.add(registryKey);
         return registryKey;
     }

@@ -13,7 +13,6 @@ import net.minecraft.structure.processor.StructureProcessorList;
 import net.minecraft.structure.processor.StructureProcessorRule;
 import net.minecraft.structure.rule.AlwaysTrueRuleTest;
 import net.minecraft.structure.rule.RandomBlockMatchRuleTest;
-import net.minecraft.util.Identifier;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +21,7 @@ public class NWProcessorLists {
     public static List<RegistryKey<StructureProcessorList>> processorLists = new ArrayList<>();
 
     public static RegistryKey<StructureProcessorList> of(String id) {
-        RegistryKey<StructureProcessorList> registryKey = RegistryKey.of(RegistryKeys.PROCESSOR_LIST, new Identifier(Newworld.MOD_ID, id));
+        RegistryKey<StructureProcessorList> registryKey = RegistryKey.of(RegistryKeys.PROCESSOR_LIST, Newworld.id(id));
         processorLists.add(registryKey);
         return registryKey;
     }

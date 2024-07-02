@@ -36,5 +36,7 @@ public class NWBiomeTagProvider extends FabricTagProvider<Biome> {
         getOrCreateTagBuilder(BiomeTags.MINESHAFT_HAS_STRUCTURE).add(NWBiomes.WOODED_MEADOW);
 
         getOrCreateTagBuilder(BiomeTags.TRAIL_RUINS_HAS_STRUCTURE).add(NWBiomes.WOODED_MEADOW);
+
+        getOrCreateTagBuilder(BiomeTags.IS_OVERWORLD).add(NWBiomes.WOODED_MEADOW);
     }
 }

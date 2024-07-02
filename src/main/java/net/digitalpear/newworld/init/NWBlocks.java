@@ -2,9 +2,8 @@ package net.digitalpear.newworld.init;
 
 import net.digitalpear.newworld.Newworld;
 import net.digitalpear.newworld.common.blocks.TombstoneBlock;
-import net.digitalpear.newworld.init.data.woodset.Woodset;
+import net.digitalpear.newworld.init.data.Woodset;
 import net.digitalpear.newworld.init.worldgen.NWSaplingGenerators;
-import net.digitalpear.newworld.init.worldgen.features.NWConfiguredFeatures;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.*;
 import net.minecraft.block.piston.PistonBehavior;
@@ -15,34 +14,33 @@ import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
-import net.minecraft.util.Identifier;
-
-import java.util.Optional;
 
 
 @SuppressWarnings("unused")
 public class NWBlocks {
 
     public static BlockItem createCustomBlockItem(String blockID, Block block, Item.Settings item){
-        return Registry.register(Registries.ITEM, new Identifier(Newworld.MOD_ID, blockID), new BlockItem(block, item));
+        return Registry.register(Registries.ITEM, Newworld.id(blockID), new BlockItem(block, item));
+    }
+    public static BlockItem createBlockItem(String blockID, Block block){
+        return createCustomBlockItem(blockID, block, new Item.Settings());
+    }
+    private static Block createBlockWithoutItem(String blockID, Block block){
+        return Registry.register(Registries.BLOCK, Newworld.id(blockID), block);
     }
 
     private static Block createBlockWithCustomItem(String blockID, Block block, Item.Settings item){
         createCustomBlockItem(blockID, block, item);
-        return Registry.register(Registries.BLOCK, new Identifier(Newworld.MOD_ID, blockID), block);
+        return createBlockWithoutItem(blockID, block);
     }
-    public static BlockItem createBlockItem(String blockID, Block block){
-        return Registry.register(Registries.ITEM, new Identifier(Newworld.MOD_ID, blockID), new BlockItem(block, new Item.Settings()));
-    }
+
 
     private static Block createBlockWithItem(String blockID, Block block){
         createBlockItem(blockID, block);
-        return Registry.register(Registries.BLOCK, new Identifier(Newworld.MOD_ID, blockID), block);
+        return createBlockWithoutItem(blockID, block);
     }
 
-    private static Block createBlockWithoutItem(String blockID, Block block){
-        return Registry.register(Registries.BLOCK, new Identifier(Newworld.MOD_ID, blockID), block);
-    }
+
 
 
 
@@ -75,7 +73,7 @@ public class NWBlocks {
     public static final Block FIR_WALL_SIGN = FIR.getWallSign();
 
     public static final Block FIR_HANGING_SIGN = FIR.getHangingSign();
-    public static final Block FIR_HANGING_WALL_SIGN = FIR.getHangingWallSign();
+    public static final Block FIR_HANGING_WALL_SIGN = FIR.getWallHangingSign();
 
     public static final Block LOAM = createBlockWithItem("loam", new Block(AbstractBlock.Settings.create().mapColor(MapColor.TERRACOTTA_BLACK).strength(1.2f, 3f).sounds(BlockSoundGroup.PACKED_MUD)));
     public static final Block LOAM_STAIRS = createBlockWithItem("loam_stairs", new StairsBlock(LOAM.getDefaultState(), AbstractBlock.Settings.copy(LOAM)));

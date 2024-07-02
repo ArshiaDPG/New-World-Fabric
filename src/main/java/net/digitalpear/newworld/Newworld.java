@@ -18,21 +18,25 @@ public class Newworld implements ModInitializer {
     public static final Logger LOGGER = LogManager.getLogger();
 
     public static Identifier id(String name) {
-        return new Identifier(MOD_ID, name);
+        return Identifier.of(MOD_ID, name);
     }
 
     @Override
     public void onInitialize() {
         NWBlocks.init();
         NWBlockEntityTypes.init();
+
         NWBoatTypes.init();
         NWItems.init();
-        NWBiomes.init();
+
         NWData.init();
+
+        NWBiomes.init();
         NWStructureTypes.init();
         NWFeature.init();
         NWConfiguredFeatures.init();
         NWPlacedFeatures.init();
+
         NWStats.init();
 
         LOGGER.info(MOD_NAME + " has initialized.");
