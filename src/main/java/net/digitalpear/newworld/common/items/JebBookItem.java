@@ -6,6 +6,8 @@ import net.minecraft.item.BookItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 
+import java.util.Objects;
+
 public class JebBookItem extends BookItem {
     public JebBookItem(Settings settings) {
         super(settings.maxCount(1));
@@ -13,7 +15,7 @@ public class JebBookItem extends BookItem {
 
     @Override
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        if (Registries.ENTITY_TYPE.getId(target.getType()).getNamespace() != "minecraft"){
+        if (!Objects.equals(Registries.ENTITY_TYPE.getId(target.getType()).getNamespace(), "minecraft")){
             target.damage(target.getDamageSources().inWall(), (float) target.getAttributes().getValue(EntityAttributes.GENERIC_MAX_HEALTH));
         }
         return super.postHit(stack, target, attacker);

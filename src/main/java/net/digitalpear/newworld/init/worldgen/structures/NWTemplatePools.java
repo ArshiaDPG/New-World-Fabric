@@ -8,6 +8,7 @@ import net.minecraft.registry.RegistryEntryLookup;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.structure.StructureLiquidSettings;
 import net.minecraft.structure.pool.StructurePool;
 import net.minecraft.structure.pool.StructurePoolElement;
 import net.minecraft.structure.pool.StructurePools;
@@ -16,12 +17,12 @@ import net.minecraft.structure.processor.StructureProcessorList;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NWStructurePools {
-    public static List<RegistryKey<StructurePool>> structurePools = new ArrayList<>();
+public class NWTemplatePools {
+    public static List<RegistryKey<StructurePool>> templatePools = new ArrayList<>();
 
     public static RegistryKey<StructurePool> of(String id) {
         RegistryKey<StructurePool> registryKey = RegistryKey.of(RegistryKeys.TEMPLATE_POOL, Newworld.id(id));
-        structurePools.add(registryKey);
+        templatePools.add(registryKey);
         return registryKey;
     }
     public static final RegistryKey<StructurePool> BURIED_BUNKER = of("buried_bunker");
@@ -33,8 +34,8 @@ public class NWStructurePools {
         RegistryEntry.Reference<StructureProcessorList> bunkerProcessor = processorListRegistryEntryLookup.getOrThrow(NWProcessorLists.BURIED_BUNKER_REPLACEMENTS);
 
         structurePoolsRegisterable.register(BURIED_BUNKER, new StructurePool(registryEntryLookup.getOrThrow(StructurePools.EMPTY), ImmutableList.of(
-                Pair.of(StructurePoolElement.ofProcessedSingle("newworld:buried_bunker", bunkerProcessor), 1),
-                Pair.of(StructurePoolElement.ofProcessedSingle("newworld:buried_bunker_empty", bunkerProcessor), 10)
+                Pair.of(StructurePoolElement.ofProcessedSingle("newworld:buried_bunker", bunkerProcessor, StructureLiquidSettings.APPLY_WATERLOGGING), 1),
+                Pair.of(StructurePoolElement.ofProcessedSingle("newworld:buried_bunker_empty", bunkerProcessor, StructureLiquidSettings.APPLY_WATERLOGGING), 10)
         ),
                 StructurePool.Projection.RIGID));
     }

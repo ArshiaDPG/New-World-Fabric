@@ -33,7 +33,7 @@ public class NWStructures {
 
     public static void bootstrap(Registerable<Structure> structureRegisterable) {
         RegistryEntryLookup<Biome> registryEntryLookup = structureRegisterable.getRegistryLookup(RegistryKeys.BIOME);
-        RegistryEntryLookup<StructurePool> registryEntryLookup2 = structureRegisterable.getRegistryLookup(RegistryKeys.TEMPLATE_POOL);
+        RegistryEntryLookup<StructurePool> templateRegistryLookup = structureRegisterable.getRegistryLookup(RegistryKeys.TEMPLATE_POOL);
 
 
         structureRegisterable.register(BURIED_BUNKER, new BuriedBunkerFeature(

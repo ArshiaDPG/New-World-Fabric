@@ -4,6 +4,7 @@
       "element": {
         "element_type": "minecraft:single_pool_element",
         "location": "newworld:buried_bunker",
+        "override_liquid_settings": "apply_waterlogging",
         "processors": "newworld:buried_bunker_replacements",
         "projection": "rigid"
       },
@@ -13,6 +14,7 @@
       "element": {
         "element_type": "minecraft:single_pool_element",
         "location": "newworld:buried_bunker_empty",
+        "override_liquid_settings": "apply_waterlogging",
         "processors": "newworld:buried_bunker_replacements",
         "projection": "rigid"
       },

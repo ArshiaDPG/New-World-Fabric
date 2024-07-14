@@ -1,10 +1,10 @@
-// 1.21	2024-07-02T08:25:17.4432587	New World/Tags for minecraft:block
+// 1.21	2024-07-14T13:28:08.6375188	New World/Tags for minecraft:block
 a82b6834534ce065ff16e8f8256f1fa26243f1b7 data\minecraft\tags\block\wall_signs.json
 615ea889f0871604cf96fe2a3fffab5e014e971c data\minecraft\tags\block\stairs.json
 88fb931decfd59ed03ba8759417c2ecbef040a3e data\minecraft\tags\block\leaves.json
 0d0238c2f338b974456f8c31b1f5a4b144cf0e59 data\minecraft\tags\block\flower_pots.json
 99b4564d813a0f419a00c0d1d85f284096915f38 data\minecraft\tags\block\wooden_stairs.json
-6ea6277821b924babce8b0b43457dd55f7f244d1 data\newworld\tags\block\tombstone_replaceable.json
+dacf58ba538343779c19cec58ca72963f45bb1b6 data\newworld\tags\block\tombstone_replaceable.json
 db91eaa6168fef9805d22ff605a38650214403a7 data\minecraft\tags\block\walls.json
 47f4017127ca24058caccc44dcb26ac6c81b5ddf data\newworld\tags\block\small_bush_plantable.json
 9b9b5396efb07a36ba46c309acd3bf809ce4896d data\minecraft\tags\block\planks.json

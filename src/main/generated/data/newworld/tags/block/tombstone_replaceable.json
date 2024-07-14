@@ -2,6 +2,9 @@
   "values": [
     "#minecraft:coral_plants",
     "#minecraft:small_flowers",
+    "#minecraft:leaves",
+    "#minecraft:fire",
+    "#minecraft:crops",
     "minecraft:short_grass",
     "minecraft:tall_grass",
     "minecraft:water",

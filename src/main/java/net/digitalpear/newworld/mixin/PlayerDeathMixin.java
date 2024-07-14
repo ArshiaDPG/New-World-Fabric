@@ -46,8 +46,8 @@ public abstract class PlayerDeathMixin {
                 boolean decrementedTombstone = false;
 
                 for (DefaultedList<ItemStack> itemStacks : combinedInventory) {
-                    for (int i = 0; i < ((List<ItemStack>) itemStacks).size(); ++i) {
-                        ItemStack itemStack = ((List<ItemStack>) itemStacks).get(i);
+                    for (int i = 0; i < itemStacks.size(); ++i) {
+                        ItemStack itemStack = itemStacks.get(i);
                         /*
                             Remove a single tombstone from the player's inventory.
                          */
@@ -67,12 +67,9 @@ public abstract class PlayerDeathMixin {
 
     @Unique
     private void placeOrDropStack(TombstoneBlockEntity tombstoneBlockEntity, ItemStack currentStack){
-        if (tombstoneBlockEntity.getCompatibleSlot(currentStack) < 0 || currentStack.isEmpty()){
-            return;
-        }
         int compatibleSlot = tombstoneBlockEntity.getCompatibleSlot(currentStack);
 
-        if (compatibleSlot != -1){
+        if (!currentStack.isEmpty() && compatibleSlot >= 0){
             ItemStack tombstoneStack = tombstoneBlockEntity.getStack(compatibleSlot);
             /*
                 If slot is empty.

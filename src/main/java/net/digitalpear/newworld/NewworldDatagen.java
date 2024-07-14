@@ -8,14 +8,14 @@ import net.digitalpear.newworld.common.datagens.worldgen.NWBiomeProvider;
 import net.digitalpear.newworld.common.datagens.worldgen.NWConfiguredFeatureProvider;
 import net.digitalpear.newworld.common.datagens.worldgen.NWPlacedFeatureProvider;
 import net.digitalpear.newworld.common.datagens.worldgen.structures.NWProcessorListProvider;
-import net.digitalpear.newworld.common.datagens.worldgen.structures.NWStructurePoolProvider;
+import net.digitalpear.newworld.common.datagens.worldgen.structures.NWTemplatePoolProvider;
 import net.digitalpear.newworld.common.datagens.worldgen.structures.NWStructureProvider;
 import net.digitalpear.newworld.common.datagens.worldgen.structures.NWStructureSetProvider;
 import net.digitalpear.newworld.init.worldgen.NWBiomes;
 import net.digitalpear.newworld.init.worldgen.features.NWConfiguredFeatures;
 import net.digitalpear.newworld.init.worldgen.features.NWPlacedFeatures;
 import net.digitalpear.newworld.init.worldgen.structures.NWProcessorLists;
-import net.digitalpear.newworld.init.worldgen.structures.NWStructurePools;
+import net.digitalpear.newworld.init.worldgen.structures.NWTemplatePools;
 import net.digitalpear.newworld.init.worldgen.structures.NWStructureSets;
 import net.digitalpear.newworld.init.worldgen.structures.NWStructures;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
@@ -48,7 +48,7 @@ public class NewworldDatagen implements DataGeneratorEntrypoint {
         pack.addProvider(NWProcessorListProvider::new);
         pack.addProvider(NWStructureSetProvider::new);
         pack.addProvider(NWStructureProvider::new);
-        pack.addProvider(NWStructurePoolProvider::new);
+        pack.addProvider(NWTemplatePoolProvider::new);
     }
 
     @Override
@@ -60,6 +60,6 @@ public class NewworldDatagen implements DataGeneratorEntrypoint {
         registryBuilder.addRegistry(RegistryKeys.PROCESSOR_LIST, NWProcessorLists::bootstrap);
         registryBuilder.addRegistry(RegistryKeys.STRUCTURE_SET, NWStructureSets::bootstrap);
         registryBuilder.addRegistry(RegistryKeys.STRUCTURE, NWStructures::bootstrap);
-        registryBuilder.addRegistry(RegistryKeys.TEMPLATE_POOL, NWStructurePools::bootstrap);
+        registryBuilder.addRegistry(RegistryKeys.TEMPLATE_POOL, NWTemplatePools::bootstrap);
     }
 }

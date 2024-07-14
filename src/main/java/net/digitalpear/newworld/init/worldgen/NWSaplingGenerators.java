@@ -7,5 +7,4 @@ import java.util.Optional;
 
 public class NWSaplingGenerators {
     public static final SaplingGenerator FIR = new SaplingGenerator("fir", Optional.empty(), Optional.of(NWConfiguredFeatures.GROWN_FIR), Optional.of(NWConfiguredFeatures.GROWN_FIR_BEES_002));
-
 }
