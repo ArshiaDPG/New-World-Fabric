@@ -120,7 +120,7 @@ unifiedPublishing {
         displayName = "${project.minecraft_version}-${project.mod_version}" // Optional, name of the file
         version = "${project.mod_version}" // Optional, Inferred from project by default
         changelog = '''<ul>
-  <li>Fixed issue where having more than one stack of the item would cause the game to crash and the stack to be deleted.</li>
+  <li>Fixed issue where having more than one stack of an item when dying with a tombstone would cause the game to crash and delete the extra stack.</li>
   <li>Fixed Buried Bunkers not generating.</li>
 </ul> '''
         releaseType = "release" // Optional, use "release", "beta" or "alpha"
@@ -143,6 +143,10 @@ unifiedPublishing {
         modrinth {
             token = System.getenv("MODRINTH_TOKEN")
             id = "8XpQehpK" // Required, must be a string, ID of Modrinth project
+        }
+        curseforge {
+            token = System.getenv("CF_TOKEN")
+            id = "654411" // Required, must be a string, ID of CurseForge project
         }
     }
 }
