@@ -1,4 +1,4 @@
-package net.digitalpear.newworld.common.datagens.worldgen;
+package net.digitalpear.newworld.common.datagens.providers.worldgen;
 
 import net.digitalpear.newworld.init.worldgen.NWBiomes;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;

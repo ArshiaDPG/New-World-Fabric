@@ -39,7 +39,7 @@ public class NWLanguageProvider extends FabricLanguageProvider {
     }
 
     public static void makeSmithingTemplateTranslation(TranslationBuilder translationBuilder, Item template, String templateId, String appliesTo, String ingredient){
-        translationBuilder.add(template, "Smithing Template");
+        translationBuilder.add(template, formatString(templateId) + " Armor Trim");
         translationBuilder.add("item.newworld.smithing_template." + templateId + ".additions_slot_description", "Add " + ingredient);
         translationBuilder.add("item.newworld.smithing_template." + templateId +".applies_to", appliesTo);
         translationBuilder.add("item.newworld.smithing_template." + templateId + ".base_slot_description", "Add " + appliesTo);
@@ -57,7 +57,7 @@ public class NWLanguageProvider extends FabricLanguageProvider {
     public static void makeTranslation(TranslationBuilder translationBuilder, Block itemConvertible){
         translationBuilder.add(itemConvertible, formatString(Registries.BLOCK.getId(itemConvertible).getPath()));
     }
-    public static void makeTranslation(TranslationBuilder translationBuilder, EntityType entity){
+    public static void makeTranslation(TranslationBuilder translationBuilder, EntityType<?> entity){
         translationBuilder.add(entity, formatString(Registries.ENTITY_TYPE.getId(entity).getPath()));
     }
     public static void makeTranslation(TranslationBuilder translationBuilder, Identifier identifier){
@@ -124,6 +124,7 @@ public class NWLanguageProvider extends FabricLanguageProvider {
         makeTranslation(translationBuilder, NWBlocks.LOAM_TILE_STAIRS);
         makeTranslation(translationBuilder, NWBlocks.LOAM_TILE_SLAB);
         makeTranslation(translationBuilder, NWBlocks.LOAM_TILE_WALL);
+        makeTranslation(translationBuilder, NWBlocks.MOSS_SPROUTS);
 
 
         makeTranslation(translationBuilder, NWBlocks.TOMBSTONE);

@@ -33,6 +33,8 @@ public class NWModelProvider extends FabricModelProvider {
 
         generateDripstonePot(blockStateModelGenerator);
         registerTombstone(blockStateModelGenerator);
+
+        blockStateModelGenerator.registerTintableCross(NWBlocks.MOSS_SPROUTS, BlockStateModelGenerator.TintType.NOT_TINTED);
     }
 
 
@@ -56,13 +58,16 @@ public class NWModelProvider extends FabricModelProvider {
     }
 
     public static void fullWoodset(BlockStateModelGenerator blockStateModelGenerator, Woodset woodset){
-        makeStuff(blockStateModelGenerator, woodset);
-        blockStateModelGenerator.registerDoor(woodset.getDoor());
-        blockStateModelGenerator.registerTrapdoor(woodset.getTrapDoor());
-        makeParticles(blockStateModelGenerator, woodset.getPlanks(), woodset.getSign(), woodset.getWallSign());
-        makeParticles(blockStateModelGenerator, woodset.getStrippedLog(), woodset.getHangingSign(), woodset.getWallHangingSign());
+        BlockStateModelGenerator.BlockTexturePool pool = blockStateModelGenerator.registerCubeAllModelTexturePool(woodset.getPlanks());
+        pool.family(woodset.getBlockFamily());
 
-        if (woodset.isNormalWood()){
+//        makeStuff(blockStateModelGenerator, woodset);
+//        blockStateModelGenerator.registerDoor(woodset.getDoor());
+//        blockStateModelGenerator.registerTrapdoor(woodset.getTrapDoor());
+//        makeParticles(blockStateModelGenerator, woodset.getPlanks(), woodset.getSign(), woodset.getWallSign());
+//        makeParticles(blockStateModelGenerator, woodset.getStrippedLog(), woodset.getHangingSign(), woodset.getWallHangingSign());
+
+        if (woodset.isOverworldTreeWood()){
             blockStateModelGenerator.registerSimpleCubeAll(woodset.getLeaves());
         }
 

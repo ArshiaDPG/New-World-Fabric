@@ -15,7 +15,7 @@ public class AncientSmithingTemplateItem extends SmithingTemplateItem {
 
 
     public AncientSmithingTemplateItem(String name) {
-        super(makeAppliesToText(name), makeIngredientText(name), makeTitleText(name), makeBaseSlotDescriptionText(name), makeAdditionsSlotDescriptionText(name), getEmptyList(), getEmptyList());
+        super(makeAppliesToText(name), makeIngredientText(name), makeBaseSlotDescriptionText(name), makeAdditionsSlotDescriptionText(name), getEmptyList(), getEmptyList(), new Settings());
     }
     public static Text makeAdditionsSlotDescriptionText(String name){
         return Text.translatable(Util.createTranslationKey("item", Newworld.id("smithing_template." + name +".additions_slot_description")));

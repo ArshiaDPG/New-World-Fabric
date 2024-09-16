@@ -60,7 +60,7 @@ public class NWBlockLootTableProvider extends FabricBlockLootTableProvider {
         
         addDrop(woodset.getTrapDoor());
         addDrop(woodset.getDoor(), doorDrops(woodset.getDoor()));
-        if (woodset.isNormalWood()){
+        if (woodset.isOverworldTreeWood()){
             addDrop(woodset.getLeaves(), leavesDrops(woodset.getLeaves(), sapling, VanillaBlockLootTableGenerator.SAPLING_DROP_CHANCE));
             addDrop(sapling);
         }

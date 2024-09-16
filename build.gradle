@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '1.6.+'
+    id 'fabric-loom' version '1.7.+'
     id 'maven-publish'
     id "me.shedaniel.unified-publishing" version "0.1.+"
 }
@@ -29,7 +29,7 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-    modImplementation "com.github.glitchfiend:TerraBlender-fabric:${project.minecraft_version}-${project.terrablender_version}"
+    modImplementation "com.github.glitchfiend:TerraBlender-fabric:${project.terrablender_version}"
     modImplementation include("com.terraformersmc.terraform-api:terraform-wood-api-v1:${project.terraform_version}")
 
 //    modLocalRuntime "maven.modrinth:emi:${project.emi}"

@@ -71,7 +71,7 @@ public class BurialSiteFeature extends Feature<DefaultFeatureConfig> {
                     generateTombstone(world, currentPos, 0.3f);
                     if (world.getRandom().nextFloat() > 0.6){
                         world.getRegistryManager().getOptional(RegistryKeys.CONFIGURED_FEATURE).flatMap((registry) ->
-                                registry.getEntry(UndergroundConfiguredFeatures.SCULK_PATCH_DEEP_DARK)).ifPresent((reference) ->
+                                registry.getEntry(UndergroundConfiguredFeatures.SCULK_PATCH_DEEP_DARK.getValue())).ifPresent((reference) ->
                                 reference.value().generate(world, context.getGenerator(), world.getRandom(), currentPos));
                     }
                 }

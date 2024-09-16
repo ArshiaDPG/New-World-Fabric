@@ -18,7 +18,7 @@ public class NWBoatTypes {
     }
 
 
-    public static final TerraformBoatType FIR = makeBoat("fir", NWBlocks.FIR_PLANKS, NWItems.FIR_BOAT, NWItems.FIR_CHEST_BOAT);
+    public static final TerraformBoatType FIR = makeBoat("fir", NWBlocks.FIR.getPlanks(), NWItems.FIR_BOAT, NWItems.FIR_CHEST_BOAT);
 
 
     public static void init() {

@@ -1,4 +1,4 @@
-package net.digitalpear.newworld.common.datagens.worldgen.structures;
+package net.digitalpear.newworld.common.datagens.providers.worldgen.structures;
 
 import net.digitalpear.newworld.init.worldgen.structures.NWProcessorLists;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -22,7 +22,7 @@ public class NWProcessorListProvider extends FabricDynamicRegistryProvider {
     }
 
     private void add(RegistryWrapper.WrapperLookup registries, Entries entries, RegistryKey<StructureProcessorList> biome) {
-        final RegistryWrapper.Impl<StructureProcessorList> biomeRegistry = registries.getWrapperOrThrow(RegistryKeys.PROCESSOR_LIST);
+        final RegistryWrapper.Impl<StructureProcessorList> biomeRegistry = registries.getOrThrow(RegistryKeys.PROCESSOR_LIST);
 
         entries.add(biome, biomeRegistry.getOrThrow(biome).value());
     }

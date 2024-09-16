@@ -1,4 +1,4 @@
-package net.digitalpear.newworld.common.datagens.worldgen.structures;
+package net.digitalpear.newworld.common.datagens.providers.worldgen.structures;
 
 import net.digitalpear.newworld.init.worldgen.structures.NWTemplatePools;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -22,7 +22,7 @@ public class NWTemplatePoolProvider extends FabricDynamicRegistryProvider {
     }
 
     private void add(RegistryWrapper.WrapperLookup registries, Entries entries, RegistryKey<StructurePool> biome) {
-        final RegistryWrapper.Impl<StructurePool> biomeRegistry = registries.getWrapperOrThrow(RegistryKeys.TEMPLATE_POOL);
+        final RegistryWrapper.Impl<StructurePool> biomeRegistry = registries.getOrThrow(RegistryKeys.TEMPLATE_POOL);
 
         entries.add(biome, biomeRegistry.getOrThrow(biome).value());
     }

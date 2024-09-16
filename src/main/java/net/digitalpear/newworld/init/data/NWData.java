@@ -37,7 +37,7 @@ public class NWData {
         CompostingChanceRegistry compostingChanceRegistry = CompostingChanceRegistryImpl.INSTANCE;
 
         compostingChanceRegistry.add(NWBlocks.FIR_SAPLING, 0.3F);
-        compostingChanceRegistry.add(NWBlocks.FIR_LEAVES, 0.3F);
+        compostingChanceRegistry.add(NWBlocks.FIR.getLeaves(), 0.3F);
     }
 
     public static void registerLootTableModifications(){
@@ -88,7 +88,7 @@ public class NWData {
             addFlammable(woodset.getMosaicStairs(), 5, 20);
             addFlammable(woodset.getMosaicSlab(), 5, 20);
         }
-        if (woodset.isNormalWood()){
+        if (woodset.isOverworldTreeWood()){
             addFlammable(woodset.getLeaves(), 30, 60);
         }
 

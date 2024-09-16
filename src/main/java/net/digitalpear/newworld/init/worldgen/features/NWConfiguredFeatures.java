@@ -95,7 +95,7 @@ public class NWConfiguredFeatures {
         /*
             Wooded Meadow Features
          */
-        ConfiguredFeatures.register(featureRegisterable, FALLEN_FIR_LOG, NWFeature.FALLEN_LOG, new SingleStateFeatureConfig(NWBlocks.FIR_LOG.getDefaultState()));
+        ConfiguredFeatures.register(featureRegisterable, FALLEN_FIR_LOG, NWFeature.FALLEN_LOG, new SingleStateFeatureConfig(NWBlocks.FIR.getLog().getDefaultState()));
 
 
 
@@ -108,7 +108,7 @@ public class NWConfiguredFeatures {
 
 
         ConfiguredFeatures.register(featureRegisterable, PATCH_BERRY_WOODED_MEADOW, Feature.RANDOM_PATCH, ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(Blocks.SWEET_BERRY_BUSH.getDefaultState().with(SweetBerryBushBlock.AGE, 2))), VALID_BERRY_BUSH_BLOCKS, 60));
-        ConfiguredFeatures.register(featureRegisterable, GLOW_LICHEN_WOODED_MEADOW, Feature.MULTIFACE_GROWTH, new MultifaceGrowthFeatureConfig((MultifaceGrowthBlock) Blocks.GLOW_LICHEN,20, true, true, true, 0.5f, RegistryEntryList.of(Block::getRegistryEntry, NWBlocks.FIR_LOG, Blocks.MOSSY_COBBLESTONE)));
+        ConfiguredFeatures.register(featureRegisterable, GLOW_LICHEN_WOODED_MEADOW, Feature.MULTIFACE_GROWTH, new MultifaceGrowthFeatureConfig((MultifaceGrowthBlock) Blocks.GLOW_LICHEN,20, true, true, true, 0.5f, RegistryEntryList.of(Block::getRegistryEntry, NWBlocks.FIR.getLog(), Blocks.MOSSY_COBBLESTONE)));
         ConfiguredFeatures.register(featureRegisterable, FIR_SPAWN, Feature.RANDOM_SELECTOR, new RandomFeatureConfig(List.of(new RandomFeatureEntry(firBeesChecked, 0.06f), new RandomFeatureEntry(spruceChecked, 0.1f)), firChecked));
         ConfiguredFeatures.register(featureRegisterable, FIR_MEADOW, Feature.RANDOM_SELECTOR, new RandomFeatureConfig(List.of(new RandomFeatureEntry(grownFirBeesChecked, 1.0f)), grownFirChecked));
 
@@ -144,10 +144,10 @@ public class NWConfiguredFeatures {
     private static TreeFeatureConfig.Builder grownFirConfig() {
         return new TreeFeatureConfig.Builder(
 
-                BlockStateProvider.of(NWBlocks.FIR_LOG),
+                BlockStateProvider.of(NWBlocks.FIR.getLog()),
                 new StraightTrunkPlacer(6, 1, 2),
 
-                BlockStateProvider.of(NWBlocks.FIR_LEAVES),
+                BlockStateProvider.of(NWBlocks.FIR.getLog()),
                 new SpruceFoliagePlacer(
                         UniformIntProvider.create(1, 3),
                         UniformIntProvider.create(0, 1),

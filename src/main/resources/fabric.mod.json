@@ -2,7 +2,6 @@
   "schemaVersion": 1,
   "id": "newworld",
   "version": "${version}",
-
   "name": "New World",
   "description": "A small mod that adds a biome to the world.",
   "authors": [

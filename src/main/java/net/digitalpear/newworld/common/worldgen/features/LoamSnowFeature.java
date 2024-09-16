@@ -4,10 +4,10 @@ import com.mojang.serialization.Codec;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.FluidTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
+import net.minecraft.world.Heightmap;
 import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
@@ -55,7 +55,7 @@ public class LoamSnowFeature extends Feature<DefaultFeatureConfig> {
             }
         }
         return random.nextInt(9) < 7
-                && currentPos.getY() < world.getTopY()
+                && currentPos.getY() < world.getTopY(Heightmap.Type.MOTION_BLOCKING, currentPos.getX(), currentPos.getZ())
                 && currentPos.getY() > world.getBottomY()
                 && world.getBlockState(currentPos).isOf(Blocks.CALCITE);
     }

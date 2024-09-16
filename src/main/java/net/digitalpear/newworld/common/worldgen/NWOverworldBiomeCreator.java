@@ -54,7 +54,7 @@ public class NWOverworldBiomeCreator {
         DefaultBiomeFeatures.addBatsAndMonsters(spawnBuilder);
 
 
-        addBasicFeatures(featureBuilder);
+
 
         featureBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, NWPlacedFeatures.TREES_FIR);
         featureBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, NWPlacedFeatures.GLOW_LICHEN_WOODED_MEADOW);
@@ -68,6 +68,7 @@ public class NWOverworldBiomeCreator {
 
 
         //Default biome features, DO NOT CHANGE THIS
+        addBasicFeatures(featureBuilder);
         DefaultBiomeFeatures.addPlainsTallGrass(featureBuilder);
         DefaultBiomeFeatures.addDefaultOres(featureBuilder);
         DefaultBiomeFeatures.addDefaultDisks(featureBuilder);

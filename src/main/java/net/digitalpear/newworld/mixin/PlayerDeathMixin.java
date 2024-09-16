@@ -90,7 +90,6 @@ public abstract class PlayerDeathMixin {
                      */
                     placeOrDropStack(tombstoneBlockEntity, currentStack.copyWithCount(tombstoneStack.getCount() + currentStack.getCount() - tombstoneStack.getMaxCount()));
                     currentStack.copyAndEmpty();
-
                 }
                 else{
                     tombstoneStack.setCount(tombstoneStack.getCount() + currentStack.getCount());

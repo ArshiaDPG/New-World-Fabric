@@ -15,14 +15,14 @@ public class NewWorldClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), NWBlocks.FIR_SAPLING, NWBlocks.POTTED_FIR_SAPLING, NWBlocks.FIR_LEAVES, NWBlocks.POTTED_POINTED_DRIPSTONE);
+
+        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), NWBlocks.FIR_SAPLING, NWBlocks.POTTED_FIR_SAPLING, NWBlocks.FIR.getLeaves(), NWBlocks.POTTED_POINTED_DRIPSTONE);
 
         TerraformBoatClientHelper.registerModelLayers(Newworld.id("fir"), false);
-
-
 
 //        TexturedRenderLayers.SIGN_TYPE_TEXTURES.put(NWBlocks.FIR.getWoodType(), TexturedRenderLayers.getSignTextureId(NWBlocks.FIR.getWoodType()));
 //        TexturedRenderLayers.HANGING_SIGN_TYPE_TEXTURES.put(NWBlocks.FIR.getWoodType(), TexturedRenderLayers.getHangingSignTextureId(NWBlocks.FIR.getWoodType()));
 
     }
+
 }

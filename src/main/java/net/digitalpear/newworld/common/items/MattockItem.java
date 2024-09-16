@@ -6,6 +6,6 @@ import net.minecraft.item.ToolMaterial;
 
 public class MattockItem extends MiningToolItem {
     public MattockItem(ToolMaterial toolMaterial, Settings properties) {
-        super(toolMaterial, NWBlockTags.MATTOCK_MINEABLE, properties);
+        super(toolMaterial, NWBlockTags.MATTOCK_MINEABLE, 0f, -3.0f, properties);
     }
 }

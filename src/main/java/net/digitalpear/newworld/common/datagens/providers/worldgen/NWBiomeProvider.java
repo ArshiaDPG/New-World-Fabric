@@ -1,4 +1,4 @@
-package net.digitalpear.newworld.common.datagens.worldgen;
+package net.digitalpear.newworld.common.datagens.providers.worldgen;
 
 import net.digitalpear.newworld.init.worldgen.NWBiomes;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -23,7 +23,7 @@ public class NWBiomeProvider extends FabricDynamicRegistryProvider {
     }
 
     private void add(RegistryWrapper.WrapperLookup registries, Entries entries, RegistryKey<Biome> biome) {
-        final RegistryWrapper.Impl<Biome> biomeRegistry = registries.getWrapperOrThrow(RegistryKeys.BIOME);
+        final RegistryWrapper.Impl<Biome> biomeRegistry = registries.getOrThrow(RegistryKeys.BIOME);
 
         entries.add(biome, biomeRegistry.getOrThrow(biome).value());
     }

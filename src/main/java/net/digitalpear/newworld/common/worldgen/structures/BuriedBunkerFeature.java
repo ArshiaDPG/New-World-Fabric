@@ -1,7 +1,6 @@
 package net.digitalpear.newworld.common.worldgen.structures;
 
 import com.mojang.serialization.MapCodec;
-import net.digitalpear.newworld.Newworld;
 import net.digitalpear.newworld.init.NWStructureTypes;
 import net.digitalpear.newworld.init.worldgen.structures.NWTemplatePools;
 import net.minecraft.registry.RegistryEntryLookup;
@@ -9,7 +8,6 @@ import net.minecraft.registry.RegistryKeys;
 import net.minecraft.structure.StructureLiquidSettings;
 import net.minecraft.structure.pool.StructurePool;
 import net.minecraft.structure.pool.StructurePoolBasedGenerator;
-import net.minecraft.structure.pool.StructurePools;
 import net.minecraft.structure.pool.alias.StructurePoolAliasLookup;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
@@ -52,14 +50,7 @@ public class BuriedBunkerFeature extends Structure {
             return Optional.empty();
         }
         BlockPos blockpos = context.chunkPos().getCenterAtY(0);
-        RegistryEntryLookup<StructurePool> poolCollector = context.dynamicRegistryManager().getWrapperOrThrow(RegistryKeys.TEMPLATE_POOL);
-
-        if (poolCollector.getOrThrow(NWTemplatePools.BURIED_BUNKER).getKey().get() != StructurePools.EMPTY){
-            Newworld.LOGGER.info("Buried Bunker template pool was found.");
-        }
-        else{
-            Newworld.LOGGER.info("Buried Bunker template pool was NOT found.");
-        }
+        RegistryEntryLookup<StructurePool> poolCollector = context.dynamicRegistryManager().getOrThrow(RegistryKeys.TEMPLATE_POOL);
 
         Optional<StructurePosition> structurePiecesGenerator = StructurePoolBasedGenerator.generate(context,
                 poolCollector.getOrThrow(NWTemplatePools.BURIED_BUNKER),

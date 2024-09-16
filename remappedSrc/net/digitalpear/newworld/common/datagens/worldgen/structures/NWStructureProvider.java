@@ -1,4 +1,4 @@
-package net.digitalpear.newworld.common.datagens.worldgen.structures;
+package net.digitalpear.newworld.common.datagens.providers.worldgen.structures;
 
 import net.digitalpear.newworld.init.worldgen.structures.NWStructures;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;

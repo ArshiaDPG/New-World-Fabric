@@ -1,4 +1,4 @@
-package net.digitalpear.newworld.common.datagens.worldgen;
+package net.digitalpear.newworld.common.datagens.providers.worldgen;
 
 import net.digitalpear.newworld.init.worldgen.features.NWConfiguredFeatures;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -22,7 +22,7 @@ public class NWConfiguredFeatureProvider extends FabricDynamicRegistryProvider {
         NWConfiguredFeatures.features.forEach(configuredFeatureRegistryKey -> add(registries, entries, configuredFeatureRegistryKey));
     }
     private void add(RegistryWrapper.WrapperLookup registries, Entries entries, RegistryKey<ConfiguredFeature<?, ?>> resourceKey) {
-        RegistryWrapper.Impl<ConfiguredFeature<?, ?>> configuredFeatureRegistryLookup = registries.getWrapperOrThrow(RegistryKeys.CONFIGURED_FEATURE);
+        RegistryWrapper.Impl<ConfiguredFeature<?, ?>> configuredFeatureRegistryLookup = registries.getOrThrow(RegistryKeys.CONFIGURED_FEATURE);
 
         entries.add(resourceKey, configuredFeatureRegistryLookup.getOrThrow(resourceKey).value());
     }

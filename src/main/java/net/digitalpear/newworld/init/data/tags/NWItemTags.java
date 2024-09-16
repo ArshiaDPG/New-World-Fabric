@@ -7,6 +7,7 @@ import net.minecraft.registry.tag.TagKey;
 
 public class NWItemTags {
     public static final TagKey<Item> FIR_LOGS = of("fir_logs");
+    public static final TagKey<Item> ANCIENT_TOOL_MATERIALS = of("ancient_tool_material");
 
 
     private static TagKey<Item> of(String id) {
