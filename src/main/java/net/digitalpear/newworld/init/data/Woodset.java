@@ -509,19 +509,19 @@ public class Woodset {
     public static LeavesBlock createLeavesBlock(BlockSoundGroup soundGroup) {
         return new LeavesBlock(AbstractBlock.Settings.create().mapColor(MapColor.DARK_GREEN).strength(0.2F).ticksRandomly().sounds(soundGroup).nonOpaque().allowsSpawning(Blocks::canSpawnOnLeaves).suffocates(Blocks::never).blockVision(Blocks::never).burnable().pistonBehavior(PistonBehavior.DESTROY).solidBlock(Blocks::never));
     }
-    public static void addToBuildingTab(Item proceedingItem, Woodset woodset){
+    public void addToBuildingTab(Item proceedingItem){
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> {
-            entries.addAfter(proceedingItem, woodset.getPlanks(), woodset.getStairs(), woodset.getSlab(),
-                    woodset.getFence(), woodset.getFenceGate(),
-                    woodset.getDoor(), woodset.getTrapDoor(),
-                    woodset.getPressurePlate(), woodset.getButton());
-            if (woodset.getWoodPreset() != WoodPreset.BAMBOO){
-                entries.addAfter(proceedingItem, woodset.getWood(), woodset.getStrippedWood());
+            entries.addAfter(proceedingItem, this.getPlanks(), this.getStairs(), this.getSlab(),
+                    this.getFence(), this.getFenceGate(),
+                    this.getDoor(), this.getTrapDoor(),
+                    this.getPressurePlate(), this.getButton());
+            if (this.getWoodPreset() != WoodPreset.BAMBOO){
+                entries.addAfter(proceedingItem, this.getWood(), this.getStrippedWood());
             }
             else{
-                entries.addAfter(proceedingItem, woodset.getMosaic(), woodset.getMosaicStairs(), woodset.getMosaicSlab());
+                entries.addAfter(proceedingItem, this.getMosaic(), this.getMosaicStairs(), this.getMosaicSlab());
             }
-            entries.addAfter(proceedingItem, woodset.getLog(), woodset.getStrippedLog());
+            entries.addAfter(proceedingItem, this.getLog(), this.getStrippedLog());
         });
     }
 

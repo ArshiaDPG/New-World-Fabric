@@ -15,7 +15,7 @@ public class NewWorldClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), NWBlocks.FIR_SAPLING, NWBlocks.POTTED_FIR_SAPLING, NWBlocks.FIR_LEAVES, NWBlocks.POTTED_POINTED_DRIPSTONE);
+        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), NWBlocks.MOSS_SPROUTS, NWBlocks.FIR_SAPLING, NWBlocks.POTTED_FIR_SAPLING, NWBlocks.FIR_LEAVES, NWBlocks.POTTED_POINTED_DRIPSTONE);
 
         TerraformBoatClientHelper.registerModelLayers(Newworld.id("fir"), false);
 

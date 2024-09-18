@@ -125,6 +125,7 @@ public class NWLanguageProvider extends FabricLanguageProvider {
         makeTranslation(translationBuilder, NWBlocks.LOAM_TILE_SLAB);
         makeTranslation(translationBuilder, NWBlocks.LOAM_TILE_WALL);
 
+        makeTranslation(translationBuilder, NWBlocks.MOSS_SPROUTS);
 
         makeTranslation(translationBuilder, NWBlocks.TOMBSTONE);
         makeTranslation(translationBuilder, NWItems.ILLAGER_TOME);

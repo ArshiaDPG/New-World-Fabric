@@ -10,6 +10,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.enums.BlockFace;
 import net.minecraft.data.client.*;
+import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
@@ -33,6 +34,8 @@ public class NWModelProvider extends FabricModelProvider {
 
         generateDripstonePot(blockStateModelGenerator);
         registerTombstone(blockStateModelGenerator);
+
+        blockStateModelGenerator.registerTintableCrossBlockState(NWBlocks.MOSS_SPROUTS, BlockStateModelGenerator.TintType.NOT_TINTED);
     }
 
 
@@ -53,6 +56,8 @@ public class NWModelProvider extends FabricModelProvider {
         itemModelGenerator.register(NWItems.ILLAGER_TOME, Models.GENERATED);
 
         itemModelGenerator.register(NWItems.JEB_BOOK, Models.GENERATED);
+
+        itemModelGenerator.register(NWBlocks.MOSS_SPROUTS.asItem(), Models.GENERATED);
     }
 
     public static void fullWoodset(BlockStateModelGenerator blockStateModelGenerator, Woodset woodset){

@@ -59,7 +59,7 @@ public class NWItems {
         });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> {
             entries.addAfter(Items.SPRUCE_LOG, NWBlocks.FIR_LOG);
-                });
+        });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(entries -> {
             entries.addAfter(Items.SPRUCE_CHEST_BOAT, FIR_BOAT, FIR_CHEST_BOAT);
             entries.addAfter(Items.NETHERITE_HOE, ANCIENT_MATTOCK);

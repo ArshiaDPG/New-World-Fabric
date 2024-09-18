@@ -1,6 +1,7 @@
 package net.digitalpear.newworld.init;
 
 import net.digitalpear.newworld.Newworld;
+import net.digitalpear.newworld.common.blocks.MossSproutsBlock;
 import net.digitalpear.newworld.common.blocks.TombstoneBlock;
 import net.digitalpear.newworld.init.data.Woodset;
 import net.digitalpear.newworld.init.worldgen.NWSaplingGenerators;
@@ -90,6 +91,8 @@ public class NWBlocks {
     public static final Block LOAM_TILE_SLAB = createBlockWithItem("loam_tile_slab", new SlabBlock(AbstractBlock.Settings.copy(LOAM_TILES)));
     public static final Block LOAM_TILE_WALL = createBlockWithItem("loam_tile_wall", new WallBlock(AbstractBlock.Settings.copy(LOAM_TILES)));
 
+    public static final Block MOSS_SPROUTS = createBlockWithItem("moss_sprouts", new MossSproutsBlock(AbstractBlock.Settings.copy(Blocks.SHORT_GRASS).offset(AbstractBlock.OffsetType.XZ).sounds(BlockSoundGroup.MOSS_CARPET)));
+
     public static final Block TOMBSTONE = createBlockWithoutItem("tombstone", new TombstoneBlock(AbstractBlock.Settings.create().mapColor(Blocks.DEEPSLATE.getDefaultMapColor()).strength(0.7f, 1200).pistonBehavior(PistonBehavior.IGNORE).sounds(BlockSoundGroup.POLISHED_DEEPSLATE).suffocates((state, world, pos) -> false).nonOpaque()));
 
     /*
@@ -98,14 +101,18 @@ public class NWBlocks {
     public static final Block POTTED_POINTED_DRIPSTONE = createBlockWithoutItem("potted_pointed_dripstone", new FlowerPotBlock(Blocks.POINTED_DRIPSTONE, AbstractBlock.Settings.copy(Blocks.POTTED_ACACIA_SAPLING)));
 
     public static void init(){
-        Woodset.addToBuildingTab(Items.SPRUCE_BUTTON, FIR);
+        FIR.addToBuildingTab(Items.SPRUCE_BUTTON);
         
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> {
             entries.addAfter(Items.SPRUCE_LEAVES, FIR_LEAVES);
             entries.addAfter(Items.SPRUCE_SAPLING, FIR_SAPLING);
         });
 
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(Items.MUD, LOAM));
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> {
+            entries.addAfter(Items.MUD, LOAM);
+            entries.addAfter(Items.SHORT_GRASS, NWBlocks.MOSS_SPROUTS);
+
+        });
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> {
             entries.addAfter(Items.MUD_BRICK_WALL, LOAM, LOAM_STAIRS, LOAM_WALL,
