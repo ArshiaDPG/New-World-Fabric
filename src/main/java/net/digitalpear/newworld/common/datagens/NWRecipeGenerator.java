@@ -55,27 +55,27 @@ public class NWRecipeGenerator extends RecipeGenerator {
         createStoneSetRecipes(exporter, NWBlocks.LOAM_TILES, NWBlocks.LOAM_TILE_STAIRS, NWBlocks.LOAM_TILE_SLAB, NWBlocks.LOAM_TILE_WALL);
 
         StonecuttingRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(NWBlocks.LOAM), RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_STAIRS);
-        StonecuttingRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(NWBlocks.LOAM), RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_SLAB);
+        StonecuttingRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(NWBlocks.LOAM), RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_SLAB, 2);
         StonecuttingRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(NWBlocks.LOAM), RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_WALL);
         StonecuttingRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(NWBlocks.LOAM), RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_BRICKS);
         StonecuttingRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(NWBlocks.LOAM), RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_BRICK_STAIRS);
-        StonecuttingRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(NWBlocks.LOAM), RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_BRICK_SLAB);
+        StonecuttingRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(NWBlocks.LOAM), RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_BRICK_SLAB, 2);
         StonecuttingRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(NWBlocks.LOAM), RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_BRICK_WALL);
         StonecuttingRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(NWBlocks.LOAM), RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_TILES);
         StonecuttingRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(NWBlocks.LOAM), RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_TILE_STAIRS);
-        StonecuttingRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(NWBlocks.LOAM), RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_TILE_SLAB);
+        StonecuttingRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(NWBlocks.LOAM), RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_TILE_SLAB, 2);
         StonecuttingRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(NWBlocks.LOAM), RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_TILE_WALL);
 
         StonecuttingRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(NWBlocks.LOAM_BRICKS), RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_BRICK_STAIRS);
-        StonecuttingRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(NWBlocks.LOAM_BRICKS), RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_BRICK_SLAB);
+        StonecuttingRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(NWBlocks.LOAM_BRICKS), RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_BRICK_SLAB, 2);
         StonecuttingRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(NWBlocks.LOAM_BRICKS), RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_BRICK_WALL);
         StonecuttingRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(NWBlocks.LOAM_BRICKS), RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_TILES);
         StonecuttingRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(NWBlocks.LOAM_BRICKS), RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_TILE_STAIRS);
-        StonecuttingRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(NWBlocks.LOAM_BRICKS), RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_TILE_SLAB);
+        StonecuttingRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(NWBlocks.LOAM_BRICKS), RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_TILE_SLAB, 2);
         StonecuttingRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(NWBlocks.LOAM_BRICKS), RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_TILE_WALL);
 
         StonecuttingRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(NWBlocks.LOAM_TILES), RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_TILE_STAIRS);
-        StonecuttingRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(NWBlocks.LOAM_TILES), RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_TILE_SLAB);
+        StonecuttingRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(NWBlocks.LOAM_TILES), RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_TILE_SLAB, 2);
         StonecuttingRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(NWBlocks.LOAM_TILES), RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_TILE_WALL);
 
 
@@ -123,7 +123,7 @@ public class NWRecipeGenerator extends RecipeGenerator {
 
         Arrays.stream(pieces).toList().forEach(recipeJsonBuilder::input);
 
-        recipeJsonBuilder.offerTo(exporter, Registries.ITEM.getId(fullTemplate).withSuffixedPath("_from_piece_combination"));
+        recipeJsonBuilder.offerTo(exporter, Registries.ITEM.getId(fullTemplate).withSuffixedPath("_from_piece_combination").getPath());
     }
 
     public void offerUpgradeRecipe(RecipeExporter exporter, Item template, Item result) {

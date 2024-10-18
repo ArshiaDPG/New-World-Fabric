@@ -54,7 +54,7 @@ public class NWItemTagProvider extends FabricTagProvider<Item> {
     }
     private void addMineableAxe(Woodset woodset, TagKey<Item> logs){
         getOrCreateTagBuilder(logs).add(woodset.getLog().asItem()).add(woodset.getStrippedLog().asItem());
-        if (!woodset.isBambooVariant()){
+        if (woodset.notBambooVariant()){
             getOrCreateTagBuilder(logs).add(woodset.getWood().asItem()).add(woodset.getStrippedWood().asItem());
         }
         if (woodset.isOverworldTreeWood()){

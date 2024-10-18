@@ -3,10 +3,12 @@ package net.digitalpear.newworld.init;
 
 import com.terraformersmc.terraform.boat.api.TerraformBoatType;
 import com.terraformersmc.terraform.boat.api.TerraformBoatTypeRegistry;
-import com.terraformersmc.terraform.boat.impl.item.TerraformBoatItem;
 import net.digitalpear.newworld.Newworld;
 import net.digitalpear.newworld.common.items.*;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.vehicle.AbstractBoatEntity;
+import net.minecraft.item.BoatItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.item.Items;
@@ -27,8 +29,8 @@ public class NWItems {
     }
     public static final RegistryKey<TerraformBoatType> FIR_BOAT_TYPE = TerraformBoatTypeRegistry.createKey(Newworld.id("fir"));
 
-    private static Item registerBoatItem(String name, boolean chest, RegistryKey<TerraformBoatType> registryKey){
-        return registerItem(name, settings -> new TerraformBoatItem(registryKey, chest, new Item.Settings().maxCount(1)));
+    private static Item registerBoatItem(String name, EntityType<? extends AbstractBoatEntity> boat){
+        return registerItem(name, settings -> new BoatItem(boat, new Item.Settings().maxCount(1)));
     }
     private static Item registerItem(String name, Function<Item.Settings, Item> factory, Item.Settings settings) {
         Item item = factory.apply(settings.registryKey(keyOf(name)));
@@ -39,8 +41,8 @@ public class NWItems {
     }
 
 
-    public static final Item FIR_BOAT = registerBoatItem("fir_boat", false, FIR_BOAT_TYPE);
-    public static final Item FIR_CHEST_BOAT = registerBoatItem("fir_chest_boat", true, FIR_BOAT_TYPE);
+    public static final Item FIR_BOAT = registerBoatItem("fir_boat", NWBlocks.FIR.getBoat());
+    public static final Item FIR_CHEST_BOAT = registerBoatItem("fir_chest_boat", NWBlocks.FIR.getChestBoat());
     public static final Item FIR_SIGN = NWBlocks.FIR.getSignItem();
     public static final Item FIR_HANGING_SIGN = NWBlocks.FIR.getHangingSignItem();
 

@@ -82,7 +82,7 @@ public class NWBlockTagProvider extends FabricTagProvider<Block> {
             getOrCreateTagBuilder(BlockTags.AXE_MINEABLE).add(block);
         });
         getOrCreateTagBuilder(logs).add(woodset.getLog()).add(woodset.getStrippedLog());
-        if (!woodset.isBambooVariant()){
+        if (woodset.notBambooVariant()){
             getOrCreateTagBuilder(logs).add(woodset.getWood()).add(woodset.getStrippedWood());
         }
         if (woodset.isOverworldTreeWood()){

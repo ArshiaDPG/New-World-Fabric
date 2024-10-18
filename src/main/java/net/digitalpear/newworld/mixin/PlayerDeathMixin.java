@@ -9,6 +9,7 @@ import net.digitalpear.newworld.init.data.tags.NWBlockTags;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.collection.DefaultedList;
@@ -55,8 +56,9 @@ public abstract class PlayerDeathMixin {
                             itemStack.decrement(1);
                             decrementedTombstone = true;
                         }
-
-                        placeOrDropStack(tombstoneBlockEntity, itemStack);
+                        if (world instanceof ServerWorld){
+                            placeOrDropStack((ServerWorld) world, tombstoneBlockEntity, itemStack);
+                        }
                         itemStacks.set(i, ItemStack.EMPTY);
                     }
                 }
@@ -66,7 +68,7 @@ public abstract class PlayerDeathMixin {
     }
 
     @Unique
-    private void placeOrDropStack(TombstoneBlockEntity tombstoneBlockEntity, ItemStack currentStack){
+    private void placeOrDropStack(ServerWorld world, TombstoneBlockEntity tombstoneBlockEntity, ItemStack currentStack){
         int compatibleSlot = tombstoneBlockEntity.getCompatibleSlot(currentStack);
 
         if (!currentStack.isEmpty() && compatibleSlot >= 0){
@@ -88,7 +90,7 @@ public abstract class PlayerDeathMixin {
                     /*
                         If there is more left over then try to place it in another slot.
                      */
-                    placeOrDropStack(tombstoneBlockEntity, currentStack.copyWithCount(tombstoneStack.getCount() + currentStack.getCount() - tombstoneStack.getMaxCount()));
+                    placeOrDropStack(world, tombstoneBlockEntity, currentStack.copyWithCount(tombstoneStack.getCount() + currentStack.getCount() - tombstoneStack.getMaxCount()));
                     currentStack.copyAndEmpty();
                 }
                 else{
@@ -97,7 +99,7 @@ public abstract class PlayerDeathMixin {
             }
         }
         else{
-            this.player.dropStack(currentStack);
+            this.player.dropStack(world, currentStack);
         }
     }
 

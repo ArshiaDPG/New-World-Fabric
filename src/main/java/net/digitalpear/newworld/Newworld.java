@@ -26,7 +26,7 @@ public class Newworld implements ModInitializer {
         NWBlocks.init();
         NWBlockEntityTypes.init();
 
-        NWBoatTypes.init();
+        NWEntityTypes.init();
         NWItems.init();
 
         NWData.init();
