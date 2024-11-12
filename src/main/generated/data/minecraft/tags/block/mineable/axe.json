@@ -1,18 +1,23 @@
 {
   "values": [
-    "#newworld:fir_logs",
     "newworld:fir_planks",
+    "newworld:fir_log",
+    "newworld:stripped_fir_log",
+    "newworld:fir_wood",
+    "newworld:stripped_fir_wood",
+    "newworld:fir_leaves",
     "newworld:fir_stairs",
     "newworld:fir_slab",
     "newworld:fir_fence",
     "newworld:fir_fence_gate",
-    "newworld:fir_door",
-    "newworld:fir_trapdoor",
     "newworld:fir_pressure_plate",
     "newworld:fir_button",
+    "newworld:fir_door",
+    "newworld:fir_trapdoor",
     "newworld:fir_sign",
     "newworld:fir_wall_sign",
     "newworld:fir_hanging_sign",
-    "newworld:fir_wall_hanging_sign"
+    "newworld:fir_wall_hanging_sign",
+    "#newworld:fir_logs"
   ]
 }

@@ -34,11 +34,9 @@
     "foliage_provider": {
       "type": "minecraft:simple_state_provider",
       "state": {
-        "Name": "newworld:fir_leaves",
+        "Name": "newworld:fir_log",
         "Properties": {
-          "distance": "7",
-          "persistent": "false",
-          "waterlogged": "false"
+          "axis": "y"
         }
       }
     },

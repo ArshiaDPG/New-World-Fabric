@@ -16,5 +16,7 @@ public class NWBlockEntityTypes {
     }
 
     public static final BlockEntityType<TombstoneBlockEntity> TOMBSTONE = register("tombstone", TombstoneBlockEntity::new, NWBlocks.TOMBSTONE);
+
+
     public static void init(){}
 }

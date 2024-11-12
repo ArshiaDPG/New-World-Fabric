@@ -1,4 +1,4 @@
-// 1.21	2024-07-14T13:28:08.6375188	New World/Tags for minecraft:block
+// 1.21.3	2024-11-12T12:10:31.5228781	New World/Tags for minecraft:block
 a82b6834534ce065ff16e8f8256f1fa26243f1b7 data\minecraft\tags\block\wall_signs.json
 615ea889f0871604cf96fe2a3fffab5e014e971c data\minecraft\tags\block\stairs.json
 88fb931decfd59ed03ba8759417c2ecbef040a3e data\minecraft\tags\block\leaves.json
@@ -12,9 +12,9 @@ db91eaa6168fef9805d22ff605a38650214403a7 data\minecraft\tags\block\walls.json
 9432c56432b8be4a4e24441479371d1cdcd5501d data\minecraft\tags\block\saplings.json
 8665de82dd3d3a1351ce58f78108214f359104b0 data\newworld\tags\block\mattock_mineable.json
 9cbd98ee10efc15e1590434ac4fc66589b754ba1 data\minecraft\tags\block\wooden_fences.json
-10da9a9458302aba151f554765301fa21a63d203 data\minecraft\tags\block\mineable\axe.json
+48e08f24c2220a08dc9c9c1f1b391b7dc53e099d data\minecraft\tags\block\mineable\axe.json
+b5ba6e7b8babeb5b91b9c1faf3f2eb5921884acc data\newworld\tags\block\fir_logs.json
 983bb59e22573dbc1efbecfe1b11ee1be9fa57fa data\minecraft\tags\block\mineable\pickaxe.json
-ac38b843f9bf0c00ec9faf74507be917d8fd9863 data\newworld\tags\block\fir_logs.json
 2ac84d833fc79354a9ad18202401e18ec52441c1 data\minecraft\tags\block\mineable\shovel.json
 78711de9437bab30cd053e87bd069cf305f567bc data\minecraft\tags\block\wooden_trapdoors.json
 3ceb97bdc18f828ff1916f592160a8d96ce61e57 data\minecraft\tags\block\wall_hanging_signs.json
@@ -22,7 +22,6 @@ ac38b843f9bf0c00ec9faf74507be917d8fd9863 data\newworld\tags\block\fir_logs.json
 fd3b0b387684bb98d2be5e9a51c2b91ef2db8508 data\minecraft\tags\block\wooden_doors.json
 a05ffb0112a755a264958d236d52fe9de224beeb data\minecraft\tags\block\logs_that_burn.json
 18c247502a1009e063f940978676924fea90d23c data\minecraft\tags\block\wooden_slabs.json
-88fb931decfd59ed03ba8759417c2ecbef040a3e data\minecraft\tags\block\mineable\hoe.json
 c24bb40fbf45e52f62b1318a9f3562d3c1f87b72 data\minecraft\tags\block\standing_signs.json
 531531a2cbe2b2b6b19b4a23489c73b358063609 data\minecraft\tags\block\fence_gates.json
 48e61236114a36252ce96fd047fbb91071d3b543 data\minecraft\tags\block\slabs.json

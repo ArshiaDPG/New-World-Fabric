@@ -7,7 +7,6 @@ import net.digitalpear.newworld.init.worldgen.NWSaplingGenerators;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.*;
 import net.minecraft.block.piston.PistonBehavior;
-import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.item.Items;
@@ -35,14 +34,17 @@ public class NWBlocks {
     private static Block createBlockWithItem(String blockID, AbstractBlock.Settings settings){
         return createBlockWithItem(blockID, Block::new, settings);
     }
+
+    private static RegistryKey<Block> keyOf(String block){
+        return RegistryKey.of(RegistryKeys.BLOCK, Newworld.id(block));
+    }
     private static Block createBlockWithItem(String blockID, Function<AbstractBlock.Settings, Block> factory, AbstractBlock.Settings settings){
-        Block block = factory.apply(settings.registryKey(RegistryKey.of(RegistryKeys.BLOCK, Newworld.id(blockID))));
-        createBlockItem(blockID, block, BlockItem::new);
-        return createBlockWithoutItem(blockID, factory, settings);
+        Block block = createBlockWithoutItem(blockID, factory, settings);
+        Items.register(block);
+        return block;
     }
     private static Block createBlockWithoutItem(String blockID, Function<AbstractBlock.Settings, Block> factory, AbstractBlock.Settings settings){
-        Block block = factory.apply(settings.registryKey(RegistryKey.of(RegistryKeys.BLOCK, Newworld.id(blockID))));
-        return Registry.register(Registries.BLOCK, Newworld.id(blockID), block);
+        return Blocks.register(keyOf(blockID), factory, settings);
     }
 
 

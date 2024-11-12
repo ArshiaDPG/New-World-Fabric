@@ -23,7 +23,7 @@ public class NWModelProvider extends FabricModelProvider {
 
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-        fullWoodset(blockStateModelGenerator, NWBlocks.FIR);
+        NWBlocks.FIR.fullWoodset(blockStateModelGenerator);
         blockStateModelGenerator.registerFlowerPotPlant(NWBlocks.FIR_SAPLING, NWBlocks.POTTED_FIR_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED);
 
         makeStoneModels(blockStateModelGenerator, NWBlocks.LOAM, NWBlocks.LOAM_STAIRS, NWBlocks.LOAM_SLAB, NWBlocks.LOAM_WALL);
@@ -42,11 +42,6 @@ public class NWModelProvider extends FabricModelProvider {
 
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
-        itemModelGenerator.register(NWItems.FIR_SIGN, Models.GENERATED);
-        itemModelGenerator.register(NWItems.FIR_HANGING_SIGN, Models.GENERATED);
-        itemModelGenerator.register(NWItems.FIR_BOAT, Models.GENERATED);
-        itemModelGenerator.register(NWItems.FIR_CHEST_BOAT, Models.GENERATED);
-
         itemModelGenerator.register(NWItems.ANCIENT_MATTOCK, Models.HANDHELD);
         itemModelGenerator.register(NWItems.MATTOCK_CRAFTING_TEMPLATE, Models.GENERATED);
         itemModelGenerator.register(NWItems.MATTOCK_CRAFTING_TEMPLATE_HEAD, Models.GENERATED);
@@ -57,30 +52,7 @@ public class NWModelProvider extends FabricModelProvider {
         itemModelGenerator.register(NWItems.JEB_BOOK, Models.GENERATED);
     }
 
-    public static void fullWoodset(BlockStateModelGenerator blockStateModelGenerator, Woodset woodset){
-        BlockStateModelGenerator.BlockTexturePool pool = blockStateModelGenerator.registerCubeAllModelTexturePool(woodset.getPlanks());
-        pool.family(woodset.getBlockFamily());
 
-//        makeStuff(blockStateModelGenerator, woodset);
-//        blockStateModelGenerator.registerDoor(woodset.getDoor());
-//        blockStateModelGenerator.registerTrapdoor(woodset.getTrapDoor());
-//        makeParticles(blockStateModelGenerator, woodset.getPlanks(), woodset.getSign(), woodset.getWallSign());
-//        makeParticles(blockStateModelGenerator, woodset.getStrippedLog(), woodset.getHangingSign(), woodset.getWallHangingSign());
-
-        if (woodset.isOverworldTreeWood()){
-            blockStateModelGenerator.registerSimpleCubeAll(woodset.getLeaves());
-        }
-
-        if (!woodset.getWoodPreset().equals(Woodset.WoodPreset.BAMBOO)){
-            blockStateModelGenerator.registerLog(woodset.getLog()).log(woodset.getLog()).wood(woodset.getWood());
-            blockStateModelGenerator.registerLog(woodset.getStrippedLog()).log(woodset.getStrippedLog()).wood(woodset.getStrippedWood());
-        }
-        else{
-            blockStateModelGenerator.registerLog(woodset.getLog()).uvLockedLog(woodset.getLog());
-            blockStateModelGenerator.registerLog(woodset.getStrippedLog()).uvLockedLog(woodset.getStrippedLog());
-
-        }
-    }
 
 //    public static final Model TOMBSTONE = block("template_tombstone", TextureKey.TEXTURE, TextureKey.PARTICLE);
 //

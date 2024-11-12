@@ -1,8 +1,8 @@
 {
   "values": [
     "newworld:fir_log",
+    "newworld:stripped_fir_log",
     "newworld:fir_wood",
-    "newworld:stripped_fir_wood",
-    "newworld:stripped_fir_log"
+    "newworld:stripped_fir_wood"
   ]
 }

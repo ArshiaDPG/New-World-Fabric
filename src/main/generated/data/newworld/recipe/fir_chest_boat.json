@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "chest_boat",
   "ingredients": [
-    {
-      "item": "minecraft:chest"
-    },
-    {
-      "item": "newworld:fir_boat"
-    }
+    "minecraft:chest",
+    "newworld:fir_boat"
   ],
   "result": {
     "count": 1,

@@ -1,20 +1,58 @@
 package net.digitalpear.newworld.client;
 
 import net.digitalpear.newworld.init.NWBlocks;
+import net.digitalpear.newworld.init.data.Woodset;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.client.render.entity.BoatEntityRenderer;
+import net.minecraft.client.render.entity.RaftEntityRenderer;
+import net.minecraft.client.render.entity.model.BoatEntityModel;
+import net.minecraft.client.render.entity.model.EntityModelLayer;
+import net.minecraft.client.render.entity.model.RaftEntityModel;
+import net.minecraft.util.Identifier;
+
+import java.util.Objects;
 
 @Environment(EnvType.CLIENT)
 public class NewWorldClient implements ClientModInitializer {
 
+
     @Override
     public void onInitializeClient() {
-
-        NWBlocks.FIR.registerBoatModels();
-
+        registerBoatModels(NWBlocks.FIR);
+//        BlockRenderLayerMap.INSTANCE.putBlock(NWBlocks.FIR.getSign(), RenderLayers.getEntityBlockLayer(NWBlocks.FIR.getSign().getDefaultState()));
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), NWBlocks.FIR_SAPLING, NWBlocks.POTTED_FIR_SAPLING, NWBlocks.FIR.getLeaves(), NWBlocks.POTTED_POINTED_DRIPSTONE);
+    }
+
+    public static void registerBoatModels(Woodset woodset){
+        if (!woodset.getWoodsetSettings().hasBoats()){
+            return;
+        }
+        Identifier layerName = woodset.getNameID().withPrefixedPath("boat/");
+        Identifier chestLayerName = woodset.getNameID().withPrefixedPath("chest_boat/");
+
+        final EntityModelLayer BOAT_MODEL_LAYER = new EntityModelLayer(layerName, "main");
+        final EntityModelLayer CHESY_BOAT_MODEL_LAYER = new EntityModelLayer(chestLayerName, "main");
+
+        if (Objects.equals(woodset.getWoodsetSettings().getBoatType(), Woodset.Settings.BoatType.RAFT)) {
+            EntityModelLayerRegistry.registerModelLayer(BOAT_MODEL_LAYER, RaftEntityModel::getTexturedModelData);
+            EntityRendererRegistry.register(woodset.getBoat(), ctx -> new RaftEntityRenderer(ctx, BOAT_MODEL_LAYER));
+        } else {
+            EntityModelLayerRegistry.registerModelLayer(BOAT_MODEL_LAYER, BoatEntityModel::getTexturedModelData);
+            EntityRendererRegistry.register(woodset.getBoat(), ctx -> new BoatEntityRenderer(ctx, BOAT_MODEL_LAYER));
+        }
+
+        if (Objects.equals(woodset.getWoodsetSettings().getBoatType(), Woodset.Settings.BoatType.RAFT)) {
+            EntityModelLayerRegistry.registerModelLayer(CHESY_BOAT_MODEL_LAYER, RaftEntityModel::getChestTexturedModelData);
+            EntityRendererRegistry.register(woodset.getChestBoat(), ctx -> new RaftEntityRenderer(ctx, BOAT_MODEL_LAYER));
+        } else {
+            EntityModelLayerRegistry.registerModelLayer(CHESY_BOAT_MODEL_LAYER, BoatEntityModel::getChestTexturedModelData);
+            EntityRendererRegistry.register(woodset.getChestBoat(), ctx -> new BoatEntityRenderer(ctx, BOAT_MODEL_LAYER));
+        }
     }
 }

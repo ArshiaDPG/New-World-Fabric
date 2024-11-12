@@ -42,8 +42,7 @@ public class NWRecipeGenerator extends RecipeGenerator {
 //        createTrapdoorRecipe(NWBlocks.FIR_TRAPDOOR, Ingredient.ofItems(NWBlocks.FIR_PLANKS)).criterion(RecipeGenerator.hasItem(NWBlocks.FIR_PLANKS), conditionsFromItem(NWBlocks.FIR_PLANKS)).offerTo(exporter);
 //        ShapelessRecipeJsonBuilder.create(lookup, RecipeCategory.REDSTONE, NWBlocks.FIR_BUTTON.asItem()).input(Ingredient.ofItems(NWBlocks.FIR_PLANKS)).criterion(RecipeGenerator.hasItem(NWBlocks.FIR_PLANKS), conditionsFromItem(NWBlocks.FIR_PLANKS)).offerTo(exporter);
 //        offerPressurePlateRecipe(NWBlocks.FIR_PRESSURE_PLATE, NWBlocks.FIR_PLANKS);
-        offerBoatRecipe(NWItems.FIR_BOAT, NWBlocks.FIR.getPlanks());
-        offerChestBoatRecipe(NWItems.FIR_CHEST_BOAT, NWItems.FIR_BOAT);
+
 
         makeTemplateRecipe(exporter, NWItems.MATTOCK_CRAFTING_TEMPLATE, NWItems.MATTOCK_CRAFTING_TEMPLATE_HEAD, NWItems.MATTOCK_CRAFTING_TEMPLATE_SHAFT);
 
@@ -54,30 +53,29 @@ public class NWRecipeGenerator extends RecipeGenerator {
         createStoneSetRecipes(exporter, NWBlocks.LOAM_BRICKS, NWBlocks.LOAM_BRICK_STAIRS, NWBlocks.LOAM_BRICK_SLAB, NWBlocks.LOAM_BRICK_WALL);
         createStoneSetRecipes(exporter, NWBlocks.LOAM_TILES, NWBlocks.LOAM_TILE_STAIRS, NWBlocks.LOAM_TILE_SLAB, NWBlocks.LOAM_TILE_WALL);
 
-        StonecuttingRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(NWBlocks.LOAM), RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_STAIRS);
-        StonecuttingRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(NWBlocks.LOAM), RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_SLAB, 2);
-        StonecuttingRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(NWBlocks.LOAM), RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_WALL);
-        StonecuttingRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(NWBlocks.LOAM), RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_BRICKS);
-        StonecuttingRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(NWBlocks.LOAM), RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_BRICK_STAIRS);
-        StonecuttingRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(NWBlocks.LOAM), RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_BRICK_SLAB, 2);
-        StonecuttingRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(NWBlocks.LOAM), RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_BRICK_WALL);
-        StonecuttingRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(NWBlocks.LOAM), RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_TILES);
-        StonecuttingRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(NWBlocks.LOAM), RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_TILE_STAIRS);
-        StonecuttingRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(NWBlocks.LOAM), RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_TILE_SLAB, 2);
-        StonecuttingRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(NWBlocks.LOAM), RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_TILE_WALL);
+        offerStonecuttingRecipe(RecipeCategory.BUILDING_BLOCKS,NWBlocks.LOAM, NWBlocks.LOAM_STAIRS);
+        offerStonecuttingRecipe(RecipeCategory.BUILDING_BLOCKS,NWBlocks.LOAM, NWBlocks.LOAM_SLAB, 2);
+        offerStonecuttingRecipe(RecipeCategory.BUILDING_BLOCKS,NWBlocks.LOAM, NWBlocks.LOAM_WALL);
+        offerStonecuttingRecipe(RecipeCategory.BUILDING_BLOCKS,NWBlocks.LOAM, NWBlocks.LOAM_BRICKS);
+        offerStonecuttingRecipe(RecipeCategory.BUILDING_BLOCKS,NWBlocks.LOAM, NWBlocks.LOAM_BRICK_STAIRS);
+        offerStonecuttingRecipe(RecipeCategory.BUILDING_BLOCKS,NWBlocks.LOAM, NWBlocks.LOAM_BRICK_SLAB, 2);
+        offerStonecuttingRecipe(RecipeCategory.BUILDING_BLOCKS,NWBlocks.LOAM, NWBlocks.LOAM_BRICK_WALL);
+        offerStonecuttingRecipe(RecipeCategory.BUILDING_BLOCKS,NWBlocks.LOAM, NWBlocks.LOAM_TILES);
+        offerStonecuttingRecipe(RecipeCategory.BUILDING_BLOCKS,NWBlocks.LOAM, NWBlocks.LOAM_TILE_STAIRS);
+        offerStonecuttingRecipe(RecipeCategory.BUILDING_BLOCKS,NWBlocks.LOAM, NWBlocks.LOAM_TILE_SLAB, 2);
+        offerStonecuttingRecipe(RecipeCategory.BUILDING_BLOCKS,NWBlocks.LOAM, NWBlocks.LOAM_TILE_WALL);
 
-        StonecuttingRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(NWBlocks.LOAM_BRICKS), RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_BRICK_STAIRS);
-        StonecuttingRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(NWBlocks.LOAM_BRICKS), RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_BRICK_SLAB, 2);
-        StonecuttingRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(NWBlocks.LOAM_BRICKS), RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_BRICK_WALL);
-        StonecuttingRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(NWBlocks.LOAM_BRICKS), RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_TILES);
-        StonecuttingRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(NWBlocks.LOAM_BRICKS), RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_TILE_STAIRS);
-        StonecuttingRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(NWBlocks.LOAM_BRICKS), RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_TILE_SLAB, 2);
-        StonecuttingRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(NWBlocks.LOAM_BRICKS), RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_TILE_WALL);
+        offerStonecuttingRecipe(RecipeCategory.BUILDING_BLOCKS,NWBlocks.LOAM_BRICKS, NWBlocks.LOAM_BRICK_STAIRS);
+        offerStonecuttingRecipe(RecipeCategory.BUILDING_BLOCKS,NWBlocks.LOAM_BRICKS, NWBlocks.LOAM_BRICK_SLAB, 2);
+        offerStonecuttingRecipe(RecipeCategory.BUILDING_BLOCKS,NWBlocks.LOAM_BRICKS, NWBlocks.LOAM_BRICK_WALL);
+        offerStonecuttingRecipe(RecipeCategory.BUILDING_BLOCKS,NWBlocks.LOAM_BRICKS, NWBlocks.LOAM_TILES);
+        offerStonecuttingRecipe(RecipeCategory.BUILDING_BLOCKS,NWBlocks.LOAM_BRICKS, NWBlocks.LOAM_TILE_STAIRS);
+        offerStonecuttingRecipe(RecipeCategory.BUILDING_BLOCKS,NWBlocks.LOAM_BRICKS, NWBlocks.LOAM_TILE_SLAB, 2);
+        offerStonecuttingRecipe(RecipeCategory.BUILDING_BLOCKS,NWBlocks.LOAM_BRICKS, NWBlocks.LOAM_TILE_WALL);
 
-        StonecuttingRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(NWBlocks.LOAM_TILES), RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_TILE_STAIRS);
-        StonecuttingRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(NWBlocks.LOAM_TILES), RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_TILE_SLAB, 2);
-        StonecuttingRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(NWBlocks.LOAM_TILES), RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_TILE_WALL);
-
+        offerStonecuttingRecipe(RecipeCategory.BUILDING_BLOCKS,NWBlocks.LOAM_TILES, NWBlocks.LOAM_TILE_STAIRS);
+        offerStonecuttingRecipe(RecipeCategory.BUILDING_BLOCKS,NWBlocks.LOAM_TILES, NWBlocks.LOAM_TILE_SLAB, 2);
+        offerStonecuttingRecipe(RecipeCategory.BUILDING_BLOCKS,NWBlocks.LOAM_TILES, NWBlocks.LOAM_TILE_WALL);
 
         ShapedRecipeJsonBuilder.create(lookup, RecipeCategory.BUILDING_BLOCKS, NWBlocks.LOAM_BRICKS, 4).input('#', NWBlocks.LOAM)
                 .pattern("##")
@@ -110,6 +108,25 @@ public class NWRecipeGenerator extends RecipeGenerator {
                 .criterion("has_tombstone_or_arcane_tome", conditionsFromItemPredicates(ItemPredicate.Builder.create().items(lookup, NWItems.ILLAGER_TOME, NWBlocks.TOMBSTONE).build()))
                 .offerTo(exporter);
     }
+//    public void generateWoodsetRecipes(Woodset woodset, TagKey<Item> logs){
+//        offerPlanksRecipe(woodset.getPlanks(), logs, 4);
+//        createStairsRecipe(woodset.getStairs(), Ingredient.ofItems(woodset.getPlanks())).offerTo(exporter);
+//        offerSlabRecipe(RecipeCategory.BUILDING_BLOCKS, woodset.getSlab(), woodset.getPlanks());
+//
+//        if (woodset.getWoodPreset() != Woodset.WoodPreset.BAMBOO){
+//            offerBarkBlockRecipe(woodset.getWood(), woodset.getLog());
+//            offerBarkBlockRecipe(woodset.getStrippedWood(), woodset.getStrippedLog());
+//        }
+//        else {
+//            offerMosaicRecipe(RecipeCategory.BUILDING_BLOCKS, woodset.getMosaic(), woodset.getPlanks());
+//            createStairsRecipe(woodset.getMosaicStairs(), Ingredient.ofItems(woodset.getMosaic())).offerTo(exporter);
+//            offerSlabRecipe(RecipeCategory.BUILDING_BLOCKS, woodset.getMosaicStairs(), woodset.getMosaic());
+//        }
+//        offerHangingSignRecipe(woodset.getHangingSignItem(), woodset.getStrippedLog());
+//
+//        offerBoatRecipe(woodset.getBoatItem(), woodset.getPlanks());
+//        offerChestBoatRecipe(woodset.getChestBoatItem(), woodset.getBoatItem());
+//    }
 
     public void createStoneSetRecipes(RecipeExporter exporter, ItemConvertible base, ItemConvertible stairs, ItemConvertible slab, ItemConvertible wall){
         createStairsRecipe(stairs, Ingredient.ofItems(base)).criterion(hasItem(base), conditionsFromItem(base)).offerTo(exporter);

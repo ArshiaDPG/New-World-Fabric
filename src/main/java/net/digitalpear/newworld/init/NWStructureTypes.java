@@ -10,8 +10,6 @@ public class NWStructureTypes {
 
 
     public static StructureType<BuriedBunkerFeature> BURIED_BUNKER = Registry.register(Registries.STRUCTURE_TYPE, Newworld.id("buried_bunker"), () -> BuriedBunkerFeature.CODEC);
-
-
     public static void init() {
     }
 }

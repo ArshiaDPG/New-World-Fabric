@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "item": "minecraft:diamond"
-    },
-    "C": {
-      "item": "minecraft:cobbled_deepslate"
-    },
-    "S": {
-      "item": "newworld:mattock_crafting_template"
-    }
+    "#": "minecraft:diamond",
+    "C": "minecraft:cobbled_deepslate",
+    "S": "newworld:mattock_crafting_template"
   },
   "pattern": [
     "#S#",

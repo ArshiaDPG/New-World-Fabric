@@ -16,7 +16,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "newworld:mattock_crafting_template_from_piece_combination"
+        "recipe": "minecraft:mattock_crafting_template_from_piece_combination"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -29,7 +29,7 @@
   ],
   "rewards": {
     "recipes": [
-      "newworld:mattock_crafting_template_from_piece_combination"
+      "minecraft:mattock_crafting_template_from_piece_combination"
     ]
   }
 }

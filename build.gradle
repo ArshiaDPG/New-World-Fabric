@@ -21,7 +21,9 @@ repositories {
         }
     }
 }
-
+fabricApi {
+    configureDataGeneration()
+}
 dependencies {
     // To change the versions see the gradle.properties file
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
@@ -44,7 +46,7 @@ processResources {
     }
 }
 
-def targetJavaVersion = 17
+def targetJavaVersion = 21
 tasks.withType(JavaCompile).configureEach {
     // ensure that the encoding is set to UTF-8, no matter what the system default is
     // this fixes some edge cases with special characters not displaying correctly
@@ -86,35 +88,7 @@ publishing {
     repositories {
     }
 }
-loom {
-    runs {
-        //
-        // This adds a new gradle task that runs the datagen API: "gradlew runDatagenClient"
-        //
-        datagenClient {
-            inherit client
-            name "Data Generation"
-            vmArg "-Dfabric-api.datagen"
-            vmArg "-Dfabric-api.datagen.output-dir=${file("src/main/generated")}"
-            vmArg "-Dfabric-api.datagen.modid=${project.modid}"
 
-            runDir "build/datagen"
-        }
-    }
-}
-
-//
-// Adds the generated files into the jar you distribute to players.
-//
-sourceSets {
-    main {
-        resources {
-            srcDirs += [
-                    'src/main/generated'
-            ]
-        }
-    }
-}
 unifiedPublishing {
     project {
         displayName = "${project.minecraft_version}-${project.mod_version}" // Optional, name of the file
@@ -124,7 +98,7 @@ unifiedPublishing {
   <li>Fixed Buried Bunkers not generating.</li>
 </ul> '''
         releaseType = "release" // Optional, use "release", "beta" or "alpha"
-        gameVersions = ["1.21.2"]
+        gameVersions = ["1.21.2", "${project.minecraft_version}"]
         gameLoaders = ["fabric"]
 
         mainPublication tasks.remapJar

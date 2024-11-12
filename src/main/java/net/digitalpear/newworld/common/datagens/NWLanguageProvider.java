@@ -55,7 +55,9 @@ public class NWLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(itemConvertible, formatString(Registries.ITEM.getId(itemConvertible).getPath()));
     }
     public static void makeTranslation(TranslationBuilder translationBuilder, Block itemConvertible){
-        translationBuilder.add(itemConvertible, formatString(Registries.BLOCK.getId(itemConvertible).getPath()));
+        Identifier id = Registries.BLOCK.getId(itemConvertible);
+        translationBuilder.add(itemConvertible, formatString(id.getPath()));
+        translationBuilder.add("item." + id.getNamespace() + "." + id.getPath(), formatString(id.getPath()));
     }
     public static void makeTranslation(TranslationBuilder translationBuilder, EntityType<?> entity){
         translationBuilder.add(entity, formatString(Registries.ENTITY_TYPE.getId(entity).getPath()));
@@ -126,13 +128,10 @@ public class NWLanguageProvider extends FabricLanguageProvider {
         makeTranslation(translationBuilder, NWBlocks.LOAM_TILE_WALL);
         makeTranslation(translationBuilder, NWBlocks.MOSS_SPROUTS);
 
-
         makeTranslation(translationBuilder, NWBlocks.TOMBSTONE);
         makeTranslation(translationBuilder, NWItems.ILLAGER_TOME);
 
         makeTranslation(translationBuilder, NWItems.JEB_BOOK);
-        translationBuilder.add(NWItems.FIR_BOAT, "Fir Boat");
-        translationBuilder.add(NWItems.FIR_CHEST_BOAT, "Fir Boat with Chest");
 
         translationBuilder.add("advancements.adventure.collect_ancient_mattock.title", "Renaissance Tool");
         translationBuilder.add("advancements.adventure.collect_ancient_mattock.description", "Craft an Ancient Mattock using template fragments.");

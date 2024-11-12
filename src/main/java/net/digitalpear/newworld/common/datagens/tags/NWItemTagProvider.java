@@ -37,11 +37,7 @@ public class NWItemTagProvider extends FabricTagProvider<Item> {
 
         getOrCreateTagBuilder(ItemTags.LOGS_THAT_BURN).forceAddTag(NWItemTags.FIR_LOGS);
 
-        getOrCreateTagBuilder(ItemTags.BOATS).add(NWItems.FIR_BOAT);
-        getOrCreateTagBuilder(ItemTags.CHEST_BOATS).add(NWItems.FIR_CHEST_BOAT);
-
         getOrCreateTagBuilder(ItemTags.SAPLINGS).add(NWBlocks.FIR_SAPLING.asItem());
-
 
         getOrCreateTagBuilder(ItemTags.STAIRS).add(NWBlocks.LOAM_STAIRS.asItem(), NWBlocks.LOAM_BRICK_STAIRS.asItem(), NWBlocks.LOAM_TILE_STAIRS.asItem());
         getOrCreateTagBuilder(ItemTags.SLABS).add(NWBlocks.LOAM_SLAB.asItem(), NWBlocks.LOAM_BRICK_SLAB.asItem(), NWBlocks.LOAM_TILE_SLAB.asItem());
@@ -71,6 +67,9 @@ public class NWItemTagProvider extends FabricTagProvider<Item> {
         getOrCreateTagBuilder(ItemTags.BUTTONS).add(woodset.getButton().asItem());
         getOrCreateTagBuilder(ItemTags.SIGNS).add(woodset.getSignItem());
         getOrCreateTagBuilder(ItemTags.HANGING_SIGNS).add(woodset.getHangingSignItem());
+
+        getOrCreateTagBuilder(ItemTags.BOATS).add(woodset.getBoatItem());
+        getOrCreateTagBuilder(ItemTags.CHEST_BOATS).add(woodset.getChestBoatItem());
     }
 }
 

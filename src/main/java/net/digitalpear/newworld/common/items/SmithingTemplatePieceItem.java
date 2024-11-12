@@ -14,8 +14,6 @@ public class SmithingTemplatePieceItem extends Item {
     public SmithingTemplatePieceItem(Settings settings) {
         super(settings);
     }
-
-
     @Override
     public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
         tooltip.add(getDescription().formatted(Formatting.GRAY));
