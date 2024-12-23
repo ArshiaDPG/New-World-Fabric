@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '1.8.+'
+    id 'fabric-loom' version '1.9.+'
     id 'maven-publish'
     id "me.shedaniel.unified-publishing" version "0.1.+"
 }
@@ -27,9 +27,7 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-    modImplementation "com.github.glitchfiend:TerraBlender-fabric:${project.terrablender_version}"
-
-//    modLocalRuntime "maven.modrinth:emi:${project.emi}"
+    modImplementation("maven.modrinth:biolith:${project.biolith_version}")
 }
 
 processResources {
@@ -99,8 +97,8 @@ unifiedPublishing {
 
         relations {
             depends { // Mark as a required dependency
-                curseforge = "terrablender" // Optional, project slug
-                modrinth = "terrablender" // Optional, project slug or id
+                curseforge = "biolith" // Optional, project slug
+                modrinth = "biolith" // Optional, project slug or id
             }
             includes {} // Mark as an included dependency
             optional {} // Mark as an optional dependency

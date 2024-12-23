@@ -21,6 +21,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(JukeboxManager.class)
 public abstract class JukeboxMixin {
 
+
+    /*
+
+        DO NOT COPY OVER IN ANY PORTS.
+
+     */
     @Shadow @Final private BlockPos pos;
 
     @Shadow @Nullable private RegistryEntry<JukeboxSong> song;

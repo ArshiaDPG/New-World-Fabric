@@ -38,10 +38,6 @@ import java.util.function.Function;
 public class Woodset {
     public static final List<Woodset> WOODSETS = new ArrayList<>();
 
-    private static final String SIGN_PATH = "entity/signs/";
-    private static final String HANGING_SIGN_PATH = SIGN_PATH + "hanging/";
-    private static final String HANGING_SIGN_GUI_PATH = "textures/gui/hanging_signs/";
-
     private final List<Block> registeredBlocksList = new ArrayList<>();
     private final List<Item> registeredItemsList = new ArrayList<>();
 
@@ -539,7 +535,7 @@ public class Woodset {
         addFlammable(getLog(), 5, 5);
         addFlammable(getStrippedLog(), 5, 5);
 
-        if (getWoodPreset() != Woodset.WoodPreset.BAMBOO){
+        if (getWoodPreset() != WoodPreset.BAMBOO){
             addFlammable(getWood(), 5, 5);
             addFlammable(getStrippedWood(), 5, 5);
         }
@@ -576,7 +572,7 @@ public class Woodset {
             blockStateModelGenerator.registerSimpleCubeAll(getLeaves());
         }
 
-        if (!getWoodPreset().equals(Woodset.WoodPreset.BAMBOO)){
+        if (!getWoodPreset().equals(WoodPreset.BAMBOO)){
             blockStateModelGenerator.registerLog(getLog()).log(getLog()).wood(getWood());
             blockStateModelGenerator.registerLog(getStrippedLog()).log(getStrippedLog()).wood(getStrippedWood());
         }
@@ -690,6 +686,11 @@ public class Woodset {
             recipeGenerator.createStairsRecipe(this.getMosaicStairs(), Ingredient.ofItems(this.getPlanks())).criterion(hasPlanks(), recipeGenerator.conditionsFromItem(this.getMosaic())).offerTo(exporter);
             recipeGenerator.offerSlabRecipe(RecipeCategory.BUILDING_BLOCKS, this.getMosaicStairs(), this.getPlanks());
         }
+        recipeGenerator.createFenceRecipe(fence, Ingredient.ofItems(planks)).criterion(hasPlanks(), recipeGenerator.conditionsFromItem(planks)).offerTo(exporter);
+        recipeGenerator.createFenceGateRecipe(fenceGate, Ingredient.ofItems(planks)).criterion(hasPlanks(), recipeGenerator.conditionsFromItem(planks)).offerTo(exporter);
+        recipeGenerator.createDoorRecipe(door, Ingredient.ofItems(planks)).criterion(hasPlanks(), recipeGenerator.conditionsFromItem(planks)).offerTo(exporter);
+        recipeGenerator.createTrapdoorRecipe(trapDoor, Ingredient.ofItems(planks)).criterion(hasPlanks(), recipeGenerator.conditionsFromItem(planks)).offerTo(exporter);
+
         recipeGenerator.createSignRecipe(signItem, Ingredient.ofItems(planks)).criterion(hasPlanks(), recipeGenerator.conditionsFromItem(planks)).offerTo(exporter);
         recipeGenerator.offerHangingSignRecipe(getHangingSignItem(), getStrippedLog());
 

@@ -1,0 +1,13 @@
+{
+  "asset_id": "newworld:providence",
+  "author": {
+    "color": "gray",
+    "translate": "painting.newworld.providence.author"
+  },
+  "height": 3,
+  "title": {
+    "color": "yellow",
+    "translate": "painting.newworld.providence.title"
+  },
+  "width": 2
+}
