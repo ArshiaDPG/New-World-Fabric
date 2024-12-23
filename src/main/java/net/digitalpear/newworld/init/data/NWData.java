@@ -30,12 +30,10 @@ public class NWData {
     }
 
     public static void registerFlammables(){
-        registerWoodsetFlammables(NWBlocks.FIR);
     }
 
     public static void registerCompostable(){
         CompostingChanceRegistry compostingChanceRegistry = CompostingChanceRegistryImpl.INSTANCE;
-
         compostingChanceRegistry.add(NWBlocks.FIR_SAPLING, 0.3F);
         compostingChanceRegistry.add(NWBlocks.FIR.getLeaves(), 0.3F);
     }
@@ -68,36 +66,10 @@ public class NWData {
     }
 
 
-    public static void addFlammable(Block block, int burn, int spread){
-        FlammableBlockRegistry.getDefaultInstance().add(block, burn, spread);
-    }
     public static void addFlammable(TagKey<Block> block, int burn, int spread){
         FlammableBlockRegistry.getDefaultInstance().add(block, burn, spread);
     }
-    public static void registerWoodsetFlammables(Woodset woodset){
 
-        addFlammable(woodset.getLog(), 5, 20);
-        addFlammable(woodset.getStrippedLog(), 5, 20);
-
-        if (woodset.getWoodPreset() != Woodset.WoodPreset.BAMBOO){
-            addFlammable(woodset.getWood(), 5, 5);
-            addFlammable(woodset.getStrippedWood(), 5, 5);
-        }
-        else{
-            addFlammable(woodset.getMosaic(), 5, 20);
-            addFlammable(woodset.getMosaicStairs(), 5, 20);
-            addFlammable(woodset.getMosaicSlab(), 5, 20);
-        }
-        if (woodset.isOverworldTreeWood()){
-            addFlammable(woodset.getLeaves(), 30, 60);
-        }
-
-        addFlammable(woodset.getPlanks(), 5, 20);
-        addFlammable(woodset.getSlab(), 5, 20);
-        addFlammable(woodset.getStairs(), 5, 20);
-        addFlammable(woodset.getFence(), 5, 20);
-        addFlammable(woodset.getFenceGate(), 5, 20);
-    }
 
 
     public static void init(){

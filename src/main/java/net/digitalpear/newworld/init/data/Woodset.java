@@ -1,13 +1,13 @@
 package net.digitalpear.newworld.init.data;
 
-import com.terraformersmc.terraform.sign.api.block.TerraformHangingSignBlock;
-import com.terraformersmc.terraform.sign.api.block.TerraformSignBlock;
-import com.terraformersmc.terraform.sign.api.block.TerraformWallHangingSignBlock;
-import com.terraformersmc.terraform.sign.api.block.TerraformWallSignBlock;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityType;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder;
+import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
+import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.minecraft.block.*;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.family.BlockFamily;
@@ -91,10 +91,9 @@ public class Woodset {
 
     private void registerWood(){
         blockSetType = createBlockSetType();
-        woodType = new WoodTypeBuilder().build(this.getNameID(), getBlockSetType());
+        woodType = WoodTypeBuilder.copyOf(woodsetSettings.woodPreset.woodType).register(this.getNameID(), getBlockSetType());
 
         planks = createPlanks();
-        blockFamily = new BlockFamily.Builder(planks).unlockCriterionName(hasPlanks());
 
         log = createLog();
         strippedLog = createStrippedLog();
@@ -135,6 +134,7 @@ public class Woodset {
             chestBoatItem = createChestBoatItem();
         }
 
+        blockFamily = new BlockFamily.Builder(planks).group("wooden").unlockCriterionName(hasPlanks());
         blockFamily.stairs(stairs);
         blockFamily.slab(slab);
         if (getWoodPreset() == WoodPreset.BAMBOO){
@@ -144,19 +144,30 @@ public class Woodset {
             blockFamily.fence(fence);
             blockFamily.fenceGate(fenceGate);
         }
-
         blockFamily.door(door);
         blockFamily.trapdoor(trapDoor);
-        blockFamily.sign(slab, wallSign);
-        blockFamily.sign(hangingSign, wallHangingSign);
+        blockFamily.sign(sign, wallSign);
         blockFamily.button(button);
         blockFamily.pressurePlate(pressurePlate);
+
+
 
         signBlocks.add(sign);
         signBlocks.add(wallSign);
 
         hangingSignBlocks.add(hangingSign);
         hangingSignBlocks.add(wallHangingSign);
+
+        var signs = (FabricBlockEntityType) BlockEntityType.SIGN;
+        signs.addSupportedBlock(sign);
+        signs.addSupportedBlock(wallSign);
+
+        var hangingSigns = (FabricBlockEntityType) BlockEntityType.HANGING_SIGN;
+        hangingSigns.addSupportedBlock(hangingSign);
+        hangingSigns.addSupportedBlock(wallHangingSign);
+
+        registerWoodsetFlammables();
+        registerFuels();
     }
 
     public Woodset(Identifier name, MapColor sideColor, MapColor topColor){
@@ -208,7 +219,6 @@ public class Woodset {
         registeredBlocksList.add(block);
         return block;
     }
-
     public Item createItem(String blockID, Function<Item.Settings, Item> factory, Item.Settings settings){
         Item item = Items.register(itemKey(blockID), factory, settings);
         registeredItemsList.add(item);
@@ -456,32 +466,53 @@ public class Woodset {
         return createBlockWithItem(this.getName() + "_trapdoor", settings -> new TrapdoorBlock(this.getBlockSetType(), settings), AbstractBlock.Settings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor()));
     }
     private Block createSign(){
-        return createBlockWithoutItem(this.getName() + "_sign", settings -> new TerraformSignBlock(
-                this.getNameID().withPrefixedPath(SIGN_PATH),
-                this.woodType, settings),
+        return createBlockWithoutItem(this.getName() + "_sign", settings -> new SignBlock(
+                        this.woodType, settings),
                 AbstractBlock.Settings.copy(getSignBase()).mapColor(this.getTopColor()));
     }
     private Block createWallSign(){
-        return createBlockWithoutItem(this.getName() + "_wall_sign", settings -> new TerraformWallSignBlock(
-                this.getNameID().withPrefixedPath(SIGN_PATH),
-                this.woodType,
-                settings), AbstractBlock.Settings.copy(getSignBase()).mapColor(this.getTopColor()).lootTable(sign.getLootTableKey()));
+        return createBlockWithoutItem(this.getName() + "_wall_sign", settings -> new WallSignBlock(
+                        this.woodType, settings),
+                AbstractBlock.Settings.copy(getSignBase()).mapColor(this.getTopColor()).lootTable(sign.getLootTableKey()));
     }
 
     private Block createHangingSign(){
-        return createBlockWithoutItem(this.getName() + "_hanging_sign", settings -> new TerraformHangingSignBlock(
-                this.getNameID().withPrefixedPath(HANGING_SIGN_PATH),
-                this.getNameID().withPrefixedPath(HANGING_SIGN_GUI_PATH),
-                this.woodType,
-                settings), AbstractBlock.Settings.copy(getHangingSignBase()).mapColor(this.getTopColor()));
+        return createBlockWithoutItem(this.getName() + "_hanging_sign", settings -> new HangingSignBlock(
+                        this.woodType, settings),
+                AbstractBlock.Settings.copy(getHangingSignBase()).mapColor(this.getTopColor()));
     }
     private Block createWallHangingSign(){
-        return createBlockWithoutItem(this.getName() + "_wall_hanging_sign", settings -> new TerraformWallHangingSignBlock(
-                this.getNameID().withPrefixedPath(HANGING_SIGN_PATH),
-                this.getNameID().withPrefixedPath(HANGING_SIGN_GUI_PATH),
-                this.woodType,
-                settings), AbstractBlock.Settings.copy(getHangingSignBase()).mapColor(this.getTopColor()).lootTable(hangingSign.getLootTableKey()));
+        return createBlockWithoutItem(this.getName() + "_wall_hanging_sign", settings -> new WallHangingSignBlock(
+                        this.woodType, settings),
+                AbstractBlock.Settings.copy(getHangingSignBase()).mapColor(this.getTopColor()).lootTable(hangingSign.getLootTableKey()));
     }
+//    private Block createSign(){
+//        return createBlockWithoutItem(this.getName() + "_sign", settings -> new TerraformSignBlock(
+//                this.getNameID().withPrefixedPath(SIGN_PATH),
+//                this.woodType, settings),
+//                AbstractBlock.Settings.copy(getSignBase()).mapColor(this.getTopColor()));
+//    }
+//    private Block createWallSign(){
+//        return createBlockWithoutItem(this.getName() + "_wall_sign", settings -> new TerraformWallSignBlock(
+//                this.getNameID().withPrefixedPath(SIGN_PATH),
+//                this.woodType, settings),
+//                AbstractBlock.Settings.copy(getSignBase()).mapColor(this.getTopColor()).lootTable(sign.getLootTableKey()));
+//    }
+//
+//    private Block createHangingSign(){
+//        return createBlockWithoutItem(this.getName() + "_hanging_sign", settings -> new TerraformHangingSignBlock(
+//                this.getNameID().withPrefixedPath(HANGING_SIGN_PATH),
+//                this.getNameID().withPrefixedPath(HANGING_SIGN_GUI_PATH),
+//                this.woodType, settings),
+//                AbstractBlock.Settings.copy(getHangingSignBase()).mapColor(this.getTopColor()));
+//    }
+//    private Block createWallHangingSign(){
+//        return createBlockWithoutItem(this.getName() + "_wall_hanging_sign", settings -> new TerraformWallHangingSignBlock(
+//                this.getNameID().withPrefixedPath(HANGING_SIGN_PATH),
+//                this.getNameID().withPrefixedPath(HANGING_SIGN_GUI_PATH),
+//                this.woodType, settings),
+//                AbstractBlock.Settings.copy(getHangingSignBase()).mapColor(this.getTopColor()).lootTable(hangingSign.getLootTableKey()));
+//    }
 
     private Item createSignItem(){
         return createItem(this.getName() + "_sign", settings -> new SignItem(this.getSign(), this.getWallSign(), settings), new Item.Settings().maxCount(16));
@@ -503,6 +534,67 @@ public class Woodset {
         return createItem(this.getName() + "_chest_" + woodsetSettings.getBoatName(), settings -> new BoatItem(chestBoat, settings), new Item.Settings().maxCount(1));
     }
 
+    public void registerFuels(){
+        FuelRegistryEvents.BUILD.register((builder, context) -> {
+            builder.add(log, 300);
+            builder.add(strippedLog, 300);
+            if (woodsetSettings.woodPreset == WoodPreset.BAMBOO){
+                builder.add(mosaic, 300);
+                builder.add(mosaicSlab, 150);
+                builder.add(mosaicStairs, 300);
+            }
+            else{
+                builder.add(wood, 300);
+                builder.add(strippedWood, 300);
+            }
+            builder.add(pressurePlate, 300);
+            builder.add(button, 100);
+            builder.add(trapDoor, 300);
+            builder.add(door, 300);
+            builder.add(fence, 300);
+            builder.add(fenceGate, 300);
+            builder.add(signItem, 300);
+            builder.add(hangingSignItem, 800);
+
+            if (woodsetSettings.hasBoats()){
+                builder.add(boatItem, 1200);
+                builder.add(chestBoatItem, 1200);
+            }
+        });
+    }
+    public void registerWoodsetFlammables(){
+        addFlammable(getLog(), 5, 5);
+        addFlammable(getStrippedLog(), 5, 5);
+
+        if (getWoodPreset() != Woodset.WoodPreset.BAMBOO){
+            addFlammable(getWood(), 5, 5);
+            addFlammable(getStrippedWood(), 5, 5);
+        }
+        else{
+            addFlammable(getMosaic(), 5, 20);
+            addFlammable(getMosaicStairs(), 5, 20);
+            addFlammable(getMosaicSlab(), 5, 20);
+        }
+        if (isOverworldTreeWood()){
+            addFlammable(getLeaves(), 30, 60);
+        }
+
+        addFlammable(getPlanks(), 5, 20);
+        addFlammable(getSlab(), 5, 20);
+        addFlammable(getStairs(), 5, 20);
+        addFlammable(getFence(), 5, 20);
+        addFlammable(getFenceGate(), 5, 20);
+
+        addFlammable(getSign(), 5, 20);
+        addFlammable(getWallSign(), 5, 20);
+
+        addFlammable(getHangingSign(), 5, 20);
+        addFlammable(getWallHangingSign(), 5, 20);
+    }
+    public static void addFlammable(Block block, int burn, int spread){
+        FlammableBlockRegistry.getDefaultInstance().add(block, burn, spread);
+    }
+
     public void fullWoodset(BlockStateModelGenerator blockStateModelGenerator){
         BlockStateModelGenerator.BlockTexturePool pool = blockStateModelGenerator.registerCubeAllModelTexturePool(getPlanks());
         pool.family(getBlockFamily());
@@ -519,7 +611,8 @@ public class Woodset {
             blockStateModelGenerator.registerLog(getLog()).uvLockedLog(getLog());
             blockStateModelGenerator.registerLog(getStrippedLog()).uvLockedLog(getStrippedLog());
         }
-        blockStateModelGenerator.registerItemModel(getSignItem());
+
+        blockStateModelGenerator.registerHangingSign(strippedLog, hangingSign, wallHangingSign);
 
         blockStateModelGenerator.registerItemModel(getBoatItem());
         blockStateModelGenerator.registerItemModel(getChestBoatItem());
@@ -616,7 +709,6 @@ public class Woodset {
         recipeGenerator.offerSlabRecipe(RecipeCategory.BUILDING_BLOCKS, this.getSlab(), this.getPlanks());
         recipeGenerator.generateFamily(getBlockFamily(), FeatureSet.empty());
         if (getWoodPreset() != WoodPreset.BAMBOO){
-
             recipeGenerator.offerBarkBlockRecipe(getWood(), getLog());
             recipeGenerator.offerBarkBlockRecipe(getStrippedWood(), getStrippedLog());
         }
@@ -625,6 +717,7 @@ public class Woodset {
             recipeGenerator.createStairsRecipe(this.getMosaicStairs(), Ingredient.ofItems(this.getPlanks())).criterion(hasPlanks(), recipeGenerator.conditionsFromItem(this.getMosaic())).offerTo(exporter);
             recipeGenerator.offerSlabRecipe(RecipeCategory.BUILDING_BLOCKS, this.getMosaicStairs(), this.getPlanks());
         }
+        recipeGenerator.createSignRecipe(signItem, Ingredient.ofItems(planks)).criterion(hasPlanks(), recipeGenerator.conditionsFromItem(planks)).offerTo(exporter);
         recipeGenerator.offerHangingSignRecipe(getHangingSignItem(), getStrippedLog());
 
         recipeGenerator.offerBoatRecipe(getBoatItem(), getPlanks());
@@ -658,7 +751,7 @@ public class Woodset {
         public enum BoatType {BOAT, RAFT}
         private String logName = null;
         private String woodName = null;
-        private BoatType boatType = BoatType.BOAT;
+        private BoatType boatType = null;
         private boolean hasBoats = true;
         private WoodPreset woodPreset = WoodPreset.DEFAULT;
 
@@ -680,8 +773,8 @@ public class Woodset {
             return this;
         }
 
-        public Settings setRaft() {
-            this.boatType = BoatType.RAFT;
+        public Settings setBoatType(BoatType type) {
+            this.boatType = type;
             return this;
         }
 
@@ -695,7 +788,17 @@ public class Woodset {
         }
 
         public BoatType getBoatType() {
-            return boatType;
+            if (boatType != null){
+                return boatType;
+            }
+            else {
+                if (woodPreset == WoodPreset.BAMBOO){
+                    return BoatType.RAFT;
+                }
+                else{
+                    return BoatType.BOAT;
+                }
+            }
         }
 
         public boolean hasBoats() {
@@ -703,8 +806,9 @@ public class Woodset {
         }
 
         private String getBoatName(){
-            return this.boatType == BoatType.RAFT ? "raft" : "boat";
+            return this.getBoatType() == BoatType.RAFT ? "raft" : "boat";
         }
+        
         private String getWoodName(){
             return Objects.requireNonNullElseGet(this.woodName, () -> this.woodPreset == WoodPreset.NETHER ? "hyphae" : "wood");
         }

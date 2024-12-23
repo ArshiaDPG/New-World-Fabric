@@ -36,19 +36,20 @@ public class NWLanguageProvider extends FabricLanguageProvider {
             }
         });
         woodset.getRegisteredItemsList().forEach(item -> makeTranslation(translationBuilder, item));
+        translationBuilder.add("entity." + woodset.getNamespace() + "." + woodset.getName() + "_chest_boat", formatString(woodset.getName() + "_chest_boat"));
     }
 
     public static void makeSmithingTemplateTranslation(TranslationBuilder translationBuilder, Item template, String templateId, String appliesTo, String ingredient){
-        translationBuilder.add(template, formatString(templateId) + " Armor Trim");
+        translationBuilder.add(template, formatString(templateId) + " Trim");
         translationBuilder.add("item.newworld.smithing_template." + templateId + ".additions_slot_description", "Add " + ingredient);
         translationBuilder.add("item.newworld.smithing_template." + templateId +".applies_to", appliesTo);
         translationBuilder.add("item.newworld.smithing_template." + templateId + ".base_slot_description", "Add " + appliesTo);
         translationBuilder.add("item.newworld.smithing_template." + templateId + ".ingredients", ingredient);
         translationBuilder.add("upgrade.newworld." + templateId, formatString(templateId));
     }
-    public static void makeTemplateFragmentTranslation(TranslationBuilder translationBuilder, Item item, String desc){
-        translationBuilder.add(item,"Template Fragment");
-        translationBuilder.add(item.getTranslationKey() + ".desc", desc);
+    public static void makeTemplateFragmentTranslation(TranslationBuilder translationBuilder, Item item, String templateName){
+        translationBuilder.add(item, templateName);
+        translationBuilder.add(item.getTranslationKey() + ".desc", "Template Fragment");
     }
 
     public static void makeTranslation(TranslationBuilder translationBuilder, Item itemConvertible){

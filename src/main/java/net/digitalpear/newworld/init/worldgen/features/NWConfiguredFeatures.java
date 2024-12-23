@@ -147,7 +147,7 @@ public class NWConfiguredFeatures {
                 BlockStateProvider.of(NWBlocks.FIR.getLog()),
                 new StraightTrunkPlacer(6, 1, 2),
 
-                BlockStateProvider.of(NWBlocks.FIR.getLog()),
+                BlockStateProvider.of(NWBlocks.FIR.getLeaves()),
                 new SpruceFoliagePlacer(
                         UniformIntProvider.create(1, 3),
                         UniformIntProvider.create(0, 1),

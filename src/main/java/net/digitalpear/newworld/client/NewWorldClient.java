@@ -25,9 +25,10 @@ public class NewWorldClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         registerBoatModels(NWBlocks.FIR);
-//        BlockRenderLayerMap.INSTANCE.putBlock(NWBlocks.FIR.getSign(), RenderLayers.getEntityBlockLayer(NWBlocks.FIR.getSign().getDefaultState()));
+
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), NWBlocks.FIR_SAPLING, NWBlocks.POTTED_FIR_SAPLING, NWBlocks.FIR.getLeaves(), NWBlocks.POTTED_POINTED_DRIPSTONE);
     }
+
 
     public static void registerBoatModels(Woodset woodset){
         if (!woodset.getWoodsetSettings().hasBoats()){
@@ -37,22 +38,14 @@ public class NewWorldClient implements ClientModInitializer {
         Identifier chestLayerName = woodset.getNameID().withPrefixedPath("chest_boat/");
 
         final EntityModelLayer BOAT_MODEL_LAYER = new EntityModelLayer(layerName, "main");
-        final EntityModelLayer CHESY_BOAT_MODEL_LAYER = new EntityModelLayer(chestLayerName, "main");
+        final EntityModelLayer CHEST_BOAT_MODEL_LAYER = new EntityModelLayer(chestLayerName, "main");
 
-        if (Objects.equals(woodset.getWoodsetSettings().getBoatType(), Woodset.Settings.BoatType.RAFT)) {
-            EntityModelLayerRegistry.registerModelLayer(BOAT_MODEL_LAYER, RaftEntityModel::getTexturedModelData);
-            EntityRendererRegistry.register(woodset.getBoat(), ctx -> new RaftEntityRenderer(ctx, BOAT_MODEL_LAYER));
-        } else {
-            EntityModelLayerRegistry.registerModelLayer(BOAT_MODEL_LAYER, BoatEntityModel::getTexturedModelData);
-            EntityRendererRegistry.register(woodset.getBoat(), ctx -> new BoatEntityRenderer(ctx, BOAT_MODEL_LAYER));
-        }
+        final boolean raft = Objects.equals(woodset.getWoodsetSettings().getBoatType(), Woodset.Settings.BoatType.RAFT);
 
-        if (Objects.equals(woodset.getWoodsetSettings().getBoatType(), Woodset.Settings.BoatType.RAFT)) {
-            EntityModelLayerRegistry.registerModelLayer(CHESY_BOAT_MODEL_LAYER, RaftEntityModel::getChestTexturedModelData);
-            EntityRendererRegistry.register(woodset.getChestBoat(), ctx -> new RaftEntityRenderer(ctx, BOAT_MODEL_LAYER));
-        } else {
-            EntityModelLayerRegistry.registerModelLayer(CHESY_BOAT_MODEL_LAYER, BoatEntityModel::getChestTexturedModelData);
-            EntityRendererRegistry.register(woodset.getChestBoat(), ctx -> new BoatEntityRenderer(ctx, BOAT_MODEL_LAYER));
-        }
+        EntityModelLayerRegistry.registerModelLayer(BOAT_MODEL_LAYER, raft ? RaftEntityModel::getTexturedModelData : BoatEntityModel::getTexturedModelData);
+        EntityRendererRegistry.register(woodset.getBoat(), ctx -> raft ? new RaftEntityRenderer(ctx, BOAT_MODEL_LAYER) : new BoatEntityRenderer(ctx, BOAT_MODEL_LAYER));
+
+        EntityModelLayerRegistry.registerModelLayer(CHEST_BOAT_MODEL_LAYER, raft ? RaftEntityModel::getChestTexturedModelData : BoatEntityModel::getChestTexturedModelData);
+        EntityRendererRegistry.register(woodset.getBoat(), ctx -> raft ? new RaftEntityRenderer(ctx, CHEST_BOAT_MODEL_LAYER) : new BoatEntityRenderer(ctx, CHEST_BOAT_MODEL_LAYER));
     }
 }

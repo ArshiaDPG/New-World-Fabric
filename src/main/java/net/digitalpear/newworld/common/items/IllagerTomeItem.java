@@ -8,7 +8,6 @@ public class IllagerTomeItem extends Item {
         super(settings);
     }
 
-
     @Override
     public ItemStack getRecipeRemainder(ItemStack stack) {
         return new ItemStack(this);

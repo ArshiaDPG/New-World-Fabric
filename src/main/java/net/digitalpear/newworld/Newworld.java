@@ -39,6 +39,8 @@ public class Newworld implements ModInitializer {
 
         NWStats.init();
 
+
+
         LOGGER.info(MOD_NAME + " has initialized.");
     }
 }
