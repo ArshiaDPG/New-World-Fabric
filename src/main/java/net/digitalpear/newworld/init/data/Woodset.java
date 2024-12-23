@@ -486,33 +486,6 @@ public class Woodset {
                         this.woodType, settings),
                 AbstractBlock.Settings.copy(getHangingSignBase()).mapColor(this.getTopColor()).lootTable(hangingSign.getLootTableKey()));
     }
-//    private Block createSign(){
-//        return createBlockWithoutItem(this.getName() + "_sign", settings -> new TerraformSignBlock(
-//                this.getNameID().withPrefixedPath(SIGN_PATH),
-//                this.woodType, settings),
-//                AbstractBlock.Settings.copy(getSignBase()).mapColor(this.getTopColor()));
-//    }
-//    private Block createWallSign(){
-//        return createBlockWithoutItem(this.getName() + "_wall_sign", settings -> new TerraformWallSignBlock(
-//                this.getNameID().withPrefixedPath(SIGN_PATH),
-//                this.woodType, settings),
-//                AbstractBlock.Settings.copy(getSignBase()).mapColor(this.getTopColor()).lootTable(sign.getLootTableKey()));
-//    }
-//
-//    private Block createHangingSign(){
-//        return createBlockWithoutItem(this.getName() + "_hanging_sign", settings -> new TerraformHangingSignBlock(
-//                this.getNameID().withPrefixedPath(HANGING_SIGN_PATH),
-//                this.getNameID().withPrefixedPath(HANGING_SIGN_GUI_PATH),
-//                this.woodType, settings),
-//                AbstractBlock.Settings.copy(getHangingSignBase()).mapColor(this.getTopColor()));
-//    }
-//    private Block createWallHangingSign(){
-//        return createBlockWithoutItem(this.getName() + "_wall_hanging_sign", settings -> new TerraformWallHangingSignBlock(
-//                this.getNameID().withPrefixedPath(HANGING_SIGN_PATH),
-//                this.getNameID().withPrefixedPath(HANGING_SIGN_GUI_PATH),
-//                this.woodType, settings),
-//                AbstractBlock.Settings.copy(getHangingSignBase()).mapColor(this.getTopColor()).lootTable(hangingSign.getLootTableKey()));
-//    }
 
     private Item createSignItem(){
         return createItem(this.getName() + "_sign", settings -> new SignItem(this.getSign(), this.getWallSign(), settings), new Item.Settings().maxCount(16));

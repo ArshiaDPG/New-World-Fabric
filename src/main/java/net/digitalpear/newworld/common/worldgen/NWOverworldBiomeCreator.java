@@ -15,7 +15,6 @@ import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.carver.ConfiguredCarver;
 import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
-import net.minecraft.world.gen.feature.MiscPlacedFeatures;
 import net.minecraft.world.gen.feature.PlacedFeature;
 import org.jetbrains.annotations.Nullable;
 
@@ -53,25 +52,23 @@ public class NWOverworldBiomeCreator {
         spawnBuilder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.DONKEY, 1, 1, 2)).spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.RABBIT, 2, 2, 6)).spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.SHEEP, 2, 2, 4));
         DefaultBiomeFeatures.addBatsAndMonsters(spawnBuilder);
 
-
-
-
         featureBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, NWPlacedFeatures.TREES_FIR);
         featureBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, NWPlacedFeatures.GLOW_LICHEN_WOODED_MEADOW);
         featureBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, NWPlacedFeatures.PATCH_BERRY_WOODED_MEADOW);
-        DefaultBiomeFeatures.addForestFlowers(featureBuilder);
-        DefaultBiomeFeatures.addLargeFerns(featureBuilder);
+
         featureBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, NWPlacedFeatures.PATCH_FERN_WOODED_MEADOW);
-        featureBuilder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, MiscPlacedFeatures.FOREST_ROCK);
         featureBuilder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, NWPlacedFeatures.FALLEN_FIR_LOG);
 
 
 
         //Default biome features, DO NOT CHANGE THIS
         addBasicFeatures(featureBuilder);
-        DefaultBiomeFeatures.addPlainsTallGrass(featureBuilder);
+        DefaultBiomeFeatures.addMossyRocks(featureBuilder);
+        DefaultBiomeFeatures.addLargeFerns(featureBuilder);
         DefaultBiomeFeatures.addDefaultOres(featureBuilder);
         DefaultBiomeFeatures.addDefaultDisks(featureBuilder);
+        DefaultBiomeFeatures.addForestFlowers(featureBuilder);
+        DefaultBiomeFeatures.addPlainsTallGrass(featureBuilder);
         DefaultBiomeFeatures.addMeadowFlowers(featureBuilder);
         DefaultBiomeFeatures.addEmeraldOre(featureBuilder);
         DefaultBiomeFeatures.addInfestedStone(featureBuilder);

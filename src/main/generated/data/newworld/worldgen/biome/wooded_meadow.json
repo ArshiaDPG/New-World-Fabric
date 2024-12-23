@@ -30,9 +30,9 @@
       "minecraft:lake_lava_surface"
     ],
     [
-      "minecraft:forest_rock",
       "newworld:fallen_fir_log",
-      "minecraft:amethyst_geode"
+      "minecraft:amethyst_geode",
+      "minecraft:forest_rock"
     ],
     [
       "minecraft:monster_room",
@@ -83,10 +83,10 @@
       "newworld:trees_fir",
       "newworld:glow_lichen_wooded_meadow",
       "newworld:patch_berry_bush_wooded_meadow",
-      "minecraft:forest_flowers",
-      "minecraft:patch_large_fern",
       "newworld:patch_fern_wooded_meadow",
       "minecraft:glow_lichen",
+      "minecraft:patch_large_fern",
+      "minecraft:forest_flowers",
       "minecraft:patch_tall_grass_2",
       "minecraft:patch_grass_plain",
       "minecraft:flower_meadow",
