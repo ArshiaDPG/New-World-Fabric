@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '1.6.+'
+    id 'fabric-loom' version '1.9.+'
     id 'maven-publish'
     id "me.shedaniel.unified-publishing" version "0.1.+"
 }
@@ -29,10 +29,9 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-    modImplementation "com.github.glitchfiend:TerraBlender-fabric:${project.minecraft_version}-${project.terrablender_version}"
     modImplementation include("com.terraformersmc.terraform-api:terraform-wood-api-v1:${project.terraform_version}")
 
-//    modLocalRuntime "maven.modrinth:emi:${project.emi}"
+    modImplementation("com.terraformersmc:biolith-fabric:${project.biolith_version}")
 }
 
 processResources {
@@ -120,8 +119,8 @@ unifiedPublishing {
         displayName = "${project.minecraft_version}-${project.mod_version}" // Optional, name of the file
         version = "${project.mod_version}" // Optional, Inferred from project by default
         changelog = '''<ul>
-  <li>Fixed issue where having more than one stack of an item when dying with a tombstone would cause the game to crash and delete the extra stack.</li>
-  <li>Fixed Buried Bunkers not generating.</li>
+  <li>Added new painting, "Providence".</li>
+  <li>Mod now relies on Biolith instead of Terrablender for biome generation.</li>
 </ul> '''
         releaseType = "release" // Optional, use "release", "beta" or "alpha"
         gameVersions = ["1.21"]
@@ -131,8 +130,8 @@ unifiedPublishing {
 
         relations {
             depends { // Mark as a required dependency
-                curseforge = "terrablender" // Optional, project slug
-                modrinth = "terrablender" // Optional, project slug or id
+                curseforge = "biolith" // Optional, project slug
+                modrinth = "biolith" // Optional, project slug or id
             }
             includes {} // Mark as an included dependency
             optional {} // Mark as an optional dependency

@@ -11,6 +11,7 @@ import net.digitalpear.newworld.common.datagens.worldgen.structures.NWProcessorL
 import net.digitalpear.newworld.common.datagens.worldgen.structures.NWTemplatePoolProvider;
 import net.digitalpear.newworld.common.datagens.worldgen.structures.NWStructureProvider;
 import net.digitalpear.newworld.common.datagens.worldgen.structures.NWStructureSetProvider;
+import net.digitalpear.newworld.init.NWPaintingVariants;
 import net.digitalpear.newworld.init.worldgen.NWBiomes;
 import net.digitalpear.newworld.init.worldgen.features.NWConfiguredFeatures;
 import net.digitalpear.newworld.init.worldgen.features.NWPlacedFeatures;
@@ -33,6 +34,7 @@ public class NewworldDatagen implements DataGeneratorEntrypoint {
         pack.addProvider(NWBlockTagProvider::new);
         pack.addProvider(NWBiomeTagProvider::new);
         pack.addProvider(NWEntityTypeTagProvider::new);
+        pack.addProvider(NWPaintingTagProvider::new);
 
         pack.addProvider(NWBlockLootTableProvider::new);
         pack.addProvider(NWChestLootTableProvider::new);
@@ -49,6 +51,8 @@ public class NewworldDatagen implements DataGeneratorEntrypoint {
         pack.addProvider(NWStructureSetProvider::new);
         pack.addProvider(NWStructureProvider::new);
         pack.addProvider(NWTemplatePoolProvider::new);
+
+        pack.addProvider(NWPaintingProvider::new);
     }
 
     @Override
@@ -61,5 +65,7 @@ public class NewworldDatagen implements DataGeneratorEntrypoint {
         registryBuilder.addRegistry(RegistryKeys.STRUCTURE_SET, NWStructureSets::bootstrap);
         registryBuilder.addRegistry(RegistryKeys.STRUCTURE, NWStructures::bootstrap);
         registryBuilder.addRegistry(RegistryKeys.TEMPLATE_POOL, NWTemplatePools::bootstrap);
+
+        registryBuilder.addRegistry(RegistryKeys.PAINTING_VARIANT, NWPaintingVariants::bootstrap);
     }
 }

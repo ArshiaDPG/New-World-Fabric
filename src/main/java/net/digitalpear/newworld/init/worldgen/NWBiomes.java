@@ -1,5 +1,6 @@
 package net.digitalpear.newworld.init.worldgen;
 
+import com.terraformersmc.biolith.api.biome.BiomePlacement;
 import net.digitalpear.newworld.Newworld;
 import net.digitalpear.newworld.common.worldgen.NWOverworldBiomeCreator;
 import net.minecraft.registry.Registerable;
@@ -7,6 +8,7 @@ import net.minecraft.registry.RegistryEntryLookup;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.gen.carver.ConfiguredCarver;
 import net.minecraft.world.gen.feature.PlacedFeature;
 
@@ -33,5 +35,6 @@ public class NWBiomes {
     }
 
     public static void init(){
+        BiomePlacement.replaceOverworld(BiomeKeys.MEADOW, WOODED_MEADOW, 0.3);
     }
 }

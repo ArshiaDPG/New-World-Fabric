@@ -6,6 +6,7 @@ import net.digitalpear.newworld.common.blocks.TombstoneBlock;
 import net.digitalpear.newworld.init.data.Woodset;
 import net.digitalpear.newworld.init.worldgen.NWSaplingGenerators;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.*;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.item.BlockItem;
@@ -99,6 +100,7 @@ public class NWBlocks {
         Experimental blocks
      */
     public static final Block POTTED_POINTED_DRIPSTONE = createBlockWithoutItem("potted_pointed_dripstone", new FlowerPotBlock(Blocks.POINTED_DRIPSTONE, AbstractBlock.Settings.copy(Blocks.POTTED_ACACIA_SAPLING)));
+
 
     public static void init(){
         FIR.addToBuildingTab(Items.SPRUCE_BUTTON);

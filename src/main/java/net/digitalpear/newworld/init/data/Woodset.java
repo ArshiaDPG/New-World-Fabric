@@ -59,6 +59,7 @@ public class Woodset {
     private Block wallSign;
     private Block hangingSign;
     private Block wallHangingSign;
+
     private Item signItem;
     private Item hangingSignItem;
 
@@ -372,7 +373,6 @@ public class Woodset {
     private Block createWallHangingSign(){
         return createBlockWithoutItem(this.getName() + "_wall_hanging_sign", new TerraformWallHangingSignBlock(this.getNameID().withPrefixedPath(HANGING_SIGN_PATH), this.getNameID().withPrefixedPath(HANGING_SIGN_GUI_PATH), AbstractBlock.Settings.copy(getHangingSignBase()).mapColor(this.getTopColor()).dropsLike(hangingSign)));
     }
-
 
     private Item createSignItem(){
         return createItem(this.getName() + "_sign", createSignItem(this.getSign(), this.getWallSign()));
