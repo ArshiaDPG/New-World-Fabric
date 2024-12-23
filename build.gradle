@@ -120,10 +120,10 @@ unifiedPublishing {
         version = "${project.mod_version}" // Optional, Inferred from project by default
         changelog = '''<ul>
   <li>Added new painting, "Providence".</li>
-  <li>Mod now relies on Biolith instead of Terrablender for biome generation.</li>
+  <li>Switch to Biolith for biome placement.</li>
 </ul> '''
         releaseType = "release" // Optional, use "release", "beta" or "alpha"
-        gameVersions = ["1.21"]
+        gameVersions = ["1.21", "1.21.1"]
         gameLoaders = ["fabric"]
 
         mainPublication tasks.remapJar
