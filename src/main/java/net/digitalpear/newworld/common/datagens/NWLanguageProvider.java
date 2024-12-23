@@ -3,6 +3,7 @@ package net.digitalpear.newworld.common.datagens;
 import net.digitalpear.newworld.Newworld;
 import net.digitalpear.newworld.init.NWBlocks;
 import net.digitalpear.newworld.init.NWItems;
+import net.digitalpear.newworld.init.NWPaintingVariants;
 import net.digitalpear.newworld.init.data.NWStats;
 import net.digitalpear.newworld.init.data.Woodset;
 import net.digitalpear.newworld.init.worldgen.NWBiomes;
@@ -11,6 +12,7 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.block.AbstractSignBlock;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.decoration.painting.PaintingVariant;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -144,5 +146,12 @@ public class NWLanguageProvider extends FabricLanguageProvider {
 
 
         NWBiomes.biomes.forEach(biomeRegistryKey -> makeBiomeTranslation(translationBuilder, biomeRegistryKey));
+
+        makePaintingTranslation(translationBuilder, NWPaintingVariants.PROVIDENCE, "Providence", "AvocadoSpud");
+    }
+
+    private void makePaintingTranslation(TranslationBuilder translationBuilder, RegistryKey<PaintingVariant> key, String title, String author){
+        translationBuilder.add(key.getValue().toTranslationKey("painting", "title"), title);
+        translationBuilder.add(key.getValue().toTranslationKey("painting", "author"), author);
     }
 }

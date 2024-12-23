@@ -50,5 +50,7 @@
   "item.newworld.smithing_template.mattock_crafting.base_slot_description": "Add Stick",
   "item.newworld.smithing_template.mattock_crafting.ingredients": "Flint",
   "newworld.tombstone_activation": "Tombstones Activated",
+  "painting.newworld.providence.author": "AvocadoSpud",
+  "painting.newworld.providence.title": "Providence",
   "upgrade.newworld.mattock_crafting": "Mattock Crafting"
 }

@@ -1,4 +1,4 @@
-// 1.21	2024-12-23T14:08:57.5489964	New World/Model Definitions
+// 1.21	2024-12-23T14:31:37.1736113	New World/Model Definitions
 c21bdcd6415aa5215c30a58dfaf9307e89a12c88 assets\newworld\blockstates\loam_stairs.json
 d951ef2dd064c0b1874bdcbfe9e9505a56d16a6f assets\newworld\models\item\loam_tile_slab.json
 1aa6e8aa715050cdb13ef3e604f90cd350672fdc assets\newworld\blockstates\loam_tiles.json
@@ -19,8 +19,8 @@ c413950a0ed8b5930cbce05d0ffcbe296592ad5e assets\newworld\models\item\moss_sprout
 78f5a73b121ed911da7b09c8bdeef287b314e183 assets\newworld\models\block\fir_button_pressed.json
 b87c370cf9329100b63228b99ef481de3b34c04f assets\newworld\models\block\loam_tile_stairs.json
 3c35bcc1184176901a12747152b776adb53fa6d3 assets\newworld\models\block\loam_tile_wall_inventory.json
-e286d8af821b44e6e7d0dd1f4c9b4279daf03822 assets\newworld\blockstates\fir_log.json
 2d710e948222631d57cf5e3c5e6817668abf6f98 assets\newworld\blockstates\fir_wall_sign.json
+e286d8af821b44e6e7d0dd1f4c9b4279daf03822 assets\newworld\blockstates\fir_log.json
 97453568a930b7e108e9f1d223ac2ed1851dfea4 assets\newworld\models\item\fir_wood.json
 6179f843d41b71a1d4582682baa3ea71986c4dc3 assets\newworld\models\block\moss_sprouts.json
 613bfde5b7ca15efce465a9655a4f7047fc30255 assets\newworld\blockstates\loam_tile_stairs.json
