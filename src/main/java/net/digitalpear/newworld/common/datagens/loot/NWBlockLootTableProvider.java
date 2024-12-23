@@ -36,6 +36,8 @@ public class NWBlockLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(NWBlocks.TOMBSTONE);
 
         addDrop(NWBlocks.POTTED_POINTED_DRIPSTONE, pottedPlantDrops(Items.POINTED_DRIPSTONE));
+
+        addDrop(NWBlocks.MOSS_SPROUTS, dropsWithShears(NWBlocks.MOSS_SPROUTS));
     }
     public void makeWoodLoot(Woodset woodset, Block sapling){
         addDrop(woodset.getPlanks());
