@@ -22,9 +22,6 @@
     "fabric-datagen": [
       "net.digitalpear.newworld.NewworldDatagen"
     ],
-    "terrablender": [
-      "net.digitalpear.newworld.NewWorldTerraBlender"
-    ],
     "main": [
       "net.digitalpear.newworld.Newworld"
     ]

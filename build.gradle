@@ -119,7 +119,7 @@ unifiedPublishing {
         displayName = "${project.minecraft_version}-${project.mod_version}" // Optional, name of the file
         version = "${project.mod_version}" // Optional, Inferred from project by default
         changelog = '''<ul>
-  <li>Fixed new painting's author and title not having a proper translation.</li>
+  <li>Fixed terrablender crash.</li>
 </ul> '''
         releaseType = "release" // Optional, use "release", "beta" or "alpha"
         gameVersions = ["1.21", "1.21.1"]
