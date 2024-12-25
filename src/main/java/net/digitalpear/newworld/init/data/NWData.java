@@ -70,8 +70,6 @@ public class NWData {
         FlammableBlockRegistry.getDefaultInstance().add(block, burn, spread);
     }
 
-
-
     public static void init(){
         registerCustomTrades();
         registerStrippables();

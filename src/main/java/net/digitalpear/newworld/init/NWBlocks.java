@@ -1,6 +1,7 @@
 package net.digitalpear.newworld.init;
 
 import net.digitalpear.newworld.Newworld;
+import net.digitalpear.newworld.common.blocks.MossSproutsBlock;
 import net.digitalpear.newworld.common.blocks.TombstoneBlock;
 import net.digitalpear.newworld.init.data.Woodset;
 import net.digitalpear.newworld.init.worldgen.NWSaplingGenerators;
@@ -47,8 +48,7 @@ public class NWBlocks {
         return Blocks.register(keyOf(blockID), factory, settings);
     }
 
-
-    public static final Woodset FIR = new Woodset(Newworld.id("fir"), MapColor.DEEPSLATE_GRAY, MapColor.SPRUCE_BROWN, BlockSoundGroup.AZALEA_LEAVES);
+    public static final Woodset FIR = new Woodset(Newworld.id("fir"), MapColor.DEEPSLATE_GRAY, MapColor.SPRUCE_BROWN, new Woodset.Settings.Builder().leaveSoundGroup(BlockSoundGroup.AZALEA_LEAVES));
 
     public static final Block FIR_SAPLING = createBlockWithItem("fir_sapling", settings -> new SaplingBlock(NWSaplingGenerators.FIR, settings), AbstractBlock.Settings.copy(Blocks.OAK_SAPLING));
     public static final Block POTTED_FIR_SAPLING = createBlockWithoutItem("potted_fir_sapling", settings -> new FlowerPotBlock(NWBlocks.FIR_SAPLING, settings), AbstractBlock.Settings.copy(Blocks.POTTED_ACACIA_SAPLING));
@@ -70,7 +70,7 @@ public class NWBlocks {
 
     public static final Block TOMBSTONE = createBlockWithoutItem("tombstone", TombstoneBlock::new, AbstractBlock.Settings.create().mapColor(Blocks.DEEPSLATE.getDefaultMapColor()).strength(0.7f, 1200).pistonBehavior(PistonBehavior.IGNORE).sounds(BlockSoundGroup.POLISHED_DEEPSLATE).suffocates((state, world, pos) -> false).nonOpaque());
 
-    public static final Block MOSS_SPROUTS = createBlockWithItem("moss_sprouts", ShortPlantBlock::new, AbstractBlock.Settings.copy(Blocks.SHORT_GRASS).sounds(BlockSoundGroup.MOSS_CARPET).mapColor(Blocks.MOSS_BLOCK.getDefaultMapColor()));
+    public static final Block MOSS_SPROUTS = createBlockWithItem("moss_sprouts", MossSproutsBlock::new, AbstractBlock.Settings.copy(Blocks.SHORT_GRASS).sounds(BlockSoundGroup.MOSS_CARPET).mapColor(Blocks.MOSS_BLOCK.getDefaultMapColor()));
     /*
         Experimental blocks
      */

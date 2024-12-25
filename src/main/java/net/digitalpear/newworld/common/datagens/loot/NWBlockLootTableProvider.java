@@ -49,12 +49,12 @@ public class NWBlockLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(woodset.getPressurePlate());
         addDrop(woodset.getLog());
 
-        if (woodset.getWoodPreset() == Woodset.WoodPreset.BAMBOO) {
+        if (woodset.notBambooVariant()) {
             addDrop(woodset.getMosaic());
             addDrop(woodset.getMosaicStairs());
             addDrop(woodset.getMosaicSlab(), slabDrops(woodset.getMosaic()));
         }
-        else{
+        if (woodset.getWoodsetSettings().hasMosaic()){
             addDrop(woodset.getWood());
             addDrop(woodset.getStrippedLog());
             addDrop(woodset.getStrippedWood());
