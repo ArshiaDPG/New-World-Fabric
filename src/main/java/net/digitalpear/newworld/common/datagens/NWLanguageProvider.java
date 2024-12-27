@@ -42,7 +42,7 @@ public class NWLanguageProvider extends FabricLanguageProvider {
     }
 
     public static void makeSmithingTemplateTranslation(TranslationBuilder translationBuilder, Item template, String templateId, String appliesTo, String ingredient){
-        translationBuilder.add(template, formatString(templateId) + " Trim");
+        translationBuilder.add(template, formatString(templateId) + " Template");
         translationBuilder.add("item.newworld.smithing_template." + templateId + ".additions_slot_description", "Add " + ingredient);
         translationBuilder.add("item.newworld.smithing_template." + templateId +".applies_to", appliesTo);
         translationBuilder.add("item.newworld.smithing_template." + templateId + ".base_slot_description", "Add " + appliesTo);
