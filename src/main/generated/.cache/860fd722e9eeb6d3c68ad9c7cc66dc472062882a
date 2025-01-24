@@ -46,7 +46,7 @@ d211a0b17a9d0d2b18fecc9adf707250ac793852 assets/newworld/items/fir_hanging_sign.
 6355927b6a17f5a66b88847122ef413a94d1923c assets/newworld/items/fir_log.json
 bbeae6e7fbe3d750b7088a8783438dcf58d8e579 assets/newworld/items/fir_planks.json
 4ff9fe43f707b4360ed3ec98b65bd432b54a52e6 assets/newworld/items/fir_pressure_plate.json
-7aef0aec647d575bf484158fb495c3b863d46fab assets/newworld/items/fir_sapling.json
+f323af432e464d021152a09911af40c95c4a2ad9 assets/newworld/items/fir_sapling.json
 19618ecb68dabb60b94c01efd184f0ccddb41332 assets/newworld/items/fir_sign.json
 04c68d0e146db795ad62fa2e738057517f40df19 assets/newworld/items/fir_slab.json
 1f3372d508186a3ecc551556507f5f2cb04cd1b0 assets/newworld/items/fir_stairs.json
@@ -150,6 +150,7 @@ e2172ebfe8cff70eeb013ed45ca6c3d1e8919c9a assets/newworld/models/item/fir_boat.js
 097eb8a52fd73cf5b72fae53495c6e2c9c8e43e9 assets/newworld/models/item/fir_chest_boat.json
 448aece8878c61cc41b0714bcc2fc6f27ecc7c44 assets/newworld/models/item/fir_door.json
 961436a3053d2a73a69f6dce1076343b6aaf96b2 assets/newworld/models/item/fir_hanging_sign.json
+162dcbcdab2e69d23ec592cf936fa21cfecb7be7 assets/newworld/models/item/fir_sapling.json
 7acdd4aa1ebda8337aac37ef5a6e019b9be6c2bd assets/newworld/models/item/fir_sign.json
 3bd8d039efe189e7fe001a2c1c0bbaf45c8946b1 assets/newworld/models/item/illager_tome.json
 e90a7c8b322e129b60da773e5babdb8ba56a8e7d assets/newworld/models/item/jeb_book.json

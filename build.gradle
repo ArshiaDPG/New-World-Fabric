@@ -89,7 +89,7 @@ unifiedPublishing {
         displayName = "Fabric ${project.minecraft_version}-${project.mod_version}" // Optional, name of the file
         version = "${project.mod_version}" // Optional, Inferred from project by default
         changelog = '''<ul>
-  <li>Added spanish mx translation by cerealconjugo.</li>
+  <li>Fixed Moss Sprouts not being in the creative inventory.</li>
 </ul> '''
         releaseType = "release" // Optional, use "release", "beta" or "alpha"
         gameVersions = ["${project.minecraft_version}"]

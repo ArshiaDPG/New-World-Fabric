@@ -24,6 +24,7 @@ public class NWModelProvider extends FabricModelProvider {
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         NWBlocks.FIR.fullWoodset(blockStateModelGenerator);
         blockStateModelGenerator.registerFlowerPotPlant(NWBlocks.FIR_SAPLING, NWBlocks.POTTED_FIR_SAPLING, BlockStateModelGenerator.CrossType.NOT_TINTED);
+        blockStateModelGenerator.registerItemModel(NWBlocks.FIR_SAPLING);
 
         makeStoneModels(blockStateModelGenerator, NWBlocks.LOAM, NWBlocks.LOAM_STAIRS, NWBlocks.LOAM_SLAB, NWBlocks.LOAM_WALL);
         makeStoneModels(blockStateModelGenerator, NWBlocks.LOAM_BRICKS, NWBlocks.LOAM_BRICK_STAIRS, NWBlocks.LOAM_BRICK_SLAB, NWBlocks.LOAM_BRICK_WALL);
@@ -35,8 +36,6 @@ public class NWModelProvider extends FabricModelProvider {
 
         blockStateModelGenerator.registerTintableCross(NWBlocks.MOSS_SPROUTS, BlockStateModelGenerator.CrossType.NOT_TINTED);
     }
-
-
 
 
     @Override

@@ -84,7 +84,10 @@ public class NWBlocks {
             entries.addAfter(Items.SPRUCE_SAPLING, FIR_SAPLING);
         });
 
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.addAfter(Items.MUD, LOAM));
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> {
+            entries.addAfter(Items.MUD, LOAM);
+            entries.addAfter(Items.MOSS_CARPET, MOSS_SPROUTS);
+        });
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> {
             entries.addAfter(Items.MUD_BRICK_WALL, LOAM, LOAM_STAIRS, LOAM_WALL,
