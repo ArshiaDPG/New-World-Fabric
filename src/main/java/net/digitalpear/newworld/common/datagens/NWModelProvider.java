@@ -4,18 +4,17 @@ import net.digitalpear.newworld.Newworld;
 import net.digitalpear.newworld.init.NWBlocks;
 import net.digitalpear.newworld.init.NWItems;
 import net.digitalpear.newworld.init.data.Woodset;
+import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.enums.BlockFace;
-import net.minecraft.data.client.*;
+import net.minecraft.client.data.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 
 public class NWModelProvider extends FabricModelProvider {
-
 
     public NWModelProvider(FabricDataOutput output) {
         super(output);
@@ -24,7 +23,7 @@ public class NWModelProvider extends FabricModelProvider {
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         NWBlocks.FIR.fullWoodset(blockStateModelGenerator);
-        blockStateModelGenerator.registerFlowerPotPlant(NWBlocks.FIR_SAPLING, NWBlocks.POTTED_FIR_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED);
+        blockStateModelGenerator.registerFlowerPotPlant(NWBlocks.FIR_SAPLING, NWBlocks.POTTED_FIR_SAPLING, BlockStateModelGenerator.CrossType.NOT_TINTED);
 
         makeStoneModels(blockStateModelGenerator, NWBlocks.LOAM, NWBlocks.LOAM_STAIRS, NWBlocks.LOAM_SLAB, NWBlocks.LOAM_WALL);
         makeStoneModels(blockStateModelGenerator, NWBlocks.LOAM_BRICKS, NWBlocks.LOAM_BRICK_STAIRS, NWBlocks.LOAM_BRICK_SLAB, NWBlocks.LOAM_BRICK_WALL);
@@ -34,7 +33,7 @@ public class NWModelProvider extends FabricModelProvider {
         generateDripstonePot(blockStateModelGenerator);
         registerTombstone(blockStateModelGenerator);
 
-        blockStateModelGenerator.registerTintableCross(NWBlocks.MOSS_SPROUTS, BlockStateModelGenerator.TintType.NOT_TINTED);
+        blockStateModelGenerator.registerTintableCross(NWBlocks.MOSS_SPROUTS, BlockStateModelGenerator.CrossType.NOT_TINTED);
     }
 
 
@@ -77,7 +76,7 @@ public class NWModelProvider extends FabricModelProvider {
     }
 
     public void generateDripstonePot(BlockStateModelGenerator blockStateModelGenerator){
-        Identifier identifier = BlockStateModelGenerator.TintType.NOT_TINTED.getFlowerPotCrossModel().upload(NWBlocks.POTTED_POINTED_DRIPSTONE, TextureMap.of(TextureKey.PLANT, TextureMap.getId(Blocks.POINTED_DRIPSTONE).withSuffixedPath("_up_tip")), blockStateModelGenerator.modelCollector);
+        Identifier identifier = BlockStateModelGenerator.CrossType.NOT_TINTED.getFlowerPotCrossModel().upload(NWBlocks.POTTED_POINTED_DRIPSTONE, TextureMap.of(TextureKey.PLANT, TextureMap.getId(Blocks.POINTED_DRIPSTONE).withSuffixedPath("_up_tip")), blockStateModelGenerator.modelCollector);
         blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createSingletonBlockState(NWBlocks.POTTED_POINTED_DRIPSTONE, identifier));
 
     }
@@ -126,7 +125,7 @@ public class NWModelProvider extends FabricModelProvider {
         Identifier BUTTON_INVENTORY = Models.BUTTON_INVENTORY.upload(button, TextureMap.all(textureBase), blockStateModelGenerator.modelCollector);
         blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createButtonBlockState(button,
                 BUTTON, BUTTON_PRESSED));
-        blockStateModelGenerator.registerParentedItemModel(button.asItem(), BUTTON_INVENTORY);
+        blockStateModelGenerator.registerParentedItemModel(button, BUTTON_INVENTORY);
     }
 
     public static void makePressurePlate(BlockStateModelGenerator blockStateModelGenerator, Block textureBase, Block plate){

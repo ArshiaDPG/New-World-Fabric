@@ -3,7 +3,7 @@ package net.digitalpear.newworld.common.datagens;
 import net.digitalpear.newworld.init.NWBlocks;
 import net.digitalpear.newworld.init.NWItems;
 import net.digitalpear.newworld.init.data.tags.NWItemTags;
-import net.minecraft.data.server.recipe.*;
+import net.minecraft.data.recipe.*;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
@@ -108,25 +108,6 @@ public class NWRecipeGenerator extends RecipeGenerator {
                 .criterion("has_tombstone_or_arcane_tome", conditionsFromItemPredicates(ItemPredicate.Builder.create().items(lookup, NWItems.ILLAGER_TOME, NWBlocks.TOMBSTONE).build()))
                 .offerTo(exporter);
     }
-//    public void generateWoodsetRecipes(Woodset woodset, TagKey<Item> logs){
-//        offerPlanksRecipe(woodset.getPlanks(), logs, 4);
-//        createStairsRecipe(woodset.getStairs(), Ingredient.ofItems(woodset.getPlanks())).offerTo(exporter);
-//        offerSlabRecipe(RecipeCategory.BUILDING_BLOCKS, woodset.getSlab(), woodset.getPlanks());
-//
-//        if (woodset.getWoodPreset() != Woodset.WoodPreset.BAMBOO){
-//            offerBarkBlockRecipe(woodset.getWood(), woodset.getLog());
-//            offerBarkBlockRecipe(woodset.getStrippedWood(), woodset.getStrippedLog());
-//        }
-//        else {
-//            offerMosaicRecipe(RecipeCategory.BUILDING_BLOCKS, woodset.getMosaic(), woodset.getPlanks());
-//            createStairsRecipe(woodset.getMosaicStairs(), Ingredient.ofItems(woodset.getMosaic())).offerTo(exporter);
-//            offerSlabRecipe(RecipeCategory.BUILDING_BLOCKS, woodset.getMosaicStairs(), woodset.getMosaic());
-//        }
-//        offerHangingSignRecipe(woodset.getHangingSignItem(), woodset.getStrippedLog());
-//
-//        offerBoatRecipe(woodset.getBoatItem(), woodset.getPlanks());
-//        offerChestBoatRecipe(woodset.getChestBoatItem(), woodset.getBoatItem());
-//    }
 
     public void createStoneSetRecipes(RecipeExporter exporter, ItemConvertible base, ItemConvertible stairs, ItemConvertible slab, ItemConvertible wall){
         createStairsRecipe(stairs, Ingredient.ofItems(base)).criterion(hasItem(base), conditionsFromItem(base)).offerTo(exporter);
