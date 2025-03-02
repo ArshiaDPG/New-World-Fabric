@@ -1,4 +1,4 @@
-// 1.21.3	2024-12-27T12:25:04.477484	New World/Model Definitions
+// 1.21.3	2025-03-01T19:17:16.0028973	New World/Model Definitions
 eb334652ce87b8a4e8a6138188b11587c1db7136 assets\newworld\blockstates\stripped_fir_wood.json
 863fbb82453ac965670fbbfd88966bd24243dadc assets\newworld\models\block\fir_log.json
 38c0b55e90009c06c0752a6a293ffbbb539a962f assets\newworld\models\block\fir_door_top_right_open.json
@@ -25,8 +25,8 @@ a106f454075defa48a3d8fd2bd219c043657d5ce assets\newworld\blockstates\loam_slab.j
 57ee29f6112838d2b87b4b1cc008861299d20ccf assets\newworld\models\block\loam_brick_stairs_outer.json
 dee0a6d4f31cf3017dd103949403aa84ffb0dab8 assets\newworld\models\item\loam.json
 08b642f874f25956887ec0310178c994673c21e9 assets\newworld\blockstates\fir_pressure_plate.json
-e90a7c8b322e129b60da773e5babdb8ba56a8e7d assets\newworld\models\item\jeb_book.json
 0bedf0e00d063169bd9dcc4c5428991e8564a720 assets\newworld\models\item\loam_brick_wall.json
+e90a7c8b322e129b60da773e5babdb8ba56a8e7d assets\newworld\models\item\jeb_book.json
 81366a0b247985fd497e0324c5b1d3b48661ee2f assets\newworld\blockstates\loam_brick_slab.json
 031b31cb3590656d25088ad79eea6c35bb5da314 assets\newworld\models\block\loam_wall_post.json
 66667c02b2b00121d5fd3e852d90a13bfddf64d7 assets\newworld\models\item\loam_tiles.json
@@ -69,8 +69,8 @@ b434d66d1f2daf8ccebc405dded61430d6e33ed0 assets\newworld\models\block\fir_log_ho
 fb081c054c26313ffa0395277af5bd2e1f3491f3 assets\newworld\models\block\fir_slab_top.json
 093fbca596dc73b9fc401285db0c6c0ee3680a2f assets\newworld\models\block\fir_fence_gate_open.json
 40bc36c475291f08537f83040cda6e97954b2303 assets\newworld\models\block\fir_sapling.json
-58518e444bb147549e32f41154578c6291e16e7c assets\newworld\models\block\fir_planks.json
 0f5bc2391c9df87f007a545d99d19f7d19525327 assets\newworld\models\item\loam_bricks.json
+58518e444bb147549e32f41154578c6291e16e7c assets\newworld\models\block\fir_planks.json
 6807b70913af03f21307ecf622475d01c42e188f assets\newworld\models\block\loam_tile_wall_side_tall.json
 8bcc2bc0ea2730b9aff73132b8c7d00fa888d12b assets\newworld\models\block\fir_fence_side.json
 0a0105b29f8dcccb3ee3faaf08d64b5eff68946c assets\newworld\models\block\fir_door_bottom_left.json

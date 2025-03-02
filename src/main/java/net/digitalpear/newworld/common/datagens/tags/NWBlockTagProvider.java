@@ -7,6 +7,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.LeavesBlock;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
@@ -78,7 +79,7 @@ public class NWBlockTagProvider extends FabricTagProvider<Block> {
 
     }
     private void addMineableAxe(Woodset woodset, TagKey<Block> logs){
-        woodset.getRegisteredBlocksList().forEach(block -> {
+        woodset.getRegisteredBlocksList().stream().filter(block -> !(block instanceof LeavesBlock) && !block.getDefaultState().isIn(logs)).forEach(block -> {
             getOrCreateTagBuilder(BlockTags.AXE_MINEABLE).add(block);
         });
         getOrCreateTagBuilder(logs).add(woodset.getLog()).add(woodset.getStrippedLog());

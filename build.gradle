@@ -87,7 +87,8 @@ unifiedPublishing {
         displayName = "Fabric ${project.minecraft_version}-${project.mod_version}" // Optional, name of the file
         version = "${project.mod_version}" // Optional, Inferred from project by default
         changelog = '''<ul>
-  <li>Changed Mattock Crafting Template translation.</li>
+  <li>Fixed Fir Leaves being mineable using axes.</li>
+  <li>Removed duplicate entries in tags.</li>
 </ul> '''
         releaseType = "release" // Optional, use "release", "beta" or "alpha"
         gameVersions = ["1.21.2", "${project.minecraft_version}"]
