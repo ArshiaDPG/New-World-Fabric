@@ -89,8 +89,7 @@ unifiedPublishing {
         displayName = "Fabric ${project.minecraft_version}-${project.mod_version}" // Optional, name of the file
         version = "${project.mod_version}" // Optional, Inferred from project by default
         changelog = '''<ul>
-  <li>Updated to 1.21.4.</li>
-  <li>Fixed Moss Sprouts not being in the creative inventory.</li>
+  <li>Fixed Fir Leaves being mineable using an axe.</li>
 </ul> '''
         releaseType = "release" // Optional, use "release", "beta" or "alpha"
         gameVersions = ["${project.minecraft_version}"]
