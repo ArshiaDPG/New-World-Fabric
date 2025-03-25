@@ -35,7 +35,7 @@ public class NewworldDatagen implements DataGeneratorEntrypoint {
         final FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
 
         pack.addProvider(NWItemTagProvider::new);
-        pack.addProvider(NWBlockTagProvider::new);
+//        pack.addProvider(NWBlockTagProvider::new);
         pack.addProvider(NWBiomeTagProvider::new);
         pack.addProvider(NWEntityTypeTagProvider::new);
         pack.addProvider(NWPaintingTagProvider::new);

@@ -41,7 +41,15 @@ public class NWItems {
 
     public static final Item TOMBSTONE = registerItem("tombstone", settings -> new TombstoneBlockItem(NWBlocks.TOMBSTONE, settings), new Item.Settings().maxCount(1));
 
-    public static final Item ANCIENT_MATTOCK = registerItem("ancient_mattock", settings -> new MattockItem(NWToolMaterials.ANCIENT, settings), new Item.Settings());
+    public static final Item ANCIENT_MATTOCK = registerItem("ancient_mattock", Item::new, new Item.Settings()
+            .pickaxe(NWToolMaterials.ANCIENT, 0F, -3.0F)
+            .axe(NWToolMaterials.ANCIENT, 0F, -3.0F)
+            .shovel(NWToolMaterials.ANCIENT, 0F, -3.0F)
+            .hoe(NWToolMaterials.ANCIENT, 0F, -3.0F)
+            .maxCount(1)
+            .rarity(Rarity.RARE)
+    );
+
 
     public static final Item ILLAGER_TOME = registerItem("illager_tome", IllagerTomeItem::new, new Item.Settings().rarity(Rarity.EPIC));
 

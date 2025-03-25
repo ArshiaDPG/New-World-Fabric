@@ -407,7 +407,7 @@ public class Woodset {
         return createBlockWithItem("stripped_" + this.getName() + "_" +woodsetSettings.getWoodName(), PillarBlock::new, createLogBlock(this.getTopColor(), this.getTopColor()));
     }
     private Block createLeaves() {
-        return createBlockWithItem(this.getName() + "_leaves", LeavesBlock::new, createLeavesBlock());
+        return createBlockWithItem(this.getName() + "_leaves", settings -> new TintedParticleLeavesBlock(0.01F, settings), createLeavesBlock());
     }
     private Block createPlanks(){
         return createBlockWithItem(this.getName() + "_planks", AbstractBlock.Settings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor()));
@@ -557,12 +557,12 @@ public class Woodset {
         }
 
         if (notBambooVariant()){
-            blockStateModelGenerator.registerLog(getLog()).log(getLog()).wood(getWood());
-            blockStateModelGenerator.registerLog(getStrippedLog()).log(getStrippedLog()).wood(getStrippedWood());
+            blockStateModelGenerator.createLogTexturePool(getLog()).log(getLog()).wood(getWood());
+            blockStateModelGenerator.createLogTexturePool(getStrippedLog()).log(getStrippedLog()).wood(getStrippedWood());
         }
         if (woodsetSettings.hasMosaic()){
-            blockStateModelGenerator.registerLog(getLog()).uvLockedLog(getLog());
-            blockStateModelGenerator.registerLog(getStrippedLog()).uvLockedLog(getStrippedLog());
+            blockStateModelGenerator.createLogTexturePool(getLog()).uvLockedLog(getLog());
+            blockStateModelGenerator.createLogTexturePool(getStrippedLog()).uvLockedLog(getStrippedLog());
         }
 
         blockStateModelGenerator.registerHangingSign(strippedLog, hangingSign, wallHangingSign);

@@ -8,25 +8,17 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
-import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.registry.tag.TagKey;
 
 import java.util.concurrent.CompletableFuture;
 
-public class NWItemTagProvider extends FabricTagProvider<Item> {
+public class NWItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
-    /**
-     * Constructs a new {@link FabricTagProvider} with the default computed path.
-     *
-     * <p>Common implementations of this class are provided.
-     *
-     * @param output           the {@link FabricDataOutput} instance
-     * @param registriesFuture the backing registry for the tag type
-     */
-    public NWItemTagProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
-        super(output, RegistryKeys.ITEM, registriesFuture);
+
+    public NWItemTagProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> completableFuture) {
+        super(output, completableFuture, new NWBlockTagProvider(output, completableFuture));
     }
 
     @Override
@@ -39,9 +31,9 @@ public class NWItemTagProvider extends FabricTagProvider<Item> {
 
         getOrCreateTagBuilder(ItemTags.SAPLINGS).add(NWBlocks.FIR_SAPLING.asItem());
 
-        getOrCreateTagBuilder(ItemTags.STAIRS).add(NWBlocks.LOAM_STAIRS.asItem(), NWBlocks.LOAM_BRICK_STAIRS.asItem(), NWBlocks.LOAM_TILE_STAIRS.asItem());
-        getOrCreateTagBuilder(ItemTags.SLABS).add(NWBlocks.LOAM_SLAB.asItem(), NWBlocks.LOAM_BRICK_SLAB.asItem(), NWBlocks.LOAM_TILE_SLAB.asItem());
-        getOrCreateTagBuilder(ItemTags.WALLS).add(NWBlocks.LOAM_WALL.asItem(), NWBlocks.LOAM_BRICK_WALL.asItem(), NWBlocks.LOAM_TILE_WALL.asItem());
+        getOrCreateTagBuilder(ItemTags.STAIRS).add(NWBlocks.LOAM.getStairs().asItem(), NWBlocks.LOAM_BRICKS.getStairs().asItem(), NWBlocks.LOAM_TILES.getStairs().asItem());
+        getOrCreateTagBuilder(ItemTags.SLABS).add(NWBlocks.LOAM.getSlab().asItem(), NWBlocks.LOAM_BRICKS.getSlab().asItem(), NWBlocks.LOAM_TILES.getSlab().asItem());
+        getOrCreateTagBuilder(ItemTags.WALLS).add(NWBlocks.LOAM.getWall().asItem(), NWBlocks.LOAM_BRICKS.getWall().asItem(), NWBlocks.LOAM_TILES.getWall().asItem());
 
         getOrCreateTagBuilder(ItemTags.BOOKSHELF_BOOKS).add(NWItems.ILLAGER_TOME);
 

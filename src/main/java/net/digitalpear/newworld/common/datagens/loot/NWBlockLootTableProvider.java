@@ -1,10 +1,12 @@
 package net.digitalpear.newworld.common.datagens.loot;
 
 import net.digitalpear.newworld.init.NWBlocks;
+import net.digitalpear.newworld.init.data.StoneSet;
 import net.digitalpear.newworld.init.data.Woodset;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.minecraft.block.Block;
+import net.minecraft.block.SlabBlock;
 import net.minecraft.data.loottable.vanilla.VanillaBlockLootTableGenerator;
 import net.minecraft.item.Items;
 import net.minecraft.registry.RegistryWrapper;
@@ -20,24 +22,26 @@ public class NWBlockLootTableProvider extends FabricBlockLootTableProvider {
     public void generate() {
         makeWoodLoot(NWBlocks.FIR, NWBlocks.FIR_SAPLING);
 
-        addDrop(NWBlocks.LOAM);
-        addDrop(NWBlocks.LOAM_STAIRS);
-        addDrop(NWBlocks.LOAM_SLAB, slabDrops(NWBlocks.LOAM_SLAB));
-        addDrop(NWBlocks.LOAM_WALL);
-        addDrop(NWBlocks.LOAM_BRICKS);
-        addDrop(NWBlocks.LOAM_BRICK_STAIRS);
-        addDrop(NWBlocks.LOAM_BRICK_SLAB, slabDrops(NWBlocks.LOAM_BRICK_SLAB));
-        addDrop(NWBlocks.LOAM_BRICK_WALL);
-        addDrop(NWBlocks.LOAM_TILES);
-        addDrop(NWBlocks.LOAM_TILE_STAIRS);
-        addDrop(NWBlocks.LOAM_TILE_SLAB, slabDrops(NWBlocks.LOAM_TILE_SLAB));
-        addDrop(NWBlocks.LOAM_TILE_WALL);
+        makeStoneLoot(NWBlocks.LOAM);
+        makeStoneLoot(NWBlocks.LOAM_TILES);
+        makeStoneLoot(NWBlocks.LOAM_BRICKS);
 
         addDrop(NWBlocks.TOMBSTONE);
 
         addDrop(NWBlocks.POTTED_POINTED_DRIPSTONE, pottedPlantDrops(Items.POINTED_DRIPSTONE));
 
         addDrop(NWBlocks.MOSS_SPROUTS, dropsWithShears(NWBlocks.MOSS_SPROUTS));
+    }
+
+    public void makeStoneLoot(StoneSet stoneSet){
+        for (Block block : stoneSet.iterate()){
+            if (block instanceof SlabBlock){
+                addDrop(block, slabDrops(block));
+            }
+            else{
+                addDrop(block);
+            }
+        }
     }
     public void makeWoodLoot(Woodset woodset, Block sapling){
         addDrop(woodset.getPlanks());

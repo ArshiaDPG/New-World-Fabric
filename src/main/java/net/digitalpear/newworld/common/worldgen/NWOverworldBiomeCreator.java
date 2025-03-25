@@ -49,7 +49,8 @@ public class NWOverworldBiomeCreator {
     public static Biome createWoodedMeadow(RegistryEntryLookup<PlacedFeature> featureLookup, RegistryEntryLookup<ConfiguredCarver<?>> carverLookup) {
         GenerationSettings.LookupBackedBuilder featureBuilder = new GenerationSettings.LookupBackedBuilder(featureLookup, carverLookup);
         SpawnSettings.Builder spawnBuilder = new SpawnSettings.Builder();
-        spawnBuilder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.DONKEY, 1, 1, 2)).spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.RABBIT, 2, 2, 6)).spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.SHEEP, 2, 2, 4));
+        spawnBuilder.spawn(SpawnGroup.CREATURE, 2, new SpawnSettings.SpawnEntry(EntityType.DONKEY, 1, 1)).spawn(SpawnGroup.CREATURE, 6, new SpawnSettings.SpawnEntry(EntityType.RABBIT, 2, 2)).spawn(SpawnGroup.CREATURE, 4, new SpawnSettings.SpawnEntry(EntityType.SHEEP, 2, 2));
+
         DefaultBiomeFeatures.addBatsAndMonsters(spawnBuilder);
 
         featureBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, NWPlacedFeatures.TREES_FIR);
@@ -103,7 +104,7 @@ public class NWOverworldBiomeCreator {
         DefaultBiomeFeatures.addDefaultDisks(featureBuilder);
         DefaultBiomeFeatures.addPlainsFeatures(featureBuilder);
         DefaultBiomeFeatures.addDefaultMushrooms(featureBuilder);
-        DefaultBiomeFeatures.addDefaultVegetation(featureBuilder);
+        DefaultBiomeFeatures.addDefaultVegetation(featureBuilder, false);
 
 
         MusicSound musicSound = MusicType.createIngameMusic(SoundEvents.MUSIC_OVERWORLD_DEEP_DARK);

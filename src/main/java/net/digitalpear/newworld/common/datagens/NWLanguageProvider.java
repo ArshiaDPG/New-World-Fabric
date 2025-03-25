@@ -117,18 +117,18 @@ public class NWLanguageProvider extends FabricLanguageProvider {
 
         makeSmithingTemplateTranslation(translationBuilder, NWItems.MATTOCK_CRAFTING_TEMPLATE, "mattock_crafting", "Stick", "Flint");
 
-        makeTranslation(translationBuilder, NWBlocks.LOAM);
-        makeTranslation(translationBuilder, NWBlocks.LOAM_STAIRS);
-        makeTranslation(translationBuilder, NWBlocks.LOAM_SLAB);
-        makeTranslation(translationBuilder, NWBlocks.LOAM_WALL);
-        makeTranslation(translationBuilder, NWBlocks.LOAM_BRICKS);
-        makeTranslation(translationBuilder, NWBlocks.LOAM_BRICK_STAIRS);
-        makeTranslation(translationBuilder, NWBlocks.LOAM_BRICK_SLAB);
-        makeTranslation(translationBuilder, NWBlocks.LOAM_BRICK_WALL);
-        makeTranslation(translationBuilder, NWBlocks.LOAM_TILES);
-        makeTranslation(translationBuilder, NWBlocks.LOAM_TILE_STAIRS);
-        makeTranslation(translationBuilder, NWBlocks.LOAM_TILE_SLAB);
-        makeTranslation(translationBuilder, NWBlocks.LOAM_TILE_WALL);
+//        makeTranslation(translationBuilder, NWBlocks.LOAM.getBase());
+//        makeTranslation(translationBuilder, NWBlocks.LOAM_STAIRS);
+//        makeTranslation(translationBuilder, NWBlocks.LOAM_SLAB);
+//        makeTranslation(translationBuilder, NWBlocks.LOAM_WALL);
+//        makeTranslation(translationBuilder, NWBlocks.LOAM_BRICKS);
+//        makeTranslation(translationBuilder, NWBlocks.LOAM_BRICK_STAIRS);
+//        makeTranslation(translationBuilder, NWBlocks.LOAM_BRICK_SLAB);
+//        makeTranslation(translationBuilder, NWBlocks.LOAM_BRICK_WALL);
+//        makeTranslation(translationBuilder, NWBlocks.LOAM_TILES);
+//        makeTranslation(translationBuilder, NWBlocks.LOAM_TILE_STAIRS);
+//        makeTranslation(translationBuilder, NWBlocks.LOAM_TILE_SLAB);
+//        makeTranslation(translationBuilder, NWBlocks.LOAM_TILE_WALL);
         makeTranslation(translationBuilder, NWBlocks.MOSS_SPROUTS);
 
         makeTranslation(translationBuilder, NWBlocks.TOMBSTONE);
@@ -147,6 +147,10 @@ public class NWLanguageProvider extends FabricLanguageProvider {
         NWBiomes.biomes.forEach(biomeRegistryKey -> makeBiomeTranslation(translationBuilder, biomeRegistryKey));
 
         makePaintingTranslation(translationBuilder, NWPaintingVariants.PROVIDENCE, "Providence", "AvocadoSpud");
+    }
+
+    public void makeStoneSetTranslation(){
+
     }
 
     private void makePaintingTranslation(TranslationBuilder translationBuilder, RegistryKey<PaintingVariant> key, String title, String author){

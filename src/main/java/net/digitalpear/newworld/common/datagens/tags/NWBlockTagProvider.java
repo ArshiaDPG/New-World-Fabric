@@ -8,25 +8,19 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.LeavesBlock;
-import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.TagKey;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-public class NWBlockTagProvider extends FabricTagProvider<Block> {
+public class NWBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
-    /**
-     * Constructs a new {@link FabricTagProvider} with the default computed path.
-     *
-     * <p>Common implementations of this class are provided.
-     *
-     * @param output           the {@link FabricDataOutput} instance
-     * @param registriesFuture the backing registry for the tag type
-     */
+
     public NWBlockTagProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
-        super(output, RegistryKeys.BLOCK, registriesFuture);
+        super(output, registriesFuture);
     }
 
     @Override
@@ -35,20 +29,24 @@ public class NWBlockTagProvider extends FabricTagProvider<Block> {
 
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(NWBlocks.TOMBSTONE);
 
-        getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE).add(
-                NWBlocks.LOAM, NWBlocks.LOAM_STAIRS, NWBlocks.LOAM_SLAB, NWBlocks.LOAM_WALL,
-                NWBlocks.LOAM_BRICKS, NWBlocks.LOAM_BRICK_STAIRS, NWBlocks.LOAM_BRICK_SLAB, NWBlocks.LOAM_BRICK_WALL,
-                NWBlocks.LOAM_TILES, NWBlocks.LOAM_TILE_STAIRS, NWBlocks.LOAM_TILE_SLAB, NWBlocks.LOAM_TILE_WALL
-        );
+        List<Block> stoneSets = new ArrayList<>();
+        stoneSets.addAll(new ArrayList<>(NWBlocks.LOAM.iterate()));
+        stoneSets.addAll(new ArrayList<>(NWBlocks.LOAM_BRICKS.iterate()));
+        stoneSets.addAll(new ArrayList<>(NWBlocks.LOAM_TILES.iterate()));
+        for (Block block : stoneSets){
+            getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE).add(
+                    block
+            );
+        }
 
         getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN).addTag(NWBlockTags.FIR_LOGS);
 
         getOrCreateTagBuilder(BlockTags.SAPLINGS).add(NWBlocks.FIR_SAPLING);
         getOrCreateTagBuilder(BlockTags.FLOWER_POTS).add(NWBlocks.POTTED_FIR_SAPLING).add(NWBlocks.POTTED_POINTED_DRIPSTONE);
 
-        getOrCreateTagBuilder(BlockTags.STAIRS).add(NWBlocks.LOAM_STAIRS, NWBlocks.LOAM_BRICK_STAIRS, NWBlocks.LOAM_TILE_STAIRS);
-        getOrCreateTagBuilder(BlockTags.SLABS).add(NWBlocks.LOAM_SLAB, NWBlocks.LOAM_BRICK_SLAB, NWBlocks.LOAM_TILE_SLAB);
-        getOrCreateTagBuilder(BlockTags.WALLS).add(NWBlocks.LOAM_WALL, NWBlocks.LOAM_BRICK_WALL, NWBlocks.LOAM_TILE_WALL);
+        getOrCreateTagBuilder(BlockTags.STAIRS).add(NWBlocks.LOAM.getStairs(), NWBlocks.LOAM_BRICKS.getStairs(), NWBlocks.LOAM_TILES.getStairs());
+        getOrCreateTagBuilder(BlockTags.SLABS).add(NWBlocks.LOAM.getSlab(), NWBlocks.LOAM_BRICKS.getSlab(), NWBlocks.LOAM_TILES.getSlab());
+        getOrCreateTagBuilder(BlockTags.WALLS).add(NWBlocks.LOAM.getWall(), NWBlocks.LOAM_BRICKS.getWall(), NWBlocks.LOAM_TILES.getWall());
 
         getOrCreateTagBuilder(NWBlockTags.MATTOCK_MINEABLE)
                 .forceAddTag(BlockTags.AXE_MINEABLE)
@@ -57,7 +55,7 @@ public class NWBlockTagProvider extends FabricTagProvider<Block> {
                 .forceAddTag(BlockTags.SHOVEL_MINEABLE);
 
 
-        getOrCreateTagBuilder(BlockTags.BASE_STONE_OVERWORLD).add(NWBlocks.LOAM);
+        getOrCreateTagBuilder(BlockTags.BASE_STONE_OVERWORLD).add(NWBlocks.LOAM.getBase());
 
         getOrCreateTagBuilder(NWBlockTags.SMALL_BUSH_PLANTABLE).forceAddTag(BlockTags.DIRT).add(Blocks.MUD).add(Blocks.CLAY).forceAddTag(BlockTags.LUSH_GROUND_REPLACEABLE);
 

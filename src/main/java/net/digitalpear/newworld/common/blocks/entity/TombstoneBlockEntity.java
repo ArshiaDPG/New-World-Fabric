@@ -103,7 +103,36 @@ public class TombstoneBlockEntity extends LootableContainerBlockEntity {
         }
         return false;
     }
+    public void placeOrDropStack(ItemStack currentStack){
+        int compatibleSlot = getCompatibleSlot(currentStack);
 
+        if (!currentStack.isEmpty() && compatibleSlot >= 0){
+            ItemStack tombstoneStack = getStack(compatibleSlot);
+            /*
+                If slot is empty.
+             */
+            if (tombstoneStack.isEmpty()){
+                setStack(compatibleSlot, currentStack);
+            }
+            /*
+                If slot is not empty but is compatible.
+             */
+            else if (ItemStack.areItemsAndComponentsEqual(tombstoneStack, currentStack)){
+                if (tombstoneStack.getCount() + currentStack.getCount() > tombstoneStack.getMaxCount()){
+                    tombstoneStack.setCount(tombstoneStack.getMaxCount());
+                    currentStack.setCount(tombstoneStack.getCount() + currentStack.getCount() - tombstoneStack.getMaxCount());
+
+                    /*
+                        If there is more left over then try to place it in another slot.
+                     */
+                    placeOrDropStack(currentStack.copyWithCount(tombstoneStack.getCount() + currentStack.getCount() - tombstoneStack.getMaxCount()));
+                }
+                else{
+                    tombstoneStack.setCount(tombstoneStack.getCount() + currentStack.getCount());
+                }
+            }
+        }
+    }
     void playSound(SoundEvent soundEvent) {
         double d = (double)this.pos.getX() + 0.5;
         double e = (double)this.pos.getY() + 0.5;

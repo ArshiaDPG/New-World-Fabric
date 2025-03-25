@@ -11,6 +11,7 @@ import net.minecraft.block.enums.SlabType;
 import net.minecraft.loot.LootTables;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.state.property.Properties;
+import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
@@ -104,7 +105,7 @@ public class BurialSiteFeature extends Feature<DefaultFeatureConfig> {
     }
 
     private static void generateTombstone(StructureWorldAccess world, BlockPos pos) {
-        placeBlock(world, pos, NWBlocks.TOMBSTONE.getDefaultState().with(TombstoneBlock.FACING, Direction.byId(world.getRandom().nextBetween(2, 5))));
+        placeBlock(world, pos, NWBlocks.TOMBSTONE.getDefaultState().with(TombstoneBlock.FACING, Util.getRandom(Arrays.stream(Direction.values()).filter(direction -> direction.getAxis() != Direction.Axis.Y).toList(), world.getRandom())));
         world.getBlockEntity(pos, NWBlockEntityTypes.TOMBSTONE).ifPresent((blockEntity) ->
                 blockEntity.setLootTable(LootTables.UNDERWATER_RUIN_SMALL_CHEST, pos.asLong()));
     }

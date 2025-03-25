@@ -12,7 +12,7 @@ import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.registry.entry.RegistryEntryList;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.structure.rule.TagMatchRuleTest;
-import net.minecraft.util.collection.DataPool;
+import net.minecraft.util.collection.Pool;
 import net.minecraft.util.math.VerticalSurfaceType;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
@@ -117,11 +117,11 @@ public class NWConfiguredFeatures {
         /*
             Scrapyard Features
          */
-        ConfiguredFeatures.register(featureRegisterable, LOAM_PATCH_CEILING, Feature.VEGETATION_PATCH, new VegetationPatchFeatureConfig(BlockTags.MOSS_REPLACEABLE, BlockStateProvider.of(NWBlocks.LOAM), PlacedFeatures.createEntry(configuredFeatures.getOrThrow(MiscConfiguredFeatures.ICE_SPIKE)), VerticalSurfaceType.CEILING, UniformIntProvider.create(1, 2), 0.0F, 5, 0.008F, UniformIntProvider.create(4, 7), 0.3F));
-        ConfiguredFeatures.register(featureRegisterable, LOAM_ORE, Feature.ORE, new OreFeatureConfig(ruleTest, NWBlocks.LOAM.getDefaultState(), 64));
+        ConfiguredFeatures.register(featureRegisterable, LOAM_PATCH_CEILING, Feature.VEGETATION_PATCH, new VegetationPatchFeatureConfig(BlockTags.MOSS_REPLACEABLE, BlockStateProvider.of(NWBlocks.LOAM.getBase()), PlacedFeatures.createEntry(configuredFeatures.getOrThrow(MiscConfiguredFeatures.ICE_SPIKE)), VerticalSurfaceType.CEILING, UniformIntProvider.create(1, 2), 0.0F, 5, 0.008F, UniformIntProvider.create(4, 7), 0.3F));
+        ConfiguredFeatures.register(featureRegisterable, LOAM_ORE, Feature.ORE, new OreFeatureConfig(ruleTest, NWBlocks.LOAM.getBase().getDefaultState(), 64));
         ConfiguredFeatures.register(featureRegisterable, LOAM_SNOW, NWFeature.LOAM_SNOW, new DefaultFeatureConfig());
 
-        DataPool<BlockState> calciteVegetationStates = DataPool.<BlockState>builder().add(Blocks.AIR.getDefaultState(), 16).build();
+        Pool<BlockState> calciteVegetationStates = Pool.<BlockState>builder().add(Blocks.AIR.getDefaultState(), 16).build();
         ConfiguredFeatures.register(featureRegisterable, CALCITE_VEGETATION, Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(calciteVegetationStates)));
         ConfiguredFeatures.register(featureRegisterable, CALCITE_PATCH, Feature.VEGETATION_PATCH, new VegetationPatchFeatureConfig(BlockTags.MOSS_REPLACEABLE, BlockStateProvider.of(Blocks.CALCITE), PlacedFeatures.createEntry(configuredFeatures.getOrThrow(CALCITE_VEGETATION)), VerticalSurfaceType.FLOOR, ConstantIntProvider.create(1), 0.0f, 5, 0.8f, UniformIntProvider.create(4, 7), 0.3f));
         ConfiguredFeatures.register(featureRegisterable, BURIAL_SITE, NWFeature.BURIAL_SITE, new DefaultFeatureConfig());
