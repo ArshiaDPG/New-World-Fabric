@@ -137,6 +137,8 @@ public class TombstoneBlockEntity extends LootableContainerBlockEntity {
         double d = (double)this.pos.getX() + 0.5;
         double e = (double)this.pos.getY() + 0.5;
         double f = (double)this.pos.getZ() + 0.5;
-        this.world.playSound(null, d, e, f, soundEvent, SoundCategory.BLOCKS, 0.5F, this.world.random.nextFloat() * 0.1F + 0.9F);
+        if (this.world != null) {
+            this.world.playSound(null, d, e, f, soundEvent, SoundCategory.BLOCKS, 0.5F, this.world.random.nextFloat() * 0.1F + 0.9F);
+        }
     }
 }
